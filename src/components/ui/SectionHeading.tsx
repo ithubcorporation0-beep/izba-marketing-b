@@ -16,7 +16,9 @@ export const SectionHeading: React.FC<SectionHeadingProps> = ({
   className = '',
 }) => {
   const alignClass =
-    align === 'center' ? 'text-center items-center mx-auto' : 'text-left items-start';
+    align === 'center'
+      ? 'text-center items-center mx-auto'
+      : 'text-left items-start';
 
   return (
     <div

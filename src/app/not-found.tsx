@@ -17,15 +17,26 @@ export default function NotFound() {
               404 — Route Not Found
             </h1>
             <p className="text-base sm:text-lg text-[var(--color-muted)] max-w-md mx-auto">
-              The requested page does not exist or has been moved within the IT HUB Corporation platform.
+              The requested page does not exist or has been moved within the IT
+              HUB Corporation platform.
             </p>
           </div>
 
           <div className="flex flex-wrap items-center justify-center gap-4 pt-2">
-            <Button href="/" variant="primary" size="md" icon={<Home size={16} />}>
+            <Button
+              href="/"
+              variant="primary"
+              size="md"
+              icon={<Home size={16} />}
+            >
               Return Home
             </Button>
-            <Button href="/services" variant="secondary" size="md" icon={<Layers size={16} />}>
+            <Button
+              href="/services"
+              variant="secondary"
+              size="md"
+              icon={<Layers size={16} />}
+            >
               Browse Services
             </Button>
           </div>

@@ -8,7 +8,8 @@ import { Info, ArrowLeft } from 'lucide-react';
 
 export const metadata: Metadata = {
   title: 'About IT HUB Corporation',
-  description: 'Learn about IT HUB Corporation enterprise technology leadership and standards.',
+  description:
+    'Learn about IT HUB Corporation enterprise technology leadership and standards.',
 };
 
 export default function AboutPage() {
@@ -27,7 +28,12 @@ export default function AboutPage() {
             title="Coming in a later phase"
             description="The About page content and leadership overview will be implemented in an upcoming milestone."
             action={
-              <Button href="/" variant="secondary" size="sm" icon={<ArrowLeft size={14} />}>
+              <Button
+                href="/"
+                variant="secondary"
+                size="sm"
+                icon={<ArrowLeft size={14} />}
+              >
                 Back to Home
               </Button>
             }

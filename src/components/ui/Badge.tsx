@@ -32,10 +32,10 @@ export const Badge: React.FC<BadgeProps> = ({
     variant === 'cyan'
       ? 'blue'
       : variant === 'emerald'
-      ? 'success'
-      : variant === 'purple'
-      ? 'violet'
-      : variant;
+        ? 'success'
+        : variant === 'purple'
+          ? 'violet'
+          : variant;
 
   const variantStyles = {
     blue: 'bg-[rgba(49,87,213,0.08)] text-[var(--color-primary-blue)] border border-[rgba(49,87,213,0.2)]',

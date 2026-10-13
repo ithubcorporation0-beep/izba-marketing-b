@@ -27,7 +27,12 @@ export default function ContactPage() {
             title="Coming in a later phase"
             description="The interactive Request a Quote form and contact routing will be built out in the Contact & Forms phase."
             action={
-              <Button href="/" variant="secondary" size="sm" icon={<ArrowLeft size={14} />}>
+              <Button
+                href="/"
+                variant="secondary"
+                size="sm"
+                icon={<ArrowLeft size={14} />}
+              >
                 Back to Home
               </Button>
             }

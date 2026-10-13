@@ -66,7 +66,8 @@ export const Header: React.FC = () => {
               const isActive =
                 link.href === '/'
                   ? pathname === '/'
-                  : pathname === link.href || pathname.startsWith(`${link.href}/`);
+                  : pathname === link.href ||
+                    pathname.startsWith(`${link.href}/`);
 
               return (
                 <Link

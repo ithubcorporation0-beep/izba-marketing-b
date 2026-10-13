@@ -1,8 +1,7 @@
 import React from 'react';
 import Link from 'next/link';
 
-export interface ButtonProps
-  extends React.ButtonHTMLAttributes<HTMLButtonElement> {
+export interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
   variant?: 'primary' | 'secondary' | 'ghost' | 'outline';
   size?: 'sm' | 'md' | 'lg';
   href?: string;

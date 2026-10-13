@@ -45,7 +45,11 @@ export default function RootLayout({
         <Header />
 
         {/* Main Content Landmark */}
-        <main id="main-content" className="flex-1 focus:outline-none" tabIndex={-1}>
+        <main
+          id="main-content"
+          className="flex-1 focus:outline-none"
+          tabIndex={-1}
+        >
           {children}
         </main>
 

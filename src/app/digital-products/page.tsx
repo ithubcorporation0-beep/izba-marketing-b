@@ -66,7 +66,7 @@ export default function DigitalProductsPage() {
                 <div className={styles.featuresList}>
                   <h4>Key Capabilities</h4>
                   <ul>
-                    {prod.features.map((feat, idx) => (
+                    {prod.features.map((feat: string, idx: number) => (
                       <li key={idx}>
                         <CheckCircle2 size={16} className={styles.checkIcon} />
                         <span>{feat}</span>

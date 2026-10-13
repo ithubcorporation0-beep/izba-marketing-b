@@ -2,13 +2,12 @@ import React from 'react';
 import type { Metadata } from 'next';
 import { notFound } from 'next/navigation';
 import Link from 'next/link';
-import { ArrowLeft, ArrowRight } from 'lucide-react';
+import { ArrowLeft } from 'lucide-react';
 import { categories } from '@/content/categories';
 import { services } from '@/content/services';
 import { constructMetadata } from '@/lib/seo/metadata';
 import { ServiceCard } from '@/components/services/ServiceCard';
 import { Badge } from '@/components/ui/Badge';
-import { Button } from '@/components/ui/Button';
 import { CTASection } from '@/components/sections/CTA';
 import styles from './page.module.css';
 
@@ -36,9 +35,12 @@ export async function generateMetadata({
     };
   }
 
+  const categoryName = category.name || category.title;
+  const categoryDesc = category.shortDescription || category.description;
+
   return constructMetadata({
-    title: `${category.title} — Services`,
-    description: category.description,
+    title: `${categoryName} — Services`,
+    description: categoryDesc,
     pathname: `/services/category/${category.slug}`,
   });
 }
@@ -53,7 +55,11 @@ export default async function CategoryServicesPage({
     notFound();
   }
 
-  const categoryServices = services.filter((s) => s.category === category.id);
+  const categoryName = category.name || category.title;
+  const categoryDesc = category.shortDescription || category.description;
+  const categoryServices = services.filter(
+    (s) => s.categorySlug === category.slug || s.category === category.id
+  );
 
   return (
     <div className={styles.categoryPageWrapper}>
@@ -69,10 +75,10 @@ export default async function CategoryServicesPage({
       <section className={styles.headerSection}>
         <div className={`container ${styles.headerContainer}`}>
           <Badge variant="cyan" size="md">
-            Technical Discipline
+            Service Category
           </Badge>
-          <h1 className={styles.title}>{category.title}</h1>
-          <p className={styles.subtitle}>{category.description}</p>
+          <h1 className={styles.title}>{categoryName}</h1>
+          <p className={styles.subtitle}>{categoryDesc}</p>
         </div>
       </section>
 
@@ -85,7 +91,7 @@ export default async function CategoryServicesPage({
           </div>
 
           <div className={styles.otherCategoriesSection}>
-            <h3>Explore Other Technical Domains</h3>
+            <h3>Explore Other Service Categories</h3>
             <div className={styles.otherCategoriesGrid}>
               {categories
                 .filter((c) => c.id !== category.id)
@@ -95,7 +101,7 @@ export default async function CategoryServicesPage({
                     href={`/services/category/${cat.slug}`}
                     className={styles.catCard}
                   >
-                    <h4>{cat.title}</h4>
+                    <h4>{cat.name || cat.title}</h4>
                     <p>{cat.shortDescription}</p>
                     <span className={styles.catLinkText}>
                       View Services &rarr;

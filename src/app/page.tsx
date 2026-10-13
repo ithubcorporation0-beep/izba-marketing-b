@@ -54,7 +54,8 @@ export default function HomePage() {
               PRD 10.2 Tokens
             </h3>
             <p className="text-sm text-[var(--color-muted)] leading-relaxed">
-              Standardized colors, spacing, radii, and shadows implemented as CSS variables and Tailwind utilities.
+              Standardized colors, spacing, radii, and shadows implemented as
+              CSS variables and Tailwind utilities.
             </p>
           </Card>
 
@@ -66,7 +67,8 @@ export default function HomePage() {
               Accessible Components
             </h3>
             <p className="text-sm text-[var(--color-muted)] leading-relaxed">
-              12 fully-typed UI components with visible keyboard focus rings and responsive scaling.
+              12 fully-typed UI components with visible keyboard focus rings and
+              responsive scaling.
             </p>
           </Card>
 
@@ -78,7 +80,8 @@ export default function HomePage() {
               Mobile Navigation & Layout
             </h3>
             <p className="text-sm text-[var(--color-muted)] leading-relaxed">
-              Sticky header, focus-trapped drawer, landmarks, skip link, and responsive footer.
+              Sticky header, focus-trapped drawer, landmarks, skip link, and
+              responsive footer.
             </p>
           </Card>
         </div>

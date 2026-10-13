@@ -43,9 +43,10 @@ export const MobileNav: React.FC<MobileNavProps> = ({ isOpen, onClose }) => {
       }
 
       if (e.key === 'Tab' && drawerRef.current) {
-        const focusableElements = drawerRef.current.querySelectorAll<HTMLElement>(
-          'button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])'
-        );
+        const focusableElements =
+          drawerRef.current.querySelectorAll<HTMLElement>(
+            'button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])'
+          );
         const focusable = Array.from(focusableElements).filter(
           (el) => !el.hasAttribute('disabled') && el.offsetParent !== null
         );
@@ -120,7 +121,10 @@ export const MobileNav: React.FC<MobileNavProps> = ({ isOpen, onClose }) => {
               IT
             </div>
             <span className="font-extrabold text-base text-[var(--color-navy)] tracking-tight">
-              IT HUB <span className="font-normal text-[var(--color-muted)] text-xs">Corp</span>
+              IT HUB{' '}
+              <span className="font-normal text-[var(--color-muted)] text-xs">
+                Corp
+              </span>
             </span>
           </Link>
 
@@ -141,7 +145,8 @@ export const MobileNav: React.FC<MobileNavProps> = ({ isOpen, onClose }) => {
             const isActive =
               link.href === '/'
                 ? pathname === '/'
-                : pathname === link.href || pathname.startsWith(`${link.href}/`);
+                : pathname === link.href ||
+                  pathname.startsWith(`${link.href}/`);
 
             return (
               <Link
@@ -158,7 +163,11 @@ export const MobileNav: React.FC<MobileNavProps> = ({ isOpen, onClose }) => {
                 <span>{link.label}</span>
                 <ArrowRight
                   size={16}
-                  className={isActive ? 'text-[var(--color-primary-blue)]' : 'text-[var(--color-muted)]'}
+                  className={
+                    isActive
+                      ? 'text-[var(--color-primary-blue)]'
+                      : 'text-[var(--color-muted)]'
+                  }
                 />
               </Link>
             );
@@ -169,15 +178,24 @@ export const MobileNav: React.FC<MobileNavProps> = ({ isOpen, onClose }) => {
         <div className="p-5 border-t border-[var(--color-border)] bg-[var(--color-soft-bg)]/40 space-y-4">
           <div className="space-y-2 text-xs text-[var(--color-muted)]">
             <div className="flex items-center gap-2">
-              <Mail size={14} className="text-[var(--color-primary-blue)] shrink-0" />
+              <Mail
+                size={14}
+                className="text-[var(--color-primary-blue)] shrink-0"
+              />
               <span className="truncate">{siteConfig.contact.email}</span>
             </div>
             <div className="flex items-center gap-2">
-              <Phone size={14} className="text-[var(--color-primary-blue)] shrink-0" />
+              <Phone
+                size={14}
+                className="text-[var(--color-primary-blue)] shrink-0"
+              />
               <span>{siteConfig.contact.phone}</span>
             </div>
             <div className="flex items-center gap-2">
-              <MapPin size={14} className="text-[var(--color-primary-blue)] shrink-0" />
+              <MapPin
+                size={14}
+                className="text-[var(--color-primary-blue)] shrink-0"
+              />
               <span className="truncate">{siteConfig.contact.address}</span>
             </div>
           </div>

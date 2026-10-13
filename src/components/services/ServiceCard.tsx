@@ -12,7 +12,6 @@ import {
 } from 'lucide-react';
 import { Service } from '@/types';
 import { Card } from '@/components/ui/Card';
-import { Badge } from '@/components/ui/Badge';
 import styles from './ServiceCard.module.css';
 
 const iconMap: Record<string, React.ReactNode> = {
@@ -33,7 +32,10 @@ export const ServiceCard: React.FC<ServiceCardProps> = ({
   service,
   featuredLayout = false,
 }) => {
-  const icon = iconMap[service.icon] || <Code2 size={24} />;
+  const icon = (service.icon && iconMap[service.icon]) || <Code2 size={24} />;
+  const serviceTitle = service.name || service.title;
+  const features = service.includes || service.features || [];
+  const technologies = service.technologies || [];
 
   return (
     <Card
@@ -54,32 +56,36 @@ export const ServiceCard: React.FC<ServiceCardProps> = ({
       <div className={styles.content}>
         <h3 className={styles.title}>
           <Link href={`/services/${service.slug}`} className={styles.titleLink}>
-            {service.title}
+            {serviceTitle}
           </Link>
         </h3>
         <p className={styles.description}>{service.shortDescription}</p>
 
-        <ul className={styles.featureList}>
-          {service.features.slice(0, 3).map((feat, idx) => (
-            <li key={idx} className={styles.featureItem}>
-              <CheckCircle2 size={16} className={styles.checkIcon} />
-              <span>{feat}</span>
-            </li>
-          ))}
-        </ul>
+        {features.length > 0 && (
+          <ul className={styles.featureList}>
+            {features.slice(0, 3).map((feat, idx) => (
+              <li key={idx} className={styles.featureItem}>
+                <CheckCircle2 size={16} className={styles.checkIcon} />
+                <span>{feat}</span>
+              </li>
+            ))}
+          </ul>
+        )}
 
-        <div className={styles.techStack}>
-          {service.technologies.slice(0, 4).map((tech) => (
-            <span key={tech} className={styles.techTag}>
-              {tech}
-            </span>
-          ))}
-          {service.technologies.length > 4 && (
-            <span className={styles.moreTech}>
-              +{service.technologies.length - 4}
-            </span>
-          )}
-        </div>
+        {technologies.length > 0 && (
+          <div className={styles.techStack}>
+            {technologies.slice(0, 4).map((tech) => (
+              <span key={tech} className={styles.techTag}>
+                {tech}
+              </span>
+            ))}
+            {technologies.length > 4 && (
+              <span className={styles.moreTech}>
+                +{technologies.length - 4}
+              </span>
+            )}
+          </div>
+        )}
       </div>
 
       <div className={styles.footer}>
@@ -87,7 +93,7 @@ export const ServiceCard: React.FC<ServiceCardProps> = ({
           href={`/services/${service.slug}`}
           className={styles.learnMoreLink}
         >
-          <span>Explore Architecture</span>
+          <span>View Service Details</span>
           <ArrowUpRight size={16} className={styles.arrowIcon} />
         </Link>
       </div>

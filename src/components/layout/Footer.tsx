@@ -58,7 +58,11 @@ export const Footer: React.FC = () => {
             </p>
 
             <div className="pt-2">
-              <Badge variant="neutral" size="sm" className="bg-[var(--color-white)]/10 text-[var(--color-white)] border-transparent">
+              <Badge
+                variant="neutral"
+                size="sm"
+                className="bg-[var(--color-white)]/10 text-[var(--color-white)] border-transparent"
+              >
                 Enterprise SLA Guaranteed
               </Badge>
             </div>
@@ -122,10 +126,10 @@ export const Footer: React.FC = () => {
               {categories.map((cat) => (
                 <li key={cat.id}>
                   <Link
-                    href="/services"
+                    href={`/services#${cat.slug}`}
                     className="text-[var(--color-muted)] hover:text-[var(--color-white)] transition-colors flex items-center justify-between group focus:outline-none focus-visible:ring-2 focus-visible:ring-[var(--color-primary-blue)] rounded-sm"
                   >
-                    <span className="truncate">{cat.title}</span>
+                    <span className="truncate">{cat.name}</span>
                     <ArrowRight
                       size={12}
                       className="opacity-0 -translate-x-1 group-hover:opacity-100 group-hover:translate-x-0 transition-all text-[var(--color-primary-blue)]"
@@ -143,15 +147,29 @@ export const Footer: React.FC = () => {
             </h4>
             <div className="space-y-3 text-sm">
               <div className="flex items-start gap-2.5">
-                <MapPin size={16} className="text-[var(--color-primary-blue)] shrink-0 mt-0.5" />
-                <div>{renderContactValue(siteConfig.contact.address, 'Office Address')}</div>
+                <MapPin
+                  size={16}
+                  className="text-[var(--color-primary-blue)] shrink-0 mt-0.5"
+                />
+                <div>
+                  {renderContactValue(
+                    siteConfig.contact.address,
+                    'Office Address'
+                  )}
+                </div>
               </div>
 
               <div className="flex items-start gap-2.5">
-                <Mail size={16} className="text-[var(--color-primary-blue)] shrink-0 mt-0.5" />
+                <Mail
+                  size={16}
+                  className="text-[var(--color-primary-blue)] shrink-0 mt-0.5"
+                />
                 <div>
                   {isPlaceholder(siteConfig.contact.email) ? (
-                    renderContactValue(siteConfig.contact.email, 'Email Address')
+                    renderContactValue(
+                      siteConfig.contact.email,
+                      'Email Address'
+                    )
                   ) : (
                     <a
                       href={`mailto:${siteConfig.contact.email}`}
@@ -164,7 +182,10 @@ export const Footer: React.FC = () => {
               </div>
 
               <div className="flex items-start gap-2.5">
-                <Phone size={16} className="text-[var(--color-primary-blue)] shrink-0 mt-0.5" />
+                <Phone
+                  size={16}
+                  className="text-[var(--color-primary-blue)] shrink-0 mt-0.5"
+                />
                 <div>
                   {isPlaceholder(siteConfig.contact.phone) ? (
                     renderContactValue(siteConfig.contact.phone, 'Phone Number')
@@ -180,8 +201,16 @@ export const Footer: React.FC = () => {
               </div>
 
               <div className="flex items-start gap-2.5">
-                <Clock size={16} className="text-[var(--color-primary-blue)] shrink-0 mt-0.5" />
-                <div>{renderContactValue(siteConfig.contact.workingHours, 'Operating Hours')}</div>
+                <Clock
+                  size={16}
+                  className="text-[var(--color-primary-blue)] shrink-0 mt-0.5"
+                />
+                <div>
+                  {renderContactValue(
+                    siteConfig.contact.workingHours,
+                    'Operating Hours'
+                  )}
+                </div>
               </div>
             </div>
           </div>

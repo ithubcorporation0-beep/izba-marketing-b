@@ -8,7 +8,8 @@ import { Layers, ArrowLeft } from 'lucide-react';
 
 export const metadata: Metadata = {
   title: 'Services & Capabilities',
-  description: 'Enterprise IT solutions and engineering services from IT HUB Corporation.',
+  description:
+    'Enterprise IT solutions and engineering services from IT HUB Corporation.',
 };
 
 export default function ServicesPage() {
@@ -27,7 +28,12 @@ export default function ServicesPage() {
             title="Coming in a later phase"
             description="The services catalog and directory will be built out in the upcoming Services phase."
             action={
-              <Button href="/" variant="secondary" size="sm" icon={<ArrowLeft size={14} />}>
+              <Button
+                href="/"
+                variant="secondary"
+                size="sm"
+                icon={<ArrowLeft size={14} />}
+              >
                 Back to Home
               </Button>
             }

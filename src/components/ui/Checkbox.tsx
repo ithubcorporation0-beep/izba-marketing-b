@@ -1,7 +1,9 @@
 import React from 'react';
 
-export interface CheckboxProps
-  extends Omit<React.InputHTMLAttributes<HTMLInputElement>, 'type'> {
+export interface CheckboxProps extends Omit<
+  React.InputHTMLAttributes<HTMLInputElement>,
+  'type'
+> {
   label: string;
   description?: string;
   error?: string;
@@ -58,7 +60,10 @@ export const Checkbox = React.forwardRef<HTMLInputElement, CheckboxProps>(
           </div>
         </label>
         {error && (
-          <p className="text-xs font-medium text-[var(--color-error)] pl-8" role="alert">
+          <p
+            className="text-xs font-medium text-[var(--color-error)] pl-8"
+            role="alert"
+          >
             {error}
           </p>
         )}

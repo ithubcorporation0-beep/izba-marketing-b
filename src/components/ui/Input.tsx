@@ -1,14 +1,16 @@
 import React from 'react';
 
-export interface InputProps
-  extends React.InputHTMLAttributes<HTMLInputElement> {
+export interface InputProps extends React.InputHTMLAttributes<HTMLInputElement> {
   label: string;
   error?: string;
   helperText?: string;
 }
 
 export const Input = React.forwardRef<HTMLInputElement, InputProps>(
-  ({ label, error, helperText, id, required, className = '', ...props }, ref) => {
+  (
+    { label, error, helperText, id, required, className = '', ...props },
+    ref
+  ) => {
     const inputId = id || label.toLowerCase().replace(/[^a-z0-9]/g, '-');
     const hasError = Boolean(error);
 

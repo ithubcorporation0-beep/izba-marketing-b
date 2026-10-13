@@ -23,14 +23,23 @@ export const ServiceSearch: React.FC<ServiceSearchProps> = ({
   const filteredServices = useMemo(() => {
     return services.filter((service) => {
       const matchesCategory =
-        selectedCategory === 'all' || service.category === selectedCategory;
+        selectedCategory === 'all' ||
+        service.categorySlug === selectedCategory ||
+        service.category === selectedCategory;
 
       const query = searchQuery.toLowerCase().trim();
+      const serviceTitle = (service.name || service.title || '').toLowerCase();
+      const serviceDesc = (service.shortDescription || '').toLowerCase();
       const matchesSearch =
         !query ||
-        service.title.toLowerCase().includes(query) ||
-        service.shortDescription.toLowerCase().includes(query) ||
-        service.technologies.some((tech) => tech.toLowerCase().includes(query));
+        serviceTitle.includes(query) ||
+        serviceDesc.includes(query) ||
+        (service.technologies || []).some((tech) =>
+          tech.toLowerCase().includes(query)
+        ) ||
+        (service.includes || []).some((inc) =>
+          inc.toLowerCase().includes(query)
+        );
 
       return matchesCategory && matchesSearch;
     });
@@ -45,7 +54,7 @@ export const ServiceSearch: React.FC<ServiceSearchProps> = ({
             type="search"
             value={searchQuery}
             onChange={(e) => setSearchQuery(e.target.value)}
-            placeholder="Search services by keyword, tech stack (e.g. Kubernetes, AI, SOC 2)..."
+            placeholder="Search services by keyword (e.g. Website, SEO, Python, AI)..."
             className={styles.searchInput}
             aria-label="Search IT services"
           />
@@ -70,21 +79,22 @@ export const ServiceSearch: React.FC<ServiceSearchProps> = ({
             All Services ({services.length})
           </button>
           {categories.map((cat) => {
-            const count = services.filter((s) => s.category === cat.id).length;
+            const count = services.filter(
+              (s) => s.categorySlug === cat.slug || s.category === cat.id
+            ).length;
+            const catKey = cat.slug || cat.id;
+            const isSelected = selectedCategory === catKey;
             return (
               <button
                 key={cat.id}
                 role="tab"
-                aria-selected={selectedCategory === cat.id}
-                onClick={() => setSelectedCategory(cat.id)}
-                className={[
-                  styles.tab,
-                  selectedCategory === cat.id ? styles.activeTab : '',
-                ]
+                aria-selected={isSelected}
+                onClick={() => setSelectedCategory(catKey)}
+                className={[styles.tab, isSelected ? styles.activeTab : '']
                   .filter(Boolean)
                   .join(' ')}
               >
-                {cat.title} ({count})
+                {cat.name || cat.title} ({count})
               </button>
             );
           })}

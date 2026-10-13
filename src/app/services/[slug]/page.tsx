@@ -5,7 +5,6 @@ import Link from 'next/link';
 import {
   ArrowLeft,
   CheckCircle2,
-  ShieldCheck,
   Cpu,
   ArrowRight,
   Layers,
@@ -45,9 +44,13 @@ export async function generateMetadata({
     };
   }
 
+  const title =
+    service.seoTitle || `${service.name || service.title} | IT HUB Corporation`;
+  const description = service.seoDescription || service.shortDescription;
+
   return constructMetadata({
-    title: `${service.title} — Enterprise IT Solutions`,
-    description: service.shortDescription,
+    title,
+    description,
     pathname: `/services/${service.slug}`,
   });
 }
@@ -60,7 +63,13 @@ export default async function ServiceDetailPage({ params }: ServicePageProps) {
     notFound();
   }
 
-  const category = categories.find((c) => c.id === service.category);
+  const category = categories.find(
+    (c) => c.slug === service.categorySlug || c.id === service.category
+  );
+  const serviceTitle = service.name || service.title;
+  const features = service.includes || service.features || [];
+  const deliverables = service.deliverables || [];
+  const technologies = service.technologies || [];
 
   return (
     <div className={styles.serviceDetailWrapper}>
@@ -82,12 +91,22 @@ export default async function ServiceDetailPage({ params }: ServicePageProps) {
               {category && (
                 <Link href={`/services/category/${category.slug}`}>
                   <Badge variant="cyan" size="md">
-                    {category.title}
+                    {category.name || category.title}
                   </Badge>
                 </Link>
               )}
-              <h1 className={styles.title}>{service.title}</h1>
-              <p className={styles.fullDesc}>{service.fullDescription}</p>
+              <h1 className={styles.title}>{serviceTitle}</h1>
+              {Array.isArray(service.description) ? (
+                service.description.map((para, i) => (
+                  <p key={i} className={styles.fullDesc}>
+                    {para}
+                  </p>
+                ))
+              ) : (
+                <p className={styles.fullDesc}>
+                  {service.fullDescription || service.shortDescription}
+                </p>
+              )}
 
               {service.stat && (
                 <div className={styles.statBanner}>
@@ -102,23 +121,24 @@ export default async function ServiceDetailPage({ params }: ServicePageProps) {
               <Card className={styles.rfqCard}>
                 <div className={styles.rfqHeader}>
                   <Sparkles size={20} className={styles.sparkleIcon} />
-                  <h3>Request Architecture Blueprint</h3>
+                  <h3>Request a Quote</h3>
                 </div>
                 <p className={styles.rfqText}>
-                  Partner directly with our principal systems engineers for{' '}
-                  {service.title}.
+                  Connect directly with our team to discuss scope, deliverables,
+                  and timelines for {serviceTitle}.
                 </p>
                 <div className={styles.rfqFeatures}>
                   <div>
                     <CheckCircle2 size={16} />{' '}
-                    <span>Senior Architect Review</span>
+                    <span>Clear Scope & Milestones</span>
                   </div>
                   <div>
                     <CheckCircle2 size={16} />{' '}
-                    <span>Detailed Estimation Roadmap</span>
+                    <span>Transparent Pricing Estimate</span>
                   </div>
                   <div>
-                    <CheckCircle2 size={16} /> <span>Mutual NDA Safeguard</span>
+                    <CheckCircle2 size={16} />{' '}
+                    <span>NDA & Confidentiality</span>
                   </div>
                 </div>
                 <Button
@@ -141,51 +161,55 @@ export default async function ServiceDetailPage({ params }: ServicePageProps) {
         <div className="container">
           <div className={styles.contentGrid}>
             {/* Architectural Features */}
-            <div className={styles.gridCol}>
-              <div className={styles.colHeader}>
-                <Cpu size={22} className={styles.colIcon} />
-                <h2>Key Capabilities & Architecture</h2>
+            {features.length > 0 && (
+              <div className={styles.gridCol}>
+                <div className={styles.colHeader}>
+                  <Cpu size={22} className={styles.colIcon} />
+                  <h2>What Is Covered</h2>
+                </div>
+                <ul className={styles.featureList}>
+                  {features.map((feat, idx) => (
+                    <li key={idx} className={styles.featureItem}>
+                      <CheckCircle2 size={18} className={styles.checkIcon} />
+                      <span>{feat}</span>
+                    </li>
+                  ))}
+                </ul>
               </div>
-              <ul className={styles.featureList}>
-                {service.features.map((feat, idx) => (
-                  <li key={idx} className={styles.featureItem}>
-                    <CheckCircle2 size={18} className={styles.checkIcon} />
-                    <span>{feat}</span>
-                  </li>
-                ))}
-              </ul>
-            </div>
+            )}
 
             {/* Deliverables Checklist */}
-            <div className={styles.gridCol}>
-              <div className={styles.colHeader}>
-                <Layers size={22} className={styles.colIcon} />
-                <h2>Concrete Enterprise Deliverables</h2>
+            {deliverables.length > 0 && (
+              <div className={styles.gridCol}>
+                <div className={styles.colHeader}>
+                  <Layers size={22} className={styles.colIcon} />
+                  <h2>Key Deliverables</h2>
+                </div>
+                <ul className={styles.deliverableList}>
+                  {deliverables.map((del, idx) => (
+                    <li key={idx} className={styles.deliverableItem}>
+                      <FileText size={18} className={styles.docIcon} />
+                      <span>{del}</span>
+                    </li>
+                  ))}
+                </ul>
               </div>
-              <ul className={styles.deliverableList}>
-                {service.deliverables.map((del, idx) => (
-                  <li key={idx} className={styles.deliverableItem}>
-                    <FileText size={18} className={styles.docIcon} />
-                    <span>{del}</span>
-                  </li>
-                ))}
-              </ul>
-            </div>
+            )}
           </div>
 
-          {/* Technology Ecosystem Badges */}
-          <div className={styles.techSection}>
-            <h3 className={styles.techTitle}>
-              Engineered with Leading Technologies
-            </h3>
-            <div className={styles.techBadgeGrid}>
-              {service.technologies.map((tech) => (
-                <div key={tech} className={styles.techPill}>
-                  {tech}
-                </div>
-              ))}
+          {/* Technology Badges */}
+          {technologies.length > 0 && (
+            <div className={styles.techSection}>
+              <h3 className={styles.techTitle}>Key Technologies & Tools</h3>
+              <div className={styles.techBadgeGrid}>
+                {technologies.map((tech) => (
+                  <div key={tech} className={styles.techPill}>
+                    {tech}
+                  </div>
+                ))}
+              </div>
             </div>
-          </div>
+          )}
         </div>
       </section>
 

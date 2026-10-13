@@ -1,71 +1,174 @@
-export const heroContent = {
-  badge: 'Next-Generation Enterprise IT Solutions',
-  title: 'Engineering the Future of Enterprise Technology',
-  subtitle:
-    'IT HUB Corporation powers modern organizations with resilient cloud architecture, custom software development, applied enterprise AI, and military-grade cybersecurity.',
-  primaryCtaText: 'Request Enterprise Proposal',
-  primaryCtaLink: '/contact',
-  secondaryCtaText: 'Explore Services',
-  secondaryCtaLink: '/services',
-  clientLogos: [
-    { name: 'FinTech Global', tag: 'Financial Services' },
-    { name: 'Apex HealthTech', tag: 'Healthcare Systems' },
-    { name: 'Vanguard Logistics', tag: 'Global Supply Chain' },
-    { name: 'OmniRetail Cloud', tag: 'Enterprise E-Commerce' },
-    { name: 'AeroDynamics Corp', tag: 'Industrial IoT' },
-  ],
-};
+import { FeaturedService } from '@/types';
 
-export const processSteps = [
+/**
+ * OWNER'S FEATURED SERVICES (PRD Section 5.1)
+ *
+ * Mapped to the right service or category while strictly preserving
+ * the owner's intended display names:
+ * - "Digital Products" maps to Digital Product Creation (`digital-product-creation`)
+ * - "AI Solutions and Automation" maps to AI Services & Automation category (`ai-services-automation`)
+ */
+export const featuredServices: FeaturedService[] = [
   {
-    step: '01',
-    title: 'Discovery & Architectural Audit',
+    displayName: 'Website Development',
+    targetType: 'service',
+    slug: 'website-development',
+    categorySlug: 'web-software-development',
     description:
-      'We perform a forensic analysis of your current infrastructure, bottlenecks, data flow, and business objectives to formulate a high-confidence technical blueprint.',
+      'Custom, responsive websites built with clean code, fast load times, and intuitive navigation.',
   },
   {
-    step: '02',
-    title: 'Agile Sprint Execution',
+    displayName: 'Digital Marketing',
+    targetType: 'service',
+    slug: 'digital-marketing',
+    categorySlug: 'digital-marketing-seo',
     description:
-      'Dedicated engineering squads execute with automated CI/CD pipelines, strict code reviews, daily syncs, and transparent sprint demos.',
+      'Integrated marketing campaigns spanning search, social media, and paid traffic to build brand reach.',
   },
   {
-    step: '03',
-    title: 'Hardened Security & Load Testing',
+    displayName: 'Search Engine Optimization (SEO)',
+    targetType: 'service',
+    slug: 'search-engine-optimization-seo',
+    categorySlug: 'digital-marketing-seo',
     description:
-      'Every module undergoes automated vulnerability analysis, chaos engineering resilience tests, and high-concurrency simulation before rollout.',
+      'Technical and on-page search engine optimizations to improve organic discoverability in Google results.',
   },
   {
-    step: '04',
-    title: 'Zero-Downtime Launch & 24/7 SLA',
+    displayName: 'Custom Software Development',
+    targetType: 'service',
+    slug: 'custom-software-development',
+    categorySlug: 'web-software-development',
     description:
-      'Continuous telemetry, multi-region observability, and proactive SLA-backed support ensure perpetual availability and seamless scaling.',
+      'Bespoke software systems designed around your unique operational rules and business workflows.',
+  },
+  {
+    displayName: 'Data Entry Services',
+    targetType: 'service',
+    slug: 'data-entry-services',
+    categorySlug: 'data-entry-virtual-assistance',
+    description:
+      'Accurate, confidential manual and automated data entry into spreadsheets, databases, and CRMs.',
+  },
+  {
+    displayName: 'AI Video Creation',
+    targetType: 'service',
+    slug: 'ai-video-creation',
+    categorySlug: 'ai-services-automation',
+    description:
+      'AI-assisted video generation with realistic presenter avatars, synthetic voiceovers, and dynamic editing.',
+  },
+  {
+    displayName: 'AI Image Generation',
+    targetType: 'service',
+    slug: 'ai-image-generation',
+    categorySlug: 'ai-services-automation',
+    description:
+      'High-resolution conceptual imagery, custom product mockups, and marketing visuals crafted with AI.',
+  },
+  {
+    displayName: 'Graphic Design',
+    targetType: 'service',
+    slug: 'graphic-design',
+    categorySlug: 'graphic-design-branding',
+    description:
+      'Comprehensive visual design services for digital campaigns, marketing graphics, and print collateral.',
+  },
+  {
+    displayName: 'Digital Products',
+    targetType: 'service',
+    slug: 'digital-product-creation',
+    categorySlug: 'digital-products-ecommerce',
+    description:
+      'Design, packaging, licensing, and automated instant delivery for downloadable digital assets.',
+  },
+  {
+    displayName: 'AI Solutions and Automation',
+    targetType: 'category',
+    slug: 'ai-services-automation',
+    categorySlug: 'ai-services-automation',
+    description:
+      'Full suite of intelligent chatbots, workflow automations, and operational AI tool integrations.',
   },
 ];
 
+/**
+ * Homepage Hero Section Content
+ * Clear, accurate, and non-exaggerated copy.
+ */
+export const heroContent = {
+  badge: 'Technology & Digital Solutions Provider',
+  title: 'Engineering Reliable Solutions for Modern Businesses',
+  subtitle:
+    'IT HUB Corporation delivers web and custom software development, digital marketing, AI workflows, creative media, and technical support designed to help organizations operate efficiently.',
+  primaryCtaText: 'Request a Quote',
+  primaryCtaLink: '/contact',
+  secondaryCtaText: 'Explore All Services',
+  secondaryCtaLink: '/services',
+  clientLogos: [
+    { name: 'Financial Services', tag: 'Banking & FinTech' },
+    { name: 'Healthcare Systems', tag: 'Health & Wellness' },
+    { name: 'Supply Chain & Logistics', tag: 'Fleet & Cargo' },
+    { name: 'Retail & E-Commerce', tag: 'Online Merchants' },
+    { name: 'Professional Services', tag: 'Legal & Accounting' },
+  ],
+};
+
+/**
+ * 4-Step Standard Project Methodology (PRD Section 6 Standard Process)
+ */
+export const processSteps = [
+  {
+    step: '01',
+    title: 'Discuss & Discover',
+    description:
+      'We conduct an initial requirements session to understand your business objectives, timeline, existing tools, and deliverables.',
+  },
+  {
+    step: '02',
+    title: 'Plan & Architecture',
+    description:
+      'Our team drafts a structured project plan with clear milestones, resource allocation, and technical specifications.',
+  },
+  {
+    step: '03',
+    title: 'Build & Create',
+    description:
+      'We execute development, design, or implementation in transparent iterations with routine progress updates.',
+  },
+  {
+    step: '04',
+    title: 'Review & Deliver',
+    description:
+      'Thorough quality assurance and client review ensure all agreed-upon acceptance criteria are fulfilled prior to launch.',
+  },
+];
+
+/**
+ * Value Pillars
+ */
 export const valuePillars = [
   {
-    title: 'Battle-Tested Reliability',
+    title: 'Structured Delivery',
     description:
-      'Engineered for 99.999% availability with multi-region failover and autonomous recovery protocols.',
+      'Every project follows documented milestones and agreed-upon acceptance criteria from kickoff to sign-off.',
     icon: 'Shield',
   },
   {
-    title: 'Velocity Without Compromise',
+    title: 'Cross-Functional Expertise',
     description:
-      'Deliver enterprise-grade capabilities up to 3x faster through modular architectures and pre-validated blueprints.',
+      'Specialized professionals covering custom coding, visual design, automated workflows, and data processing.',
     icon: 'Zap',
   },
   {
-    title: 'Deterministic Security',
+    title: 'Data Confidentiality',
     description:
-      'Zero-trust architecture, automated compliance guardrails, and cryptographic secret governance from day one.',
+      'Strict non-disclosure commitments and secure access handling for all client intellectual property and data.',
     icon: 'Lock',
   },
   {
-    title: 'Transparent Partnership',
+    title: 'Transparent Collaboration',
     description:
-      'Direct access to lead engineers, shared Git repositories, transparent burndown tracking, and no hidden vendor lock-in.',
+      'Clear communication channels, responsive project managers, and zero hidden technical lock-in.',
     icon: 'Users',
   },
 ];

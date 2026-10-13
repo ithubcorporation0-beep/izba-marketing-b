@@ -19,7 +19,11 @@ export const PortfolioFilter: React.FC<PortfolioFilterProps> = ({
   const filteredProjects =
     selectedCategory === 'all'
       ? projects
-      : projects.filter((p) => p.category === selectedCategory);
+      : projects.filter(
+          (p) =>
+            p.categorySlug === selectedCategory ||
+            p.category === selectedCategory
+        );
 
   return (
     <div className={styles.wrapper}>
@@ -38,22 +42,25 @@ export const PortfolioFilter: React.FC<PortfolioFilterProps> = ({
           All Case Studies ({projects.length})
         </button>
         {categories.map((cat) => {
-          const count = projects.filter((p) => p.category === cat.id).length;
+          const catKey = cat.slug || cat.id;
+          const count = projects.filter(
+            (p) => p.categorySlug === cat.slug || p.category === cat.id
+          ).length;
           if (count === 0) return null;
           return (
             <button
               key={cat.id}
               role="tab"
-              aria-selected={selectedCategory === cat.id}
-              onClick={() => setSelectedCategory(cat.id)}
+              aria-selected={selectedCategory === catKey}
+              onClick={() => setSelectedCategory(catKey)}
               className={[
                 styles.filterBtn,
-                selectedCategory === cat.id ? styles.active : '',
+                selectedCategory === catKey ? styles.active : '',
               ]
                 .filter(Boolean)
                 .join(' ')}
             >
-              {cat.title} ({count})
+              {cat.name || cat.title} ({count})
             </button>
           );
         })}

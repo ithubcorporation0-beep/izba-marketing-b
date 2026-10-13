@@ -36,16 +36,69 @@ export default function DesignPreviewPage() {
   const [buttonLoading, setButtonLoading] = useState(false);
 
   const colors = [
-    { name: 'Navy', hex: '#101828', variable: 'var(--color-navy)', textDark: false },
-    { name: 'Primary Blue', hex: '#3157D5', variable: 'var(--color-primary-blue)', textDark: false },
-    { name: 'Accent Violet', hex: '#7657E8', variable: 'var(--color-accent-violet)', textDark: false },
-    { name: 'White', hex: '#FFFFFF', variable: 'var(--color-white)', textDark: true, border: true },
-    { name: 'Soft Bg', hex: '#F5F7FB', variable: 'var(--color-soft-bg)', textDark: true, border: true },
-    { name: 'Text Main', hex: '#172033', variable: 'var(--color-text-main)', textDark: false },
-    { name: 'Muted', hex: '#667085', variable: 'var(--color-muted)', textDark: false },
-    { name: 'Border', hex: '#E4E7EC', variable: 'var(--color-border)', textDark: true, border: true },
-    { name: 'Success', hex: '#067647', variable: 'var(--color-success)', textDark: false },
-    { name: 'Error', hex: '#B42318', variable: 'var(--color-error)', textDark: false },
+    {
+      name: 'Navy',
+      hex: '#101828',
+      variable: 'var(--color-navy)',
+      textDark: false,
+    },
+    {
+      name: 'Primary Blue',
+      hex: '#3157D5',
+      variable: 'var(--color-primary-blue)',
+      textDark: false,
+    },
+    {
+      name: 'Accent Violet',
+      hex: '#7657E8',
+      variable: 'var(--color-accent-violet)',
+      textDark: false,
+    },
+    {
+      name: 'White',
+      hex: '#FFFFFF',
+      variable: 'var(--color-white)',
+      textDark: true,
+      border: true,
+    },
+    {
+      name: 'Soft Bg',
+      hex: '#F5F7FB',
+      variable: 'var(--color-soft-bg)',
+      textDark: true,
+      border: true,
+    },
+    {
+      name: 'Text Main',
+      hex: '#172033',
+      variable: 'var(--color-text-main)',
+      textDark: false,
+    },
+    {
+      name: 'Muted',
+      hex: '#667085',
+      variable: 'var(--color-muted)',
+      textDark: false,
+    },
+    {
+      name: 'Border',
+      hex: '#E4E7EC',
+      variable: 'var(--color-border)',
+      textDark: true,
+      border: true,
+    },
+    {
+      name: 'Success',
+      hex: '#067647',
+      variable: 'var(--color-success)',
+      textDark: false,
+    },
+    {
+      name: 'Error',
+      hex: '#B42318',
+      variable: 'var(--color-error)',
+      textDark: false,
+    },
   ];
 
   const serviceOptions = [
@@ -58,19 +111,22 @@ export default function DesignPreviewPage() {
   const accordionItems = [
     {
       id: 'faq-1',
-      title: 'How does IT HUB Corporation guarantee 99.99% system availability?',
+      title:
+        'How does IT HUB Corporation guarantee 99.99% system availability?',
       content:
         'We architect multi-region immutable topologies using Kubernetes, automated failover triggers, and zero-downtime blue/green deployment pipelines.',
     },
     {
       id: 'faq-2',
-      title: 'What security standards and compliance frameworks do you adhere to?',
+      title:
+        'What security standards and compliance frameworks do you adhere to?',
       content:
         'All client deliverables are built under strict SOC 2 Type II controls, zero-trust network segregation, automated SAST/DAST testing, and end-to-end data encryption.',
     },
     {
       id: 'faq-3',
-      title: 'Can we hire IT HUB Corporation for targeted architectural audits?',
+      title:
+        'Can we hire IT HUB Corporation for targeted architectural audits?',
       content:
         'Yes. We offer rapid 2-week architectural assessment sprints focusing on bottlenecks, security posture, and cloud cost optimization.',
     },
@@ -96,7 +152,8 @@ export default function DesignPreviewPage() {
               1. Color Tokens (PRD Section 10.2)
             </h2>
             <p className="text-sm text-[var(--color-muted)]">
-              All colors are managed via CSS tokens and Tailwind variables. Hardcoded color hexes are forbidden.
+              All colors are managed via CSS tokens and Tailwind variables.
+              Hardcoded color hexes are forbidden.
             </p>
             <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-4">
               {colors.map((c) => (
@@ -134,37 +191,55 @@ export default function DesignPreviewPage() {
             </h2>
             <div className="space-y-4 bg-[var(--color-soft-bg)] p-6 rounded-[var(--radius-lg)] border border-[var(--color-border)]">
               <div>
-                <span className="text-xs uppercase text-[var(--color-muted)] font-mono">H1 (Fluid clamp 2.25rem - 3.5rem)</span>
+                <span className="text-xs uppercase text-[var(--color-muted)] font-mono">
+                  H1 (Fluid clamp 2.25rem - 3.5rem)
+                </span>
                 <h1>Enterprise Technology Solutions</h1>
               </div>
               <div>
-                <span className="text-xs uppercase text-[var(--color-muted)] font-mono">H2 (Fluid clamp 1.75rem - 2.5rem)</span>
+                <span className="text-xs uppercase text-[var(--color-muted)] font-mono">
+                  H2 (Fluid clamp 1.75rem - 2.5rem)
+                </span>
                 <h2>Architectural Foundations & Standards</h2>
               </div>
               <div>
-                <span className="text-xs uppercase text-[var(--color-muted)] font-mono">H3 (Fluid clamp 1.35rem - 1.875rem)</span>
+                <span className="text-xs uppercase text-[var(--color-muted)] font-mono">
+                  H3 (Fluid clamp 1.35rem - 1.875rem)
+                </span>
                 <h3>High-Throughput Microservice Architecture</h3>
               </div>
               <div>
-                <span className="text-xs uppercase text-[var(--color-muted)] font-mono">H4 (Fluid clamp 1.15rem - 1.375rem)</span>
+                <span className="text-xs uppercase text-[var(--color-muted)] font-mono">
+                  H4 (Fluid clamp 1.15rem - 1.375rem)
+                </span>
                 <h4>Continuous Integration & Observability</h4>
               </div>
               <div>
-                <span className="text-xs uppercase text-[var(--color-muted)] font-mono">Lead Text (.text-lead)</span>
+                <span className="text-xs uppercase text-[var(--color-muted)] font-mono">
+                  Lead Text (.text-lead)
+                </span>
                 <p className="text-lead">
-                  We engineer mission-critical systems for Fortune 500 banks, healthcare providers, and high-growth technology enterprises.
+                  We engineer mission-critical systems for Fortune 500 banks,
+                  healthcare providers, and high-growth technology enterprises.
                 </p>
               </div>
               <div>
-                <span className="text-xs uppercase text-[var(--color-muted)] font-mono">Body Text (.text-body)</span>
+                <span className="text-xs uppercase text-[var(--color-muted)] font-mono">
+                  Body Text (.text-body)
+                </span>
                 <p className="text-body">
-                  Zero-trust security policies, immutable deployments, and modular micro-frontends ensure uninterrupted operational velocity.
+                  Zero-trust security policies, immutable deployments, and
+                  modular micro-frontends ensure uninterrupted operational
+                  velocity.
                 </p>
               </div>
               <div>
-                <span className="text-xs uppercase text-[var(--color-muted)] font-mono">Small Text (.text-small)</span>
+                <span className="text-xs uppercase text-[var(--color-muted)] font-mono">
+                  Small Text (.text-small)
+                </span>
                 <p className="text-small">
-                  SOC 2 Type II Certified &middot; 99.99% Uptime SLA Guaranteed &middot; 24/7 Follow-the-sun operations.
+                  SOC 2 Type II Certified &middot; 99.99% Uptime SLA Guaranteed
+                  &middot; 24/7 Follow-the-sun operations.
                 </p>
               </div>
             </div>
@@ -220,7 +295,12 @@ export default function DesignPreviewPage() {
                 <Button variant="primary" size="lg">
                   Large (lg)
                 </Button>
-                <Button href="/contact" variant="secondary" size="md" icon={<Download size={16} />}>
+                <Button
+                  href="/contact"
+                  variant="secondary"
+                  size="md"
+                  icon={<Download size={16} />}
+                >
                   As Link Version
                 </Button>
               </div>
@@ -268,7 +348,8 @@ export default function DesignPreviewPage() {
                   Static Card (Default)
                 </h4>
                 <p className="text-sm text-[var(--color-muted)]">
-                  Standard container with border, subtle shadow, and token-based padding.
+                  Standard container with border, subtle shadow, and token-based
+                  padding.
                 </p>
               </Card>
 
@@ -281,7 +362,11 @@ export default function DesignPreviewPage() {
                 </p>
               </Card>
 
-              <Card hoverable padding="lg" className="border-[var(--color-primary-blue)]/30">
+              <Card
+                hoverable
+                padding="lg"
+                className="border-[var(--color-primary-blue)]/30"
+              >
                 <div className="flex items-center justify-between mb-2">
                   <h4 className="text-base font-semibold text-[var(--color-navy)]">
                     Featured Card
@@ -384,7 +469,8 @@ export default function DesignPreviewPage() {
               7. Accordion (Keyboard Accessible)
             </h2>
             <p className="text-sm text-[var(--color-muted)]">
-              Supports Enter and Space keys to expand/collapse, aria-expanded state, and smooth transitions.
+              Supports Enter and Space keys to expand/collapse, aria-expanded
+              state, and smooth transitions.
             </p>
             <Accordion items={accordionItems} defaultOpenId="faq-1" />
           </section>

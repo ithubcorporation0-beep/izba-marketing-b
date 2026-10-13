@@ -1,54 +1,65 @@
-import { FAQ } from '@/types';
+import { Faq } from '@/types';
 
-export const faqs: FAQ[] = [
+/**
+ * GENERAL COMPANY FAQS
+ * Honest, accurate answers without false claims or guarantees.
+ */
+export const faqs: Faq[] = [
   {
+    id: 'faq-quote-request',
+    question: 'How do I request a quote for my project?',
+    answer:
+      'You can submit a project brief through our online Request a Quote form or contact us via email. Please provide your business goals, target deliverables, and preferred timeline so we can provide an accurate scope estimate.',
     category: 'General',
-    question:
-      'What differentiates IT HUB Corporation from conventional software agencies?',
-    answer:
-      'IT HUB is an enterprise engineering consultancy, not an outsourced staffing shop. We assign dedicated squads of senior principal engineers, solutions architects, and cybersecurity specialists who own outcomes, enforce strict SLAs, and build modular systems with zero technical debt.',
+    sortOrder: 1,
   },
   {
+    id: 'faq-info-to-prepare',
+    question: 'What information should I prepare before contacting you?',
+    answer:
+      'Having a summary of your requirements, examples of reference websites or designs you like, your target timeline, and an approximate budget helps us tailor our proposal effectively.',
     category: 'General',
-    question: 'Where are IT HUB engineering teams located?',
-    answer:
-      'Our headquarters and principal architecture teams are based in Silicon Valley, California, complemented by distributed engineering centers across North America and Europe to ensure 24/7 coverage and rapid on-site executive collaboration.',
+    sortOrder: 2,
   },
   {
+    id: 'faq-turnaround-time',
+    question: 'How long does a project typically take to complete?',
+    answer:
+      'Turnaround times depend entirely on project scope and complexity. Small design or document formatting tasks may take a few business days, while custom software or multi-page websites typically take between 2 and 6 weeks. We provide clear milestone timelines in every proposal.',
     category: 'Services & Delivery',
-    question: 'How quickly can IT HUB kick off an enterprise engagement?',
-    answer:
-      'Following our initial discovery session and mutual requirements alignment, our sprint squads typically commence within 5 to 10 business days with access to staging environments and shared Git repositories from Day 1.',
+    sortOrder: 3,
   },
   {
+    id: 'faq-revisions-process',
+    question: 'What is your review and revision policy?',
+    answer:
+      'Every project milestone includes review rounds where you can provide feedback and request adjustments before final delivery and signoff.',
     category: 'Services & Delivery',
-    question: 'Do you offer post-launch support and ongoing SLA management?',
-    answer:
-      'Yes. Every production deployment includes warranty coverage followed by tiered Managed Enterprise Support plans offering guaranteed 15-minute P1 incident response times, 24/7 infrastructure telemetry, and proactive patching.',
+    sortOrder: 4,
   },
   {
-    category: 'Security & Compliance',
+    id: 'faq-confidentiality',
     question:
-      'How do you handle client intellectual property and data confidentiality?',
+      'How do you safeguard client confidentiality and intellectual property?',
     answer:
-      'All engagements operate under strict mutual Non-Disclosure Agreements (NDAs). All source code, architectural blueprints, and intellectual property generated belong 100% to our client upon delivery. We never share, license, or reuse client proprietary code.',
-  },
-  {
+      'We respect client privacy and are happy to sign bilateral Non-Disclosure Agreements (NDAs). All source files, project assets, and custom deliverables become your full property upon project completion.',
     category: 'Security & Compliance',
-    question: 'Can IT HUB meet SOC 2, HIPAA, or ISO 27001 regulatory mandates?',
-    answer:
-      'Yes. Our team has architected and certified infrastructure across healthcare, defense, and fintech sectors. We incorporate compliant audit logging, encryption at rest (AES-256), encryption in transit (TLS 1.3), and zero-trust IAM policies by default.',
+    sortOrder: 5,
   },
   {
-    category: 'Pricing & Engagement',
-    question: 'What engagement models does IT HUB support?',
+    id: 'faq-pricing-structure',
+    question: 'How are your services priced?',
     answer:
-      'We support two primary engagement models: Fixed-Price Milestone Contracts for well-defined project scopes, and Dedicated Autonomous Engineering Squads (Time & Materials) for dynamic, multi-quarter modernization initiatives.',
+      'We price projects based on estimated scope, technical complexity, and deliverables. For ongoing needs, we also offer structured monthly maintenance retainers. We provide fixed-price quotes before work begins so there are no surprises.',
+    category: 'Pricing & Engagement',
+    sortOrder: 6,
   },
   {
-    category: 'Pricing & Engagement',
-    question: 'How do I request a comprehensive quote or technical proposal?',
+    id: 'faq-support-after-launch',
+    question: 'Do you offer ongoing support after project completion?',
     answer:
-      'You can submit an inquiry through our interactive Quote Request form on the Contact page, or email enterprise@ithub-corp.com directly. An enterprise solutions architect will respond within 24 hours with an initial estimation framework.',
+      'Yes. We provide handover documentation with every project and offer ongoing technical support and maintenance packages for updates, backups, and security monitoring.',
+    category: 'Services & Delivery',
+    sortOrder: 7,
   },
 ];

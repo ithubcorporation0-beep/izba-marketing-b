@@ -8,7 +8,8 @@ import { Briefcase, ArrowLeft } from 'lucide-react';
 
 export const metadata: Metadata = {
   title: 'Portfolio & Case Studies',
-  description: 'Verified enterprise case studies and client projects delivered by IT HUB Corporation.',
+  description:
+    'Verified enterprise case studies and client projects delivered by IT HUB Corporation.',
 };
 
 export default function PortfolioPage() {
@@ -27,7 +28,12 @@ export default function PortfolioPage() {
             title="Coming in a later phase"
             description="The portfolio and project case studies will be implemented in the Portfolio phase."
             action={
-              <Button href="/" variant="secondary" size="sm" icon={<ArrowLeft size={14} />}>
+              <Button
+                href="/"
+                variant="secondary"
+                size="sm"
+                icon={<ArrowLeft size={14} />}
+              >
                 Back to Home
               </Button>
             }
