@@ -1,0 +1,58 @@
+.badge {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2xs);
+  font-weight: 600;
+  border-radius: var(--radius-pill);
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+  width: fit-content;
+}
+
+.sm {
+  padding: 0.2rem 0.6rem;
+  font-size: 0.7rem;
+}
+
+.md {
+  padding: 0.35rem 0.85rem;
+  font-size: 0.78rem;
+}
+
+.cyan {
+  background: rgba(0, 242, 254, 0.12);
+  color: var(--color-accent-cyan);
+  border: 1px solid rgba(0, 242, 254, 0.3);
+}
+
+.purple {
+  background: rgba(121, 40, 202, 0.15);
+  color: #d8b4fe;
+  border: 1px solid rgba(121, 40, 202, 0.35);
+}
+
+.emerald {
+  background: rgba(0, 245, 160, 0.12);
+  color: var(--color-accent-emerald);
+  border: 1px solid rgba(0, 245, 160, 0.3);
+}
+
+.amber {
+  background: rgba(245, 158, 11, 0.12);
+  color: var(--color-accent-amber);
+  border: 1px solid rgba(245, 158, 11, 0.3);
+}
+
+.neutral {
+  background: rgba(255, 255, 255, 0.08);
+  color: var(--color-text-muted);
+  border: 1px solid var(--color-border-subtle);
+}
+
+.dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background-color: currentColor;
+  box-shadow: 0 0 6px currentColor;
+}

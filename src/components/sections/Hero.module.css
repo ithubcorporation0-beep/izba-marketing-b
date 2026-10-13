@@ -1,0 +1,299 @@
+.heroSection {
+  position: relative;
+  padding-top: var(--space-3xl);
+  padding-bottom: var(--space-4xl);
+  overflow: hidden;
+}
+
+.heroGlow {
+  position: absolute;
+  top: -120px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 900px;
+  height: 500px;
+  background: var(--gradient-hero);
+  filter: blur(80px);
+  pointer-events: none;
+  z-index: 0;
+}
+
+.heroContainer {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--space-3xl);
+  align-items: center;
+}
+
+@media (min-width: 1024px) {
+  .heroContainer {
+    grid-template-columns: 1.15fr 0.85fr;
+  }
+}
+
+.heroContent {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-lg);
+}
+
+.badgeWrapper {
+  margin-bottom: var(--space-2xs);
+}
+
+.heroTitle {
+  font-size: clamp(2.3rem, 5vw, 3.8rem);
+  font-weight: 800;
+  line-height: 1.12;
+  letter-spacing: -0.03em;
+  color: var(--color-text-main);
+}
+
+.gradientText {
+  background: var(--gradient-text-accent);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.heroSubtitle {
+  font-size: clamp(1.05rem, 1.8vw, 1.25rem);
+  line-height: 1.6;
+  color: var(--color-text-muted);
+  max-width: 620px;
+}
+
+.ctaGroup {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-md);
+  margin-top: var(--space-sm);
+}
+
+.trustSignals {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-lg);
+  margin-top: var(--space-sm);
+  padding-top: var(--space-md);
+  border-top: 1px solid var(--color-border-subtle);
+}
+
+.trustItem {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.84rem;
+  color: var(--color-text-muted);
+}
+
+.trustIcon {
+  color: var(--color-accent-cyan);
+}
+
+/* Engineering Terminal Card */
+.terminalWrapper {
+  width: 100%;
+}
+
+.terminalCard {
+  background: rgba(10, 14, 28, 0.95);
+  backdrop-filter: blur(20px);
+  border: 1px solid var(--color-border-medium);
+  border-radius: var(--radius-xl);
+  box-shadow:
+    0 20px 50px rgba(0, 0, 0, 0.6),
+    0 0 30px rgba(0, 242, 254, 0.12);
+  overflow: hidden;
+}
+
+.terminalHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.8rem 1.2rem;
+  background: rgba(22, 32, 63, 0.5);
+  border-bottom: 1px solid var(--color-border-subtle);
+}
+
+.terminalDots {
+  display: flex;
+  gap: 6px;
+}
+
+.dotRed {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: #ff5f56;
+}
+
+.dotYellow {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: #ffbd2e;
+}
+
+.dotGreen {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: #27c93f;
+}
+
+.terminalTitle {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-family: var(--font-mono);
+  font-size: 0.78rem;
+  color: var(--color-text-subtle);
+}
+
+.liveIndicator {
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  font-weight: 700;
+  color: var(--color-accent-emerald);
+  background: rgba(0, 245, 160, 0.1);
+  padding: 0.15rem 0.5rem;
+  border-radius: var(--radius-xs);
+  border: 1px solid rgba(0, 245, 160, 0.25);
+}
+
+.terminalBody {
+  padding: 1.4rem;
+  font-family: var(--font-mono);
+  font-size: 0.86rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.terminalLine {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+}
+
+.prompt {
+  color: var(--color-accent-cyan);
+  font-weight: 700;
+}
+
+.cmd {
+  color: var(--color-text-main);
+}
+
+.terminalOutput {
+  color: var(--color-text-muted);
+  line-height: 1.5;
+  font-size: 0.82rem;
+}
+
+.outputSuccess {
+  color: var(--color-accent-cyan);
+}
+
+.metricsBox {
+  margin-top: 1rem;
+  padding: 1rem;
+  background: rgba(15, 21, 43, 0.8);
+  border: 1px solid var(--color-border-subtle);
+  border-radius: var(--radius-md);
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+}
+
+.metricItem {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.metricVal {
+  font-size: 1.3rem;
+  font-weight: 800;
+  color: var(--color-accent-cyan);
+}
+
+.metricLbl {
+  font-size: 0.7rem;
+  text-transform: uppercase;
+  color: var(--color-text-subtle);
+  margin-top: 0.15rem;
+}
+
+.metricDivider {
+  width: 1px;
+  height: 30px;
+  background: var(--color-border-subtle);
+}
+
+/* Client logos section */
+.clientSection {
+  margin-top: var(--space-4xl);
+  padding-top: var(--space-xl);
+  border-top: 1px solid var(--color-border-subtle);
+}
+
+.clientLabel {
+  font-size: 0.82rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--color-text-subtle);
+  text-align: center;
+  margin-bottom: var(--space-lg);
+  font-weight: 600;
+}
+
+.logoGrid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: var(--space-md);
+}
+
+@media (min-width: 640px) {
+  .logoGrid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media (min-width: 1024px) {
+  .logoGrid {
+    grid-template-columns: repeat(5, 1fr);
+  }
+}
+
+.logoItem {
+  padding: 0.85rem 1rem;
+  background: rgba(255, 255, 255, 0.02);
+  border: 1px solid var(--color-border-subtle);
+  border-radius: var(--radius-md);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  transition: all var(--transition-fast);
+}
+
+.logoItem:hover {
+  background: rgba(255, 255, 255, 0.05);
+  border-color: var(--color-border-medium);
+  transform: translateY(-2px);
+}
+
+.clientName {
+  font-weight: 700;
+  font-size: 0.95rem;
+  color: var(--color-text-main);
+}
+
+.clientTag {
+  font-size: 0.7rem;
+  color: var(--color-text-subtle);
+  margin-top: 0.15rem;
+}

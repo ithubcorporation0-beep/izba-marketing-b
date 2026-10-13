@@ -1,0 +1,32 @@
+.card {
+  background: var(--gradient-card);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  border: 1px solid var(--color-border-subtle);
+  border-radius: var(--radius-lg);
+  padding: var(--space-xl);
+  position: relative;
+  overflow: hidden;
+  transition: all var(--transition-normal);
+}
+
+.hoverable:hover {
+  border-color: var(--color-border-medium);
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-md);
+}
+
+.glow-cyan {
+  border-color: rgba(0, 242, 254, 0.25);
+  box-shadow: var(--shadow-glow-cyan);
+}
+
+.glow-purple {
+  border-color: rgba(121, 40, 202, 0.25);
+  box-shadow: var(--shadow-glow-purple);
+}
+
+.glow-emerald {
+  border-color: rgba(0, 245, 160, 0.25);
+  box-shadow: var(--shadow-glow-emerald);
+}
