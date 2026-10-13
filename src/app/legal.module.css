@@ -7,10 +7,25 @@
 }
 
 .header {
-  margin-bottom: var(--space-3xl);
+  margin-bottom: var(--space-2xl);
   display: flex;
   flex-direction: column;
   gap: var(--space-sm);
+}
+
+.draftBanner {
+  background: #fffbeb;
+  border: 1px solid #fef3c7;
+  border-left: 4px solid #d97706;
+  border-radius: var(--radius-md);
+  padding: 1rem 1.25rem;
+  margin-bottom: 2rem;
+  display: flex;
+  align-items: flex-start;
+  gap: 0.75rem;
+  color: #92400e;
+  font-size: 0.9375rem;
+  line-height: 1.5;
 }
 
 .title {

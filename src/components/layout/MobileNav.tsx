@@ -86,6 +86,7 @@ export const MobileNav: React.FC<MobileNavProps> = ({ isOpen, onClose }) => {
     { label: 'About', href: '/about' },
     { label: 'Services', href: '/services' },
     { label: 'Portfolio', href: '/portfolio' },
+    { label: 'Digital Products', href: '/digital-products' },
     { label: 'Contact', href: '/contact' },
   ];
 

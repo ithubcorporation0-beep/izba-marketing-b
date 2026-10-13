@@ -1,28 +1,61 @@
 import React from 'react';
+import Link from 'next/link';
 import { Container } from '@/components/ui/Container';
 import { Button } from '@/components/ui/Button';
-import { Compass, Home, Layers } from 'lucide-react';
+import {
+  Home,
+  Layers,
+  Mail,
+  ArrowRight,
+  Compass,
+} from 'lucide-react';
+import styles from './not-found.module.css';
+
+const popularCategories = [
+  {
+    name: 'Web & Software Development',
+    slug: 'web-software-development',
+  },
+  {
+    name: 'Digital Marketing & SEO',
+    slug: 'digital-marketing-seo',
+  },
+  {
+    name: 'AI Services & Automation',
+    slug: 'ai-services-automation',
+  },
+  {
+    name: 'Graphic Design & Branding',
+    slug: 'graphic-design-branding',
+  },
+  {
+    name: 'Digital Products & E-commerce',
+    slug: 'digital-products-ecommerce',
+  },
+  {
+    name: 'IT Support & Business Solutions',
+    slug: 'it-support-business-solutions',
+  },
+];
 
 export default function NotFound() {
   return (
-    <div className="py-24 lg:py-32 flex items-center justify-center text-center">
-      <Container size="narrow">
-        <div className="flex flex-col items-center space-y-6">
-          <div className="w-16 h-16 rounded-[var(--radius-lg)] bg-[var(--color-primary-blue)]/10 border border-[var(--color-primary-blue)]/20 flex items-center justify-center text-[var(--color-primary-blue)]">
-            <Compass size={32} />
+    <div className={styles.wrapper}>
+      <Container size="default">
+        <div className={styles.content}>
+          <div className={styles.badge} aria-hidden="true">
+            <Compass size={14} />
+            <span>404 Error</span>
           </div>
 
-          <div className="space-y-2">
-            <h1 className="text-4xl sm:text-5xl font-extrabold text-[var(--color-navy)] tracking-tight">
-              404 — Route Not Found
-            </h1>
-            <p className="text-base sm:text-lg text-[var(--color-muted)] max-w-md mx-auto">
-              The requested page does not exist or has been moved within the IT
-              HUB Corporation platform.
-            </p>
-          </div>
+          <h1 className={styles.title}>Page Not Found</h1>
 
-          <div className="flex flex-wrap items-center justify-center gap-4 pt-2">
+          <p className={styles.description}>
+            The link you followed may be broken or the page may have been moved.
+            You can return to our homepage, explore all services, or contact us.
+          </p>
+
+          <div className={styles.primaryActions}>
             <Button
               href="/"
               variant="primary"
@@ -37,8 +70,35 @@ export default function NotFound() {
               size="md"
               icon={<Layers size={16} />}
             >
-              Browse Services
+              Browse 90 Services
             </Button>
+            <Button
+              href="/contact"
+              variant="ghost"
+              size="md"
+              icon={<Mail size={16} />}
+            >
+              Contact Us
+            </Button>
+          </div>
+
+          {/* Popular Category Shortcuts */}
+          <div className={styles.suggestionsBox}>
+            <h2 className={styles.suggestionsTitle}>
+              Popular Service Categories
+            </h2>
+            <div className={styles.categoryGrid}>
+              {popularCategories.map((cat) => (
+                <Link
+                  key={cat.slug}
+                  href={`/services/category/${cat.slug}`}
+                  className={styles.categoryLink}
+                >
+                  <span>{cat.name}</span>
+                  <ArrowRight size={14} className={styles.arrowIcon} aria-hidden="true" />
+                </Link>
+              ))}
+            </div>
           </div>
         </div>
       </Container>

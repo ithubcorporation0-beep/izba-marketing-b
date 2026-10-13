@@ -4,6 +4,13 @@ import { services } from '@/content/services';
 import { featuredServices } from '@/content/featured';
 
 /**
+ * Get all published services.
+ */
+export function getPublishedServices(): Service[] {
+  return services.filter((s) => s.status === 'published');
+}
+
+/**
  * Get all published service categories in sort order.
  */
 export function getAllCategories(): Category[] {

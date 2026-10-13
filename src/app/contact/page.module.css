@@ -1,175 +1,133 @@
-.contactPageWrapper {
-  display: flex;
-  flex-direction: column;
+.pageWrapper {
+  padding-top: 3.5rem;
+  padding-bottom: 5rem;
+  background-color: var(--color-soft-bg);
 }
 
-.headerSection {
-  padding: var(--space-4xl) 0 var(--space-2xl) 0;
-  background: radial-gradient(
-    circle at 50% 0%,
-    rgba(0, 242, 254, 0.12) 0%,
-    transparent 60%
-  );
-}
-
-.headerContainer {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  text-align: center;
-  gap: var(--space-md);
-  max-width: 820px;
-}
-
-.title {
-  font-size: clamp(2.2rem, 4.5vw, 3.4rem);
-  font-weight: 800;
-  letter-spacing: -0.03em;
-  color: var(--color-text-main);
-  line-height: 1.15;
-}
-
-.subtitle {
-  font-size: 1.12rem;
-  line-height: 1.65;
-  color: var(--color-text-muted);
-}
-
-.formSection {
-  padding: var(--space-2xl) 0 var(--space-4xl) 0;
-}
-
-.gridContainer {
+.layoutGrid {
   display: grid;
   grid-template-columns: 1fr;
-  gap: var(--space-3xl);
-  align-items: flex-start;
+  gap: 2.5rem;
+  margin-top: 2.5rem;
 }
 
 @media (min-width: 1024px) {
-  .gridContainer {
-    grid-template-columns: 0.9fr 1.1fr;
+  .layoutGrid {
+    grid-template-columns: 1fr 380px;
+    align-items: start;
+    gap: 3rem;
   }
 }
 
-.infoCol {
+.sidebarCard {
+  background: var(--color-white);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-xl);
+  padding: 2rem;
+  box-shadow: var(--shadow-sm);
   display: flex;
   flex-direction: column;
-  gap: var(--space-2xl);
+  gap: 1.75rem;
 }
 
-.infoBox {
-  display: flex;
-  flex-direction: column;
-  gap: var(--space-md);
+.sidebarHeading {
+  font-size: 1.125rem;
+  font-weight: 700;
+  color: var(--color-navy);
 }
 
-.infoTitle {
-  font-size: 1.5rem;
-  font-weight: 800;
-  color: var(--color-text-main);
-}
-
-.infoDesc {
-  font-size: 0.95rem;
+.sidebarText {
+  font-size: 0.875rem;
+  color: var(--color-muted);
   line-height: 1.6;
-  color: var(--color-text-muted);
 }
 
-.coordinatesList {
+.methodsList {
   display: flex;
   flex-direction: column;
-  gap: var(--space-lg);
-  margin-top: var(--space-md);
+  gap: 1.25rem;
 }
 
-.coordItem {
+.methodItem {
   display: flex;
   align-items: flex-start;
-  gap: var(--space-md);
+  gap: 0.875rem;
 }
 
-.coordIcon {
-  color: var(--color-accent-cyan);
-  flex-shrink: 0;
-  margin-top: 0.2rem;
-}
-
-.coordItem div {
-  display: flex;
-  flex-direction: column;
-  gap: 0.2rem;
-}
-
-.coordItem strong {
-  font-size: 0.95rem;
-  color: var(--color-text-main);
-}
-
-.coordItem span,
-.coordItem a {
-  font-size: 0.88rem;
-  color: var(--color-text-muted);
-  line-height: 1.5;
-  transition: color var(--transition-fast);
-}
-
-.coordItem a:hover {
-  color: var(--color-accent-cyan);
-}
-
-.assuranceCard {
-  background: var(--color-bg-surface);
-  border: 1px solid var(--color-border-subtle);
-  border-radius: var(--radius-lg);
-  padding: var(--space-xl);
-  display: flex;
-  flex-direction: column;
-  gap: var(--space-md);
-}
-
-.assuranceHeader {
+.methodIcon {
+  width: 36px;
+  height: 36px;
+  border-radius: var(--radius-md);
+  background: rgba(49, 87, 213, 0.08);
+  color: var(--color-primary-blue);
   display: flex;
   align-items: center;
-  gap: 0.6rem;
+  justify-content: center;
+  flex-shrink: 0;
+  margin-top: 0.125rem;
 }
 
-.shieldIcon {
-  color: var(--color-accent-emerald);
+.methodContent {
+  display: flex;
+  flex-direction: column;
+  gap: 0.15rem;
 }
 
-.assuranceHeader h3 {
-  font-size: 1.15rem;
-  font-weight: 700;
-  color: var(--color-text-main);
+.methodLabel {
+  font-size: 0.75rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--color-muted);
 }
 
-.assuranceList {
-  list-style: none;
+.methodValue {
+  font-size: 0.9375rem;
+  color: var(--color-navy);
+  font-weight: 500;
+}
+
+.methodLink {
+  color: var(--color-primary-blue);
+  text-decoration: none;
+  font-weight: 600;
+  transition: color 0.15s ease;
+}
+
+.methodLink:hover {
+  text-decoration: underline;
+}
+
+.placeholderTag {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  font-size: 0.75rem;
+  padding: 0.2rem 0.5rem;
+  border-radius: var(--radius-sm);
+  background: #fef2f2;
+  border: 1px solid #fee2e2;
+  color: #991b1b;
+  margin-top: 0.25rem;
+}
+
+.trustPointsBox {
+  border-top: 1px solid var(--color-border);
+  padding-top: 1.5rem;
   display: flex;
   flex-direction: column;
   gap: 0.75rem;
 }
 
-.assuranceList li {
+.trustPoint {
   display: flex;
-  align-items: flex-start;
+  align-items: center;
   gap: 0.6rem;
-  font-size: 0.88rem;
-  color: var(--color-text-muted);
-  line-height: 1.5;
-}
-
-.assuranceList strong {
+  font-size: 0.8125rem;
   color: var(--color-text-main);
 }
 
-.checkIcon {
-  color: var(--color-accent-emerald);
+.trustIcon {
+  color: #16a34a;
   flex-shrink: 0;
-  margin-top: 0.15rem;
-}
-
-.formCol {
-  width: 100%;
 }

@@ -2,41 +2,199 @@ import React from 'react';
 import type { Metadata } from 'next';
 import { Container } from '@/components/ui/Container';
 import { SectionHeading } from '@/components/ui/SectionHeading';
-import { EmptyState } from '@/components/ui/EmptyState';
-import { Button } from '@/components/ui/Button';
-import { Mail, ArrowLeft } from 'lucide-react';
+import { QuoteForm } from '@/components/forms/QuoteForm';
+import { siteConfig } from '@/config/site';
+import {
+  Mail,
+  Phone,
+  MessageSquare,
+  MapPin,
+  Clock,
+  CheckCircle,
+  AlertCircle,
+} from 'lucide-react';
+import styles from './page.module.css';
 
 export const metadata: Metadata = {
-  title: 'Request a Quote & Contact',
-  description: 'Connect with IT HUB Corporation solutions architects.',
+  title: 'Request a Quote & Contact | IT HUB Corporation',
+  description:
+    'Submit your project details for an honest, transparent quote, or connect directly with our technical team.',
 };
 
 export default function ContactPage() {
+  const isPlaceholder = (val: string) =>
+    !val || val.startsWith('PLACEHOLDER_');
+
   return (
-    <div className="py-16 lg:py-24">
-      <Container size="narrow">
+    <div className={styles.pageWrapper}>
+      <Container size="default">
         <SectionHeading
-          badge="Inquiries"
-          title="Contact & Request a Quote"
-          subtitle="Initiate a consultation or submit your project requirements."
+          badge="Direct Enquiry"
+          title="Request a Quote & Start a Project"
+          subtitle="Tell us what you want to build or improve. We review every enquiry and reply with clear, business-friendly next steps."
           align="center"
         />
-        <div className="mt-8">
-          <EmptyState
-            icon={<Mail size={24} />}
-            title="Coming in a later phase"
-            description="The interactive Request a Quote form and contact routing will be built out in the Contact & Forms phase."
-            action={
-              <Button
-                href="/"
-                variant="secondary"
-                size="sm"
-                icon={<ArrowLeft size={14} />}
-              >
-                Back to Home
-              </Button>
-            }
-          />
+
+        <div className={styles.layoutGrid}>
+          {/* Main Form Column */}
+          <div>
+            <QuoteForm />
+          </div>
+
+          {/* Contact Methods Sidebar */}
+          <aside className={styles.sidebarCard} aria-label="Direct contact channels">
+            <div>
+              <h2 className={styles.sidebarHeading}>Direct Contact</h2>
+              <p className={styles.sidebarText}>
+                Prefer direct communication? Reach our team through any of the
+                channels below.
+              </p>
+            </div>
+
+            <div className={styles.methodsList}>
+              {/* Email */}
+              <div className={styles.methodItem}>
+                <div className={styles.methodIcon} aria-hidden="true">
+                  <Mail size={18} />
+                </div>
+                <div className={styles.methodContent}>
+                  <span className={styles.methodLabel}>Email</span>
+                  {isPlaceholder(siteConfig.contact.email) ? (
+                    <div>
+                      <span className={styles.methodValue}>Company Email</span>
+                      <div className={styles.placeholderTag}>
+                        <AlertCircle size={12} />
+                        <span>Placeholder: {siteConfig.contact.email}</span>
+                      </div>
+                    </div>
+                  ) : (
+                    <a
+                      href={`mailto:${siteConfig.contact.email}`}
+                      className={styles.methodLink}
+                    >
+                      {siteConfig.contact.email}
+                    </a>
+                  )}
+                </div>
+              </div>
+
+              {/* Phone */}
+              <div className={styles.methodItem}>
+                <div className={styles.methodIcon} aria-hidden="true">
+                  <Phone size={18} />
+                </div>
+                <div className={styles.methodContent}>
+                  <span className={styles.methodLabel}>Phone</span>
+                  {isPlaceholder(siteConfig.contact.phone) ? (
+                    <div>
+                      <span className={styles.methodValue}>Telephone</span>
+                      <div className={styles.placeholderTag}>
+                        <AlertCircle size={12} />
+                        <span>Placeholder: {siteConfig.contact.phone}</span>
+                      </div>
+                    </div>
+                  ) : (
+                    <a
+                      href={`tel:${siteConfig.contact.phone}`}
+                      className={styles.methodLink}
+                    >
+                      {siteConfig.contact.phone}
+                    </a>
+                  )}
+                </div>
+              </div>
+
+              {/* WhatsApp */}
+              <div className={styles.methodItem}>
+                <div className={styles.methodIcon} aria-hidden="true">
+                  <MessageSquare size={18} />
+                </div>
+                <div className={styles.methodContent}>
+                  <span className={styles.methodLabel}>WhatsApp</span>
+                  {isPlaceholder(siteConfig.contact.whatsapp) ? (
+                    <div>
+                      <span className={styles.methodValue}>WhatsApp Chat</span>
+                      <div className={styles.placeholderTag}>
+                        <AlertCircle size={12} />
+                        <span>Placeholder: {siteConfig.contact.whatsapp}</span>
+                      </div>
+                    </div>
+                  ) : (
+                    <a
+                      href={`https://wa.me/${siteConfig.contact.whatsapp.replace(/[^0-9]/g, '')}`}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className={styles.methodLink}
+                    >
+                      {siteConfig.contact.whatsapp}
+                    </a>
+                  )}
+                </div>
+              </div>
+
+              {/* Address / Service Area */}
+              <div className={styles.methodItem}>
+                <div className={styles.methodIcon} aria-hidden="true">
+                  <MapPin size={18} />
+                </div>
+                <div className={styles.methodContent}>
+                  <span className={styles.methodLabel}>Location</span>
+                  {isPlaceholder(siteConfig.contact.address) ? (
+                    <div>
+                      <span className={styles.methodValue}>Physical HQ</span>
+                      <div className={styles.placeholderTag}>
+                        <AlertCircle size={12} />
+                        <span>Placeholder: {siteConfig.contact.address}</span>
+                      </div>
+                    </div>
+                  ) : (
+                    <span className={styles.methodValue}>
+                      {siteConfig.contact.address}
+                    </span>
+                  )}
+                </div>
+              </div>
+
+              {/* Working Hours */}
+              <div className={styles.methodItem}>
+                <div className={styles.methodIcon} aria-hidden="true">
+                  <Clock size={18} />
+                </div>
+                <div className={styles.methodContent}>
+                  <span className={styles.methodLabel}>Operating Hours</span>
+                  {isPlaceholder(siteConfig.contact.workingHours) ? (
+                    <div>
+                      <span className={styles.methodValue}>Business Hours</span>
+                      <div className={styles.placeholderTag}>
+                        <AlertCircle size={12} />
+                        <span>Placeholder: {siteConfig.contact.workingHours}</span>
+                      </div>
+                    </div>
+                  ) : (
+                    <span className={styles.methodValue}>
+                      {siteConfig.contact.workingHours}
+                    </span>
+                  )}
+                </div>
+              </div>
+            </div>
+
+            {/* Verifiable Process Guarantees */}
+            <div className={styles.trustPointsBox}>
+              <div className={styles.trustPoint}>
+                <CheckCircle size={16} className={styles.trustIcon} />
+                <span>Direct communication with project leads</span>
+              </div>
+              <div className={styles.trustPoint}>
+                <CheckCircle size={16} className={styles.trustIcon} />
+                <span>Written scope and deliverables before kickoff</span>
+              </div>
+              <div className={styles.trustPoint}>
+                <CheckCircle size={16} className={styles.trustIcon} />
+                <span>Strict privacy and intellectual property protection</span>
+              </div>
+            </div>
+          </aside>
         </div>
       </Container>
     </div>

@@ -1,7 +1,8 @@
 import React from 'react';
+import Link from 'next/link';
 import { Project } from '@/types';
-import { Card } from '@/components/ui/Card';
-import { Layers } from 'lucide-react';
+import { ArrowRight, CheckCircle2 } from 'lucide-react';
+import { categories } from '@/content/categories';
 import styles from './ProjectCard.module.css';
 
 interface ProjectCardProps {
@@ -9,51 +10,46 @@ interface ProjectCardProps {
 }
 
 export const ProjectCard: React.FC<ProjectCardProps> = ({ project }) => {
-  const clientName = project.client || project.clientName;
-  const metrics = project.metrics || [];
-  const stack = project.stack || project.technologies || [];
-  const solutionText = project.solution || project.outcome || project.summary;
+  const category = categories.find((c) => c.slug === project.categorySlug);
+  const categoryName = category ? category.name : project.categorySlug;
+  const clientName = project.clientName || project.client;
+  const deliverables = project.deliverables || [];
 
   return (
-    <Card className={styles.card}>
+    <article className={styles.card}>
       <div className={styles.topMeta}>
-        {clientName && <span className={styles.clientBadge}>{clientName}</span>}
-        {project.year && <span className={styles.year}>{project.year}</span>}
+        <span className={styles.categoryBadge}>{categoryName}</span>
+        {clientName && <span className={styles.clientName}>{clientName}</span>}
       </div>
 
-      <h3 className={styles.title}>{project.title}</h3>
+      <h3 className={styles.title}>
+        <Link
+          href={`/portfolio/${project.slug}`}
+          className="hover:text-[var(--color-primary-blue)] transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-[var(--color-primary-blue)] rounded-sm"
+        >
+          {project.title}
+        </Link>
+      </h3>
+
       <p className={styles.summary}>{project.summary}</p>
 
-      {metrics.length > 0 && (
-        <div className={styles.metricsGrid}>
-          {metrics.map((metric, idx) => (
-            <div key={idx} className={styles.metricItem}>
-              <span className={styles.metricValue}>{metric.value}</span>
-              <span className={styles.metricLabel}>{metric.label}</span>
-            </div>
-          ))}
+      {deliverables.length > 0 && (
+        <div className={styles.deliverablesBox}>
+          <div className={styles.deliverablesLabel}>Key Deliverables</div>
+          <ul className={styles.deliverablesList}>
+            {deliverables.slice(0, 3).map((item, idx) => (
+              <li key={idx}>{item}</li>
+            ))}
+          </ul>
         </div>
       )}
 
-      {solutionText && (
-        <div className={styles.architectureBox}>
-          <div className={styles.archLabel}>
-            <Layers size={14} className={styles.archIcon} />
-            <span>Core Deliverables</span>
-          </div>
-          <p className={styles.archDetail}>{solutionText}</p>
-        </div>
-      )}
-
-      {stack.length > 0 && (
-        <div className={styles.stackTags}>
-          {stack.map((item) => (
-            <span key={item} className={styles.stackTag}>
-              {item}
-            </span>
-          ))}
-        </div>
-      )}
-    </Card>
+      <div className={styles.linkRow}>
+        <Link href={`/portfolio/${project.slug}`} className={styles.viewLink}>
+          <span>Read Case Study</span>
+          <ArrowRight size={14} aria-hidden="true" />
+        </Link>
+      </div>
+    </article>
   );
 };

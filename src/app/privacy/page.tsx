@@ -1,108 +1,167 @@
 import React from 'react';
 import type { Metadata } from 'next';
 import { Container } from '@/components/ui/Container';
-import { SectionHeading } from '@/components/ui/SectionHeading';
 import { siteConfig } from '@/config/site';
+import { AlertTriangle, Mail } from 'lucide-react';
+import styles from '../legal.module.css';
 
 export const metadata: Metadata = {
-  title: 'Privacy Policy',
+  title: 'Privacy Policy | IT HUB Corporation',
   description:
-    'Enterprise privacy and data governance policies of IT HUB Corporation.',
+    'Overview of data handling, enquiry form transmission, and privacy practices for IT HUB Corporation.',
 };
 
 export default function PrivacyPage() {
   return (
-    <div className="py-16 lg:py-20 bg-[var(--color-white)]">
+    <div className={styles.legalWrapper}>
       <Container size="narrow">
-        <SectionHeading
-          badge="Governance"
-          title="Enterprise Privacy Statement"
-          subtitle="Effective Date: October 2026 · Version 4.2"
-          align="left"
-        />
+        {/* Mandatory Draft Banner */}
+        <div className={styles.draftBanner} role="alert">
+          <AlertTriangle size={22} className="shrink-0 mt-0.5" aria-hidden="true" />
+          <div>
+            <strong>Draft Notice:</strong> This document is a preliminary draft
+            reflecting the technical data flows of this website. It must be
+            reviewed and tailored by the business owner and legal advisor before
+            official launch.
+          </div>
+        </div>
 
-        <div className="mt-10 space-y-8 text-[var(--color-text-main)] text-sm sm:text-base leading-relaxed">
-          <section className="space-y-3">
-            <h2 className="text-xl font-bold text-[var(--color-navy)]">
-              1. Commitment to Enterprise Privacy
-            </h2>
-            <p className="text-[var(--color-muted)]">
-              {siteConfig.name} (&ldquo;IT HUB Corporation&rdquo;,
-              &ldquo;we&rdquo;, &ldquo;our&rdquo;, or &ldquo;us&rdquo;) is
-              dedicated to safeguarding client intellectual property, corporate
-              datasets, and personal identifying information. We operate under
-              strict zero-knowledge and zero-retention guidelines for all client
-              source repositories and runtime telemetry.
+        <header className={styles.header}>
+          <h1 className={styles.title}>Privacy Policy</h1>
+          <p className={styles.updated}>Last updated: October 2026</p>
+        </header>
+
+        <div className={styles.content}>
+          <section className={styles.section}>
+            <h2>1. Overview & Data Controller</h2>
+            <p>
+              {siteConfig.name} (&ldquo;we&rdquo;, &ldquo;our&rdquo;, or
+              &ldquo;us&rdquo;) is committed to handling business enquiries and
+              personal information transparently and responsibly. This Privacy
+              Policy explains how information collected through this website is
+              processed, stored, and protected.
+            </p>
+            <p>
+              For inquiries regarding this policy or data processing, you may
+              contact us at{' '}
+              {siteConfig.contact.email.startsWith('PLACEHOLDER_') ? (
+                <span>{siteConfig.contact.email}</span>
+              ) : (
+                <a
+                  href={`mailto:${siteConfig.contact.email}`}
+                  className="text-[var(--color-primary-blue)] underline"
+                >
+                  {siteConfig.contact.email}
+                </a>
+              )}
+              .
             </p>
           </section>
 
-          <section className="space-y-3">
-            <h2 className="text-xl font-bold text-[var(--color-navy)]">
-              2. Information Collection & Use
-            </h2>
-            <p className="text-[var(--color-muted)]">
-              We collect information strictly necessary to execute technical
-              consultations, deliver software engineering contracts, and
-              maintain infrastructure service level agreements (SLAs):
+          <section className={styles.section}>
+            <h2>2. Information We Collect</h2>
+            <p>
+              We collect information you explicitly provide when submitting a
+              project enquiry through our website forms:
             </p>
-            <ul className="list-disc pl-5 space-y-2 text-[var(--color-muted)]">
+            <ul>
               <li>
-                <strong className="text-[var(--color-navy)]">
-                  Contact & Commercial Coordinates:
-                </strong>{' '}
-                Name, corporate email, organization affiliation, and project
-                scope submitted via RFQ workflows.
+                <strong>Contact Information:</strong> Full name, business email
+                address, and optional phone or WhatsApp number.
               </li>
               <li>
-                <strong className="text-[var(--color-navy)]">
-                  System Diagnostics & Telemetry:
-                </strong>{' '}
-                Anonymized server logs, IP addresses, and session timings
-                necessary for firewall defense and DDoS prevention.
+                <strong>Project Requirements:</strong> Company or brand name,
+                service category of interest, estimated budget range, and your
+                written project scope or inquiry message.
+              </li>
+              <li>
+                <strong>Technical Logs:</strong> Standard CDN/server access logs
+                (such as IP address, browser type, and timestamps) generated
+                automatically by our hosting provider for security and network
+                routing.
               </li>
             </ul>
           </section>
 
-          <section className="space-y-3">
-            <h2 className="text-xl font-bold text-[var(--color-navy)]">
-              3. Absolute Intellectual Property Protection
-            </h2>
-            <p className="text-[var(--color-muted)]">
-              All codebases, database schemas, architectures, and proprietary
-              algorithms created or touched during an enterprise engagement
-              belong exclusively to the client. IT HUB Corporation will never
-              train public AI models on client code or share artifacts with
-              third parties.
+          <section className={styles.section}>
+            <h2>3. How Enquiry Submissions Are Handled</h2>
+            <p>
+              This website operates as a static web application. When you submit
+              the Request a Quote form:
+            </p>
+            <ul>
+              <li>
+                Your submission is encrypted and securely sent via HTTPS to our
+                static form gateway service (<strong>Web3Forms</strong>).
+              </li>
+              <li>
+                Web3Forms delivers the message directly to the designated
+                company inbox ({siteConfig.contact.email}) so our team can
+                respond to you.
+              </li>
+              <li>
+                We do not sell, rent, license, or monetize your contact details
+                or project inquiries to any third-party advertisers or brokers.
+              </li>
+            </ul>
+          </section>
+
+          <section className={styles.section}>
+            <h2>4. Website Hosting Infrastructure</h2>
+            <p>
+              This website is hosted on <strong>Vercel</strong>. Vercel acts as a
+              hosting and CDN infrastructure provider, serving static pages
+              globally. Technical transmission logs are governed by standard
+              security practices and data processing agreements.
             </p>
           </section>
 
-          <section className="space-y-3">
-            <h2 className="text-xl font-bold text-[var(--color-navy)]">
-              4. Security Standards & Compliance
-            </h2>
-            <p className="text-[var(--color-muted)]">
-              We maintain SOC 2 Type II compliance, ISO 27001 data security
-              practices, and end-to-end TLS 1.3 / AES-256 encryption across all
-              digital communications and project asset vaults.
+          <section className={styles.section}>
+            <h2>5. Analytics & Tracking</h2>
+            <p>
+              If web analytics is enabled via configuration, it collects
+              anonymized, aggregated usage statistics (such as page views and
+              general device categories) to help us improve site navigation.
+            </p>
+            <p>
+              <strong>Strict Privacy Standard:</strong> Personal details,
+              contact information, and message bodies entered into enquiry forms
+              are never sent to analytics tracking systems.
             </p>
           </section>
 
-          <section className="space-y-3">
-            <h2 className="text-xl font-bold text-[var(--color-navy)]">
-              5. Contact Data Privacy Officer
-            </h2>
-            <p className="text-[var(--color-muted)]">
-              For data privacy inquiries or to request cryptographic erasure of
-              commercial discovery records, contact our Data Governance Officer
-              at{' '}
-              <a
-                href={`mailto:${siteConfig.contact.email}`}
-                className="text-[var(--color-primary-blue)] hover:underline font-medium"
-              >
-                {siteConfig.contact.email}
-              </a>
-              .
+          <section className={styles.section}>
+            <h2>6. Data Retention & Your Rights</h2>
+            <p>
+              We retain business enquiry emails only for the duration necessary
+              to communicate with you, scope and deliver projects, or meet
+              legitimate accounting and commercial obligations.
             </p>
+            <p>
+              Depending on your jurisdiction, you may have the right to request
+              access to the information we hold about you, request corrections,
+              or request that we delete your contact records. To exercise these
+              rights, please contact us by email.
+            </p>
+          </section>
+
+          <section className={styles.section}>
+            <h2>7. Contact Information</h2>
+            <p>
+              If you have any questions or concerns about our privacy practices,
+              please reach out:
+            </p>
+            <ul>
+              <li>
+                <strong>Company:</strong> {siteConfig.name}
+              </li>
+              <li>
+                <strong>Email:</strong> {siteConfig.contact.email}
+              </li>
+              <li>
+                <strong>Address:</strong> {siteConfig.contact.address}
+              </li>
+            </ul>
           </section>
         </div>
       </Container>

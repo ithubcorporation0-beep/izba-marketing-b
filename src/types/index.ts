@@ -64,6 +64,7 @@ export interface Project {
   categorySlug: string;
   category?: string; // Compatibility alias
   summary: string;
+  context?: string;
   challenge?: string;
   approach?: string;
   outcome?: string;

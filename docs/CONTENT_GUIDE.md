@@ -156,27 +156,35 @@ Real past projects belong in `src/content/projects.ts`. Currently, this file exp
 When you have explicit client permission to showcase a real project, add an entry like this:
 
 ```typescript
+// EXAMPLE REFERENCE ONLY — DO NOT PASTE INTO LIVE DATA WITHOUT REAL CLIENT APPROVAL
 export const projects: Project[] = [
   {
-    id: 'project-client-name-redesign',
-    title: 'Custom Inventory Portal for Client Name',
-    slug: 'client-name-inventory-portal',
-    client: 'Client Business Name', // or "Regional Logistics Provider" if confidential
+    id: 'project-example-inventory-portal',
+    title: 'Custom Inventory Portal Implementation',
+    slug: 'custom-inventory-portal-implementation',
+    clientName: 'Regional Distribution Partner (use only with explicit written consent)',
     categorySlug: 'web-software-development',
     summary:
-      'A secure internal web dashboard that helped the client track inventory across 3 warehouse locations.',
+      'A secure web portal unifying real-time stock levels across regional warehouses.',
+    context:
+      'The client operated multiple distribution points with disparate inventory logs, needing centralized visibility without heavy enterprise licensing costs.',
     challenge:
-      'The client was previously managing items with manual paper logs and disconnected spreadsheets.',
-    solution:
-      'Designed and deployed a responsive web dashboard with barcode scanning support and role-based permissions.',
+      'Manual daily paper logs and offline spreadsheets caused recurring stock mismatches and delayed order fulfillment.',
+    approach:
+      'Designed and engineered a modular Next.js dashboard backed by PostgreSQL, featuring role-based access for warehouse leads and automated inventory discrepancy alerts.',
+    deliverables: [
+      'Role-based Warehouse Web Portal',
+      'PostgreSQL Database Schema & Migration Scripts',
+      'Staff Operating Manual & Video Walkthrough',
+      'Automated Discrepancy Alert System',
+    ],
     outcome:
-      'Eliminated manual log reconciliation delays and gave staff real-time visibility into inventory levels.',
-    servicesProvided: ['Website Development', 'Custom Software Development'],
-    technologies: ['TypeScript', 'Next.js', 'PostgreSQL'],
+      'Centralized all warehouse logs into a single interface, significantly reducing administrative reconciliations and order turnaround times.',
+    technologies: ['TypeScript', 'Next.js', 'PostgreSQL', 'Tailwind CSS'],
     testimonialQuote:
-      'IT HUB delivered exactly what we agreed on, on schedule.',
-    testimonialAuthor: 'John Smith, Operations Manager',
-    isFeatured: true,
+      'IT HUB delivered exactly what we scoped, on time and with clear weekly communication.',
+    testimonialAuthor: 'Operations Director',
+    isPublished: true,
     publishedAt: '2026-03-01',
   },
 ];

@@ -2,43 +2,77 @@ import React from 'react';
 import type { Metadata } from 'next';
 import { Container } from '@/components/ui/Container';
 import { SectionHeading } from '@/components/ui/SectionHeading';
-import { EmptyState } from '@/components/ui/EmptyState';
 import { Button } from '@/components/ui/Button';
-import { Briefcase, ArrowLeft } from 'lucide-react';
+import { ProjectCard } from '@/components/portfolio/ProjectCard';
+import { projects } from '@/content/projects';
+import { Briefcase, ArrowRight, Layers } from 'lucide-react';
+import styles from './page.module.css';
 
 export const metadata: Metadata = {
-  title: 'Portfolio & Case Studies',
+  title: 'Portfolio & Case Studies | IT HUB Corporation',
   description:
-    'Verified enterprise case studies and client projects delivered by IT HUB Corporation.',
+    'Explore verified case studies and technical implementations delivered by IT HUB Corporation.',
 };
 
 export default function PortfolioPage() {
+  const publishedProjects = projects.filter((p) => p.isPublished);
+
   return (
-    <div className="py-16 lg:py-24">
-      <Container size="narrow">
+    <div className={styles.pageWrapper}>
+      <Container size="default">
         <SectionHeading
-          badge="Case Studies"
-          title="Portfolio & Client Work"
-          subtitle="Real-world technology outcomes and architectural implementations."
+          badge="Client Projects"
+          title="Portfolio & Case Studies"
+          subtitle="Real-world technology outcomes and implementations. We publish only verified work with explicit client permission."
           align="center"
         />
-        <div className="mt-8">
-          <EmptyState
-            icon={<Briefcase size={24} />}
-            title="Coming in a later phase"
-            description="The portfolio and project case studies will be implemented in the Portfolio phase."
-            action={
-              <Button
-                href="/"
-                variant="secondary"
-                size="sm"
-                icon={<ArrowLeft size={14} />}
-              >
-                Back to Home
-              </Button>
-            }
-          />
-        </div>
+
+        {publishedProjects.length === 0 ? (
+          /* Honest Empty State when projects array is empty */
+          <div className={styles.emptyContainer}>
+            <div className={styles.emptyCard}>
+              <div className={styles.iconCircle} aria-hidden="true">
+                <Briefcase size={36} />
+              </div>
+              <h2 className={styles.emptyTitle}>Portfolio Coming Soon</h2>
+              <p className={styles.emptyText}>
+                We are currently documenting recent client implementations with
+                full permission. In accordance with our privacy commitments, we
+                never display mock metrics or fabricated case studies.
+              </p>
+              <p className={styles.emptySubtext}>
+                Interested in how we can solve your specific business or technical
+                challenge? Browse our 90 published services or request a tailored
+                consultation.
+              </p>
+              <div className={styles.emptyActions}>
+                <Button
+                  href="/contact"
+                  variant="primary"
+                  size="md"
+                  icon={<ArrowRight size={16} />}
+                >
+                  Request a Quote
+                </Button>
+                <Button
+                  href="/services"
+                  variant="secondary"
+                  size="md"
+                  icon={<Layers size={16} />}
+                >
+                  Explore Services
+                </Button>
+              </div>
+            </div>
+          </div>
+        ) : (
+          /* Project Grid for when real projects are added */
+          <div className={styles.projectsGrid}>
+            {publishedProjects.map((project) => (
+              <ProjectCard key={project.id} project={project} />
+            ))}
+          </div>
+        )}
       </Container>
     </div>
   );

@@ -63,7 +63,7 @@ export const Footer: React.FC = () => {
                 size="sm"
                 className="bg-[var(--color-white)]/10 text-[var(--color-white)] border-transparent"
               >
-                Enterprise SLA Guaranteed
+                Clear Communication & Support
               </Badge>
             </div>
           </div>
@@ -71,7 +71,7 @@ export const Footer: React.FC = () => {
           {/* Quick Links (2 cols) */}
           <div className="lg:col-span-2 space-y-4">
             <h4 className="text-xs font-semibold uppercase tracking-wider text-[var(--color-white)]">
-              Company
+              Navigation
             </h4>
             <ul className="space-y-2.5 text-sm">
               <li>
@@ -108,10 +108,18 @@ export const Footer: React.FC = () => {
               </li>
               <li>
                 <Link
+                  href="/digital-products"
+                  className="text-[var(--color-muted)] hover:text-[var(--color-white)] transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-[var(--color-primary-blue)] rounded-sm"
+                >
+                  Digital Products
+                </Link>
+              </li>
+              <li>
+                <Link
                   href="/contact"
                   className="text-[var(--color-muted)] hover:text-[var(--color-white)] transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-[var(--color-primary-blue)] rounded-sm"
                 >
-                  Contact & RFQ
+                  Contact & Quote
                 </Link>
               </li>
             </ul>

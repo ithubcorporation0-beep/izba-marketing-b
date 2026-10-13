@@ -1,117 +1,105 @@
 .card {
   display: flex;
   flex-direction: column;
-  gap: var(--space-md);
+  background: var(--color-white);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  padding: 1.75rem;
+  transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
   height: 100%;
+}
+
+.card:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-md);
+  border-color: var(--color-primary-blue);
 }
 
 .topMeta {
   display: flex;
   align-items: center;
   justify-content: space-between;
+  gap: 0.5rem;
+  margin-bottom: 0.875rem;
 }
 
-.clientBadge {
-  font-size: 0.78rem;
-  font-weight: 700;
-  text-transform: uppercase;
-  letter-spacing: 0.05em;
-  color: var(--color-accent-cyan);
+.categoryBadge {
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: var(--color-primary-blue);
+  background: rgba(49, 87, 213, 0.08);
+  padding: 0.25rem 0.625rem;
+  border-radius: 9999px;
 }
 
-.year {
-  font-size: 0.8rem;
-  font-family: var(--font-mono);
-  color: var(--color-text-subtle);
+.clientName {
+  font-size: 0.8125rem;
+  color: var(--color-muted);
 }
 
 .title {
-  font-size: 1.28rem;
+  font-size: 1.25rem;
   font-weight: 700;
-  color: var(--color-text-main);
+  color: var(--color-navy);
   line-height: 1.35;
+  margin-bottom: 0.75rem;
 }
 
 .summary {
-  font-size: 0.92rem;
+  font-size: 0.9375rem;
+  color: var(--color-muted);
   line-height: 1.6;
-  color: var(--color-text-muted);
+  margin-bottom: 1.25rem;
+  flex-grow: 1;
 }
 
-.metricsGrid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: var(--space-xs);
-  padding: var(--space-md);
-  background: rgba(6, 9, 19, 0.6);
-  border: 1px solid var(--color-border-subtle);
+.deliverablesBox {
+  background: var(--color-soft-bg);
+  border: 1px solid var(--color-border);
   border-radius: var(--radius-md);
+  padding: 0.875rem;
+  margin-bottom: 1.25rem;
 }
 
-.metricItem {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  text-align: center;
-}
-
-.metricValue {
-  font-size: 1.15rem;
-  font-weight: 800;
-  color: var(--color-accent-emerald);
-}
-
-.metricLabel {
-  font-size: 0.68rem;
-  text-transform: uppercase;
-  letter-spacing: 0.04em;
-  color: var(--color-text-subtle);
-  margin-top: 0.15rem;
-}
-
-.architectureBox {
-  background: var(--color-bg-surface-elevated);
-  padding: var(--space-md);
-  border-radius: var(--radius-sm);
-  border-left: 3px solid var(--color-accent-blue);
-}
-
-.archLabel {
-  display: flex;
-  align-items: center;
-  gap: 0.4rem;
+.deliverablesLabel {
   font-size: 0.75rem;
+  font-weight: 700;
   text-transform: uppercase;
   letter-spacing: 0.05em;
-  font-weight: 700;
-  color: var(--color-accent-blue);
-  margin-bottom: 0.35rem;
+  color: var(--color-navy);
+  margin-bottom: 0.5rem;
 }
 
-.archIcon {
-  color: var(--color-accent-blue);
-}
-
-.archDetail {
-  font-size: 0.85rem;
-  line-height: 1.5;
-  color: var(--color-text-muted);
-}
-
-.stackTags {
+.deliverablesList {
+  list-style: disc;
+  padding-left: 1.125rem;
+  margin: 0;
+  font-size: 0.8125rem;
+  color: var(--color-text-main);
   display: flex;
-  flex-wrap: wrap;
-  gap: 0.4rem;
-  margin-top: auto;
-  padding-top: var(--space-xs);
+  flex-direction: column;
+  gap: 0.25rem;
 }
 
-.stackTag {
-  font-size: 0.75rem;
-  font-family: var(--font-mono);
-  background: var(--color-bg-primary);
-  border: 1px solid var(--color-border-subtle);
-  padding: 0.2rem 0.5rem;
-  border-radius: var(--radius-xs);
-  color: var(--color-text-secondary);
+.linkRow {
+  margin-top: auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-top: 1rem;
+  border-top: 1px solid var(--color-border);
+}
+
+.viewLink {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: var(--color-primary-blue);
+  text-decoration: none;
+}
+
+.viewLink:hover {
+  text-decoration: underline;
 }
