@@ -4,6 +4,7 @@ import Link from 'next/link';
 import { Container } from '@/components/ui/Container';
 import { SectionHeading } from '@/components/ui/SectionHeading';
 import { Button } from '@/components/ui/Button';
+import { constructMetadata } from '@/lib/seo/metadata';
 import {
   FileText,
   Calendar,
@@ -20,11 +21,12 @@ import {
 } from 'lucide-react';
 import styles from './page.module.css';
 
-export const metadata: Metadata = {
-  title: 'Digital Products & Templates | IT HUB Corporation',
+export const metadata: Metadata = constructMetadata({
+  title: 'Digital Products & Templates',
   description:
     'Custom digital templates, planners, e-books, and business document packs designed for your business or brand. Delivered ready for distribution.',
-};
+  pathname: '/digital-products',
+});
 
 interface ProductOffering {
   title: string;

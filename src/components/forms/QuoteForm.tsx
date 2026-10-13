@@ -17,6 +17,7 @@ import { getPublishedServices } from '@/lib/services';
 import { budgetOptions } from '@/content/budget';
 import { siteConfig } from '@/config/site';
 import { Service } from '@/types';
+import { trackFormSubmit } from '@/lib/analytics';
 import styles from './QuoteForm.module.css';
 
 interface FormState {
@@ -189,6 +190,7 @@ function QuoteFormInner() {
 
       if (data.success === true) {
         setIsSubmitted(true);
+        trackFormSubmit(formData.service);
       } else {
         setSubmitError(
           data.message ||

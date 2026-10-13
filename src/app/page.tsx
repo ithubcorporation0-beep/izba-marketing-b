@@ -8,16 +8,25 @@ import { PortfolioPreview } from '@/components/sections/PortfolioPreview';
 import { TestimonialsSection } from '@/components/sections/Testimonials';
 import { FAQSection } from '@/components/sections/FAQ';
 import { CTASection } from '@/components/sections/CTA';
+import { JsonLd } from '@/components/seo/JsonLd';
+import { getOrganizationJsonLd } from '@/lib/seo/jsonLd';
+import { constructMetadata } from '@/lib/seo/metadata';
 
-export const metadata: Metadata = {
-  title: 'IT HUB Corporation — Technology, Marketing & AI Solutions',
+export const metadata: Metadata = constructMetadata({
+  title: 'Technology, Marketing & AI Solutions for Business',
   description:
-    'From websites and software to digital marketing, creative production, and AI automation, IT HUB Corporation helps businesses move their ideas forward.',
-};
+    'From custom software and web development to digital marketing, creative production, and AI automation, IT HUB Corporation helps businesses build and grow.',
+  pathname: '/',
+});
 
 export default function HomePage() {
+  const organizationSchema = getOrganizationJsonLd();
+
   return (
     <div className="flex flex-col min-h-screen">
+      {/* Structured Data: Organization */}
+      <JsonLd data={organizationSchema} />
+
       {/* 1. Hero with PRD 4.2 copy & 2. Verifiable trust points */}
       <Hero />
 

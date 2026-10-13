@@ -1,14 +1,13 @@
 import { MetadataRoute } from 'next';
-import { siteConfig } from '@/config/site';
+import { getSiteUrl } from '@/lib/seo/metadata';
 import { services } from '@/content/services';
 import { categories } from '@/content/categories';
+import { projects } from '@/content/projects';
 
 export const dynamic = 'force-static';
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  const baseUrl = siteConfig.url.startsWith('http')
-    ? siteConfig.url
-    : 'https://ithub-corp.com';
+  const baseUrl = getSiteUrl();
 
   // Static routes
   const staticRoutes = [
@@ -43,5 +42,13 @@ export default function sitemap(): MetadataRoute.Sitemap {
     priority: 0.85,
   }));
 
-  return [...staticRoutes, ...serviceRoutes, ...categoryRoutes];
+  // Dynamic project routes (if any)
+  const projectRoutes = projects.map((project) => ({
+    url: `${baseUrl}/portfolio/${project.slug}`,
+    lastModified: new Date(),
+    changeFrequency: 'monthly' as const,
+    priority: 0.7,
+  }));
+
+  return [...staticRoutes, ...serviceRoutes, ...categoryRoutes, ...projectRoutes];
 }

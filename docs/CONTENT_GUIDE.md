@@ -253,3 +253,19 @@ This automated tool will immediately check and confirm:
 5. **Valid Featured Items**: Ensures all featured items link to real services or categories.
 
 If you made a typo (like misspelling a category slug), the tool will tell you the exact file and service name that needs fixing.
+
+---
+
+## 10. How to Replace Brand Assets (Logo, Favicons & Social Share Images)
+
+The website currently uses clean, text-based placeholder graphics featuring an "IT" mark in the company's navy (`#101828`) and royal blue (`#3157D5`) colors. When the business owner approves final branding artwork, replace the following files:
+
+| Brand Asset | File Path | Format & Suggested Dimensions |
+| :--- | :--- | :--- |
+| **Website Favicon** | `public/icons/favicon.svg` | SVG (100x100 square) |
+| **App Icon** | `src/app/icon.svg` | SVG (32x32 square) |
+| **Header Logo** | `public/images/logo.svg` | SVG (horizontal vector mark) |
+| **Social Share Banner** | `public/images/og-image.png` | PNG (1200x630 pixels) |
+
+> **Note:** The current assets are generated placeholders. Replace them directly with your official vector logo files before final marketing launch.
+

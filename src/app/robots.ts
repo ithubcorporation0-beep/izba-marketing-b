@@ -1,12 +1,10 @@
 import { MetadataRoute } from 'next';
-import { siteConfig } from '@/config/site';
+import { getSiteUrl } from '@/lib/seo/metadata';
 
 export const dynamic = 'force-static';
 
 export default function robots(): MetadataRoute.Robots {
-  const baseUrl = siteConfig.url.startsWith('http')
-    ? siteConfig.url
-    : 'https://ithub-corp.com';
+  const baseUrl = getSiteUrl();
 
   return {
     rules: [

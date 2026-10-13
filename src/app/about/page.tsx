@@ -13,13 +13,15 @@ import { Badge } from '@/components/ui/Badge';
 import { Card } from '@/components/ui/Card';
 import { Button } from '@/components/ui/Button';
 import { CTASection } from '@/components/sections/CTA';
+import { constructMetadata } from '@/lib/seo/metadata';
 import styles from './page.module.css';
 
-export const metadata: Metadata = {
-  title: 'About IT HUB Corporation | Technology, Marketing & AI',
+export const metadata: Metadata = constructMetadata({
+  title: 'About Us',
   description:
     'Learn about IT HUB Corporation, our mission, core values of honesty, clarity, quality, and support, and our practical approach to digital solutions.',
-};
+  pathname: '/about',
+});
 
 /**
  * Core Company Values (PRD & Specifications: Honesty, Clarity, Quality, Support)

@@ -15,6 +15,8 @@ import {
 import { services } from '@/content/services';
 import { categories } from '@/content/categories';
 import { constructMetadata } from '@/lib/seo/metadata';
+import { getBreadcrumbJsonLd } from '@/lib/seo/jsonLd';
+import { JsonLd } from '@/components/seo/JsonLd';
 import { Breadcrumb } from '@/components/ui/Breadcrumb';
 import { ServiceCard } from '@/components/services/ServiceCard';
 import { Accordion } from '@/components/ui/Accordion';
@@ -49,8 +51,7 @@ export async function generateMetadata({
   }
 
   const serviceName = service.name || service.title;
-  const title =
-    service.seoTitle || `${serviceName} Services | IT HUB Corporation`;
+  const title = service.seoTitle || serviceName;
   const description = service.seoDescription || service.shortDescription;
 
   return constructMetadata({
@@ -105,8 +106,18 @@ export default async function ServiceDetailPage({ params }: ServicePageProps) {
     ),
   }));
 
+  const breadcrumbData = getBreadcrumbJsonLd([
+    { name: 'Home', path: '/' },
+    { name: 'Services', path: '/services' },
+    ...(categorySlug
+      ? [{ name: categoryName, path: `/services/category/${categorySlug}` }]
+      : []),
+    { name: serviceTitle, path: `/services/${service.slug}` },
+  ]);
+
   return (
     <div className={styles.serviceDetailWrapper}>
+      <JsonLd data={breadcrumbData} />
       {/* 1. Breadcrumbs */}
       <div className={styles.topBar}>
         <Container size="default">

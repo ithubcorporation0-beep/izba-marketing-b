@@ -6,6 +6,8 @@ import { ArrowLeft, ArrowRight } from 'lucide-react';
 import { categories } from '@/content/categories';
 import { services } from '@/content/services';
 import { constructMetadata } from '@/lib/seo/metadata';
+import { getBreadcrumbJsonLd } from '@/lib/seo/jsonLd';
+import { JsonLd } from '@/components/seo/JsonLd';
 import { ServiceCard } from '@/components/services/ServiceCard';
 import { CategoryCard } from '@/components/services/CategoryCard';
 import { Breadcrumb } from '@/components/ui/Breadcrumb';
@@ -41,7 +43,7 @@ export async function generateMetadata({
   const categoryDesc = category.shortDescription || category.description;
 
   return constructMetadata({
-    title: `${categoryName} Services | IT HUB Corporation`,
+    title: `${categoryName} Services`,
     description: categoryDesc,
     pathname: `/services/category/${category.slug}`,
   });
@@ -63,8 +65,15 @@ export default async function CategoryServicesPage({
     (s) => s.categorySlug === category.slug || s.category === category.id
   );
 
+  const breadcrumbData = getBreadcrumbJsonLd([
+    { name: 'Home', path: '/' },
+    { name: 'Services', path: '/services' },
+    { name: categoryName, path: `/services/category/${category.slug}` },
+  ]);
+
   return (
     <div className={styles.categoryPageWrapper}>
+      <JsonLd data={breadcrumbData} />
       {/* Breadcrumb Navigation */}
       <div className={styles.topBar}>
         <div className="container">

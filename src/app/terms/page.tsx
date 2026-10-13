@@ -3,13 +3,15 @@ import type { Metadata } from 'next';
 import { Container } from '@/components/ui/Container';
 import { siteConfig } from '@/config/site';
 import { AlertTriangle } from 'lucide-react';
+import { constructMetadata } from '@/lib/seo/metadata';
 import styles from '../legal.module.css';
 
-export const metadata: Metadata = {
-  title: 'Terms of Service | IT HUB Corporation',
+export const metadata: Metadata = constructMetadata({
+  title: 'Terms of Service',
   description:
     'Terms of engagement, website usage policies, and service framework for IT HUB Corporation.',
-};
+  pathname: '/terms',
+});
 
 export default function TermsPage() {
   return (

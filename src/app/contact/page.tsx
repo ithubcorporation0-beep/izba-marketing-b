@@ -13,13 +13,15 @@ import {
   CheckCircle,
   AlertCircle,
 } from 'lucide-react';
+import { constructMetadata } from '@/lib/seo/metadata';
 import styles from './page.module.css';
 
-export const metadata: Metadata = {
-  title: 'Request a Quote & Contact | IT HUB Corporation',
+export const metadata: Metadata = constructMetadata({
+  title: 'Request a Quote & Contact',
   description:
     'Submit your project details for an honest, transparent quote, or connect directly with our technical team.',
-};
+  pathname: '/contact',
+});
 
 export default function ContactPage() {
   const isPlaceholder = (val: string) =>

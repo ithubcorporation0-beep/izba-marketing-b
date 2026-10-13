@@ -7,6 +7,9 @@ import { Breadcrumb } from '@/components/ui/Breadcrumb';
 import { Button } from '@/components/ui/Button';
 import { projects } from '@/content/projects';
 import { categories } from '@/content/categories';
+import { constructMetadata } from '@/lib/seo/metadata';
+import { getBreadcrumbJsonLd } from '@/lib/seo/jsonLd';
+import { JsonLd } from '@/components/seo/JsonLd';
 import {
   CheckCircle,
   ArrowRight,
@@ -42,15 +45,18 @@ export async function generateMetadata({
   const project = projects.find((p) => p.slug === slug && p.isPublished);
 
   if (!project) {
-    return {
-      title: 'Case Study Not Found | IT HUB Corporation',
-    };
+    return constructMetadata({
+      title: 'Case Study Not Found',
+      description: 'The requested case study could not be found.',
+      pathname: `/portfolio/${slug}`,
+    });
   }
 
-  return {
-    title: `${project.title} | Case Study | IT HUB Corporation`,
+  return constructMetadata({
+    title: `${project.title} | Case Study`,
     description: project.summary,
-  };
+    pathname: `/portfolio/${project.slug}`,
+  });
 }
 
 export default async function ProjectDetailPage({ params }: PageProps) {
@@ -66,8 +72,15 @@ export default async function ProjectDetailPage({ params }: PageProps) {
   const clientName = project.clientName || project.client;
   const deliverables = project.deliverables || [];
 
+  const breadcrumbData = getBreadcrumbJsonLd([
+    { name: 'Home', path: '/' },
+    { name: 'Portfolio', path: '/portfolio' },
+    { name: project.title, path: `/portfolio/${project.slug}` },
+  ]);
+
   return (
     <div className={styles.pageWrapper}>
+      <JsonLd data={breadcrumbData} />
       <Container size="default">
         <Breadcrumb
           items={[

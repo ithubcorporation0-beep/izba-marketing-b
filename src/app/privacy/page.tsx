@@ -3,13 +3,15 @@ import type { Metadata } from 'next';
 import { Container } from '@/components/ui/Container';
 import { siteConfig } from '@/config/site';
 import { AlertTriangle, Mail } from 'lucide-react';
+import { constructMetadata } from '@/lib/seo/metadata';
 import styles from '../legal.module.css';
 
-export const metadata: Metadata = {
-  title: 'Privacy Policy | IT HUB Corporation',
+export const metadata: Metadata = constructMetadata({
+  title: 'Privacy Policy',
   description:
     'Overview of data handling, enquiry form transmission, and privacy practices for IT HUB Corporation.',
-};
+  pathname: '/privacy',
+});
 
 export default function PrivacyPage() {
   return (

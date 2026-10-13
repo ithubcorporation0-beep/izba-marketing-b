@@ -6,13 +6,15 @@ import { Button } from '@/components/ui/Button';
 import { ProjectCard } from '@/components/portfolio/ProjectCard';
 import { projects } from '@/content/projects';
 import { Briefcase, ArrowRight, Layers } from 'lucide-react';
+import { constructMetadata } from '@/lib/seo/metadata';
 import styles from './page.module.css';
 
-export const metadata: Metadata = {
-  title: 'Portfolio & Case Studies | IT HUB Corporation',
+export const metadata: Metadata = constructMetadata({
+  title: 'Portfolio & Case Studies',
   description:
     'Explore verified case studies and technical implementations delivered by IT HUB Corporation.',
-};
+  pathname: '/portfolio',
+});
 
 export default function PortfolioPage() {
   const publishedProjects = projects.filter((p) => p.isPublished);

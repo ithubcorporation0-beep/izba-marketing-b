@@ -108,6 +108,7 @@ export const Button = React.forwardRef<
           href={href}
           className={combinedClassName}
           ref={ref as React.Ref<HTMLAnchorElement>}
+          {...(props as unknown as React.AnchorHTMLAttributes<HTMLAnchorElement>)}
         >
           {content}
         </Link>

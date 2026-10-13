@@ -2,8 +2,10 @@ import type { Metadata, Viewport } from 'next';
 import { Inter } from 'next/font/google';
 import '@/styles/globals.css';
 import { siteConfig } from '@/config/site';
+import { getSiteUrl } from '@/lib/seo/metadata';
 import { Header } from '@/components/layout/Header';
 import { Footer } from '@/components/layout/Footer';
+import { ConsentBanner } from '@/components/analytics/ConsentBanner';
 
 const inter = Inter({
   subsets: ['latin'],
@@ -11,12 +13,44 @@ const inter = Inter({
   variable: '--font-inter',
 });
 
+const siteUrl = getSiteUrl();
+
 export const metadata: Metadata = {
+  metadataBase: new URL(siteUrl),
   title: {
     default: `${siteConfig.name} — ${siteConfig.tagline}`,
     template: `%s | ${siteConfig.name}`,
   },
   description: siteConfig.description,
+  openGraph: {
+    title: `${siteConfig.name} — ${siteConfig.tagline}`,
+    description: siteConfig.description,
+    url: siteUrl,
+    siteName: siteConfig.name,
+    images: [
+      {
+        url: '/images/og-image.png',
+        width: 1200,
+        height: 630,
+        alt: `${siteConfig.name} banner`,
+      },
+    ],
+    type: 'website',
+    locale: 'en_US',
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: `${siteConfig.name} — ${siteConfig.tagline}`,
+    description: siteConfig.description,
+    images: ['/images/og-image.png'],
+  },
+  icons: {
+    icon: [
+      { url: '/icon.svg', type: 'image/svg+xml' },
+      { url: '/favicon.ico' },
+    ],
+    apple: [{ url: '/icons/favicon.svg' }],
+  },
 };
 
 export const viewport: Viewport = {
@@ -32,10 +66,6 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" className={inter.variable}>
-      <head>
-        <link rel="icon" href="/icon.svg" type="image/svg+xml" />
-        <link rel="alternate icon" href="/favicon.ico" />
-      </head>
       <body className="min-h-screen flex flex-col font-sans bg-[var(--color-white)] text-[var(--color-text-main)] antialiased selection:bg-[var(--color-primary-blue)] selection:text-[var(--color-white)]">
         {/* Skip to Content for Keyboard Accessibility */}
         <a href="#main-content" className="skip-to-content">
@@ -56,6 +86,9 @@ export default function RootLayout({
 
         {/* Global Footer Landmark */}
         <Footer />
+
+        {/* Optional Cookie & Analytics Consent Banner */}
+        <ConsentBanner />
       </body>
     </html>
   );

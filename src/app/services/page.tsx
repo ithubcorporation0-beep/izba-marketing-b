@@ -7,13 +7,15 @@ import { Badge } from '@/components/ui/Badge';
 import { CategoryCard } from '@/components/services/CategoryCard';
 import { ServiceSearch } from '@/components/services/ServiceSearch';
 import { CTASection } from '@/components/sections/CTA';
+import { constructMetadata } from '@/lib/seo/metadata';
 import styles from './page.module.css';
 
-export const metadata: Metadata = {
-  title: 'Services & Digital Capabilities | IT HUB Corporation',
+export const metadata: Metadata = constructMetadata({
+  title: 'Services Directory',
   description:
-    'Explore our complete directory of 90 services across 9 core disciplines, covering software development, digital marketing, AI automation, graphic design, and office support.',
-};
+    'Explore our complete directory of 90 services across 9 core disciplines, covering software development, digital marketing, AI automation, graphic design, and IT support.',
+  pathname: '/services',
+});
 
 export default function ServicesPage() {
   return (

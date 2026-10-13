@@ -8,60 +8,87 @@ interface PageMetadataOptions {
   image?: string;
 }
 
+/**
+ * Resolves the production public website URL.
+ * Falls back to canonical domain if environment variable is not defined or is a placeholder.
+ */
+export const getSiteUrl = (): string => {
+  const envUrl = process.env.NEXT_PUBLIC_SITE_URL?.trim();
+  if (envUrl && envUrl.startsWith('http')) {
+    return envUrl.replace(/\/$/, '');
+  }
+  if (siteConfig.url && siteConfig.url.startsWith('http')) {
+    return siteConfig.url.replace(/\/$/, '');
+  }
+  return 'https://ithubcorporation.com';
+};
+
+/**
+ * Standardized metadata builder for Next.js App Router pages.
+ * Enforces canonical URLs, consistent title structure, Open Graph, and Twitter cards.
+ */
 export function constructMetadata({
   title,
   description = siteConfig.description,
   pathname = '',
   image = '/images/og-image.png',
 }: PageMetadataOptions = {}): Metadata {
-  const fullTitle = title
-    ? `${title} | ${siteConfig.name}`
-    : `${siteConfig.name} — ${siteConfig.tagline}`;
+  const siteUrl = getSiteUrl();
+  const cleanPath = pathname.startsWith('/') ? pathname : `/${pathname}`;
+  const canonicalUrl = `${siteUrl}${cleanPath === '/' ? '' : cleanPath}`;
+  const metadataBase = new URL(siteUrl);
 
-  let metadataBase: URL | undefined;
-  try {
-    metadataBase = new URL(siteConfig.url);
-  } catch {
-    metadataBase = undefined;
+  let rawTitle = title?.trim() || '';
+  if (rawTitle) {
+    // Strip any trailing brand suffix to avoid duplicates
+    rawTitle = rawTitle.replace(/\s*(\||\—|-)\s*IT HUB Corporation.*$/i, '').trim();
   }
 
-  const canonicalUrl = metadataBase
-    ? `${siteConfig.url}${pathname}`
-    : undefined;
+  const pageTitle = rawTitle
+    ? `${rawTitle} | ${siteConfig.name}`
+    : `${siteConfig.name} — ${siteConfig.tagline}`;
 
   return {
-    title: fullTitle,
+    title: {
+      absolute: pageTitle,
+    },
     description,
-    ...(metadataBase && { metadataBase }),
-    ...(canonicalUrl && {
-      alternates: {
-        canonical: canonicalUrl,
-      },
-    }),
+    metadataBase,
+    alternates: {
+      canonical: canonicalUrl,
+    },
     openGraph: {
-      title: fullTitle,
+      title: pageTitle,
       description,
-      ...(canonicalUrl && { url: canonicalUrl }),
+      url: canonicalUrl,
       siteName: siteConfig.name,
       images: [
         {
           url: image,
           width: 1200,
           height: 630,
-          alt: fullTitle,
+          alt: pageTitle,
         },
       ],
       type: 'website',
+      locale: 'en_US',
     },
     twitter: {
       card: 'summary_large_image',
-      title: fullTitle,
+      title: pageTitle,
       description,
       images: [image],
     },
     robots: {
       index: true,
       follow: true,
+      googleBot: {
+        index: true,
+        follow: true,
+        'max-video-preview': -1,
+        'max-image-preview': 'large',
+        'max-snippet': -1,
+      },
     },
   };
 }

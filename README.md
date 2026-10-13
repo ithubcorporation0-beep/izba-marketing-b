@@ -1,112 +1,116 @@
-# IT HUB Corporation — Website
+# IT HUB Corporation — Digital Web Platform
 
-A modern, fast, and static website built with **Next.js (App Router)**, **TypeScript**, and **Tailwind CSS**.
+The official modern digital web platform for **IT HUB Corporation**, built with **Next.js (App Router)**, **TypeScript**, and **Vanilla CSS Modules** driven by design tokens.
 
-This website is designed for **static export**, meaning it has no database, no server requirements, and can be hosted for free on platforms like **Vercel**, **Cloudflare Pages**, or **Netlify**.
+Compiled as a high-performance **static export** (`output: 'export'`), the website runs with zero database overhead and can be hosted seamlessly on **Vercel**, **Cloudflare Pages**, or any static global CDN.
 
 ---
 
-## 🚀 How to Run the Project
+## ⚡ Quick Start
 
 ### 1. Install Dependencies
-
-Open your terminal inside this folder and run:
 
 ```bash
 npm install
 ```
 
-### 2. Start the Development Server
+### 2. Configure Local Environment
 
-Run the local development server:
+Copy `.env.example` to `.env.local` and add your keys:
+
+```bash
+cp .env.example .env.local
+```
+
+| Variable | Description | Default / Example |
+| :--- | :--- | :--- |
+| `NEXT_PUBLIC_SITE_URL` | Canonical public website URL | `https://ithubcorporation.com` |
+| `NEXT_PUBLIC_WEB3FORMS_KEY` | Web3Forms access key for enquiry delivery | Available at [web3forms.com](https://web3forms.com) |
+| `NEXT_PUBLIC_GA_ID` | Optional Google Analytics 4 Measurement ID | `G-XXXXXXXXXX` |
+
+### 3. Start Development Server
 
 ```bash
 npm run dev
 ```
 
-Then open your browser and go to:
-[http://localhost:3000](http://localhost:3000)
+Visit [http://localhost:3000](http://localhost:3000) in your browser.
 
-### 3. Build for Production (Static Export)
+---
 
-To test the production build and generate the static export in the `/out` folder:
+## 🛠️ Verification & Quality Checks
 
-```bash
-npm run build
-```
-
-### 4. Code Quality Checks
-
-Before committing any changes, you can run:
+Run the 5 required validation checks before committing changes:
 
 ```bash
-# Check code style and common issues
+# 1. Check code style and lint rules
 npm run lint
 
-# Check TypeScript types for errors
+# 2. Check TypeScript types
 npm run typecheck
 
-# Automatically format code with Prettier
-npm run format
+# 3. Validate content integrity (9 categories, 90 services)
+npm run check:content
+
+# 4. Compile production static export (outputs to /out)
+npm run build
+
+# 5. Check all internal links across the static build (5,000+ links)
+npm run check:links
 ```
+
+All 5 commands must pass with exit code `0`.
 
 ---
 
-## 📁 Folder Map
+## 📁 Project Architecture & Folder Map
 
-Here is an overview of how the project is organized:
-
-```
+```text
 it-hub-website/
-├── docs/                      # Documentation (PRD, guides, handover notes)
-├── public/                    # Static files (images, icons, logos)
-│   ├── images/                # Photos and logos
-│   └── icons/                 # Favicons and web app icons
+├── docs/                      # 📖 Project Documentation & Manuals
+│   ├── IT_HUB_Corporation_PRD.md # Source of truth product specification
+│   ├── QA_REPORT.md           # Pre-launch quality assurance pass/fail report
+│   ├── DEPLOYMENT.md          # Step-by-step Vercel deployment guide
+│   ├── HANDOVER.md            # Developer handover & architecture guide
+│   └── CONTENT_GUIDE.md       # Content editing manual for non-technical editors
+├── public/                    # Static assets (icons, logos, og-image.png)
+├── scripts/                   # Automated validation scripts (content & link checks)
 ├── src/
-│   ├── app/                   # Web pages and routes (Home, About, Services, etc.)
-│   ├── components/            # Reusable UI building blocks
-│   │   ├── forms/             # Contact and quote request forms
-│   │   ├── layout/            # Header, Footer, and navigation
-│   │   ├── portfolio/         # Case study and project cards
-│   │   ├── sections/          # Hero, Process, FAQ, CTA sections
-│   │   ├── services/          # Service cards and search components
-│   │   └── ui/                # Core buttons, cards, badges, and inputs
-│   ├── config/                # Global website settings
-│   │   └── site.ts            # Company name, placeholders for contact info & socials
-│   ├── content/               # ✍️ ALL EDITABLE CONTENT LIVES HERE
-│   │   ├── categories.ts      # 9 service categories
-│   │   ├── services.ts        # Services catalog
-│   │   ├── featured.ts        # Homepage highlights
-│   │   ├── projects.ts        # Portfolio projects & case studies
-│   │   ├── faqs.ts            # Frequently asked questions
-│   │   └── testimonials.ts    # Client testimonials
-│   ├── lib/                   # Utility helper functions
-│   │   ├── seo/               # Search engine tags & metadata helpers
-│   │   └── validation/        # Form validation rules
-│   ├── styles/                # Styling and design tokens
-│   │   ├── globals.css        # Tailwind CSS and global styles
-│   │   └── tokens.css         # Color palettes, spacing, and design variables
-│   └── types/                 # TypeScript data blueprints and interfaces
-│       └── index.ts
-├── .env.example               # Template for environment variables
-├── .gitignore                 # Files Git will ignore (like node_modules and .next)
-├── .prettierrc                # Code formatting rules
-├── AGENT_RULES.md             # Strict rules for developers and AI assistants
-├── next.config.ts             # Next.js static export settings
-├── package.json               # Project scripts and package versions
-├── tsconfig.json              # TypeScript configuration
-└── README.md                  # This guide
+│   ├── app/                   # App Router pages (Home, About, Services, Contact, etc.)
+│   ├── components/            # Reusable UI components (forms, layout, services, ui)
+│   ├── config/                # Global website settings (site.ts)
+│   ├── content/               # ✍️ All editable marketing content & data sets
+│   ├── lib/                   # Utility helpers (analytics, SEO metadata, validation)
+│   ├── styles/                # CSS design tokens (tokens.css) and globals (globals.css)
+│   └── types/                 # Shared TypeScript data blueprints
+├── next.config.ts             # Next.js static export settings (output: 'export')
+├── vercel.json                # Clean URLs and security headers
+└── package.json               # NPM scripts and dependencies
 ```
 
 ---
 
-## ✍️ Where to Edit Content
+## ✍️ How to Edit Content
 
-You do not need to touch HTML or layout code to change website text! All editable marketing information is stored in simple files inside **`src/content/`**:
+You never need to edit HTML or complex layout code to change website text! All editable marketing information is stored in simple TypeScript data files inside **`src/content/`**:
 
-1. **Company Name & Contact Info:** [`src/config/site.ts`](file:///src/config/site.ts)
-2. **Categories & Departments:** [`src/content/categories.ts`](file:///src/content/categories.ts)
-3. **Services:** [`src/content/services.ts`](file:///src/content/services.ts)
-4. **Case Studies:** [`src/content/projects.ts`](file:///src/content/projects.ts)
+1. **Company Info & Social Links:** [`src/config/site.ts`](file:///src/config/site.ts)
+2. **Service Categories:** [`src/content/categories.ts`](file:///src/content/categories.ts)
+3. **90 Services Catalog:** [`src/content/services.ts`](file:///src/content/services.ts)
+4. **Portfolio Case Studies:** [`src/content/projects.ts`](file:///src/content/projects.ts)
 5. **Frequently Asked Questions:** [`src/content/faqs.ts`](file:///src/content/faqs.ts)
-6. **Testimonials:** [`src/content/testimonials.ts`](file:///src/content/testimonials.ts)
+6. **Client Testimonials:** [`src/content/testimonials.ts`](file:///src/content/testimonials.ts)
+
+For detailed content instructions, see [`docs/CONTENT_GUIDE.md`](file:///docs/CONTENT_GUIDE.md).
+
+---
+
+## 🚀 Deployment
+
+Follow the beginner-friendly, step-by-step instructions in [`docs/DEPLOYMENT.md`](file:///docs/DEPLOYMENT.md) to deploy the website to Vercel, connect your custom domain, configure HTTPS, and submit your sitemap to Google Search Console.
+
+---
+
+## 📄 License & Ownership
+
+Proprietary digital asset developed for **IT HUB Corporation**. All rights reserved.
