@@ -5,7 +5,8 @@ import { Send, CheckCircle2, Shield, Clock, HelpCircle } from 'lucide-react';
 import { QuoteFormData } from '@/types';
 import { validateQuoteForm } from '@/lib/validation/quote';
 import { categories } from '@/content/categories';
-import { Input, Textarea } from '@/components/ui/Input';
+import { Input } from '@/components/ui/Input';
+import { Textarea } from '@/components/ui/Textarea';
 import { Button } from '@/components/ui/Button';
 import styles from './QuoteForm.module.css';
 

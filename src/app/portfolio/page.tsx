@@ -1,46 +1,39 @@
 import React from 'react';
 import type { Metadata } from 'next';
-import { constructMetadata } from '@/lib/seo/metadata';
-import { projects } from '@/content/projects';
-import { categories } from '@/content/categories';
-import { PortfolioFilter } from '@/components/portfolio/PortfolioFilter';
-import { Badge } from '@/components/ui/Badge';
-import { CTASection } from '@/components/sections/CTA';
-import styles from './page.module.css';
+import { Container } from '@/components/ui/Container';
+import { SectionHeading } from '@/components/ui/SectionHeading';
+import { EmptyState } from '@/components/ui/EmptyState';
+import { Button } from '@/components/ui/Button';
+import { Briefcase, ArrowLeft } from 'lucide-react';
 
-export const metadata: Metadata = constructMetadata({
-  title: 'Enterprise Case Studies & Portfolio',
-  description:
-    'Review proven real-world outcomes and architectural implementations delivered by IT HUB Corporation for global banking, healthcare, logistics, and defense clients.',
-  pathname: '/portfolio',
-});
+export const metadata: Metadata = {
+  title: 'Portfolio & Case Studies',
+  description: 'Verified enterprise case studies and client projects delivered by IT HUB Corporation.',
+};
 
 export default function PortfolioPage() {
   return (
-    <div className={styles.portfolioPageWrapper}>
-      <section className={styles.headerSection}>
-        <div className={`container ${styles.headerContainer}`}>
-          <Badge variant="emerald" size="md">
-            Verified Case Studies
-          </Badge>
-          <h1 className={styles.title}>
-            Architectural Implementations & Quantified Impact
-          </h1>
-          <p className={styles.subtitle}>
-            Explore how IT HUB Corporation solves mission-critical latency
-            bottlenecks, cloud migrations, zero-trust deployments, and
-            enterprise IoT telemetry.
-          </p>
+    <div className="py-16 lg:py-24">
+      <Container size="narrow">
+        <SectionHeading
+          badge="Case Studies"
+          title="Portfolio & Client Work"
+          subtitle="Real-world technology outcomes and architectural implementations."
+          align="center"
+        />
+        <div className="mt-8">
+          <EmptyState
+            icon={<Briefcase size={24} />}
+            title="Coming in a later phase"
+            description="The portfolio and project case studies will be implemented in the Portfolio phase."
+            action={
+              <Button href="/" variant="secondary" size="sm" icon={<ArrowLeft size={14} />}>
+                Back to Home
+              </Button>
+            }
+          />
         </div>
-      </section>
-
-      <section className={styles.contentSection}>
-        <div className="container">
-          <PortfolioFilter projects={projects} categories={categories} />
-        </div>
-      </section>
-
-      <CTASection />
+      </Container>
     </div>
   );
 }
