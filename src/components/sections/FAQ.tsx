@@ -1,7 +1,7 @@
 'use client';
 
 import React, { useState } from 'react';
-import { ChevronDown, HelpCircle } from 'lucide-react';
+import { ChevronDown } from 'lucide-react';
 import { faqs } from '@/content/faqs';
 import { Badge } from '@/components/ui/Badge';
 import styles from './FAQ.module.css';
@@ -14,33 +14,46 @@ export const FAQSection: React.FC = () => {
   };
 
   return (
-    <section className={styles.section}>
+    <section className={styles.section} aria-labelledby="faq-heading">
       <div className={`container ${styles.container}`}>
         <div className={styles.header}>
-          <Badge variant="cyan" size="md">
-            Common Questions
+          <Badge variant="blue" size="md">
+            Common Inquiries
           </Badge>
-          <h2 className={styles.title}>Frequently Asked Questions</h2>
+          <h2 id="faq-heading" className={styles.title}>
+            Frequently Asked Questions
+          </h2>
           <p className={styles.subtitle}>
-            Have questions about engagement structures, security certifications,
-            or technical roadmaps? Here is everything you need to know.
+            Clear answers to common questions about working with IT HUB
+            Corporation, requesting quotes, delivery timelines, and project
+            confidentiality.
           </p>
         </div>
 
-        <div className={styles.accordionList}>
+        <div
+          className={styles.accordionList}
+          role="region"
+          aria-label="FAQ Accordion"
+        >
           {faqs.map((faq, index) => {
             const isOpen = openIndex === index;
+            const buttonId = `faq-btn-${index}`;
+            const panelId = `faq-panel-${index}`;
+
             return (
               <div
-                key={index}
+                key={faq.id || index}
                 className={[styles.accordionItem, isOpen ? styles.itemOpen : '']
                   .filter(Boolean)
                   .join(' ')}
               >
                 <button
+                  type="button"
+                  id={buttonId}
                   className={styles.questionBtn}
                   onClick={() => toggleFAQ(index)}
                   aria-expanded={isOpen}
+                  aria-controls={panelId}
                 >
                   <span className={styles.questionText}>{faq.question}</span>
                   <ChevronDown
@@ -51,12 +64,20 @@ export const FAQSection: React.FC = () => {
                     ]
                       .filter(Boolean)
                       .join(' ')}
+                    aria-hidden="true"
                   />
                 </button>
                 {isOpen && (
-                  <div className={styles.answerBox}>
+                  <div
+                    id={panelId}
+                    role="region"
+                    aria-labelledby={buttonId}
+                    className={styles.answerBox}
+                  >
                     <p className={styles.answerText}>{faq.answer}</p>
-                    <span className={styles.faqCategory}>{faq.category}</span>
+                    {faq.category && (
+                      <span className={styles.faqCategory}>{faq.category}</span>
+                    )}
                   </div>
                 )}
               </div>

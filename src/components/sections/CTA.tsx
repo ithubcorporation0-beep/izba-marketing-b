@@ -1,27 +1,26 @@
 import React from 'react';
-import Link from 'next/link';
-import { ArrowRight, ShieldCheck, Mail, Sparkles } from 'lucide-react';
+import { ArrowRight, ShieldCheck, Sparkles } from 'lucide-react';
 import { Button } from '@/components/ui/Button';
 import styles from './CTA.module.css';
 
 export const CTASection: React.FC = () => {
   return (
-    <section className={styles.section}>
+    <section className={styles.section} aria-labelledby="cta-heading">
       <div className="container">
         <div className={styles.ctaBox}>
           <div className={styles.glow} aria-hidden="true" />
           <div className={styles.content}>
             <span className={styles.subheading}>
               <Sparkles size={16} />
-              <span>Ready to Transform Your Infrastructure?</span>
+              <span>Get Started with IT HUB Corporation</span>
             </span>
-            <h2 className={styles.title}>
-              Let&rsquo;s Engineer Your Next Competitive Advantage
+            <h2 id="cta-heading" className={styles.title}>
+              Ready to Move Your Project Forward?
             </h2>
             <p className={styles.description}>
-              Engage directly with our Solutions Architects. We will analyze
-              your architecture, deliver a prioritized roadmap, and assemble an
-              elite engineering squad within 10 business days.
+              Whether you need a custom website, a targeted marketing campaign,
+              AI automation, or reliable administrative support, we are here to
+              help you build and improve your digital operations.
             </p>
             <div className={styles.actions}>
               <Button
@@ -30,17 +29,17 @@ export const CTASection: React.FC = () => {
                 size="lg"
                 icon={<ArrowRight size={18} />}
               >
-                Schedule Architecture Discovery
+                Request a Quote
               </Button>
               <Button href="/services" variant="secondary" size="lg">
-                Explore Full Service Portfolio
+                Explore All Services
               </Button>
             </div>
             <div className={styles.footnote}>
               <ShieldCheck size={16} className={styles.shieldIcon} />
               <span>
-                Confidentiality guaranteed. Free initial architecture roadmap
-                included.
+                Confidentiality respected. Clear proposals with no hidden
+                commitments.
               </span>
             </div>
           </div>

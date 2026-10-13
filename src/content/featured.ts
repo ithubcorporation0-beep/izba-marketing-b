@@ -93,24 +93,17 @@ export const featuredServices: FeaturedService[] = [
 
 /**
  * Homepage Hero Section Content
- * Clear, accurate, and non-exaggerated copy.
+ * Exact copy from PRD 4.2
  */
 export const heroContent = {
-  badge: 'Technology & Digital Solutions Provider',
-  title: 'Engineering Reliable Solutions for Modern Businesses',
+  badge: 'Technology, Marketing & AI',
+  title: 'Technology, Marketing & AI Solutions for Your Business',
   subtitle:
-    'IT HUB Corporation delivers web and custom software development, digital marketing, AI workflows, creative media, and technical support designed to help organizations operate efficiently.',
+    'From websites and software to digital marketing, creative production, and AI automation, IT HUB Corporation helps businesses move their ideas forward.',
   primaryCtaText: 'Request a Quote',
   primaryCtaLink: '/contact',
-  secondaryCtaText: 'Explore All Services',
+  secondaryCtaText: 'Explore Our Services',
   secondaryCtaLink: '/services',
-  clientLogos: [
-    { name: 'Financial Services', tag: 'Banking & FinTech' },
-    { name: 'Healthcare Systems', tag: 'Health & Wellness' },
-    { name: 'Supply Chain & Logistics', tag: 'Fleet & Cargo' },
-    { name: 'Retail & E-Commerce', tag: 'Online Merchants' },
-    { name: 'Professional Services', tag: 'Legal & Accounting' },
-  ],
 };
 
 /**
@@ -119,27 +112,50 @@ export const heroContent = {
 export const processSteps = [
   {
     step: '01',
-    title: 'Discuss & Discover',
+    title: 'Discuss',
     description:
-      'We conduct an initial requirements session to understand your business objectives, timeline, existing tools, and deliverables.',
+      'We begin with a direct consultation to understand your business objectives, target audience, and project requirements.',
   },
   {
     step: '02',
-    title: 'Plan & Architecture',
+    title: 'Plan',
     description:
-      'Our team drafts a structured project plan with clear milestones, resource allocation, and technical specifications.',
+      'We formulate a clear plan with defined deliverables, practical timelines, and straightforward scope agreements.',
   },
   {
     step: '03',
-    title: 'Build & Create',
+    title: 'Build',
     description:
-      'We execute development, design, or implementation in transparent iterations with routine progress updates.',
+      'Our team crafts your solution using reliable modern tools, clean structure, and consistent progress updates.',
   },
   {
     step: '04',
-    title: 'Review & Deliver',
+    title: 'Deliver and Support',
     description:
-      'Thorough quality assurance and client review ensure all agreed-upon acceptance criteria are fulfilled prior to launch.',
+      'We review the final deliverables with you, complete the handover, and provide dependable ongoing assistance.',
+  },
+];
+
+/**
+ * Verifiable trust points about company operational standards
+ * // TODO: Add verified metrics (years in operation, verified client numbers, client logos)
+ * // once officially confirmed and authorized by the business owner. No invented numbers or fake metrics.
+ */
+export const trustPoints = [
+  {
+    title: 'Clear Communication',
+    description:
+      'Direct, responsive channels with regular project status updates.',
+  },
+  {
+    title: 'Business-Friendly Explanations',
+    description:
+      'We translate complex technical requirements into practical business decisions.',
+  },
+  {
+    title: 'Services Under One Roof',
+    description:
+      'From software and digital marketing to creative design and business support.',
   },
 ];
 

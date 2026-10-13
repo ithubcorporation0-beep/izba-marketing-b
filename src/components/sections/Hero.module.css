@@ -44,9 +44,9 @@
 }
 
 .heroTitle {
-  font-size: clamp(2.3rem, 5vw, 3.8rem);
+  font-size: clamp(2.2rem, 4.5vw, 3.6rem);
   font-weight: 800;
-  line-height: 1.12;
+  line-height: 1.15;
   letter-spacing: -0.03em;
   color: var(--color-text-main);
 }
@@ -74,7 +74,7 @@
 .trustSignals {
   display: flex;
   flex-wrap: wrap;
-  gap: var(--space-lg);
+  gap: var(--space-md) var(--space-xl);
   margin-top: var(--space-sm);
   padding-top: var(--space-md);
   border-top: 1px solid var(--color-border-subtle);
@@ -84,216 +84,119 @@
   display: flex;
   align-items: center;
   gap: 0.5rem;
-  font-size: 0.84rem;
+  font-size: 0.88rem;
   color: var(--color-text-muted);
 }
 
 .trustIcon {
   color: var(--color-accent-cyan);
+  flex-shrink: 0;
 }
 
-/* Engineering Terminal Card */
-.terminalWrapper {
+.trustText {
+  font-weight: 500;
+  color: var(--color-text-main);
+}
+
+/* Abstract CSS/SVG Geometric Visual */
+.visualWrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
   width: 100%;
 }
 
-.terminalCard {
-  background: rgba(10, 14, 28, 0.95);
-  backdrop-filter: blur(20px);
-  border: 1px solid var(--color-border-medium);
+.abstractGraphic {
+  position: relative;
+  width: 100%;
+  max-width: 480px;
+  aspect-ratio: 1 / 1;
   border-radius: var(--radius-xl);
-  box-shadow:
-    0 20px 50px rgba(0, 0, 0, 0.6),
-    0 0 30px rgba(0, 242, 254, 0.12);
+  background: radial-gradient(
+    circle at 50% 50%,
+    rgba(37, 99, 235, 0.08) 0%,
+    rgba(15, 23, 42, 0.02) 70%
+  );
+  border: 1px solid var(--color-border-subtle);
+  box-shadow: 0 20px 40px -15px rgba(0, 0, 0, 0.07);
+  display: flex;
+  align-items: center;
+  justify-content: center;
   overflow: hidden;
 }
 
-.terminalHeader {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 0.8rem 1.2rem;
-  background: rgba(22, 32, 63, 0.5);
-  border-bottom: 1px solid var(--color-border-subtle);
+.graphicGlow {
+  position: absolute;
+  width: 250px;
+  height: 250px;
+  background: radial-gradient(
+    circle,
+    rgba(37, 99, 235, 0.25) 0%,
+    rgba(6, 182, 212, 0.15) 50%,
+    transparent 70%
+  );
+  filter: blur(40px);
+  pointer-events: none;
 }
 
-.terminalDots {
-  display: flex;
-  gap: 6px;
-}
-
-.dotRed {
-  width: 10px;
-  height: 10px;
-  border-radius: 50%;
-  background: #ff5f56;
-}
-
-.dotYellow {
-  width: 10px;
-  height: 10px;
-  border-radius: 50%;
-  background: #ffbd2e;
-}
-
-.dotGreen {
-  width: 10px;
-  height: 10px;
-  border-radius: 50%;
-  background: #27c93f;
-}
-
-.terminalTitle {
-  display: flex;
-  align-items: center;
-  gap: 0.4rem;
-  font-family: var(--font-mono);
-  font-size: 0.78rem;
-  color: var(--color-text-subtle);
-}
-
-.liveIndicator {
-  font-family: var(--font-mono);
-  font-size: 0.72rem;
-  font-weight: 700;
-  color: var(--color-accent-emerald);
-  background: rgba(0, 245, 160, 0.1);
-  padding: 0.15rem 0.5rem;
-  border-radius: var(--radius-xs);
-  border: 1px solid rgba(0, 245, 160, 0.25);
-}
-
-.terminalBody {
-  padding: 1.4rem;
-  font-family: var(--font-mono);
-  font-size: 0.86rem;
-  display: flex;
-  flex-direction: column;
-  gap: 0.75rem;
-}
-
-.terminalLine {
-  display: flex;
-  align-items: center;
-  gap: 0.6rem;
-}
-
-.prompt {
-  color: var(--color-accent-cyan);
-  font-weight: 700;
-}
-
-.cmd {
-  color: var(--color-text-main);
-}
-
-.terminalOutput {
+.svgGraphic {
+  width: 90%;
+  height: 90%;
   color: var(--color-text-muted);
-  line-height: 1.5;
-  font-size: 0.82rem;
 }
 
-.outputSuccess {
-  color: var(--color-accent-cyan);
+.gridStroke {
+  color: var(--color-text-muted);
 }
 
-.metricsBox {
-  margin-top: 1rem;
-  padding: 1rem;
-  background: rgba(15, 21, 43, 0.8);
+/* Glass badges on the graphic */
+.glassBadge1 {
+  position: absolute;
+  top: 18px;
+  left: 20px;
+  padding: 6px 12px;
+  background: rgba(255, 255, 255, 0.8);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
   border: 1px solid var(--color-border-subtle);
-  border-radius: var(--radius-md);
-  display: flex;
-  align-items: center;
-  justify-content: space-around;
-}
-
-.metricItem {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
-
-.metricVal {
-  font-size: 1.3rem;
-  font-weight: 800;
-  color: var(--color-accent-cyan);
-}
-
-.metricLbl {
-  font-size: 0.7rem;
-  text-transform: uppercase;
-  color: var(--color-text-subtle);
-  margin-top: 0.15rem;
-}
-
-.metricDivider {
-  width: 1px;
-  height: 30px;
-  background: var(--color-border-subtle);
-}
-
-/* Client logos section */
-.clientSection {
-  margin-top: var(--space-4xl);
-  padding-top: var(--space-xl);
-  border-top: 1px solid var(--color-border-subtle);
-}
-
-.clientLabel {
-  font-size: 0.82rem;
-  text-transform: uppercase;
-  letter-spacing: 0.08em;
-  color: var(--color-text-subtle);
-  text-align: center;
-  margin-bottom: var(--space-lg);
+  border-radius: var(--radius-full);
+  font-size: 0.75rem;
   font-weight: 600;
-}
-
-.logoGrid {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: var(--space-md);
-}
-
-@media (min-width: 640px) {
-  .logoGrid {
-    grid-template-columns: repeat(3, 1fr);
-  }
-}
-
-@media (min-width: 1024px) {
-  .logoGrid {
-    grid-template-columns: repeat(5, 1fr);
-  }
-}
-
-.logoItem {
-  padding: 0.85rem 1rem;
-  background: rgba(255, 255, 255, 0.02);
-  border: 1px solid var(--color-border-subtle);
-  border-radius: var(--radius-md);
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  text-align: center;
-  transition: all var(--transition-fast);
-}
-
-.logoItem:hover {
-  background: rgba(255, 255, 255, 0.05);
-  border-color: var(--color-border-medium);
-  transform: translateY(-2px);
-}
-
-.clientName {
-  font-weight: 700;
-  font-size: 0.95rem;
   color: var(--color-text-main);
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  box-shadow: var(--shadow-sm);
 }
 
-.clientTag {
-  font-size: 0.7rem;
-  color: var(--color-text-subtle);
-  margin-top: 0.15rem;
+:global(.dark) .glassBadge1 {
+  background: rgba(30, 41, 59, 0.8);
+}
+
+.pulseDot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background-color: var(--color-accent-cyan);
+  box-shadow: 0 0 8px var(--color-accent-cyan);
+}
+
+.glassBadge2 {
+  position: absolute;
+  bottom: 20px;
+  right: 20px;
+  padding: 6px 14px;
+  background: rgba(255, 255, 255, 0.85);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid var(--color-border-subtle);
+  border-radius: var(--radius-full);
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: var(--color-text-muted);
+  box-shadow: var(--shadow-sm);
+}
+
+:global(.dark) .glassBadge2 {
+  background: rgba(30, 41, 59, 0.85);
 }
