@@ -1,98 +1,185 @@
 'use client';
 
-import React, { useState, useMemo } from 'react';
-import { Search, SlidersHorizontal } from 'lucide-react';
+import React, { useState, useMemo, useEffect, Suspense } from 'react';
+import { useSearchParams, useRouter, usePathname } from 'next/navigation';
+import Link from 'next/link';
+import {
+  Search,
+  X,
+  RotateCcw,
+  ArrowRight,
+  Layers,
+  HelpCircle,
+} from 'lucide-react';
 import { Service, Category } from '@/types';
 import { ServiceCard } from './ServiceCard';
+import { Button } from '@/components/ui/Button';
+import { Badge } from '@/components/ui/Badge';
 import styles from './ServiceSearch.module.css';
 
-interface ServiceSearchProps {
+interface ServiceSearchInnerProps {
   services: Service[];
   categories: Category[];
-  initialCategory?: string;
 }
 
-export const ServiceSearch: React.FC<ServiceSearchProps> = ({
+const ServiceSearchInner: React.FC<ServiceSearchInnerProps> = ({
   services,
   categories,
-  initialCategory = 'all',
 }) => {
+  const searchParams = useSearchParams();
+  const router = useRouter();
+  const pathname = usePathname();
+
+  const urlCategory = searchParams?.get('category') || 'all';
+
   const [searchQuery, setSearchQuery] = useState('');
-  const [selectedCategory, setSelectedCategory] = useState(initialCategory);
+  const [selectedCategory, setSelectedCategory] = useState(urlCategory);
 
-  const filteredServices = useMemo(() => {
-    return services.filter((service) => {
-      const matchesCategory =
-        selectedCategory === 'all' ||
-        service.categorySlug === selectedCategory ||
-        service.category === selectedCategory;
+  // Sync category if URL parameter changes
+  useEffect(() => {
+    if (urlCategory) {
+      setSelectedCategory(urlCategory);
+    }
+  }, [urlCategory]);
 
-      const query = searchQuery.toLowerCase().trim();
-      const serviceTitle = (service.name || service.title || '').toLowerCase();
-      const serviceDesc = (service.shortDescription || '').toLowerCase();
-      const matchesSearch =
-        !query ||
-        serviceTitle.includes(query) ||
-        serviceDesc.includes(query) ||
-        (service.technologies || []).some((tech) =>
-          tech.toLowerCase().includes(query)
-        ) ||
-        (service.includes || []).some((inc) =>
-          inc.toLowerCase().includes(query)
-        );
+  const handleCategoryChange = (newCat: string) => {
+    setSelectedCategory(newCat);
+    const params = new URLSearchParams(searchParams?.toString() || '');
+    if (newCat === 'all') {
+      params.delete('category');
+    } else {
+      params.set('category', newCat);
+    }
+    const newQuery = params.toString() ? `?${params.toString()}` : '';
+    router.replace(`${pathname}${newQuery}`, { scroll: false });
+  };
 
-      return matchesCategory && matchesSearch;
+  const handleReset = () => {
+    setSearchQuery('');
+    setSelectedCategory('all');
+    router.replace(pathname, { scroll: false });
+  };
+
+  // Group services by category after applying search & category filter
+  const { groupedResults, totalCount } = useMemo(() => {
+    const q = searchQuery.toLowerCase().trim();
+
+    let count = 0;
+    const groups: Array<{
+      category: Category;
+      services: Service[];
+    }> = [];
+
+    // Filter categories to display
+    const targetCategories =
+      selectedCategory === 'all'
+        ? categories
+        : categories.filter(
+            (c) => c.slug === selectedCategory || c.id === selectedCategory
+          );
+
+    targetCategories.forEach((cat) => {
+      const catServices = services.filter((s) => {
+        const matchesCategory =
+          s.categorySlug === cat.slug || s.category === cat.id;
+        if (!matchesCategory) return false;
+
+        if (!q) return true;
+
+        const title = (s.name || s.title || '').toLowerCase();
+        const desc = (s.shortDescription || '').toLowerCase();
+        return title.includes(q) || desc.includes(q);
+      });
+
+      if (catServices.length > 0) {
+        count += catServices.length;
+        groups.push({
+          category: cat,
+          services: catServices,
+        });
+      }
     });
-  }, [services, selectedCategory, searchQuery]);
+
+    return { groupedResults: groups, totalCount: count };
+  }, [services, categories, searchQuery, selectedCategory]);
+
+  const isFiltered = searchQuery.trim() !== '' || selectedCategory !== 'all';
 
   return (
     <div className={styles.wrapper}>
-      <div className={styles.controls}>
-        <div className={styles.searchBar}>
-          <Search size={20} className={styles.searchIcon} />
-          <input
-            type="search"
-            value={searchQuery}
-            onChange={(e) => setSearchQuery(e.target.value)}
-            placeholder="Search services by keyword (e.g. Website, SEO, Python, AI)..."
-            className={styles.searchInput}
-            aria-label="Search IT services"
-          />
+      {/* Search & Filter Controls */}
+      <div className={styles.controlsBar}>
+        <div className={styles.searchBox}>
+          <label htmlFor="service-search-input" className={styles.searchLabel}>
+            Search services
+          </label>
+          <div className={styles.inputWrapper}>
+            <Search
+              size={18}
+              className={styles.searchIcon}
+              aria-hidden="true"
+            />
+            <input
+              id="service-search-input"
+              type="search"
+              value={searchQuery}
+              onChange={(e) => setSearchQuery(e.target.value)}
+              placeholder="Search by service name or description (e.g. Website, SEO, AI, Design)..."
+              className={styles.searchInput}
+              aria-describedby="search-live-status"
+            />
+            {searchQuery && (
+              <button
+                type="button"
+                onClick={() => setSearchQuery('')}
+                className={styles.clearBtn}
+                aria-label="Clear search input"
+              >
+                <X size={16} />
+              </button>
+            )}
+          </div>
         </div>
 
+        {/* Category Pills Filter */}
         <div
-          className={styles.categoryTabs}
-          role="tablist"
-          aria-label="Filter by Service Category"
+          className={styles.categoryFilter}
+          role="group"
+          aria-label="Filter directory by category"
         >
           <button
-            role="tab"
-            aria-selected={selectedCategory === 'all'}
-            onClick={() => setSelectedCategory('all')}
+            type="button"
+            onClick={() => handleCategoryChange('all')}
             className={[
-              styles.tab,
-              selectedCategory === 'all' ? styles.activeTab : '',
+              styles.categoryPill,
+              selectedCategory === 'all' ? styles.activePill : '',
             ]
               .filter(Boolean)
               .join(' ')}
+            aria-pressed={selectedCategory === 'all'}
           >
-            All Services ({services.length})
+            All Categories ({services.length})
           </button>
+
           {categories.map((cat) => {
+            const isSelected =
+              selectedCategory === cat.slug || selectedCategory === cat.id;
             const count = services.filter(
               (s) => s.categorySlug === cat.slug || s.category === cat.id
             ).length;
-            const catKey = cat.slug || cat.id;
-            const isSelected = selectedCategory === catKey;
+
             return (
               <button
                 key={cat.id}
-                role="tab"
-                aria-selected={isSelected}
-                onClick={() => setSelectedCategory(catKey)}
-                className={[styles.tab, isSelected ? styles.activeTab : '']
+                type="button"
+                onClick={() => handleCategoryChange(cat.slug)}
+                className={[
+                  styles.categoryPill,
+                  isSelected ? styles.activePill : '',
+                ]
                   .filter(Boolean)
                   .join(' ')}
+                aria-pressed={isSelected}
               >
                 {cat.name || cat.title} ({count})
               </button>
@@ -101,48 +188,117 @@ export const ServiceSearch: React.FC<ServiceSearchProps> = ({
         </div>
       </div>
 
-      <div className={styles.resultsInfo}>
-        <span>
-          Showing {filteredServices.length}{' '}
-          {filteredServices.length === 1 ? 'service' : 'services'}
-        </span>
-        {searchQuery && (
+      {/* Screen Reader Live Announcement */}
+      <div
+        id="search-live-status"
+        className="sr-only"
+        aria-live="polite"
+        aria-atomic="true"
+      >
+        {`${totalCount} services found matching your criteria.`}
+      </div>
+
+      {/* Result Status & Reset Control */}
+      <div className={styles.statusBar}>
+        <div className={styles.resultCount}>
+          <span className={styles.countNumber}>{totalCount}</span>
+          <span>
+            {totalCount === 1 ? 'service' : 'services'} available
+            {selectedCategory !== 'all'
+              ? ' in this category'
+              : ' across 9 disciplines'}
+          </span>
+        </div>
+
+        {isFiltered && (
           <button
-            onClick={() => setSearchQuery('')}
-            className={styles.clearBtn}
+            type="button"
+            onClick={handleReset}
+            className={styles.resetFilterBtn}
+            aria-label="Reset all search filters"
           >
-            Clear search
+            <RotateCcw size={14} />
+            <span>Reset Filters</span>
           </button>
         )}
       </div>
 
-      {filteredServices.length > 0 ? (
-        <div className={styles.grid}>
-          {filteredServices.map((service) => (
-            <ServiceCard key={service.id} service={service} />
-          ))}
+      {/* Directory Content (Always grouped under its category) */}
+      {totalCount === 0 ? (
+        <div className={styles.emptyState}>
+          <div className={styles.emptyIconCircle}>
+            <Search size={28} className={styles.emptyIcon} />
+          </div>
+          <h3 className={styles.emptyTitle}>No services found</h3>
+          <p className={styles.emptyText}>
+            We couldn&apos;t find any service matching &ldquo;{searchQuery}
+            &rdquo;
+            {selectedCategory !== 'all' ? ' in the selected category' : ''}. Try
+            searching with broader terms or clear your filters to view the full
+            directory.
+          </p>
+          <Button
+            onClick={handleReset}
+            variant="secondary"
+            size="md"
+            icon={<RotateCcw size={16} />}
+          >
+            Reset All Filters
+          </Button>
         </div>
       ) : (
-        <div className={styles.noResults}>
-          <div className={styles.noResultsIcon}>
-            <SlidersHorizontal size={36} />
-          </div>
-          <h3>No services match your criteria</h3>
-          <p>
-            Try refining your search term or selecting &ldquo;All
-            Services&rdquo;.
-          </p>
-          <button
-            onClick={() => {
-              setSearchQuery('');
-              setSelectedCategory('all');
-            }}
-            className={styles.resetBtn}
-          >
-            Reset Filters
-          </button>
+        <div className={styles.directoryGroups}>
+          {groupedResults.map(({ category, services: catServices }) => (
+            <section
+              key={category.id}
+              className={styles.categorySection}
+              aria-labelledby={`cat-heading-${category.slug}`}
+            >
+              <div className={styles.categoryHeader}>
+                <div className={styles.categoryInfo}>
+                  <Badge variant="blue" size="sm">
+                    {catServices.length}{' '}
+                    {catServices.length === 1 ? 'Service' : 'Services'}
+                  </Badge>
+                  <h3
+                    id={`cat-heading-${category.slug}`}
+                    className={styles.categoryTitle}
+                  >
+                    {category.name || category.title}
+                  </h3>
+                  <p className={styles.categoryDesc}>
+                    {category.shortDescription || category.description}
+                  </p>
+                </div>
+                <Link
+                  href={`/services/category/${category.slug}`}
+                  className={styles.categoryLandingLink}
+                  aria-label={`View dedicated page for ${category.title}`}
+                >
+                  <span>Category Overview</span>
+                  <ArrowRight size={14} />
+                </Link>
+              </div>
+
+              <div className={styles.servicesGrid}>
+                {catServices.map((service) => (
+                  <ServiceCard key={service.id} service={service} />
+                ))}
+              </div>
+            </section>
+          ))}
         </div>
       )}
     </div>
+  );
+};
+
+export const ServiceSearch: React.FC<ServiceSearchInnerProps> = (props) => {
+  return (
+    <Suspense
+      fallback={<div className={styles.loading}>Loading directory...</div>}
+    >
+      <ServiceSearchInner {...props} />
+    </Suspense>
   );
 };

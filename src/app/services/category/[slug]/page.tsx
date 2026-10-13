@@ -2,11 +2,13 @@ import React from 'react';
 import type { Metadata } from 'next';
 import { notFound } from 'next/navigation';
 import Link from 'next/link';
-import { ArrowLeft } from 'lucide-react';
+import { ArrowLeft, ArrowRight } from 'lucide-react';
 import { categories } from '@/content/categories';
 import { services } from '@/content/services';
 import { constructMetadata } from '@/lib/seo/metadata';
 import { ServiceCard } from '@/components/services/ServiceCard';
+import { CategoryCard } from '@/components/services/CategoryCard';
+import { Breadcrumb } from '@/components/ui/Breadcrumb';
 import { Badge } from '@/components/ui/Badge';
 import { CTASection } from '@/components/sections/CTA';
 import styles from './page.module.css';
@@ -31,7 +33,7 @@ export async function generateMetadata({
 
   if (!category) {
     return {
-      title: 'Category Not Found',
+      title: 'Category Not Found | IT HUB Corporation',
     };
   }
 
@@ -39,7 +41,7 @@ export async function generateMetadata({
   const categoryDesc = category.shortDescription || category.description;
 
   return constructMetadata({
-    title: `${categoryName} — Services`,
+    title: `${categoryName} Services | IT HUB Corporation`,
     description: categoryDesc,
     pathname: `/services/category/${category.slug}`,
   });
@@ -55,7 +57,7 @@ export default async function CategoryServicesPage({
     notFound();
   }
 
-  const categoryName = category.name || category.title;
+  const categoryName: string = category.name || category.title || 'Category';
   const categoryDesc = category.shortDescription || category.description;
   const categoryServices = services.filter(
     (s) => s.categorySlug === category.slug || s.category === category.id
@@ -63,56 +65,75 @@ export default async function CategoryServicesPage({
 
   return (
     <div className={styles.categoryPageWrapper}>
+      {/* Breadcrumb Navigation */}
       <div className={styles.topBar}>
         <div className="container">
-          <Link href="/services" className={styles.backLink}>
-            <ArrowLeft size={16} />
-            <span>Back to All Services</span>
-          </Link>
+          <Breadcrumb
+            items={[
+              { label: 'Services', href: '/services' },
+              { label: categoryName },
+            ]}
+          />
         </div>
       </div>
 
-      <section className={styles.headerSection}>
+      {/* Category Intro Header */}
+      <header className={styles.headerSection}>
         <div className={`container ${styles.headerContainer}`}>
-          <Badge variant="cyan" size="md">
+          <Badge variant="blue" size="md">
             Service Category
           </Badge>
           <h1 className={styles.title}>{categoryName}</h1>
           <p className={styles.subtitle}>{categoryDesc}</p>
         </div>
-      </section>
+      </header>
 
-      <section className={styles.servicesSection}>
+      {/* 10 Service Cards Grid */}
+      <section
+        className={styles.servicesSection}
+        aria-labelledby="services-list-heading"
+      >
         <div className="container">
+          <div className={styles.sectionHeadingBox}>
+            <h2 id="services-list-heading" className={styles.sectionHeading}>
+              {categoryServices.length} Specialized Services
+            </h2>
+            <p className={styles.sectionSub}>
+              Detailed technical, marketing, and creative capabilities available
+              within {categoryName}.
+            </p>
+          </div>
+
           <div className={styles.grid}>
             {categoryServices.map((service) => (
               <ServiceCard key={service.id} service={service} />
             ))}
           </div>
 
-          <div className={styles.otherCategoriesSection}>
-            <h3>Explore Other Service Categories</h3>
+          {/* Related Categories */}
+          <div
+            className={styles.otherCategoriesSection}
+            aria-labelledby="related-categories-heading"
+          >
+            <h2
+              id="related-categories-heading"
+              className={styles.relatedHeading}
+            >
+              Explore Related Categories
+            </h2>
             <div className={styles.otherCategoriesGrid}>
               {categories
                 .filter((c) => c.id !== category.id)
+                .slice(0, 3)
                 .map((cat) => (
-                  <Link
-                    key={cat.id}
-                    href={`/services/category/${cat.slug}`}
-                    className={styles.catCard}
-                  >
-                    <h4>{cat.name || cat.title}</h4>
-                    <p>{cat.shortDescription}</p>
-                    <span className={styles.catLinkText}>
-                      View Services &rarr;
-                    </span>
-                  </Link>
+                  <CategoryCard key={cat.id} category={cat} serviceCount={10} />
                 ))}
             </div>
           </div>
         </div>
       </section>
 
+      {/* Quote CTA */}
       <CTASection />
     </div>
   );

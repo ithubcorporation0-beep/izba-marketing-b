@@ -9,6 +9,7 @@
     "lint": "eslint .",
     "typecheck": "tsc --noEmit",
     "check:content": "tsx scripts/check-content.ts",
+    "check:links": "node scripts/check-links.mjs",
     "format": "prettier --write ."
   },
   "dependencies": {

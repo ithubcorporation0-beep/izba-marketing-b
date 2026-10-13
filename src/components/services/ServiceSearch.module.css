@@ -4,154 +4,284 @@
   gap: var(--space-xl);
 }
 
-.controls {
-  display: flex;
-  flex-direction: column;
-  gap: var(--space-lg);
+.loading {
+  padding: var(--space-2xl);
+  text-align: center;
+  color: var(--color-text-muted);
 }
 
-.searchBar {
+.controlsBar {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-md);
+  padding: var(--space-xl);
+  background: var(--color-surface-card);
+  border: 1px solid var(--color-border-subtle);
+  border-radius: var(--radius-xl);
+  box-shadow: var(--shadow-sm);
+}
+
+.searchBox {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+}
+
+.searchLabel {
+  font-size: 0.88rem;
+  font-weight: 600;
+  color: var(--color-text-main);
+}
+
+.inputWrapper {
   position: relative;
+  display: flex;
+  align-items: center;
   width: 100%;
 }
 
 .searchIcon {
   position: absolute;
-  left: 1.2rem;
-  top: 50%;
-  transform: translateY(-50%);
-  color: var(--color-text-subtle);
+  left: 14px;
+  color: var(--color-text-muted);
   pointer-events: none;
 }
 
 .searchInput {
   width: 100%;
-  padding: 1rem 1rem 1rem 3.2rem;
-  background: var(--color-bg-surface-elevated);
+  padding: 12px 40px 12px 42px;
+  border-radius: var(--radius-md);
   border: 1px solid var(--color-border-subtle);
-  border-radius: var(--radius-lg);
+  background: var(--color-surface-sunken);
   color: var(--color-text-main);
-  font-size: 1rem;
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.25);
-  transition: all var(--transition-normal);
-  outline: none;
+  font-size: 0.95rem;
+  transition:
+    border-color var(--transition-fast),
+    box-shadow var(--transition-fast);
 }
 
 .searchInput:focus {
-  border-color: var(--color-accent-cyan);
-  box-shadow: 0 0 0 3px rgba(0, 242, 254, 0.15);
-  background: var(--color-bg-surface);
-}
-
-.categoryTabs {
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-  overflow-x: auto;
-  padding-bottom: 0.5rem;
-  scrollbar-width: none;
-}
-
-.categoryTabs::-webkit-scrollbar {
-  display: none;
-}
-
-.tab {
-  padding: 0.55rem 1.1rem;
-  border-radius: var(--radius-pill);
-  font-size: 0.88rem;
-  font-weight: 500;
-  color: var(--color-text-muted);
-  background: var(--color-bg-surface-elevated);
-  border: 1px solid var(--color-border-subtle);
-  white-space: nowrap;
-  transition: all var(--transition-fast);
-  cursor: pointer;
-}
-
-.tab:hover {
-  background: var(--color-bg-surface-hover);
-  color: var(--color-text-main);
-  border-color: var(--color-border-medium);
-}
-
-.activeTab {
-  background: var(--gradient-brand) !important;
-  color: var(--color-text-inverse) !important;
-  border-color: transparent !important;
-  font-weight: 700;
-  box-shadow: 0 4px 15px rgba(0, 242, 254, 0.3);
-}
-
-.resultsInfo {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  font-size: 0.88rem;
-  color: var(--color-text-subtle);
+  outline: none;
+  border-color: var(--color-primary-blue);
+  box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.15);
 }
 
 .clearBtn {
-  color: var(--color-accent-cyan);
-  font-size: 0.85rem;
+  position: absolute;
+  right: 12px;
+  background: none;
+  border: none;
+  padding: 4px;
+  color: var(--color-text-muted);
   cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: var(--radius-sm);
 }
 
 .clearBtn:hover {
+  color: var(--color-text-main);
+}
+
+/* Category Filter Pills */
+.categoryFilter {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  padding-top: var(--space-xs);
+  border-top: 1px solid var(--color-border-subtle);
+}
+
+.categoryPill {
+  padding: 6px 14px;
+  border-radius: var(--radius-full);
+  border: 1px solid var(--color-border-subtle);
+  background: var(--color-surface-sunken);
+  color: var(--color-text-muted);
+  font-size: 0.84rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all var(--transition-fast);
+}
+
+.categoryPill:hover {
+  border-color: var(--color-primary-blue);
+  color: var(--color-text-main);
+}
+
+.activePill {
+  background: var(--color-primary-blue);
+  border-color: var(--color-primary-blue);
+  color: #ffffff;
+  font-weight: 600;
+}
+
+.activePill:hover {
+  background: var(--color-primary-hover);
+  color: #ffffff;
+}
+
+/* Status Bar */
+.statusBar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 var(--space-xs);
+  font-size: 0.92rem;
+  color: var(--color-text-muted);
+}
+
+.resultCount {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+}
+
+.countNumber {
+  font-weight: 700;
+  color: var(--color-text-main);
+}
+
+.resetFilterBtn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  background: none;
+  border: none;
+  color: var(--color-primary-blue);
+  font-size: 0.86rem;
+  font-weight: 600;
+  cursor: pointer;
+  padding: 4px 8px;
+  border-radius: var(--radius-sm);
+  transition: background-color var(--transition-fast);
+}
+
+.resetFilterBtn:hover {
+  background: rgba(37, 99, 235, 0.08);
   text-decoration: underline;
 }
 
-.grid {
-  display: grid;
-  grid-template-columns: 1fr;
-  gap: var(--space-xl);
-}
-
-@media (min-width: 768px) {
-  .grid {
-    grid-template-columns: repeat(2, 1fr);
-  }
-}
-
-@media (min-width: 1120px) {
-  .grid {
-    grid-template-columns: repeat(3, 1fr);
-  }
-}
-
-.noResults {
-  text-align: center;
-  padding: var(--space-4xl) var(--space-xl);
-  background: var(--color-bg-surface);
-  border: 1px dashed var(--color-border-medium);
+/* Empty State */
+.emptyState {
+  padding: var(--space-3xl) var(--space-xl);
+  background: var(--color-surface-card);
+  border: 1px dashed var(--color-border-subtle);
   border-radius: var(--radius-xl);
+  text-align: center;
   display: flex;
   flex-direction: column;
   align-items: center;
   gap: var(--space-md);
 }
 
-.noResultsIcon {
-  color: var(--color-text-subtle);
-  margin-bottom: var(--space-xs);
+.emptyIconCircle {
+  width: 56px;
+  height: 56px;
+  border-radius: var(--radius-full);
+  background: rgba(37, 99, 235, 0.08);
+  color: var(--color-primary-blue);
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
-.noResults h3 {
-  font-size: 1.3rem;
+.emptyTitle {
+  font-size: 1.35rem;
+  font-weight: 700;
   color: var(--color-text-main);
 }
 
-.noResults p {
-  color: var(--color-text-muted);
+.emptyText {
   font-size: 0.95rem;
+  color: var(--color-text-muted);
+  max-width: 520px;
+  line-height: 1.6;
 }
 
-.resetBtn {
-  margin-top: var(--space-sm);
-  padding: 0.6rem 1.2rem;
-  border-radius: var(--radius-md);
-  background: var(--color-bg-surface-elevated);
-  border: 1px solid var(--color-border-medium);
-  color: var(--color-accent-cyan);
+/* Grouped Directory Sections */
+.directoryGroups {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3xl);
+}
+
+.categorySection {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-lg);
+  padding: var(--space-2xl);
+  background: var(--color-surface-sunken);
+  border: 1px solid var(--color-border-subtle);
+  border-radius: var(--radius-xl);
+}
+
+.categoryHeader {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-sm);
+  padding-bottom: var(--space-md);
+  border-bottom: 1px solid var(--color-border-subtle);
+}
+
+@media (min-width: 768px) {
+  .categoryHeader {
+    flex-direction: row;
+    align-items: flex-end;
+    justify-content: space-between;
+  }
+}
+
+.categoryInfo {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2xs);
+  max-width: 680px;
+}
+
+.categoryTitle {
+  font-size: 1.45rem;
+  font-weight: 800;
+  color: var(--color-text-main);
+  letter-spacing: -0.01em;
+}
+
+.categoryDesc {
+  font-size: 0.92rem;
+  line-height: 1.55;
+  color: var(--color-text-muted);
+}
+
+.categoryLandingLink {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  font-size: 0.88rem;
   font-weight: 600;
+  color: var(--color-primary-blue);
+  text-decoration: none;
+  white-space: nowrap;
+}
+
+.categoryLandingLink:hover {
+  text-decoration: underline;
+}
+
+.servicesGrid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--space-lg);
+}
+
+@media (min-width: 640px) {
+  .servicesGrid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (min-width: 1024px) {
+  .servicesGrid {
+    grid-template-columns: repeat(3, 1fr);
+  }
 }
