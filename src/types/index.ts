@@ -3,6 +3,32 @@
  * Derived from PRD sections 5, 6, 8.1, and 12.
  */
 
+export interface CategoryServiceItem {
+  id: string;
+  name: string;
+  slug: string;
+  outcomeDescription: string; // 1 to 2 sentence outcome-focused description
+  bestFor: string; // "Best for ..." text
+  shortDescription?: string;
+  description?: string[];
+  includes?: string[];
+  deliverables?: string[];
+  faqs?: ServiceFaq[];
+  status?: 'draft' | 'published' | 'archived';
+  isFeatured?: boolean;
+}
+
+export interface CategoryProcessStep {
+  step: number;
+  title: string;
+  description: string;
+}
+
+export interface CategoryFaq {
+  question: string;
+  answer: string;
+}
+
 export interface Category {
   id: string;
   name: string;
@@ -11,9 +37,23 @@ export interface Category {
   icon: string;
   sortOrder: number;
   isPublished: boolean;
+  services?: CategoryServiceItem[];
   // Compatibility aliases
   title?: string;
   description?: string;
+}
+
+export interface CategoryDetail extends Category {
+  oneSentencePromise: string;
+  whoItIsFor: string[];
+  services: CategoryServiceItem[];
+  process: CategoryProcessStep[];
+  startingPricePkr: number | null;
+  typicalTimeline: string | null;
+  faqs: CategoryFaq[];
+  relatedCategorySlugs: string[];
+  seoTitle: string;
+  seoDescription: string;
 }
 
 export interface ServiceProcessStep {

@@ -25,7 +25,7 @@ export const ServiceCard: React.FC<ServiceCardProps> = ({
     >
       <div className={styles.content}>
         <h3 className={styles.title}>
-          <Link href={`/services/${service.slug}`} className={styles.titleLink}>
+          <Link href={`/services/${service.categorySlug}#${service.slug}`} className={styles.titleLink}>
             {serviceTitle}
           </Link>
         </h3>
@@ -49,7 +49,7 @@ export const ServiceCard: React.FC<ServiceCardProps> = ({
 
       <div className={styles.footer}>
         <Link
-          href={`/services/${service.slug}`}
+          href={`/services/${service.categorySlug}#${service.slug}`}
           className={styles.learnMoreLink}
           aria-label={`View full details for ${serviceTitle}`}
         >

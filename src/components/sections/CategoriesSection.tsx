@@ -66,13 +66,15 @@ export const CategoriesSection: React.FC = () => {
         <RevealStagger className={styles.grid}>
           {categories.map((category) => {
             const icon = iconMap[category.icon] || <Sparkles size={22} strokeWidth={1.8} />;
-            // Dynamically computed from real service catalog data
-            const serviceCount = getServicesByCategory(category.slug).length;
+            // Dynamically computed from category services
+            const serviceCount = category.services
+              ? category.services.length
+              : getServicesByCategory(category.slug).length;
 
             return (
               <Link
                 key={category.id}
-                href={`/services/category/${category.slug}`}
+                href={`/services/${category.slug}`}
                 className={styles.cardLink}
                 aria-label={`View ${category.title} services`}
               >

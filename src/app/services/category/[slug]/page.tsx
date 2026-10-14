@@ -1,153 +1,21 @@
-import React from 'react';
-import type { Metadata } from 'next';
-import { notFound } from 'next/navigation';
-import { siteConfig } from '@/config/site';
-import { categories } from '@/content/categories';
-import { services } from '@/content/services';
-import { constructMetadata } from '@/lib/seo/metadata';
-import { getBreadcrumbJsonLd } from '@/lib/seo/jsonLd';
-import { JsonLd } from '@/components/seo/JsonLd';
-import { ServiceCard } from '@/components/services/ServiceCard';
-import { CategoryCard } from '@/components/services/CategoryCard';
-import { Breadcrumb } from '@/components/ui/Breadcrumb';
-import { Badge } from '@/components/ui/Badge';
-import { CTASection } from '@/components/sections/CTA';
-import { Reveal, RevealStagger } from '@/components/ui/motion';
-import styles from './page.module.css';
+import { permanentRedirect } from 'next/navigation';
+import { serviceCategories } from '@/content/services';
 
-interface CategoryPageProps {
+interface LegacyCategoryPageProps {
   params: Promise<{
     slug: string;
   }>;
 }
 
 export async function generateStaticParams() {
-  return categories.map((cat) => ({
+  return serviceCategories.map((cat) => ({
     slug: cat.slug,
   }));
 }
 
-export async function generateMetadata({
+export default async function LegacyCategoryRedirectPage({
   params,
-}: CategoryPageProps): Promise<Metadata> {
+}: LegacyCategoryPageProps) {
   const { slug } = await params;
-  const category = categories.find((c) => c.slug === slug);
-
-  if (!category) {
-    return {
-      title: `Category Not Found | ${siteConfig.name}`,
-    };
-  }
-
-  const categoryName = category.name || category.title;
-  const categoryDesc = category.shortDescription || category.description;
-
-  return constructMetadata({
-    title: `${categoryName} Services`,
-    description: categoryDesc,
-    pathname: `/services/category/${category.slug}`,
-  });
-}
-
-export default async function CategoryServicesPage({
-  params,
-}: CategoryPageProps) {
-  const { slug } = await params;
-  const category = categories.find((c) => c.slug === slug);
-
-  if (!category) {
-    notFound();
-  }
-
-  const categoryName: string = category.name || category.title || 'Category';
-  const categoryDesc = category.shortDescription || category.description;
-  const categoryServices = services.filter(
-    (s) => s.categorySlug === category.slug || s.category === category.id
-  );
-
-  const breadcrumbData = getBreadcrumbJsonLd([
-    { name: 'Home', path: '/' },
-    { name: 'Services', path: '/services' },
-    { name: categoryName, path: `/services/category/${category.slug}` },
-  ]);
-
-  return (
-    <div className={styles.categoryPageWrapper}>
-      <JsonLd data={breadcrumbData} />
-      {/* Breadcrumb Navigation */}
-      <div className={styles.topBar}>
-        <div className="container">
-          <Breadcrumb
-            items={[
-              { label: 'Services', href: '/services' },
-              { label: categoryName },
-            ]}
-          />
-        </div>
-      </div>
-
-      {/* Category Intro Header */}
-      <header className={styles.headerSection}>
-        <div className={`container ${styles.headerContainer}`}>
-          <Reveal>
-            <Badge variant="blue" size="md">
-              Service Category
-            </Badge>
-            <h1 className={styles.title}>{categoryName}</h1>
-            <p className={styles.subtitle}>{categoryDesc}</p>
-          </Reveal>
-        </div>
-      </header>
-
-      {/* 10 Service Cards Grid */}
-      <section
-        className={styles.servicesSection}
-        aria-labelledby="services-list-heading"
-      >
-        <div className="container">
-          <Reveal className={styles.sectionHeadingBox}>
-            <h2 id="services-list-heading" className={styles.sectionHeading}>
-              {categoryServices.length} Specialized Services
-            </h2>
-            <p className={styles.sectionSub}>
-              Detailed technical, marketing, and creative capabilities available
-              within {categoryName}.
-            </p>
-          </Reveal>
-
-          <RevealStagger className={styles.grid}>
-            {categoryServices.map((service) => (
-              <ServiceCard key={service.id} service={service} />
-            ))}
-          </RevealStagger>
-
-          {/* Related Categories */}
-          <div
-            className={styles.otherCategoriesSection}
-            aria-labelledby="related-categories-heading"
-          >
-            <Reveal>
-              <h2
-                id="related-categories-heading"
-                className={styles.relatedHeading}
-              >
-                Explore Related Categories
-              </h2>
-            </Reveal>
-            <RevealStagger className={styles.otherCategoriesGrid}>
-              {categories
-                .filter((c) => c.id !== category.id)
-                .slice(0, 3)
-                .map((cat) => (
-                  <CategoryCard key={cat.id} category={cat} serviceCount={10} />
-                ))}
-            </RevealStagger>
-          </div>
-        </div>
-      </section>
-
-      {/* Quote CTA */}
-      <CTASection />
-    </div>
-  );
+  permanentRedirect(`/services/${slug}`);
 }

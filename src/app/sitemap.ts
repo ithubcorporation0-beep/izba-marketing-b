@@ -1,7 +1,6 @@
 import { MetadataRoute } from 'next';
 import { getSiteUrl } from '@/lib/seo/metadata';
-import { services } from '@/content/services';
-import { categories } from '@/content/categories';
+import { serviceCategories } from '@/content/services';
 import { projects } from '@/content/projects';
 
 export const dynamic = 'force-static';
@@ -9,7 +8,7 @@ export const dynamic = 'force-static';
 export default function sitemap(): MetadataRoute.Sitemap {
   const baseUrl = getSiteUrl();
 
-  // Static routes
+  // Static core routes
   const staticRoutes = [
     '',
     '/about',
@@ -26,23 +25,15 @@ export default function sitemap(): MetadataRoute.Sitemap {
     priority: route === '' ? 1.0 : 0.8,
   }));
 
-  // Dynamic service detail routes
-  const serviceRoutes = services.map((service) => ({
-    url: `${baseUrl}/services/${service.slug}`,
+  // 9 Category Landing Pages
+  const categoryRoutes = serviceCategories.map((cat) => ({
+    url: `${baseUrl}/services/${cat.slug}`,
     lastModified: new Date(),
     changeFrequency: 'monthly' as const,
     priority: 0.9,
   }));
 
-  // Dynamic category routes
-  const categoryRoutes = categories.map((cat) => ({
-    url: `${baseUrl}/services/category/${cat.slug}`,
-    lastModified: new Date(),
-    changeFrequency: 'monthly' as const,
-    priority: 0.85,
-  }));
-
-  // Dynamic project routes (if any)
+  // Dynamic project routes (if any are published)
   const projectRoutes = projects.map((project) => ({
     url: `${baseUrl}/portfolio/${project.slug}`,
     lastModified: new Date(),
@@ -50,5 +41,5 @@ export default function sitemap(): MetadataRoute.Sitemap {
     priority: 0.7,
   }));
 
-  return [...staticRoutes, ...serviceRoutes, ...categoryRoutes, ...projectRoutes];
+  return [...staticRoutes, ...categoryRoutes, ...projectRoutes];
 }

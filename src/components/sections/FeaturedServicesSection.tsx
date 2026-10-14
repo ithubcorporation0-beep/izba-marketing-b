@@ -33,8 +33,8 @@ export const FeaturedServicesSection: React.FC = () => {
           {featuredServices.map((service, index) => {
             const targetUrl =
               service.targetType === 'category'
-                ? `/services/category/${service.slug}`
-                : `/services/${service.slug}`;
+                ? `/services/${service.slug}`
+                : `/services/${service.categorySlug || service.slug}#${service.slug}`;
 
             return (
               <Link

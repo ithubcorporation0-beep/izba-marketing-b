@@ -204,7 +204,7 @@ export const Footer: React.FC = () => {
               {categories.map((cat) => (
                 <li key={cat.id}>
                   <Link
-                    href={`/services/category/${cat.slug}`}
+                    href={`/services/${cat.slug}`}
                     className="text-[var(--color-text-muted-dark)] hover:text-[var(--color-white)] transition-colors flex items-center justify-between group focus:outline-none focus-visible:ring-2 focus-visible:ring-[var(--color-gold)] rounded-sm"
                   >
                     <span className="truncate">{cat.name}</span>

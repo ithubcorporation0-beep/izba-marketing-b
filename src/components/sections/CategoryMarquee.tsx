@@ -34,7 +34,7 @@ export const CategoryMarquee: React.FC = () => {
         {categories.map((category) => (
           <Link
             key={`track1-${category.id}`}
-            href={`/services/category/${category.slug}`}
+            href={`/services/${category.slug}`}
             className={styles.categoryItem}
           >
             <span>{category.name}</span>
@@ -51,7 +51,7 @@ export const CategoryMarquee: React.FC = () => {
         {categories.map((category) => (
           <Link
             key={`track2-${category.id}`}
-            href={`/services/category/${category.slug}`}
+            href={`/services/${category.slug}`}
             tabIndex={-1}
             className={styles.categoryItem}
           >

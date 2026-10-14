@@ -317,7 +317,7 @@ const ServiceSearchInner: React.FC<ServiceSearchInnerProps> = ({
                   </p>
                 </div>
                 <Link
-                  href={`/services/category/${category.slug}`}
+                  href={`/services/${category.slug}`}
                   className={styles.categoryLandingLink}
                   aria-label={`View dedicated page for ${category.title}`}
                 >

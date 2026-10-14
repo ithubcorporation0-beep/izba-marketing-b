@@ -68,7 +68,7 @@ export default function ServicesPage() {
               <CategoryCard
                 key={category.id}
                 category={category}
-                serviceCount={10}
+                serviceCount={category.services?.length ?? 10}
               />
             ))}
           </RevealStagger>

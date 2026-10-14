@@ -235,7 +235,7 @@ export default function DigitalProductsPage() {
               Request a Custom Quote
             </Button>
             <Button
-              href="/services/category/digital-products-ecommerce"
+              href="/services/digital-products-ecommerce"
               variant="secondary"
               size="md"
             >

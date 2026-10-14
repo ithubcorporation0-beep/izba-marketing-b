@@ -101,7 +101,7 @@ export default function NotFound() {
               {popularCategories.map((cat) => (
                 <Link
                   key={cat.slug}
-                  href={`/services/category/${cat.slug}`}
+                  href={`/services/${cat.slug}`}
                   className={styles.categoryLink}
                 >
                   <span>{cat.name}</span>

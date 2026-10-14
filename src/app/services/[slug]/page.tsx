@@ -1,416 +1,541 @@
 import React from 'react';
 import type { Metadata } from 'next';
-import { notFound } from 'next/navigation';
+import { notFound, redirect } from 'next/navigation';
 import Link from 'next/link';
 import {
   CheckCircle2,
-  FileCheck,
   ArrowRight,
-  Sparkles,
-  Layers,
-  ShieldCheck,
   Clock,
+  Coins,
+  ListFilter,
+  ShieldCheck,
+  MessageCircle,
 } from 'lucide-react';
 import { siteConfig } from '@/config/site';
-import { services } from '@/content/services';
-import { categories } from '@/content/categories';
-import { constructMetadata } from '@/lib/seo/metadata';
+import {
+  serviceCategories,
+  getCategoryDetailBySlug,
+  services,
+} from '@/content/services';
+import { projects } from '@/content/projects';
+import { testimonials } from '@/content/testimonials';
+import { constructMetadata, getSiteUrl } from '@/lib/seo/metadata';
 import { getBreadcrumbJsonLd } from '@/lib/seo/jsonLd';
 import { JsonLd } from '@/components/seo/JsonLd';
 import { Breadcrumb } from '@/components/ui/Breadcrumb';
-import { ServiceCard } from '@/components/services/ServiceCard';
 import { Accordion } from '@/components/ui/Accordion';
 import { Badge } from '@/components/ui/Badge';
 import { Button } from '@/components/ui/Button';
 import { Container } from '@/components/ui/Container';
-import { CTASection } from '@/components/sections/CTA';
+import { CategoryCard } from '@/components/services/CategoryCard';
 import { Reveal, RevealStagger } from '@/components/ui/motion';
 import styles from './page.module.css';
 
-interface ServicePageProps {
+interface CategoryPageProps {
   params: Promise<{
     slug: string;
   }>;
 }
 
 export async function generateStaticParams() {
-  return services.map((service) => ({
-    slug: service.slug,
+  return serviceCategories.map((cat) => ({
+    slug: cat.slug,
   }));
 }
 
 export async function generateMetadata({
   params,
-}: ServicePageProps): Promise<Metadata> {
+}: CategoryPageProps): Promise<Metadata> {
   const { slug } = await params;
-  const service = services.find((s) => s.slug === slug);
+  const category = getCategoryDetailBySlug(slug);
 
-  if (!service) {
+  if (!category) {
     return {
-      title: `Service Not Found | ${siteConfig.name}`,
+      title: `Category Not Found | ${siteConfig.name}`,
     };
   }
 
-  const serviceName = service.name || service.title;
-  const title = service.seoTitle || serviceName;
-  const description = service.seoDescription || service.shortDescription;
-
   return constructMetadata({
-    title,
-    description,
-    pathname: `/services/${service.slug}`,
+    title: category.seoTitle || `${category.name} in Mardan | IT HUB`,
+    description: category.seoDescription || category.shortDescription,
+    pathname: `/services/${category.slug}`,
   });
 }
 
-export default async function ServiceDetailPage({ params }: ServicePageProps) {
+export default async function CategoryDetailPage({ params }: CategoryPageProps) {
   const { slug } = await params;
-  const service = services.find((s) => s.slug === slug);
+  const category = getCategoryDetailBySlug(slug);
 
-  if (!service) {
+  // If slug is not a category, check if it was an individual service slug and redirect to its category block
+  if (!category) {
+    const matchedService = services.find((s) => s.slug === slug);
+    if (matchedService && matchedService.categorySlug) {
+      redirect(`/services/${matchedService.categorySlug}#${matchedService.slug}`);
+    }
     notFound();
   }
 
-  const category = categories.find(
-    (c) => c.slug === service.categorySlug || c.id === service.category
+  const categoryName: string = category.name || category.title || 'Category';
+  const siteUrl = getSiteUrl();
+
+  // Quote link with category and first service pre-selected
+  const primaryQuoteHref = `/contact?category=${category.slug}&service=${category.services[0]?.slug || category.slug}`;
+  const whatsappNumber = siteConfig.contact.whatsapp && !siteConfig.contact.whatsapp.startsWith('PLACEHOLDER_')
+    ? siteConfig.contact.whatsapp.replace(/[^0-9]/g, '')
+    : '923149140414';
+  const whatsappUrl = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(
+    `Hi IT HUB, I am interested in ${categoryName}.`
+  )}`;
+
+  // Related portfolio and testimonials (proof)
+  const proofProjects = projects.filter(
+    (p) => p.categorySlug === category.slug && p.isPublished
   );
-  const categoryName: string =
-    (category && (category.name || category.title)) || 'Services';
-  const categorySlug: string = category ? category.slug : '';
+  const proofTestimonials = testimonials.filter(
+    (t) => t.isPublished && (t.serviceSlug ? category.services.some((s) => s.slug === t.serviceSlug) : true)
+  );
+  const hasProof = proofProjects.length > 0 || proofTestimonials.length > 0;
 
-  const serviceTitle: string = service.name || service.title || 'Service';
-  const includes = service.includes || service.features || [];
-  const deliverables = service.deliverables || [];
-  const processSteps = service.process || [];
-  const faqs = service.faqs || [];
+  // Related categories
+  const relatedCategories = category.relatedCategorySlugs
+    .map((relSlug) => serviceCategories.find((c) => c.slug === relSlug))
+    .filter((c): c is typeof category => Boolean(c));
 
-  // Find related services: prioritize relatedServiceSlugs, then same category
-  const relatedServices = services
-    .filter((s) => {
-      if (s.id === service.id || s.slug === service.slug) return false;
-      if (
-        service.relatedServiceSlugs &&
-        service.relatedServiceSlugs.includes(s.slug)
-      ) {
-        return true;
-      }
-      return s.categorySlug === service.categorySlug;
-    })
-    .slice(0, 3);
-
-  const accordionItems = faqs.map((faq, index) => ({
+  // FAQ accordion items
+  const accordionItems = category.faqs.map((faq, index) => ({
     id: `faq-${index}`,
     title: faq.question,
     content: faq.answer,
   }));
 
-  const breadcrumbData = getBreadcrumbJsonLd([
+  // Structured Data
+  const breadcrumbJsonLd = getBreadcrumbJsonLd([
     { name: 'Home', path: '/' },
     { name: 'Services', path: '/services' },
-    ...(categorySlug
-      ? [{ name: categoryName, path: `/services/category/${categorySlug}` }]
-      : []),
-    { name: serviceTitle, path: `/services/${service.slug}` },
+    { name: categoryName, path: `/services/${category.slug}` },
   ]);
 
+  const serviceJsonLd = {
+    '@context': 'https://schema.org',
+    '@type': 'Service',
+    name: categoryName,
+    description: category.oneSentencePromise,
+    url: `${siteUrl}/services/${category.slug}`,
+    provider: {
+      '@type': 'LocalBusiness',
+      name: 'IT HUB Corporation',
+      address: {
+        '@type': 'PostalAddress',
+        addressLocality: 'Mardan',
+        addressRegion: 'Khyber Pakhtunkhwa',
+        addressCountry: 'PK',
+      },
+    },
+    areaServed: [
+      {
+        '@type': 'AdministrativeArea',
+        name: 'Khyber Pakhtunkhwa',
+      },
+      {
+        '@type': 'Country',
+        name: 'Pakistan',
+      },
+    ],
+    hasOfferCatalog: {
+      '@type': 'OfferCatalog',
+      name: `${categoryName} Offerings`,
+      itemListElement: category.services.map((svc) => ({
+        '@type': 'Offer',
+        itemOffered: {
+          '@type': 'Service',
+          name: svc.name,
+          description: svc.outcomeDescription,
+        },
+      })),
+    },
+  };
+
+  const faqJsonLd = {
+    '@context': 'https://schema.org',
+    '@type': 'FAQPage',
+    mainEntity: category.faqs.map((faq) => ({
+      '@type': 'Question',
+      name: faq.question,
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: faq.answer,
+      },
+    })),
+  };
+
   return (
-    <div className={styles.servicePageWrapper}>
-      <JsonLd data={breadcrumbData} />
-      {/* 1. Breadcrumbs */}
+    <div className={styles.categoryPageWrapper}>
+      {/* Search Engine Structured Data */}
+      <JsonLd data={breadcrumbJsonLd} />
+      <JsonLd data={serviceJsonLd} />
+      <JsonLd data={faqJsonLd} />
+
+      {/* Top Breadcrumb Navigation */}
       <div className={styles.topBar}>
         <Container size="default">
           <Breadcrumb
             items={[
               { label: 'Services', href: '/services' },
-              ...(categorySlug
-                ? [
-                    {
-                      label: categoryName,
-                      href: `/services/category/${categorySlug}`,
-                    },
-                  ]
-                : []),
-              { label: serviceTitle },
+              { label: categoryName },
             ]}
           />
         </Container>
       </div>
 
-      {/* 2. Hero Header with Short Summary & "Request a Quote" CTA */}
+      {/* 1. HERO: category title, one-sentence promise, ONE primary button */}
       <header className={styles.heroSection}>
         <Container size="default">
-          <div className={styles.heroLayout}>
-            <Reveal className={styles.heroMain}>
-              {category && (
-                <Link
-                  href={`/services/category/${category.slug}`}
-                  className="w-fit"
-                  aria-label={`View all ${categoryName} services`}
-                >
-                  <Badge variant="blue" size="md">
-                    {categoryName}
-                  </Badge>
-                </Link>
-              )}
-
-              <h1 className={styles.title}>{serviceTitle}</h1>
-              <p className={styles.summary}>{service.shortDescription}</p>
-
-              <div>
-                <Button
-                  href={`/contact?service=${service.slug}`}
-                  variant="primary"
-                  size="lg"
-                  icon={<ArrowRight size={18} />}
-                >
-                  Request a Quote for {serviceTitle}
-                </Button>
-              </div>
-            </Reveal>
-
-            {/* Quick Scope & Inquiries Card */}
-            <div className={styles.sidebar}>
-              <Reveal delay={0.15}>
-                <div className={styles.quoteCard}>
-                  <div className={styles.quoteCardHeader}>
-                    <Sparkles size={20} className={styles.sparkleIcon} />
-                    <h2 className={styles.quoteCardTitle}>
-                      Project Brief &amp; Scope
-                    </h2>
-                  </div>
-                  <p className={styles.quoteCardText}>
-                    Get an accurate scope, clear timeline, and fixed proposal for
-                    your requirements.
-                  </p>
-
-                  <div className={styles.quoteCardPoints}>
-                    <div className={styles.quotePoint}>
-                      <ShieldCheck size={16} className={styles.pointIcon} />
-                      <span>NDA &amp; Confidentiality Protected</span>
-                    </div>
-                    <div className={styles.quotePoint}>
-                      <Clock size={16} className={styles.pointIcon} />
-                      <span>Prompt Response within 1 Business Day</span>
-                    </div>
-                    <div className={styles.quotePoint}>
-                      <CheckCircle2 size={16} className={styles.pointIcon} />
-                      <span>Milestone-Based Delivery</span>
-                    </div>
-                  </div>
-
-                  <Button
-                    href={`/contact?service=${service.slug}`}
-                    variant="primary"
-                    size="md"
-                    icon={<ArrowRight size={16} />}
-                    className={styles.quoteButton}
-                  >
-                    Request a Quote
-                  </Button>
-                </div>
-              </Reveal>
+          <Reveal className={styles.heroContent}>
+            <div className={styles.heroBadge}>
+              <Badge variant="gold" size="md">
+                Service Category
+              </Badge>
             </div>
-          </div>
+
+            <h1 className={styles.title}>
+              {categoryName}{' '}
+              <span className={styles.titleAccent}>in Mardan</span>
+            </h1>
+
+            <p className={styles.promise}>{category.oneSentencePromise}</p>
+
+            <div className={styles.heroActionGroup}>
+              <Button
+                href={primaryQuoteHref}
+                variant="primary"
+                size="lg"
+                icon={<ArrowRight size={18} />}
+              >
+                Get a Free Quote
+              </Button>
+
+              <p className={styles.directChatLink}>
+                Or chat with us directly on WhatsApp:{' '}
+                <a
+                  href={whatsappUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label={`Chat with IT HUB on WhatsApp about ${categoryName}`}
+                >
+                  0314 9140414
+                </a>
+              </p>
+            </div>
+          </Reveal>
         </Container>
       </header>
 
-      {/* 3. Problem It Solves & Detailed Overview */}
-      <section
-        className={styles.overviewSection}
-        aria-labelledby="overview-heading"
-      >
+      {/* 2. WHO IT IS FOR: 3 to 5 short bullets describing ideal client */}
+      <section className={styles.whoSection} aria-labelledby="who-heading">
         <Container size="default">
-          <Reveal className={styles.overviewContent}>
+          <Reveal className={styles.sectionHeaderCenter}>
             <Badge variant="neutral" size="sm">
-              Overview
+              Audience
             </Badge>
-            <h2 id="overview-heading" className={styles.sectionTitle}>
-              Problem It Solves &amp; Service Scope
+            <h2 id="who-heading" className={styles.sectionTitle}>
+              Who This Is For
             </h2>
+            <p className={styles.sectionSubtitle}>
+              Tailored solutions crafted for businesses and professionals seeking dependable outcomes.
+            </p>
+          </Reveal>
 
-            {Array.isArray(service.description) &&
-            service.description.length > 0 ? (
-              <>
-                <p className={styles.problemLead}>{service.description[0]}</p>
-                {service.description.slice(1).map((paragraph, idx) => (
-                  <p key={idx} className={styles.bodyParagraph}>
-                    {paragraph}
+          <RevealStagger className={styles.whoGrid}>
+            {category.whoItIsFor.map((bullet, idx) => (
+              <div key={idx} className={styles.whoCard}>
+                <CheckCircle2 size={20} className={styles.checkIcon} aria-hidden="true" />
+                <span className={styles.whoText}>{bullet}</span>
+              </div>
+            ))}
+          </RevealStagger>
+        </Container>
+      </section>
+
+      {/* 3. WHAT YOU GET: services in this category with table of contents */}
+      <section className={styles.whatSection} aria-labelledby="what-heading">
+        <Container size="default">
+          <Reveal className={styles.sectionHeaderCenter}>
+            <Badge variant="gold" size="sm">
+              Deliverables
+            </Badge>
+            <h2 id="what-heading" className={styles.sectionTitle}>
+              What You Get
+            </h2>
+            <p className={styles.sectionSubtitle}>
+              Explore the 10 specialized services included in this category. Click any service to jump straight to its scope.
+            </p>
+          </Reveal>
+
+          {/* Quick Jump Table of Contents */}
+          <nav className={styles.tocBox} aria-label="Table of Contents for services in this category">
+            <div className={styles.tocHeader}>
+              <ListFilter size={18} className="text-[var(--color-gold)]" aria-hidden="true" />
+              <span className={styles.tocTitle}>Quick Jump Table of Contents</span>
+            </div>
+            <ul className={styles.tocList}>
+              {category.services.map((svc) => (
+                <li key={`toc-${svc.slug}`}>
+                  <a href={`#${svc.slug}`} className={styles.tocLink}>
+                    <span className={styles.tocDot} aria-hidden="true" />
+                    <span>{svc.name}</span>
+                  </a>
+                </li>
+              ))}
+            </ul>
+          </nav>
+
+          {/* 10 Anchored Service Blocks */}
+          <div className={styles.servicesGrid}>
+            {category.services.map((svc) => (
+              <article key={svc.id} id={svc.slug} className={styles.serviceBlock}>
+                <div className={styles.serviceTop}>
+                  <h3 className={styles.serviceBlockTitle}>{svc.name}</h3>
+                  <p className={styles.serviceOutcome}>{svc.outcomeDescription}</p>
+                </div>
+
+                <div className={styles.serviceBestFor}>
+                  <span className={styles.bestForLabel}>Best for:</span>
+                  <span>{svc.bestFor}</span>
+                </div>
+
+                <div className={styles.serviceFooterLink}>
+                  <a
+                    href={`/contact?category=${category.slug}&service=${svc.slug}`}
+                    className={styles.requestLink}
+                  >
+                    <span>Request quote for this service</span>
+                    <ArrowRight size={14} aria-hidden="true" />
+                  </a>
+                </div>
+              </article>
+            ))}
+          </div>
+        </Container>
+      </section>
+
+      {/* 4. HOW IT WORKS: 3 to 5 step process */}
+      <section className={styles.processSection} aria-labelledby="how-heading">
+        <Container size="default">
+          <Reveal className={styles.sectionHeaderCenter}>
+            <Badge variant="neutral" size="sm">
+              Our Process
+            </Badge>
+            <h2 id="how-heading" className={styles.sectionTitle}>
+              How It Works
+            </h2>
+            <p className={styles.sectionSubtitle}>
+              A transparent, predictable process from our first discovery call to final delivery.
+            </p>
+          </Reveal>
+
+          <RevealStagger className={styles.processGrid}>
+            {category.process.map((step) => (
+              <div key={step.step} className={styles.processCard}>
+                <span className={styles.processStepNum}>{step.step}</span>
+                <h3 className={styles.processStepTitle}>{step.title}</h3>
+                <p className={styles.processStepDesc}>{step.description}</p>
+              </div>
+            ))}
+          </RevealStagger>
+        </Container>
+      </section>
+
+      {/* 5. PRICE / TIMELINE: honest values or custom quote message */}
+      <section className={styles.priceSection} aria-labelledby="price-heading">
+        <Container size="default">
+          <Reveal className={styles.sectionHeaderCenter}>
+            <Badge variant="gold" size="sm">
+              Investment &amp; Schedule
+            </Badge>
+            <h2 id="price-heading" className={styles.sectionTitle}>
+              Pricing &amp; Delivery Timeline
+            </h2>
+            <p className={styles.sectionSubtitle}>
+              Clear commercial terms tailored to your specific project scope with zero unexpected fees.
+            </p>
+          </Reveal>
+
+          <div className={styles.priceCardContainer}>
+            <Reveal className={styles.priceCard}>
+              {/* Pricing Column */}
+              <div className={styles.priceItem}>
+                <div className="flex items-center gap-2 mb-1">
+                  <Coins size={18} className="text-[var(--color-gold)]" aria-hidden="true" />
+                  <span className={styles.priceLabel}>Estimated Starting Rate</span>
+                </div>
+                {category.startingPricePkr !== null ? (
+                  <p className={styles.priceValue}>
+                    Starting from PKR {category.startingPricePkr.toLocaleString()}
                   </p>
-                ))}
-              </>
-            ) : (
-              <p className={styles.problemLead}>
-                {service.fullDescription || service.shortDescription}
+                ) : (
+                  <p className={styles.priceValue}>Custom quote, tell us what you need</p>
+                )}
+                <p className={styles.priceSub}>
+                  Final pricing is determined by functional scope and required deliverables.
+                </p>
+              </div>
+
+              {/* Timeline Column */}
+              <div className={styles.priceItem}>
+                <div className="flex items-center gap-2 mb-1">
+                  <Clock size={18} className="text-[var(--color-gold)]" aria-hidden="true" />
+                  <span className={styles.priceLabel}>Typical Timeline</span>
+                </div>
+                {category.typicalTimeline !== null ? (
+                  <p className={styles.priceValue}>{category.typicalTimeline}</p>
+                ) : (
+                  <p className={styles.priceValue}>Custom quote, tell us what you need</p>
+                )}
+                <p className={styles.priceSub}>
+                  Timelines depend on complexity, milestone approvals, and asset readiness.
+                </p>
+              </div>
+            </Reveal>
+
+            <div className={styles.priceNoticeBox}>
+              <p>
+                <strong>Zero Invented Figures:</strong> We provide an exact, itemized scope and formal proposal
+                before initiating work, ensuring total clarity and budget security.
               </p>
-            )}
+            </div>
+          </div>
+        </Container>
+      </section>
+
+      {/* 6. PROOF: related portfolio and testimonials (hidden if no matching data exists) */}
+      {hasProof && (
+        <section className={styles.proofSection} aria-labelledby="proof-heading">
+          <Container size="default">
+            <Reveal className={styles.sectionHeaderCenter}>
+              <Badge variant="neutral" size="sm">
+                Case Studies
+              </Badge>
+              <h2 id="proof-heading" className={styles.sectionTitle}>
+                Proven Client Results
+              </h2>
+              <p className={styles.sectionSubtitle}>
+                Verified work delivered by IT HUB Corporation.
+              </p>
+            </Reveal>
+
+            <RevealStagger className={styles.proofGrid}>
+              {proofProjects.map((project) => (
+                <div key={project.id} className={styles.whoCard}>
+                  <h3 className="font-bold text-[var(--color-navy)]">{project.title}</h3>
+                  <p className="text-sm text-[var(--color-text-main)]">{project.summary}</p>
+                </div>
+              ))}
+            </RevealStagger>
+          </Container>
+        </section>
+      )}
+
+      {/* 7. FAQ: 4 to 6 questions per category (accordion) */}
+      <section className={styles.faqSection} aria-labelledby="faq-heading">
+        <Container size="default">
+          <div className={styles.faqContainer}>
+            <Reveal className={styles.sectionHeaderCenter}>
+              <Badge variant="gold" size="sm">
+                Common Questions
+              </Badge>
+              <h2 id="faq-heading" className={styles.sectionTitle}>
+                Frequently Asked Questions
+              </h2>
+              <p className={styles.sectionSubtitle}>
+                Clear answers regarding project requirements, turnarounds, and working with IT HUB.
+              </p>
+            </Reveal>
+
+            <Reveal className="mt-8">
+              <Accordion items={accordionItems} defaultOpenId="faq-0" />
+            </Reveal>
+          </div>
+        </Container>
+      </section>
+
+      {/* 8. FINAL CALL TO ACTION: repeat the single primary button */}
+      <section className={styles.finalCtaSection} aria-labelledby="final-cta-heading">
+        <Container size="default">
+          <Reveal className={styles.finalCtaBox}>
+            <h2 id="final-cta-heading" className={styles.finalCtaTitle}>
+              Ready to Start Your {categoryName} Project?
+            </h2>
+            <p className={styles.finalCtaSubtitle}>
+              Tell us about your requirements and we will prepare a clear, itemized proposal for your business.
+            </p>
+
+            <div className="flex flex-col items-center gap-2">
+              <Button
+                href={primaryQuoteHref}
+                variant="primary"
+                size="lg"
+                icon={<ArrowRight size={18} />}
+              >
+                Get a Free Quote
+              </Button>
+
+              <p className={styles.directChatLink}>
+                Prefer WhatsApp?{' '}
+                <a
+                  href={whatsappUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label={`Message IT HUB on WhatsApp regarding ${categoryName}`}
+                >
+                  Click here to chat with our team
+                </a>
+              </p>
+            </div>
           </Reveal>
         </Container>
       </section>
 
-      {/* 4. What It Includes & 5. Typical Deliverables */}
-      {(includes.length > 0 || deliverables.length > 0) && (
-        <section
-          className={styles.breakdownSection}
-          aria-labelledby="breakdown-heading"
-        >
-          <Container size="default">
-            <h2 id="breakdown-heading" className="sr-only">
-              Inclusions and Deliverables
-            </h2>
-            <RevealStagger className={styles.breakdownGrid}>
-              {/* What It Includes */}
-              {includes.length > 0 && (
-                <div className={styles.columnCard}>
-                  <div className={styles.columnHeader}>
-                    <div className={styles.columnIcon}>
-                      <Layers size={20} />
-                    </div>
-                    <h3 className={styles.columnTitle}>What Is Included</h3>
-                  </div>
-
-                  <ul
-                    className={styles.itemList}
-                    aria-label="Included features"
-                  >
-                    {includes.map((item, idx) => (
-                      <li key={idx} className={styles.itemRow}>
-                        <CheckCircle2
-                          size={18}
-                          className={styles.checkIcon}
-                          aria-hidden="true"
-                        />
-                        <span>{item}</span>
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-              )}
-
-              {/* Typical Deliverables */}
-              {deliverables.length > 0 && (
-                <div className={styles.columnCard}>
-                  <div className={styles.columnHeader}>
-                    <div className={styles.columnIcon}>
-                      <FileCheck size={20} />
-                    </div>
-                    <h3 className={styles.columnTitle}>Typical Deliverables</h3>
-                  </div>
-
-                  <ul
-                    className={styles.itemList}
-                    aria-label="Deliverables list"
-                  >
-                    {deliverables.map((item, idx) => (
-                      <li key={idx} className={styles.itemRow}>
-                        <CheckCircle2
-                          size={18}
-                          className={styles.docIcon}
-                          aria-hidden="true"
-                        />
-                        <span>{item}</span>
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-              )}
-            </RevealStagger>
-          </Container>
-        </section>
-      )}
-
-      {/* 6. Process Steps */}
-      {processSteps.length > 0 && (
-        <section
-          className={styles.processSection}
-          aria-labelledby="process-steps-heading"
-        >
-          <Container size="default">
-            <Reveal className={styles.sectionHeaderCenter}>
-              <Badge variant="blue" size="md">
-                Delivery Workflow
-              </Badge>
-              <h2 id="process-steps-heading" className={styles.sectionTitle}>
-                Our 4-Step Process
-              </h2>
-              <p className={styles.sectionSubtitle}>
-                A clear, predictable roadmap from initial consultation to final
-                handover.
-              </p>
-            </Reveal>
-
-            <RevealStagger className={styles.processGrid}>
-              {processSteps.map((step) => (
-                <div key={step.step} className={styles.processCard}>
-                  <span className={styles.stepBadge}>
-                    Step {String(step.step).padStart(2, '0')}
-                  </span>
-                  <h3 className={styles.stepTitle}>{step.title}</h3>
-                  <p className={styles.stepDesc}>{step.description}</p>
-                </div>
-              ))}
-            </RevealStagger>
-          </Container>
-        </section>
-      )}
-
-      {/* 7. FAQs Accordion */}
-      {accordionItems.length > 0 && (
-        <section
-          className={styles.faqSection}
-          aria-labelledby="service-faq-heading"
-        >
-          <Container size="default">
-            <div className={styles.faqContainer}>
-              <Reveal className={styles.sectionHeaderCenter}>
-                <Badge variant="cyan" size="md">
-                  Questions &amp; Answers
-                </Badge>
-                <h2 id="service-faq-heading" className={styles.sectionTitle}>
-                  Frequently Asked Questions
-                </h2>
-                <p className={styles.sectionSubtitle}>
-                  Specific details about timelines, requirements, and engagement
-                  for {serviceTitle}.
-                </p>
-              </Reveal>
-
-              <Reveal className="mt-8">
-                <Accordion items={accordionItems} defaultOpenId="faq-0" />
-              </Reveal>
-            </div>
-          </Container>
-        </section>
-      )}
-
-      {/* 8. Related Services */}
-      {relatedServices.length > 0 && (
-        <section
-          className={styles.relatedSection}
-          aria-labelledby="related-services-heading"
-        >
+      {/* 9. INTERNAL LINKS BETWEEN RELATED CATEGORIES */}
+      {relatedCategories.length > 0 && (
+        <section className={styles.relatedSection} aria-labelledby="related-heading">
           <Container size="default">
             <Reveal className={styles.sectionHeaderCenter}>
               <Badge variant="neutral" size="sm">
-                Complementary Solutions
+                Explore More
               </Badge>
-              <h2 id="related-services-heading" className={styles.sectionTitle}>
-                Related Services
+              <h2 id="related-heading" className={styles.sectionTitle}>
+                Related Service Categories
               </h2>
               <p className={styles.sectionSubtitle}>
-                Explore other capabilities commonly paired with {serviceTitle}.
+                Discover other specialized disciplines offered by IT HUB Corporation.
               </p>
             </Reveal>
 
             <RevealStagger className={styles.relatedGrid}>
-              {relatedServices.map((relService) => (
-                <ServiceCard key={relService.id} service={relService} />
+              {relatedCategories.map((relCat) => (
+                <CategoryCard
+                  key={relCat.id}
+                  category={relCat}
+                  serviceCount={relCat.services.length}
+                />
               ))}
             </RevealStagger>
           </Container>
         </section>
       )}
 
-      {/* 9. Final CTA linking to quote with service pre-selected */}
-      <CTASection />
+      {/* 10. STICKY MOBILE CTA BAR (at 360px and up to 768px) */}
+      <div className={styles.mobileStickyBar} aria-label="Quick mobile action">
+        <Button
+          href={primaryQuoteHref}
+          variant="primary"
+          size="md"
+          fullWidth
+          icon={<ArrowRight size={16} />}
+        >
+          Get a Free Quote
+        </Button>
+      </div>
     </div>
   );
 }
