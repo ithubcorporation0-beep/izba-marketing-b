@@ -1,12 +1,13 @@
 import React from 'react';
 import { ArrowRight, ShieldCheck, Sparkles } from 'lucide-react';
 import { Button } from '@/components/ui/Button';
+import { Container } from '@/components/ui/Container';
 import styles from './CTA.module.css';
 
 export const CTASection: React.FC = () => {
   return (
     <section className={styles.section} aria-labelledby="cta-heading">
-      <div className="container">
+      <Container>
         <div className={styles.ctaBox}>
           <div className={styles.glow} aria-hidden="true" />
           <div className={styles.content}>
@@ -44,7 +45,7 @@ export const CTASection: React.FC = () => {
             </div>
           </div>
         </div>
-      </div>
+      </Container>
     </section>
   );
 };

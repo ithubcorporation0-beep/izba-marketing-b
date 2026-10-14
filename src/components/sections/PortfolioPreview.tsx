@@ -5,6 +5,7 @@ import { projects } from '@/content/projects';
 import { Badge } from '@/components/ui/Badge';
 import { Button } from '@/components/ui/Button';
 import { Card } from '@/components/ui/Card';
+import { Container } from '@/components/ui/Container';
 import styles from './PortfolioPreview.module.css';
 
 export const PortfolioPreview: React.FC = () => {
@@ -15,7 +16,7 @@ export const PortfolioPreview: React.FC = () => {
       className={styles.section}
       aria-labelledby="portfolio-preview-heading"
     >
-      <div className="container">
+      <Container>
         <div className={styles.header}>
           <Badge variant="blue" size="md">
             Verified Work
@@ -77,7 +78,7 @@ export const PortfolioPreview: React.FC = () => {
             ))}
           </div>
         )}
-      </div>
+      </Container>
     </section>
   );
 };

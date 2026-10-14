@@ -3,13 +3,14 @@ import { ArrowRight, CheckCircle2 } from 'lucide-react';
 import { heroContent, trustPoints } from '@/content/featured';
 import { Button } from '@/components/ui/Button';
 import { Badge } from '@/components/ui/Badge';
+import { Container } from '@/components/ui/Container';
 import styles from './Hero.module.css';
 
 export const Hero: React.FC = () => {
   return (
     <section className={styles.heroSection} aria-label="Introduction">
       <div className={styles.heroGlow} aria-hidden="true" />
-      <div className={`container ${styles.heroContainer}`}>
+      <Container className={styles.heroContainer}>
         <div className={styles.heroContent}>
           <div className={styles.badgeWrapper}>
             <Badge variant="cyan" size="md" dot>
@@ -274,7 +275,7 @@ export const Hero: React.FC = () => {
             </div>
           </div>
         </div>
-      </div>
+      </Container>
     </section>
   );
 };

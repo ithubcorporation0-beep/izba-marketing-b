@@ -2,12 +2,13 @@ import React from 'react';
 import { processSteps } from '@/content/featured';
 import { Card } from '@/components/ui/Card';
 import { Badge } from '@/components/ui/Badge';
+import { Container } from '@/components/ui/Container';
 import styles from './Process.module.css';
 
 export const Process: React.FC = () => {
   return (
     <section className={styles.section} aria-labelledby="process-heading">
-      <div className="container">
+      <Container>
         <div className={styles.sectionHeader}>
           <Badge variant="blue" size="md">
             Our Working Process
@@ -30,7 +31,7 @@ export const Process: React.FC = () => {
             </Card>
           ))}
         </div>
-      </div>
+      </Container>
     </section>
   );
 };

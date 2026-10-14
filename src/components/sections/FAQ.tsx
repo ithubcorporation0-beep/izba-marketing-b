@@ -4,6 +4,7 @@ import React, { useState } from 'react';
 import { ChevronDown } from 'lucide-react';
 import { faqs } from '@/content/faqs';
 import { Badge } from '@/components/ui/Badge';
+import { Container } from '@/components/ui/Container';
 import styles from './FAQ.module.css';
 
 export const FAQSection: React.FC = () => {
@@ -15,7 +16,7 @@ export const FAQSection: React.FC = () => {
 
   return (
     <section className={styles.section} aria-labelledby="faq-heading">
-      <div className={`container ${styles.container}`}>
+      <Container size="narrow">
         <div className={styles.header}>
           <Badge variant="blue" size="md">
             Common Inquiries
@@ -84,7 +85,7 @@ export const FAQSection: React.FC = () => {
             );
           })}
         </div>
-      </div>
+      </Container>
     </section>
   );
 };

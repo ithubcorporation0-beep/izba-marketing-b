@@ -63,6 +63,31 @@ body {
   flex-direction: column;
   background-color: var(--color-white);
   color: var(--color-text-main);
+  overflow-x: hidden;
+}
+
+/* Global Container Utility (Consistent 16px mobile, 24px tablet, 32px desktop) */
+.container {
+  width: 100%;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 1rem;
+  padding-right: 1rem;
+  max-width: var(--container-max);
+}
+
+@media (min-width: 640px) {
+  .container {
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  .container {
+    padding-left: 2rem;
+    padding-right: 2rem;
+  }
 }
 
 /* Motion Preferences */

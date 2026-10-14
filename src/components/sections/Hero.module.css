@@ -23,79 +23,100 @@
   z-index: 1;
   display: grid;
   grid-template-columns: 1fr;
-  gap: var(--space-3xl);
+  gap: 2.5rem;
   align-items: center;
+  width: 100%;
 }
 
 @media (min-width: 1024px) {
   .heroContainer {
     grid-template-columns: 1.15fr 0.85fr;
+    gap: 3.5rem;
   }
 }
 
 .heroContent {
   display: flex;
   flex-direction: column;
-  gap: var(--space-lg);
+  align-items: flex-start;
+  gap: 1.5rem;
+  min-width: 0;
+  width: 100%;
 }
 
 .badgeWrapper {
-  margin-bottom: var(--space-2xs);
+  margin-bottom: 0.25rem;
 }
 
 .heroTitle {
-  font-size: clamp(2.2rem, 4.5vw, 3.6rem);
+  font-size: clamp(2.2rem, 4.2vw, 3.5rem);
   font-weight: 800;
   line-height: 1.15;
   letter-spacing: -0.03em;
-  color: var(--color-text-main);
+  color: var(--color-navy);
+  text-align: left;
+  text-indent: 0;
+  margin: 0;
+  padding: 0;
+  max-width: 640px;
+  text-wrap: balance;
 }
 
 .gradientText {
   background: var(--gradient-text-accent);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
+  display: inline;
 }
 
 .heroSubtitle {
-  font-size: clamp(1.05rem, 1.8vw, 1.25rem);
+  font-size: clamp(1.05rem, 1.6vw, 1.2rem);
   line-height: 1.6;
-  color: var(--color-text-muted);
-  max-width: 620px;
+  color: var(--color-muted);
+  max-width: 560px;
+  text-align: left;
+  margin: 0;
 }
 
 .ctaGroup {
   display: flex;
+  flex-direction: row;
   flex-wrap: wrap;
-  gap: var(--space-md);
-  margin-top: var(--space-sm);
+  align-items: center;
+  gap: 14px;
+  margin-top: 0.5rem;
 }
 
 .trustSignals {
   display: flex;
+  flex-direction: row;
   flex-wrap: wrap;
-  gap: var(--space-md) var(--space-xl);
-  margin-top: var(--space-sm);
-  padding-top: var(--space-md);
-  border-top: 1px solid var(--color-border-subtle);
+  align-items: center;
+  gap: 12px 24px;
+  margin-top: 0.5rem;
+  padding-top: 1.25rem;
+  border-top: 1px solid var(--color-border);
+  width: 100%;
+  max-width: 640px;
 }
 
 .trustItem {
-  display: flex;
+  display: inline-flex;
   align-items: center;
-  gap: 0.5rem;
+  gap: 8px;
   font-size: 0.88rem;
-  color: var(--color-text-muted);
+  color: var(--color-text-main);
 }
 
 .trustIcon {
-  color: var(--color-accent-cyan);
+  color: var(--color-primary-blue);
   flex-shrink: 0;
 }
 
 .trustText {
   font-weight: 500;
   color: var(--color-text-main);
+  line-height: 1.4;
 }
 
 /* Abstract CSS/SVG Geometric Visual */
@@ -104,6 +125,14 @@
   justify-content: center;
   align-items: center;
   width: 100%;
+  min-width: 0;
+  max-width: 100%;
+}
+
+@media (min-width: 1024px) {
+  .visualWrapper {
+    justify-content: flex-end;
+  }
 }
 
 .abstractGraphic {
@@ -114,16 +143,17 @@
   border-radius: var(--radius-xl);
   background: radial-gradient(
     circle at 50% 50%,
-    rgba(37, 99, 235, 0.08) 0%,
-    rgba(15, 23, 42, 0.02) 70%
+    rgba(49, 87, 213, 0.08) 0%,
+    rgba(16, 24, 40, 0.02) 70%
   );
-  border: 1px solid var(--color-border-subtle);
-  box-shadow: 0 20px 40px -15px rgba(0, 0, 0, 0.07);
+  border: 1px solid var(--color-border);
+  box-shadow: var(--shadow-lg);
   display: flex;
   align-items: center;
   justify-content: center;
   overflow: hidden;
 }
+
 
 .graphicGlow {
   position: absolute;

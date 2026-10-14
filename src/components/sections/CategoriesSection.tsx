@@ -16,6 +16,7 @@ import {
 import { categories } from '@/content/categories';
 import { Badge } from '@/components/ui/Badge';
 import { Card } from '@/components/ui/Card';
+import { Container } from '@/components/ui/Container';
 import styles from './CategoriesSection.module.css';
 
 const iconMap: Record<string, React.ReactNode> = {
@@ -33,7 +34,7 @@ const iconMap: Record<string, React.ReactNode> = {
 export const CategoriesSection: React.FC = () => {
   return (
     <section className={styles.section} aria-labelledby="categories-heading">
-      <div className="container">
+      <Container>
         <div className={styles.header}>
           <Badge variant="blue" size="md">
             Core Service Disciplines
@@ -73,7 +74,7 @@ export const CategoriesSection: React.FC = () => {
             );
           })}
         </div>
-      </div>
+      </Container>
     </section>
   );
 };

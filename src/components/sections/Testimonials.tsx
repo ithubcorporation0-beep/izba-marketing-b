@@ -3,6 +3,7 @@ import { Star, Quote } from 'lucide-react';
 import { testimonials } from '@/content/testimonials';
 import { Card } from '@/components/ui/Card';
 import { Badge } from '@/components/ui/Badge';
+import { Container } from '@/components/ui/Container';
 import styles from './Testimonials.module.css';
 
 export const TestimonialsSection: React.FC = () => {
@@ -13,7 +14,7 @@ export const TestimonialsSection: React.FC = () => {
 
   return (
     <section className={styles.section}>
-      <div className="container">
+      <Container>
         <div className={styles.header}>
           <Badge variant="cyan" size="md">
             Client Feedback
@@ -71,7 +72,7 @@ export const TestimonialsSection: React.FC = () => {
             );
           })}
         </div>
-      </div>
+      </Container>
     </section>
   );
 };

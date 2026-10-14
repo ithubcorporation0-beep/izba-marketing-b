@@ -4,6 +4,7 @@ import { ArrowRight, Star, Sparkles } from 'lucide-react';
 import { featuredServices } from '@/content/featured';
 import { Badge } from '@/components/ui/Badge';
 import { Card } from '@/components/ui/Card';
+import { Container } from '@/components/ui/Container';
 import styles from './FeaturedServicesSection.module.css';
 
 export const FeaturedServicesSection: React.FC = () => {
@@ -12,7 +13,7 @@ export const FeaturedServicesSection: React.FC = () => {
       className={styles.section}
       aria-labelledby="featured-services-heading"
     >
-      <div className="container">
+      <Container>
         <div className={styles.header}>
           <Badge variant="cyan" size="md">
             Highlighted Offerings
@@ -65,7 +66,7 @@ export const FeaturedServicesSection: React.FC = () => {
             );
           })}
         </div>
-      </div>
+      </Container>
     </section>
   );
 };
