@@ -1,21 +1,50 @@
 'use client';
 
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { Menu, ArrowRight } from 'lucide-react';
 import { MobileNav } from './MobileNav';
 import { Button } from '@/components/ui/Button';
+import styles from './Header.module.css';
 
 export const Header: React.FC = () => {
   const [isScrolled, setIsScrolled] = useState(false);
+  const [isVisible, setIsVisible] = useState(true);
   const [isMobileNavOpen, setIsMobileNavOpen] = useState(false);
   const pathname = usePathname();
+  const lastScrollYRef = useRef(0);
 
   useEffect(() => {
     const handleScroll = () => {
-      setIsScrolled(window.scrollY > 10);
+      const currentScrollY = window.scrollY;
+      const lastScrollY = lastScrollYRef.current;
+
+      // Determine if page is scrolled past the top threshold
+      if (currentScrollY > 40) {
+        setIsScrolled(true);
+      } else {
+        setIsScrolled(false);
+      }
+
+      // Hide when scrolling DOWN, show when scrolling UP
+      // Only hide if we have scrolled more than 80px down to prevent twitching at top
+      if (currentScrollY > 80) {
+        if (currentScrollY > lastScrollY + 4) {
+          // Scrolling down
+          setIsVisible(false);
+        } else if (currentScrollY < lastScrollY - 4) {
+          // Scrolling up
+          setIsVisible(true);
+        }
+      } else {
+        // Near top of page, always keep visible
+        setIsVisible(true);
+      }
+
+      lastScrollYRef.current = currentScrollY;
     };
+
     window.addEventListener('scroll', handleScroll, { passive: true });
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
@@ -29,87 +58,104 @@ export const Header: React.FC = () => {
     { label: 'Contact', href: '/contact' },
   ];
 
-  const isDarkHeader = pathname === '/' && !isScrolled;
+  const isDarkHero = pathname === '/' && !isScrolled;
+
+  const headerStyleClass = isDarkHero
+    ? styles.headerDarkHero
+    : isScrolled
+      ? styles.headerGlassScrolled
+      : styles.headerLightTop;
+
+  const visibilityClass = isVisible ? styles.headerVisible : styles.headerHidden;
 
   return (
     <>
       <header
-        className={`sticky top-0 z-40 w-full transition-all duration-250 ${
-          isDarkHeader
-            ? 'bg-[var(--color-navy)]/90 backdrop-blur-md border-b border-white/10 py-4.5'
-            : isScrolled
-              ? 'bg-[var(--color-white)]/95 backdrop-blur-md shadow-[var(--shadow-sm)] border-b border-[var(--color-border)] py-3'
-              : 'bg-[var(--color-white)] border-b border-[var(--color-border)]/60 py-4.5'
-        }`}
+        className={`${styles.headerWrapper} ${headerStyleClass} ${visibilityClass}`}
+        role="banner"
       >
         <div className="max-w-[var(--container-max)] mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between">
-          {/* Logo Placeholder */}
+          {/* Brand Logo */}
           <Link
             href="/"
             className="flex items-center gap-3 group focus:outline-none focus-visible:ring-2 focus-visible:ring-[var(--color-primary-blue)] rounded-[var(--radius-sm)]"
             aria-label="IT HUB Corporation Home"
           >
-            <div className={`w-10 h-10 rounded-[var(--radius-md)] flex items-center justify-center font-bold text-lg tracking-tight transition-colors duration-200 ${
-              isDarkHeader
-                ? 'bg-[var(--color-primary-blue)] text-white group-hover:bg-[var(--color-accent-violet)]'
-                : 'bg-[var(--color-navy)] text-[var(--color-white)] group-hover:bg-[var(--color-primary-blue)]'
-            }`}>
+            <div
+              className={`w-10 h-10 rounded-[var(--radius-md)] flex items-center justify-center font-bold text-lg tracking-tight transition-all duration-200 ${
+                isDarkHero
+                  ? 'bg-gradient-to-br from-[var(--color-primary-blue)] to-[var(--color-accent-violet)] text-white shadow-md shadow-blue-500/20'
+                  : 'bg-[var(--color-navy)] text-[var(--color-white)] group-hover:bg-[var(--color-primary-blue)]'
+              }`}
+            >
               IT
             </div>
             <div className="flex flex-col">
-              <span className={`font-extrabold text-lg tracking-tight leading-tight transition-colors duration-200 ${
-                isDarkHeader
-                  ? 'text-white group-hover:text-[var(--color-accent-cyan)]'
-                  : 'text-[var(--color-navy)] group-hover:text-[var(--color-primary-blue)]'
-              }`}>
+              <span
+                className={`font-extrabold text-lg tracking-tight leading-tight transition-colors duration-200 ${
+                  isDarkHero
+                    ? 'text-white group-hover:text-[var(--color-accent-cyan)]'
+                    : 'text-[var(--color-navy)] group-hover:text-[var(--color-primary-blue)]'
+                }`}
+              >
                 IT HUB
               </span>
-              <span className={`text-[10px] uppercase tracking-widest font-semibold leading-none ${
-                isDarkHeader ? 'text-slate-400' : 'text-[var(--color-muted)]'
-              }`}>
+              <span
+                className={`text-[10px] uppercase tracking-widest font-semibold leading-none ${
+                  isDarkHero ? 'text-slate-400' : 'text-[var(--color-muted)]'
+                }`}
+              >
                 Corporation
               </span>
             </div>
           </Link>
 
-          {/* Desktop Navigation */}
+          {/* Desktop Navigation with Animated Underlines */}
           <nav
-            className={`hidden md:flex items-center gap-1 px-2 py-1.5 rounded-full border transition-colors ${
-              isDarkHeader
+            className={`hidden md:flex items-center px-3 py-1.5 rounded-full border transition-colors ${
+              isDarkHero
                 ? 'bg-white/10 border-white/15 backdrop-blur-md'
                 : 'bg-[var(--color-soft-bg)] border-[var(--color-border)]/80'
             }`}
             aria-label="Primary Navigation"
           >
-            {navLinks.map((link) => {
-              const isActive =
-                link.href === '/'
-                  ? pathname === '/'
-                  : pathname === link.href ||
-                    pathname.startsWith(`${link.href}/`);
+            <div className={styles.navContainer}>
+              {navLinks.map((link) => {
+                const isActive =
+                  link.href === '/'
+                    ? pathname === '/'
+                    : pathname === link.href ||
+                      pathname.startsWith(`${link.href}/`);
 
-              return (
-                <Link
-                  key={link.href}
-                  href={link.href}
-                  className={`px-4 py-1.5 text-sm font-medium rounded-full transition-all duration-150 focus:outline-none focus-visible:ring-2 focus-visible:ring-[var(--color-primary-blue)] ${
-                    isActive
-                      ? 'bg-[var(--color-white)] text-[var(--color-primary-blue)] shadow-sm font-semibold'
-                      : isDarkHeader
-                        ? 'text-slate-200 hover:text-white hover:bg-white/15'
-                        : 'text-[var(--color-text-main)] hover:text-[var(--color-navy)] hover:bg-[var(--color-white)]/60'
-                  }`}
-                  aria-current={isActive ? 'page' : undefined}
-                >
-                  {link.label}
-                </Link>
-              );
-            })}
+                return (
+                  <Link
+                    key={link.href}
+                    href={link.href}
+                    className={`${styles.navLink} ${
+                      isActive ? styles.navLinkActive : ''
+                    } ${
+                      isDarkHero
+                        ? isActive
+                          ? styles.navLinkActiveDark
+                          : 'text-slate-200 hover:text-white'
+                        : isActive
+                          ? styles.navLinkActiveLight
+                          : 'text-[var(--color-text-main)] hover:text-[var(--color-navy)]'
+                    } focus:outline-none focus-visible:ring-2 focus-visible:ring-[var(--color-primary-blue)]`}
+                    aria-current={isActive ? 'page' : undefined}
+                  >
+                    <span>{link.label}</span>
+                    <span className={styles.navLinkUnderline} aria-hidden="true" />
+                  </Link>
+                );
+              })}
+            </div>
           </nav>
 
           {/* Header Actions */}
           <div className="flex items-center gap-3">
-            <div className="hidden sm:inline-flex">
+            {/* The "Request a Quote" button always stays visible whenever the header is shown */}
+            <div className="inline-flex">
               <Button
                 href="/contact"
                 variant="primary"
@@ -124,7 +170,7 @@ export const Header: React.FC = () => {
             <button
               type="button"
               className={`md:hidden p-2 rounded-[var(--radius-md)] border focus:outline-none focus-visible:ring-2 focus-visible:ring-[var(--color-primary-blue)] transition-colors ${
-                isDarkHeader
+                isDarkHero
                   ? 'text-white border-white/20 hover:bg-white/10'
                   : 'text-[var(--color-text-main)] hover:bg-[var(--color-soft-bg)] border-[var(--color-border)]'
               }`}
@@ -133,7 +179,7 @@ export const Header: React.FC = () => {
               aria-expanded={isMobileNavOpen}
               aria-controls="mobile-navigation-dialog"
             >
-              <Menu size={22} />
+              <Menu size={20} />
             </button>
           </div>
         </div>

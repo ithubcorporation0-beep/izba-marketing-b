@@ -2,33 +2,58 @@
   position: relative;
   background-color: var(--color-navy);
   color: var(--color-text-on-dark);
-  padding-top: clamp(4rem, 7vw, 6.5rem);
-  padding-bottom: clamp(5rem, 8vw, 8.5rem);
+  min-height: 100vh;
+  min-height: 100svh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding-top: clamp(5.5rem, 9vw, 8rem);
+  padding-bottom: clamp(4.5rem, 7vw, 6.5rem);
   overflow: hidden;
   width: 100%;
 }
 
-.heroGlow {
+/* Background Canvas & Drifting Orbs */
+.canvasBackground {
   position: absolute;
-  top: -100px;
-  left: 50%;
-  transform: translateX(-50%);
-  width: min(1000px, 100vw);
-  height: 550px;
-  background: radial-gradient(
-    circle at 50% 30%,
-    rgba(49, 87, 213, 0.28) 0%,
-    rgba(118, 87, 232, 0.18) 40%,
-    transparent 70%
-  );
-  filter: blur(80px);
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.gridPatternOverlay {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  background-image: 
+    radial-gradient(rgba(255, 255, 255, 0.08) 1px, transparent 1px),
+    linear-gradient(to right, rgba(255, 255, 255, 0.02) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(255, 255, 255, 0.02) 1px, transparent 1px);
+  background-size: 32px 32px, 64px 64px, 64px 64px;
+  background-position: center;
+  pointer-events: none;
+  z-index: 1;
+}
+
+/* Optional Video Background Styling */
+.heroBackgroundVideo {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0.25;
   pointer-events: none;
   z-index: 0;
 }
 
 .heroContainer {
   position: relative;
-  z-index: 1;
+  z-index: 2;
   display: grid;
   grid-template-columns: 1fr;
   gap: 2.5rem;
@@ -47,15 +72,87 @@
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  gap: 1.75rem;
+  gap: 1.5rem;
   min-width: 0;
   width: 100%;
 }
 
-.badgeWrapper {
-  margin-bottom: 0.25rem;
+/* Top Meta Row: Availability Badge + Live Clock */
+.metaRow {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.75rem;
 }
 
+.availabilityBadge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 5px 14px;
+  border-radius: var(--radius-full);
+  background: rgba(16, 185, 129, 0.1);
+  border: 1px solid rgba(16, 185, 129, 0.3);
+  color: #a7f3d0;
+  font-size: 0.8125rem;
+  font-weight: 600;
+  letter-spacing: 0.01em;
+  box-shadow: 0 0 15px rgba(16, 185, 129, 0.15);
+}
+
+.pulsingDotWrapper {
+  position: relative;
+  display: inline-flex;
+  width: 8px;
+  height: 8px;
+  align-items: center;
+  justify-content: center;
+}
+
+.pulsingDotPing {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  background-color: #10b981;
+  opacity: 0.75;
+  animation: ping 2s cubic-bezier(0, 0, 0.2, 1) infinite;
+}
+
+.pulsingDotCore {
+  position: relative;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background-color: #34d399;
+}
+
+@keyframes ping {
+  75%, 100% {
+    transform: scale(2.2);
+    opacity: 0;
+  }
+}
+
+.clockBadge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 5px 12px;
+  border-radius: var(--radius-full);
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  color: #cbd5e1;
+  font-size: 0.8125rem;
+  font-weight: 500;
+  font-family: var(--font-sans), monospace;
+}
+
+.clockIcon {
+  color: var(--color-accent-cyan);
+}
+
+/* Masked Lines for GSAP Reveal */
 .heroTitle {
   font-size: var(--font-display-h1);
   font-weight: 850;
@@ -68,6 +165,19 @@
   padding: 0;
   max-width: 680px;
   text-wrap: balance;
+}
+
+.lineMask {
+  display: inline-block;
+  overflow: hidden;
+  vertical-align: top;
+  margin-right: 0.25em;
+}
+
+.lineInner {
+  display: inline-block;
+  transform: translate3d(0, 0, 0);
+  will-change: transform;
 }
 
 .gradientText {
@@ -86,13 +196,19 @@
   margin: 0;
 }
 
+/* CTA Group with Magnetic Container */
 .ctaGroup {
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
   align-items: center;
   gap: 14px;
-  margin-top: 0.5rem;
+  margin-top: 0.25rem;
+}
+
+.magneticWrapper {
+  display: inline-block;
+  will-change: transform;
 }
 
 .trustSignals {
@@ -127,7 +243,7 @@
   line-height: 1.4;
 }
 
-/* Abstract CSS/SVG Geometric Visual */
+/* Abstract Tech Visual Graphic */
 .visualWrapper {
   display: flex;
   justify-content: center;
@@ -152,7 +268,7 @@
   background: radial-gradient(
     circle at 50% 50%,
     rgba(49, 87, 213, 0.18) 0%,
-    rgba(16, 24, 40, 0.7) 70%
+    rgba(16, 24, 40, 0.75) 70%
   );
   border: 1px solid var(--color-border-dark-mode);
   box-shadow: var(--shadow-dark-card);
@@ -186,7 +302,6 @@
   color: rgba(148, 163, 184, 0.4);
 }
 
-/* Glass badges on the graphic */
 .glassBadge1 {
   position: absolute;
   top: 18px;
@@ -228,4 +343,58 @@
   font-weight: 600;
   color: #cbd5e1;
   box-shadow: 0 4px 16px rgba(0, 0, 0, 0.3);
+}
+
+/* "Scroll for more" Cue */
+.scrollCue {
+  position: absolute;
+  bottom: 1.5rem;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 3;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+  color: #94a3b8;
+  font-size: 0.75rem;
+  font-weight: 500;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  transition: opacity 0.3s ease;
+  pointer-events: none;
+}
+
+.scrollCueTrack {
+  width: 2px;
+  height: 24px;
+  background: rgba(255, 255, 255, 0.15);
+  border-radius: 9999px;
+  overflow: hidden;
+  position: relative;
+}
+
+.scrollCueThumb {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 8px;
+  background: linear-gradient(180deg, var(--color-accent-cyan), var(--color-primary-blue));
+  border-radius: 9999px;
+  animation: scrollThumbMove 2s cubic-bezier(0.65, 0, 0.35, 1) infinite;
+}
+
+@keyframes scrollThumbMove {
+  0% {
+    transform: translateY(-8px);
+    opacity: 0;
+  }
+  30% {
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(24px);
+    opacity: 0;
+  }
 }

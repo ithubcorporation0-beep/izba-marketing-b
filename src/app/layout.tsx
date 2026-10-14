@@ -7,6 +7,7 @@ import { Header } from '@/components/layout/Header';
 import { Footer } from '@/components/layout/Footer';
 import { ConsentBanner } from '@/components/analytics/ConsentBanner';
 import { MotionProvider } from '@/lib/motion';
+import { Preloader } from '@/components/sections/Preloader';
 
 const inter = Inter({
   subsets: ['latin'],
@@ -69,6 +70,9 @@ export default function RootLayout({
     <html lang="en" className={inter.variable}>
       <body className="min-h-screen flex flex-col font-sans bg-[var(--color-white)] text-[var(--color-text-main)] antialiased selection:bg-[var(--color-primary-blue)] selection:text-[var(--color-white)]">
         <MotionProvider>
+          {/* Branded First-Visit Preloader */}
+          <Preloader />
+
           {/* Skip to Content for Keyboard Accessibility */}
           <a href="#main-content" className="skip-to-content">
             Skip to content

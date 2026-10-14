@@ -33,4 +33,13 @@ export const siteConfig: SiteConfig = {
     // TODO: Replace with real YouTube channel URL
     youtube: 'PLACEHOLDER_YOUTUBE_URL',
   },
+  // Project availability badge (editable; mark as needs client confirmation)
+  // TODO: Needs client confirmation on availability text
+  availabilityBadge: 'Now accepting new projects',
+
+  // Live local-time clock timezone for company headquarters/studio
+  // TODO: Replace with real client primary office/studio timezone (e.g. 'America/New_York', 'Europe/London', 'Asia/Karachi')
+  timezone: 'UTC',
+  // TODO: Replace with matching friendly timezone display label (e.g. 'UTC', 'EST', 'GMT', 'PKT')
+  timezoneLabel: 'UTC',
 };

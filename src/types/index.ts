@@ -176,4 +176,7 @@ export interface SiteConfig {
     value: string;
     label: string;
   }[];
+  availabilityBadge?: string;
+  timezone?: string;
+  timezoneLabel?: string;
 }

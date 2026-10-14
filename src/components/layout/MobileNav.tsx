@@ -1,11 +1,13 @@
 'use client';
 
-import React, { useEffect, useRef } from 'react';
+import React, { useEffect, useRef, useState, useCallback } from 'react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { X, ArrowRight, Mail, Phone, MapPin } from 'lucide-react';
+import gsap from 'gsap';
 import { siteConfig } from '@/config/site';
 import { Button } from '@/components/ui/Button';
+import { useReducedMotion } from '@/lib/motion';
 
 interface MobileNavProps {
   isOpen: boolean;
@@ -14,39 +16,120 @@ interface MobileNavProps {
 
 export const MobileNav: React.FC<MobileNavProps> = ({ isOpen, onClose }) => {
   const pathname = usePathname();
+  const isReducedMotion = useReducedMotion();
+  const [isRendered, setIsRendered] = useState(false);
+
+  const containerRef = useRef<HTMLDivElement>(null);
+  const backdropRef = useRef<HTMLDivElement>(null);
   const drawerRef = useRef<HTMLDivElement>(null);
   const closeButtonRef = useRef<HTMLButtonElement>(null);
 
-  // Close on route change
+  // Close smoothly with animation
+  const handleAnimatedClose = useCallback(() => {
+    if (isReducedMotion || !drawerRef.current || !backdropRef.current) {
+      onClose();
+      return;
+    }
+
+    const tl = gsap.timeline({
+      onComplete: () => {
+        onClose();
+      },
+    });
+
+    tl.to(drawerRef.current, {
+      xPercent: 100,
+      duration: 0.28,
+      ease: 'power3.in',
+    }).to(
+      backdropRef.current,
+      {
+        opacity: 0,
+        duration: 0.22,
+        ease: 'power2.in',
+      },
+      '-=0.15'
+    );
+  }, [isReducedMotion, onClose]);
+
+  // Handle route change
   useEffect(() => {
-    onClose();
-  }, [pathname, onClose]);
+    if (isOpen) {
+      handleAnimatedClose();
+    }
+  }, [pathname]); // eslint-disable-line react-hooks/exhaustive-deps
+
+  // Handle open / mount state & animation
+  useEffect(() => {
+    if (isOpen) {
+      setIsRendered(true);
+
+      // Lock body scroll
+      const originalOverflow = document.body.style.overflow;
+      document.body.style.overflow = 'hidden';
+
+      // Focus close button
+      const timer = setTimeout(() => {
+        closeButtonRef.current?.focus();
+      }, 60);
+
+      // Animation on open
+      if (!isReducedMotion) {
+        requestAnimationFrame(() => {
+          if (!drawerRef.current || !backdropRef.current) return;
+
+          gsap.killTweensOf([drawerRef.current, backdropRef.current]);
+
+          const tl = gsap.timeline();
+          tl.fromTo(
+            backdropRef.current,
+            { opacity: 0 },
+            { opacity: 1, duration: 0.25, ease: 'power2.out' }
+          );
+          tl.fromTo(
+            drawerRef.current,
+            { xPercent: 100 },
+            { xPercent: 0, duration: 0.35, ease: 'power3.out' },
+            '<'
+          );
+
+          // Staggered reveal for nav links
+          const navItems = drawerRef.current.querySelectorAll('.mobile-nav-item');
+          if (navItems.length > 0) {
+            tl.fromTo(
+              navItems,
+              { opacity: 0, x: 20 },
+              { opacity: 1, x: 0, duration: 0.25, ease: 'power2.out', stagger: 0.04 },
+              '-=0.18'
+            );
+          }
+        });
+      }
+
+      return () => {
+        document.body.style.overflow = originalOverflow;
+        clearTimeout(timer);
+      };
+    } else {
+      setIsRendered(false);
+    }
+  }, [isOpen, isReducedMotion]);
 
   // Handle keyboard events (Escape to close & Tab focus trap)
   useEffect(() => {
     if (!isOpen) return;
 
-    // Prevent body scroll when drawer is open
-    const originalOverflow = document.body.style.overflow;
-    document.body.style.overflow = 'hidden';
-
-    // Focus close button on mount
-    const timer = setTimeout(() => {
-      closeButtonRef.current?.focus();
-    }, 50);
-
     const handleKeyDown = (e: KeyboardEvent) => {
       if (e.key === 'Escape') {
         e.preventDefault();
-        onClose();
+        handleAnimatedClose();
         return;
       }
 
       if (e.key === 'Tab' && drawerRef.current) {
-        const focusableElements =
-          drawerRef.current.querySelectorAll<HTMLElement>(
-            'button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])'
-          );
+        const focusableElements = drawerRef.current.querySelectorAll<HTMLElement>(
+          'button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])'
+        );
         const focusable = Array.from(focusableElements).filter(
           (el) => !el.hasAttribute('disabled') && el.offsetParent !== null
         );
@@ -71,15 +154,10 @@ export const MobileNav: React.FC<MobileNavProps> = ({ isOpen, onClose }) => {
     };
 
     document.addEventListener('keydown', handleKeyDown);
+    return () => document.removeEventListener('keydown', handleKeyDown);
+  }, [isOpen, handleAnimatedClose]);
 
-    return () => {
-      document.body.style.overflow = originalOverflow;
-      document.removeEventListener('keydown', handleKeyDown);
-      clearTimeout(timer);
-    };
-  }, [isOpen, onClose]);
-
-  if (!isOpen) return null;
+  if (!isOpen && !isRendered) return null;
 
   const links = [
     { label: 'Home', href: '/' },
@@ -92,6 +170,7 @@ export const MobileNav: React.FC<MobileNavProps> = ({ isOpen, onClose }) => {
 
   return (
     <div
+      ref={containerRef}
       className="fixed inset-0 z-50 flex justify-end"
       role="dialog"
       id="mobile-navigation-dialog"
@@ -100,8 +179,9 @@ export const MobileNav: React.FC<MobileNavProps> = ({ isOpen, onClose }) => {
     >
       {/* Backdrop */}
       <div
-        className="fixed inset-0 bg-black/40 backdrop-blur-xs transition-opacity duration-200"
-        onClick={onClose}
+        ref={backdropRef}
+        className="fixed inset-0 bg-black/50 backdrop-blur-xs transition-opacity duration-200"
+        onClick={handleAnimatedClose}
         aria-hidden="true"
       />
 
@@ -114,7 +194,7 @@ export const MobileNav: React.FC<MobileNavProps> = ({ isOpen, onClose }) => {
         <div className="flex items-center justify-between p-5 border-b border-[var(--color-border)]">
           <Link
             href="/"
-            onClick={onClose}
+            onClick={handleAnimatedClose}
             className="flex items-center gap-2.5"
             aria-label="IT HUB Corporation Home"
           >
@@ -133,7 +213,7 @@ export const MobileNav: React.FC<MobileNavProps> = ({ isOpen, onClose }) => {
             ref={closeButtonRef}
             type="button"
             className="p-2 rounded-[var(--radius-md)] text-[var(--color-muted)] hover:text-[var(--color-navy)] hover:bg-[var(--color-soft-bg)] transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-[var(--color-primary-blue)]"
-            onClick={onClose}
+            onClick={handleAnimatedClose}
             aria-label="Close navigation menu"
           >
             <X size={20} />
@@ -150,27 +230,28 @@ export const MobileNav: React.FC<MobileNavProps> = ({ isOpen, onClose }) => {
                   pathname.startsWith(`${link.href}/`);
 
             return (
-              <Link
-                key={link.href}
-                href={link.href}
-                onClick={onClose}
-                className={`flex items-center justify-between p-3 rounded-[var(--radius-md)] text-base font-medium transition-all ${
-                  isActive
-                    ? 'bg-[var(--color-soft-bg)] text-[var(--color-primary-blue)] font-semibold'
-                    : 'text-[var(--color-navy)] hover:bg-[var(--color-soft-bg)]/60'
-                }`}
-                aria-current={isActive ? 'page' : undefined}
-              >
-                <span>{link.label}</span>
-                <ArrowRight
-                  size={16}
-                  className={
+              <div key={link.href} className="mobile-nav-item">
+                <Link
+                  href={link.href}
+                  onClick={handleAnimatedClose}
+                  className={`flex items-center justify-between p-3 rounded-[var(--radius-md)] text-base font-medium transition-all ${
                     isActive
-                      ? 'text-[var(--color-primary-blue)]'
-                      : 'text-[var(--color-muted)]'
-                  }
-                />
-              </Link>
+                      ? 'bg-[var(--color-soft-bg)] text-[var(--color-primary-blue)] font-semibold'
+                      : 'text-[var(--color-navy)] hover:bg-[var(--color-soft-bg)]/60'
+                  }`}
+                  aria-current={isActive ? 'page' : undefined}
+                >
+                  <span>{link.label}</span>
+                  <ArrowRight
+                    size={16}
+                    className={
+                      isActive
+                        ? 'text-[var(--color-primary-blue)]'
+                        : 'text-[var(--color-muted)]'
+                    }
+                  />
+                </Link>
+              </div>
             );
           })}
         </nav>
@@ -205,7 +286,7 @@ export const MobileNav: React.FC<MobileNavProps> = ({ isOpen, onClose }) => {
             href="/contact"
             variant="primary"
             className="w-full justify-center"
-            onClick={onClose}
+            onClick={handleAnimatedClose}
           >
             Request a Quote
           </Button>
