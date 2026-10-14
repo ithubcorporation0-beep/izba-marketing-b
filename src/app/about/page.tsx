@@ -1,5 +1,6 @@
 import React from 'react';
 import type { Metadata } from 'next';
+import Image from 'next/image';
 import {
   ShieldCheck,
   Compass,
@@ -161,21 +162,31 @@ export default function AboutPage() {
               </p>
             </Reveal>
 
-            <Reveal delay={0.15} className={styles.missionCard}>
-              <div className={styles.missionBadge}>
-                <Badge variant="cyan" size="sm">
-                  Our Mission
-                </Badge>
+            <Reveal delay={0.15} className={styles.founderCard}>
+              <div className={styles.founderImageContainer}>
+                <Image
+                  src="/images/ceo-founder.jpg"
+                  alt="CEO and Founder of IZBA marketing agency"
+                  width={768}
+                  height={1024}
+                  className={styles.founderImage}
+                  priority
+                />
+                <div className={styles.founderImageGlow} aria-hidden="true" />
               </div>
-              <h3 className={styles.missionTitle}>
-                Empowering Business Operations Through Honest Technology
-              </h3>
-              <p className={styles.missionText}>
-                Our mission is to make modern technology, digital marketing, and
-                intelligent workflow automation accessible and dependable for
-                every business — delivered with transparent pricing,
-                business-friendly explanations, and dedicated support.
-              </p>
+              <div className={styles.founderMeta}>
+                <div className={styles.founderBadgeWrapper}>
+                  <Badge variant="gold" size="sm">
+                    LEADERSHIP
+                  </Badge>
+                </div>
+                <h3 className={styles.founderTitle}>
+                  CEO and Founder
+                </h3>
+                <p className={styles.founderRole}>
+                  IZBA Marketing Agency
+                </p>
+              </div>
             </Reveal>
           </div>
         </Container>
