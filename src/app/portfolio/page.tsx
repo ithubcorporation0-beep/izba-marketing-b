@@ -4,6 +4,7 @@ import { Container } from '@/components/ui/Container';
 import { SectionHeading } from '@/components/ui/SectionHeading';
 import { Button } from '@/components/ui/Button';
 import { ProjectCard } from '@/components/portfolio/ProjectCard';
+import { RevealStagger } from '@/components/ui/motion/RevealStagger';
 import { projects } from '@/content/projects';
 import { Briefcase, ArrowRight, Layers } from 'lucide-react';
 import { constructMetadata } from '@/lib/seo/metadata';
@@ -68,12 +69,14 @@ export default function PortfolioPage() {
             </div>
           </div>
         ) : (
-          /* Project Grid for when real projects are added */
-          <div className={styles.projectsGrid}>
-            {publishedProjects.map((project) => (
-              <ProjectCard key={project.id} project={project} />
-            ))}
-          </div>
+          /* Project Grid with staggered motion reveal for when real projects are added */
+          <RevealStagger stagger={0.1} duration={0.6}>
+            <div className={styles.projectsGrid}>
+              {publishedProjects.map((project) => (
+                <ProjectCard key={project.id} project={project} />
+              ))}
+            </div>
+          </RevealStagger>
         )}
       </Container>
     </div>

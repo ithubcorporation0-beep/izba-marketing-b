@@ -90,6 +90,20 @@ export const Preloader: React.FC = () => {
         );
       }
 
+      // SVG Logo Path Stroke Animation (Active when official vector SVG logo is supplied)
+      const strokeElements = overlayRef.current?.querySelectorAll<SVGGeometryElement>('.preloader-logo-stroke');
+      if (strokeElements && strokeElements.length > 0) {
+        strokeElements.forEach((path) => {
+          const length = path.getTotalLength ? path.getTotalLength() : 100;
+          tl.fromTo(
+            path,
+            { strokeDasharray: length, strokeDashoffset: length },
+            { strokeDashoffset: 0, duration: 0.95, ease: 'power2.inOut' },
+            '<'
+          );
+        });
+      }
+
       // Short hold at 100% then smooth slide-up exit
       tl.to(
         overlayRef.current,
@@ -124,9 +138,17 @@ export const Preloader: React.FC = () => {
 
       <div ref={contentRef} className={styles.contentWrapper}>
         <div className={styles.wordmark}>
+          {/* Logo Badge (or Official SVG Vector with class 'preloader-logo-stroke') */}
           <div className={styles.logoBadge} aria-hidden="true">
             IT
           </div>
+          {/* 
+            To activate official SVG logo stroke animation:
+            Replace the badge div above with your SVG:
+            <svg className={styles.logoSvg} viewBox="0 0 100 100" aria-hidden="true">
+              <path className="preloader-logo-stroke" d="..." fill="none" stroke="url(#logoGrad)" strokeWidth="2" />
+            </svg>
+          */}
           <div className={styles.brandText}>
             <span className={styles.title}>IT HUB</span>
             <span className={styles.subtitle}>Corporation</span>

@@ -225,3 +225,26 @@ The motion system strictly implements **WCAG 2.2 Level AA** compliance:
 
 4. **Off-Screen Resource Pausing**:
    - The hero canvas uses an `IntersectionObserver` to halt rendering loops whenever scrolled out of view, preserving device battery and GPU resources.
+
+---
+
+## 10. Next-Phase Client Motion Upgrades
+
+When official branding assets and case studies are delivered, follow these steps to activate higher-fidelity motion features:
+
+### A. Real Hero Background Video
+1. Supply a 5–10 second muted loop in MP4 and WebM format (under 3 MB).
+2. Place files in `public/videos/hero-ambient.mp4` and `public/videos/hero-ambient.webm`, with poster at `public/images/hero-poster.webp`.
+3. Tell the developer or AI agent: *"Use the optional video slot in the hero."*
+4. In `src/components/sections/Hero.tsx`, uncomment the `<video>` element. Video playback is automatically disabled when reduced motion or data saver is active.
+
+### B. Real Logo Stroke Animation in Preloader
+1. Supply the official corporate vector SVG logo.
+2. In `src/components/sections/Preloader.tsx`, replace the fallback `<div className={styles.logoBadge}>IT</div>` badge with your SVG markup.
+3. Attach the class `.preloader-logo-stroke` to the SVG `<path>` elements.
+4. The preloader's GSAP context automatically queries `.preloader-logo-stroke`, measures each path's length via `getTotalLength()`, and draws the stroke in lockstep with the 0–100 progress counter.
+
+### C. Case-Study Image Reveals on /portfolio
+1. When clients approve case studies, add them to `src/content/projects.ts` with `isPublished: true` and `coverImageUrl: '/images/portfolio/project-slug.webp'`.
+2. `<ProjectCard />` automatically displays the cover image in a 16:9 ratio with smooth scale transitions.
+3. `<PortfolioPage />` automatically wraps the grid in `<RevealStagger>` for choreographed viewport entrance reveals.

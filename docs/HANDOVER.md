@@ -259,3 +259,29 @@ The digital flagship includes a modern, high-performance motion system designed 
   * WCAG 2.2.2 compliance: auto-scrolling marquee provides a visible, keyboard-accessible Pause/Resume button and pauses on hover/focus.
   * Screen reader integrity: `<SplitHeading />` exposes full unbroken text via `aria-label` while hiding split spans with `aria-hidden="true"`.
 * **Full Developer Guide:** See `docs/MOTION_GUIDE.md` for in-depth documentation on modifying animation speeds, turning effects on/off, and adding new animated components.
+
+---
+
+### 11. Client Asset Integration & Next-Phase Guide
+
+When client assets become available, follow these streamlined implementation steps:
+
+#### 1. Real Hero Background Video
+* **Assets:** A 5–10 second muted loop in MP4 (H.264) and WebM (VP9) format, compressed under 3 MB, plus a matching first-frame poster screenshot in WebP format.
+* **Placement:**
+  - Videos: `public/videos/hero-ambient.mp4` and `public/videos/hero-ambient.webm`
+  - Poster: `public/images/hero-poster.webp`
+* **Activation:** Tell the developer or AI agent: *"Use the optional video slot in the hero."*
+* **Implementation:** In `src/components/sections/Hero.tsx`, uncomment the `<video>` block. It is already pre-styled with `object-fit: cover`, opacity, `playsinline`, and automatic suppression on reduced-motion and data-saver connections.
+
+#### 2. Real Logo Vector & Preloader Stroke Animation
+* **Assets:** Official corporate SVG logo with distinct vector paths/strokes.
+* **Placement:** `public/images/logo.svg` and `public/icons/favicon.svg`.
+* **Activation:** Supply the SVG code and ask: *"Animate the SVG logo stroke in the preloader."*
+* **Implementation:** In `src/components/sections/Preloader.tsx`, replace the temporary text badge `<div className={styles.logoBadge}>IT</div>` with your SVG logo markup. Apply the CSS class `.preloader-logo-stroke` to the SVG `<path>` elements. The preloader's GSAP timeline automatically calculates path lengths via `getTotalLength()` and smoothly draws the strokes (`strokeDashoffset` from length to 0) in sync with the progress counter.
+
+#### 3. Case-Study Pages & Portfolio Image Reveals
+* **Assets:** Real project case studies approved by clients with cover mockup images (`16:9` aspect ratio, e.g. `1200x675` WebP).
+* **Placement:** Drop project screenshots into `public/images/portfolio/`.
+* **Activation:** In `src/content/projects.ts`, add the verified project object setting `isPublished: true` and specifying `coverImageUrl: '/images/portfolio/project-name.webp'`.
+* **Behavior:** `/portfolio` will automatically exit its honest "Portfolio Coming Soon" empty state and render a staggered grid (`<RevealStagger>`) of `<ProjectCard>` items featuring smooth hover image zoom reveals. Case study routes at `/portfolio/[slug]` will automatically prerender statically at build time.

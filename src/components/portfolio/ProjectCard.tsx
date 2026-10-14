@@ -1,5 +1,6 @@
 import React from 'react';
 import Link from 'next/link';
+import Image from 'next/image';
 import { Project } from '@/types';
 import { ArrowRight, CheckCircle2 } from 'lucide-react';
 import { categories } from '@/content/categories';
@@ -17,6 +18,18 @@ export const ProjectCard: React.FC<ProjectCardProps> = ({ project }) => {
 
   return (
     <article className={styles.card}>
+      {project.coverImageUrl && (
+        <div className={styles.imageContainer}>
+          <Image
+            src={project.coverImageUrl}
+            alt={project.title}
+            width={600}
+            height={338}
+            className={styles.coverImage}
+          />
+        </div>
+      )}
+
       <div className={styles.topMeta}>
         <span className={styles.categoryBadge}>{categoryName}</span>
         {clientName && <span className={styles.clientName}>{clientName}</span>}
