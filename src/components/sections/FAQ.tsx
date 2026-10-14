@@ -1,7 +1,6 @@
 'use client';
 
 import React, { useState } from 'react';
-import { ChevronDown } from 'lucide-react';
 import { faqs } from '@/content/faqs';
 import { Badge } from '@/components/ui/Badge';
 import { Container } from '@/components/ui/Container';
@@ -9,6 +8,7 @@ import { Reveal, RevealStagger } from '@/components/ui/motion';
 import styles from './FAQ.module.css';
 
 export const FAQSection: React.FC = () => {
+  // Only one FAQ open at a time (index or null)
   const [openIndex, setOpenIndex] = useState<number | null>(0);
 
   const toggleFAQ = (index: number) => {
@@ -44,43 +44,61 @@ export const FAQSection: React.FC = () => {
             return (
               <div
                 key={faq.id || index}
-                className={[styles.accordionItem, isOpen ? styles.itemOpen : '']
-                  .filter(Boolean)
-                  .join(' ')}
+                className={styles.accordionItem}
+                data-open={isOpen ? 'true' : 'false'}
               >
-                <button
-                  type="button"
-                  id={buttonId}
-                  className={styles.questionBtn}
-                  onClick={() => toggleFAQ(index)}
-                  aria-expanded={isOpen}
-                  aria-controls={panelId}
-                >
-                  <span className={styles.questionText}>{faq.question}</span>
-                  <ChevronDown
-                    size={20}
-                    className={[
-                      styles.arrowIcon,
-                      isOpen ? styles.arrowOpen : '',
-                    ]
-                      .filter(Boolean)
-                      .join(' ')}
-                    aria-hidden="true"
-                  />
-                </button>
-                {isOpen && (
-                  <div
-                    id={panelId}
-                    role="region"
-                    aria-labelledby={buttonId}
-                    className={styles.answerBox}
+                <h3 className="m-0 p-0">
+                  <button
+                    type="button"
+                    id={buttonId}
+                    className={styles.questionBtn}
+                    onClick={() => toggleFAQ(index)}
+                    aria-expanded={isOpen}
+                    aria-controls={panelId}
                   >
-                    <p className={styles.answerText}>{faq.answer}</p>
-                    {faq.category && (
-                      <span className={styles.faqCategory}>{faq.category}</span>
-                    )}
+                    <span className={styles.questionText}>{faq.question}</span>
+                    <span className={styles.iconWrapper} aria-hidden="true">
+                      <svg
+                        className={styles.morphIcon}
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="currentColor"
+                      >
+                        <line
+                          x1="5"
+                          y1="12"
+                          x2="19"
+                          y2="12"
+                          className={styles.horizontalBar}
+                        />
+                        <line
+                          x1="12"
+                          y1="5"
+                          x2="12"
+                          y2="19"
+                          className={styles.verticalBar}
+                        />
+                      </svg>
+                    </span>
+                  </button>
+                </h3>
+                <div
+                  id={panelId}
+                  role="region"
+                  aria-labelledby={buttonId}
+                  className={styles.panel}
+                >
+                  <div className={styles.panelInner}>
+                    <div className={styles.answerBox}>
+                      <p className={styles.answerText}>{faq.answer}</p>
+                      {faq.category && (
+                        <span className={styles.faqCategory}>
+                          {faq.category}
+                        </span>
+                      )}
+                    </div>
                   </div>
-                )}
+                </div>
               </div>
             );
           })}

@@ -3,85 +3,132 @@
   color: inherit;
   display: block;
   height: 100%;
+  border-radius: var(--radius-xl);
+  outline: none;
+}
+
+.cardLink:focus-visible {
+  box-shadow: 0 0 0 3px var(--color-primary-blue), 0 0 0 6px rgba(49, 87, 213, 0.2);
 }
 
 .card {
   height: 100%;
   display: flex;
   flex-direction: column;
-  padding: var(--space-xl);
-  border-radius: var(--radius-lg);
+  padding: 1.75rem 1.5rem;
+  border-radius: var(--radius-xl);
   background: var(--color-surface-card);
-  border: 1px solid var(--color-border-subtle);
+  border: 1px solid var(--color-border);
   transition:
-    transform var(--transition-base),
-    box-shadow var(--transition-base),
-    border-color var(--transition-base);
+    transform 0.25s cubic-bezier(0.16, 1, 0.3, 1),
+    box-shadow 0.25s cubic-bezier(0.16, 1, 0.3, 1),
+    border-color 0.25s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
-.cardLink:hover .card {
+/* Hover and Keyboard Focus visual parity */
+.cardLink:hover .card,
+.cardLink:focus-visible .card {
   transform: translateY(-4px);
-  box-shadow: var(--shadow-md);
-  border-color: var(--color-primary-blue);
+  border-color: rgba(49, 87, 213, 0.45);
+  box-shadow: 0 12px 32px -4px rgba(49, 87, 213, 0.16), 0 0 0 1px rgba(118, 87, 232, 0.15);
 }
 
 .topRow {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  margin-bottom: var(--space-md);
+  margin-bottom: 1.25rem;
 }
 
+/* Animated icon on hover and focus */
 .iconWrapper {
-  width: 46px;
-  height: 46px;
+  width: 48px;
+  height: 48px;
   border-radius: var(--radius-md);
-  background: rgba(37, 99, 235, 0.08);
+  background: rgba(49, 87, 213, 0.08);
+  border: 1px solid rgba(49, 87, 213, 0.15);
   color: var(--color-primary-blue);
   display: flex;
   align-items: center;
   justify-content: center;
   transition:
-    background-color var(--transition-base),
-    color var(--transition-base);
+    transform 0.3s cubic-bezier(0.16, 1, 0.3, 1),
+    background-color 0.25s ease,
+    color 0.25s ease,
+    box-shadow 0.25s ease;
+  will-change: transform;
 }
 
-.cardLink:hover .iconWrapper {
-  background: var(--color-primary-blue);
+.cardLink:hover .iconWrapper,
+.cardLink:focus-visible .iconWrapper {
+  transform: scale(1.1) rotate(4deg);
+  background: linear-gradient(135deg, var(--color-primary-blue), var(--color-accent-violet));
   color: #ffffff;
+  border-color: transparent;
+  box-shadow: 0 4px 14px rgba(49, 87, 213, 0.35);
+}
+
+.metaLabel {
+  font-size: 0.75rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  padding: 4px 10px;
+  border-radius: var(--radius-full);
+  background: rgba(16, 24, 40, 0.05);
+  color: var(--color-navy);
+  border: 1px solid var(--color-border);
 }
 
 .title {
-  font-size: 1.18rem;
-  font-weight: 700;
-  color: var(--color-text-main);
+  font-size: 1.2rem;
+  font-weight: 750;
+  color: var(--color-navy);
   line-height: 1.35;
-  margin-bottom: var(--space-xs);
+  margin-bottom: 0.5rem;
+  letter-spacing: -0.02em;
 }
 
 .description {
-  font-size: 0.92rem;
-  color: var(--color-text-muted);
+  font-size: 0.9rem;
+  color: var(--color-muted);
   line-height: 1.55;
   flex-grow: 1;
-  margin-bottom: var(--space-md);
+  margin-bottom: 1.25rem;
 }
 
 .footer {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding-top: var(--space-sm);
-  border-top: 1px solid var(--color-border-subtle);
-  font-size: 0.86rem;
+  padding-top: 0.85rem;
+  border-top: 1px solid var(--color-border);
+  font-size: 0.875rem;
   font-weight: 600;
   color: var(--color-primary-blue);
 }
 
 .arrowIcon {
-  transition: transform var(--transition-fast);
+  transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
-.cardLink:hover .arrowIcon {
+.cardLink:hover .arrowIcon,
+.cardLink:focus-visible .arrowIcon {
   transform: translateX(4px);
+}
+
+/* Reduced Motion Override */
+@media (prefers-reduced-motion: reduce) {
+  .card,
+  .cardLink:hover .card,
+  .cardLink:focus-visible .card,
+  .iconWrapper,
+  .cardLink:hover .iconWrapper,
+  .cardLink:focus-visible .iconWrapper,
+  .arrowIcon,
+  .cardLink:hover .arrowIcon,
+  .cardLink:focus-visible .arrowIcon {
+    transform: none !important;
+    transition: none !important;
+  }
 }

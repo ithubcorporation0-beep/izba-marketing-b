@@ -34,6 +34,7 @@ const ServiceSearchInner: React.FC<ServiceSearchInnerProps> = ({
 
   const [searchQuery, setSearchQuery] = useState('');
   const [selectedCategory, setSelectedCategory] = useState(urlCategory);
+  const [activeScrollSpyCategory, setActiveScrollSpyCategory] = useState<string>('all');
 
   // Sync category if URL parameter changes
   useEffect(() => {
@@ -42,8 +43,42 @@ const ServiceSearchInner: React.FC<ServiceSearchInnerProps> = ({
     }
   }, [urlCategory]);
 
+  // Scroll-spy observer for category sections when viewing all categories
+  useEffect(() => {
+    if (selectedCategory !== 'all' || searchQuery.trim() !== '') {
+      return;
+    }
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            const catSlug = entry.target.getAttribute('data-category-slug');
+            if (catSlug) {
+              setActiveScrollSpyCategory(catSlug);
+            }
+          }
+        });
+      },
+      {
+        rootMargin: '-100px 0px -55% 0px',
+        threshold: 0,
+      }
+    );
+
+    const sectionElements = document.querySelectorAll<HTMLElement>(
+      'section[data-category-slug]'
+    );
+    sectionElements.forEach((el) => observer.observe(el));
+
+    return () => {
+      observer.disconnect();
+    };
+  }, [selectedCategory, searchQuery, categories]);
+
   const handleCategoryChange = (newCat: string) => {
     setSelectedCategory(newCat);
+    setActiveScrollSpyCategory(newCat);
     const params = new URLSearchParams(searchParams?.toString() || '');
     if (newCat === 'all') {
       params.delete('category');
@@ -57,6 +92,7 @@ const ServiceSearchInner: React.FC<ServiceSearchInnerProps> = ({
   const handleReset = () => {
     setSearchQuery('');
     setSelectedCategory('all');
+    setActiveScrollSpyCategory('all');
     router.replace(pathname, { scroll: false });
   };
 
@@ -107,8 +143,8 @@ const ServiceSearchInner: React.FC<ServiceSearchInnerProps> = ({
 
   return (
     <div className={styles.wrapper}>
-      {/* Search & Filter Controls */}
-      <div className={styles.controlsBar}>
+      {/* Search Input Box */}
+      <div className={styles.searchBarContainer}>
         <div className={styles.searchBox}>
           <label htmlFor="service-search-input" className={styles.searchLabel}>
             Search services
@@ -140,19 +176,23 @@ const ServiceSearchInner: React.FC<ServiceSearchInnerProps> = ({
             )}
           </div>
         </div>
+      </div>
 
-        {/* Category Pills Filter */}
-        <div
-          className={styles.categoryFilter}
-          role="group"
-          aria-label="Filter directory by category"
-        >
+      {/* Sticky Category Chip Bar with Scroll-Spy indicator */}
+      <nav
+        className={styles.stickyChipBar}
+        role="navigation"
+        aria-label="Filter directory by category"
+      >
+        <div className={styles.chipScrollContainer}>
           <button
             type="button"
             onClick={() => handleCategoryChange('all')}
             className={[
               styles.categoryPill,
-              selectedCategory === 'all' ? styles.activePill : '',
+              selectedCategory === 'all' && (activeScrollSpyCategory === 'all' || isFiltered)
+                ? styles.activePill
+                : '',
             ]
               .filter(Boolean)
               .join(' ')}
@@ -162,8 +202,11 @@ const ServiceSearchInner: React.FC<ServiceSearchInnerProps> = ({
           </button>
 
           {categories.map((cat) => {
-            const isSelected =
+            const isFilterSelected =
               selectedCategory === cat.slug || selectedCategory === cat.id;
+            const isScrollSpyActive =
+              selectedCategory === 'all' && activeScrollSpyCategory === cat.slug;
+            const isCurrent = isFilterSelected || isScrollSpyActive;
             const count = services.filter(
               (s) => s.categorySlug === cat.slug || s.category === cat.id
             ).length;
@@ -175,18 +218,19 @@ const ServiceSearchInner: React.FC<ServiceSearchInnerProps> = ({
                 onClick={() => handleCategoryChange(cat.slug)}
                 className={[
                   styles.categoryPill,
-                  isSelected ? styles.activePill : '',
+                  isCurrent ? styles.activePill : '',
+                  isScrollSpyActive && selectedCategory === 'all' ? styles.scrollSpyPill : '',
                 ]
                   .filter(Boolean)
                   .join(' ')}
-                aria-pressed={isSelected}
+                aria-pressed={isFilterSelected}
               >
                 {cat.name || cat.title} ({count})
               </button>
             );
           })}
         </div>
-      </div>
+      </nav>
 
       {/* Screen Reader Live Announcement */}
       <div
@@ -251,6 +295,8 @@ const ServiceSearchInner: React.FC<ServiceSearchInnerProps> = ({
           {groupedResults.map(({ category, services: catServices }) => (
             <section
               key={category.id}
+              id={`cat-section-${category.slug}`}
+              data-category-slug={category.slug}
               className={styles.categorySection}
               aria-labelledby={`cat-heading-${category.slug}`}
             >
@@ -281,8 +327,18 @@ const ServiceSearchInner: React.FC<ServiceSearchInnerProps> = ({
               </div>
 
               <div className={styles.servicesGrid}>
-                {catServices.map((service) => (
-                  <ServiceCard key={service.id} service={service} />
+                {catServices.map((service, idx) => (
+                  <div
+                    key={`${selectedCategory}-${searchQuery}-${service.id}`}
+                    className={styles.animatingCard}
+                    style={
+                      {
+                        '--stagger-idx': Math.min(idx, 12),
+                      } as React.CSSProperties
+                    }
+                  >
+                    <ServiceCard service={service} />
+                  </div>
                 ))}
               </div>
             </section>

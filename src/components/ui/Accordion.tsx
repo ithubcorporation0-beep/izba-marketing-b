@@ -1,6 +1,7 @@
 'use client';
 
 import React, { useState } from 'react';
+import styles from './Accordion.module.css';
 
 export interface AccordionItem {
   id: string;
@@ -36,7 +37,11 @@ export const Accordion: React.FC<AccordionProps> = ({
   };
 
   return (
-    <div className={`flex flex-col gap-3 w-full ${className}`}>
+    <div
+      className={[styles.accordionWrapper, className]
+        .filter(Boolean)
+        .join(' ')}
+    >
       {items.map((item) => {
         const isOpen = openIds.includes(item.id);
         const headerId = `accordion-header-${item.id}`;
@@ -45,50 +50,54 @@ export const Accordion: React.FC<AccordionProps> = ({
         return (
           <div
             key={item.id}
-            className="border border-[var(--color-border)] rounded-xl bg-[var(--color-white)] overflow-hidden transition-all duration-200 shadow-sm"
+            className={styles.item}
+            data-open={isOpen ? 'true' : 'false'}
           >
-            <h3>
+            <h3 className={styles.header}>
               <button
                 type="button"
                 id={headerId}
                 aria-expanded={isOpen}
                 aria-controls={contentId}
                 onClick={() => toggleItem(item.id)}
-                className="w-full flex items-center justify-between p-5 sm:p-6 text-left font-bold text-base sm:text-lg text-[var(--color-navy)] hover:text-[var(--color-primary-blue)] transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-[var(--color-primary-blue)]"
+                className={styles.trigger}
               >
                 <span>{item.title}</span>
-                <span
-                  className={`ml-4 shrink-0 transition-transform duration-200 text-[var(--color-muted)] ${
-                    isOpen ? 'rotate-180 text-[var(--color-primary-blue)]' : ''
-                  }`}
-                  aria-hidden="true"
-                >
+                <span className={styles.iconWrapper} aria-hidden="true">
                   <svg
-                    className="w-5 h-5"
-                    fill="none"
+                    className={styles.morphIcon}
                     viewBox="0 0 24 24"
+                    fill="none"
                     stroke="currentColor"
-                    strokeWidth={2}
                   >
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      d="M19 9l-7 7-7-7"
+                    <line
+                      x1="5"
+                      y1="12"
+                      x2="19"
+                      y2="12"
+                      className={styles.horizontalBar}
+                    />
+                    <line
+                      x1="12"
+                      y1="5"
+                      x2="12"
+                      y2="19"
+                      className={styles.verticalBar}
                     />
                   </svg>
                 </span>
               </button>
             </h3>
-            {isOpen && (
-              <div
-                id={contentId}
-                role="region"
-                aria-labelledby={headerId}
-                className="px-5 sm:px-6 pb-5 sm:pb-6 pt-0 text-sm sm:text-base text-[var(--color-muted)] leading-relaxed border-t border-[var(--color-border)]/60 pt-4"
-              >
-                {item.content}
+            <div
+              id={contentId}
+              role="region"
+              aria-labelledby={headerId}
+              className={styles.panel}
+            >
+              <div className={styles.panelInner}>
+                <div className={styles.contentWrapper}>{item.content}</div>
               </div>
-            )}
+            </div>
           </div>
         );
       })}

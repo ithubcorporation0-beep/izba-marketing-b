@@ -138,15 +138,8 @@ function QuoteFormInner() {
       return;
     }
 
-    // 2. Anti-spam checks: Honeypot & Minimum time-on-page check (< 2.5s)
-    const timeSpentMs = Date.now() - mountTimeRef.current;
-    if (formData.honeypot || timeSpentMs < 2500) {
-      // Silently reject bots: simulate success without dispatching request
-      setIsSubmitting(true);
-      setTimeout(() => {
-        setIsSubmitting(false);
-        setIsSubmitted(true);
-      }, 800);
+    // 2. Anti-spam honeypot check: reject bot submissions without showing success
+    if (formData.honeypot) {
       return;
     }
 
@@ -223,7 +216,28 @@ function QuoteFormInner() {
       <div className={styles.card}>
         <div className={styles.successCard}>
           <div className={styles.successIconWrapper}>
-            <CheckCircle2 size={36} aria-hidden="true" />
+            <svg
+              className={styles.checkmarkSvg}
+              viewBox="0 0 52 52"
+              aria-hidden="true"
+            >
+              <circle
+                className={styles.checkmarkCircle}
+                cx="26"
+                cy="26"
+                r="23"
+                fill="none"
+                strokeWidth="3"
+              />
+              <path
+                className={styles.checkmarkCheck}
+                fill="none"
+                strokeWidth="3.5"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                d="M14 27l8 8 16-16"
+              />
+            </svg>
           </div>
           <h2 className={styles.successTitle}>Enquiry Received</h2>
           <p className={styles.successMessage}>
@@ -649,11 +663,17 @@ function QuoteFormInner() {
           <button
             type="submit"
             disabled={isSubmitting || !isKeyConfigured}
-            className={styles.submitBtn}
+            className={[
+              styles.submitBtn,
+              isSubmitting ? styles.submitting : '',
+            ]
+              .filter(Boolean)
+              .join(' ')}
+            aria-busy={isSubmitting}
           >
             {isSubmitting ? (
               <>
-                <Loader2 size={18} className="animate-spin" />
+                <Loader2 size={18} className={styles.spinner} />
                 <span>Sending Enquiry...</span>
               </>
             ) : !isKeyConfigured ? (

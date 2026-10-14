@@ -194,25 +194,48 @@ export const projects: Project[] = [
 
 ## 7. How to Add a Real Testimonial
 
-Client reviews belong in `src/content/testimonials.ts`. This file currently exports an empty array (`export const testimonials: Testimonial[] = [];`) to ensure only authentic reviews are published.
+Client reviews belong in `src/content/testimonials.ts`. This file currently exports an empty array (`export const testimonials: Testimonial[] = [];`) in strict compliance with project integrity rules (no fictitious or unverified reviews are ever shown). The Testimonials section remains completely hidden on the live website until authentic reviews are added.
 
-When you receive written client feedback, add it as follows:
+When you receive verified written client feedback with publication permission, add it to `src/content/testimonials.ts` following this format:
 
 ```typescript
 export const testimonials: Testimonial[] = [
   {
     id: 'testimonial-1',
-    author: 'Sarah Jenkins',
+    clientName: 'Sarah Jenkins',
     role: 'Director of Marketing',
     company: 'Acme Retail Group',
-    quote:
+    content:
       'The team at IT HUB built our marketing landing pages quickly and with great attention to detail. Communication was clear throughout the project.',
     rating: 5,
     serviceSlug: 'website-development',
+    avatarText: 'SJ',
+    isPublished: true,
     isFeatured: true,
+    date: '2026-03-15',
+  },
+  {
+    id: 'testimonial-2',
+    clientName: 'David Chen',
+    role: 'Founder & CEO',
+    company: 'FinTrack Analytics',
+    content:
+      'From technical architecture to final deployment, IT HUB delivered reliable, performant software. We appreciate their transparent milestones.',
+    rating: 5,
+    serviceSlug: 'custom-web-application-development',
+    avatarText: 'DC',
+    isPublished: true,
+    isFeatured: true,
+    date: '2026-03-20',
   },
 ];
 ```
+
+### Automatic Carousel Display
+Once real testimonials are populated in `src/content/testimonials.ts`:
+- The website automatically reveals the Testimonials section.
+- Testimonials are displayed inside an interactive carousel featuring large quotes, numbered pagination (`01 / 02`), previous/next navigation buttons, touch swipe support for mobile/tablet, and keyboard arrow controls (`ArrowLeft` / `ArrowRight`).
+- Autoplay pauses automatically on hover or keyboard focus, and is automatically disabled for visitors with reduced motion preferences.
 
 ---
 

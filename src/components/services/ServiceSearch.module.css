@@ -10,13 +10,13 @@
   color: var(--color-text-muted);
 }
 
-.controlsBar {
+.searchBarContainer {
   display: flex;
   flex-direction: column;
   gap: var(--space-md);
-  padding: var(--space-xl);
-  background: var(--color-surface-card);
-  border: 1px solid var(--color-border-subtle);
+  padding: 1.5rem;
+  background: var(--color-white);
+  border: 1px solid var(--color-border);
   border-radius: var(--radius-xl);
   box-shadow: var(--shadow-sm);
 }
@@ -30,7 +30,7 @@
 .searchLabel {
   font-size: 0.88rem;
   font-weight: 600;
-  color: var(--color-text-main);
+  color: var(--color-navy);
 }
 
 .inputWrapper {
@@ -43,7 +43,7 @@
 .searchIcon {
   position: absolute;
   left: 14px;
-  color: var(--color-text-muted);
+  color: var(--color-muted);
   pointer-events: none;
 }
 
@@ -51,19 +51,19 @@
   width: 100%;
   padding: 12px 40px 12px 42px;
   border-radius: var(--radius-md);
-  border: 1px solid var(--color-border-subtle);
-  background: var(--color-surface-sunken);
-  color: var(--color-text-main);
+  border: 1px solid var(--color-border);
+  background: var(--color-soft-bg);
+  color: var(--color-navy);
   font-size: 0.95rem;
   transition:
-    border-color var(--transition-fast),
-    box-shadow var(--transition-fast);
+    border-color 0.2s ease,
+    box-shadow 0.2s ease;
 }
 
 .searchInput:focus {
   outline: none;
   border-color: var(--color-primary-blue);
-  box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.15);
+  box-shadow: 0 0 0 3px rgba(49, 87, 213, 0.15);
 }
 
 .clearBtn {
@@ -72,7 +72,7 @@
   background: none;
   border: none;
   padding: 4px;
-  color: var(--color-text-muted);
+  color: var(--color-muted);
   cursor: pointer;
   display: flex;
   align-items: center;
@@ -81,45 +81,113 @@
 }
 
 .clearBtn:hover {
-  color: var(--color-text-main);
+  color: var(--color-navy);
 }
 
-/* Category Filter Pills */
-.categoryFilter {
+/* Sticky Category Chip Bar with Scroll-Spy */
+.stickyChipBar {
+  position: sticky;
+  top: 74px;
+  z-index: 20;
+  background: rgba(255, 255, 255, 0.88);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  padding: 0.75rem 1rem;
+  border-radius: var(--radius-xl);
+  border: 1px solid var(--color-border);
+  box-shadow: 0 4px 20px -2px rgba(16, 24, 40, 0.08);
+}
+
+.chipScrollContainer {
   display: flex;
-  flex-wrap: wrap;
+  flex-wrap: nowrap;
+  overflow-x: auto;
   gap: 0.5rem;
-  padding-top: var(--space-xs);
-  border-top: 1px solid var(--color-border-subtle);
+  padding-bottom: 2px;
+  scrollbar-width: thin;
+  -webkit-overflow-scrolling: touch;
+}
+
+@media (min-width: 1024px) {
+  .chipScrollContainer {
+    flex-wrap: wrap;
+    overflow-x: visible;
+  }
 }
 
 .categoryPill {
+  display: inline-flex;
+  align-items: center;
+  white-space: nowrap;
   padding: 6px 14px;
   border-radius: var(--radius-full);
-  border: 1px solid var(--color-border-subtle);
-  background: var(--color-surface-sunken);
-  color: var(--color-text-muted);
+  border: 1px solid var(--color-border);
+  background: var(--color-white);
+  color: var(--color-muted);
   font-size: 0.84rem;
   font-weight: 500;
   cursor: pointer;
-  transition: all var(--transition-fast);
+  transition:
+    background-color 0.2s ease,
+    color 0.2s ease,
+    border-color 0.2s ease,
+    box-shadow 0.2s ease,
+    transform 0.2s ease;
 }
 
-.categoryPill:hover {
+.categoryPill:hover,
+.categoryPill:focus-visible {
   border-color: var(--color-primary-blue);
-  color: var(--color-text-main);
+  color: var(--color-navy);
+  outline: none;
 }
 
 .activePill {
-  background: var(--color-primary-blue);
-  border-color: var(--color-primary-blue);
-  color: #ffffff;
+  background: var(--color-primary-blue) !important;
+  border-color: var(--color-primary-blue) !important;
+  color: #ffffff !important;
   font-weight: 600;
+  box-shadow: 0 2px 8px rgba(49, 87, 213, 0.3);
 }
 
-.activePill:hover {
-  background: var(--color-primary-hover);
-  color: #ffffff;
+.scrollSpyPill {
+  background: linear-gradient(135deg, var(--color-primary-blue), var(--color-accent-violet));
+  border-color: transparent;
+  color: #ffffff !important;
+  box-shadow: 0 2px 10px rgba(118, 87, 232, 0.35);
+  transform: translateY(-1px);
+}
+
+/* Animated Card Stagger on Filter */
+@keyframes filterCardEntrance {
+  from {
+    opacity: 0;
+    transform: translateY(14px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animatingCard {
+  animation: filterCardEntrance 0.35s cubic-bezier(0.16, 1, 0.3, 1) both;
+  animation-delay: calc(var(--stagger-idx, 0) * 35ms);
+  will-change: transform, opacity;
+  height: 100%;
+}
+
+/* Reduced Motion Override */
+@media (prefers-reduced-motion: reduce) {
+  .animatingCard {
+    animation: none !important;
+    opacity: 1 !important;
+    transform: none !important;
+  }
+  .categoryPill {
+    transition: none !important;
+    transform: none !important;
+  }
 }
 
 /* Status Bar */

@@ -52,9 +52,7 @@ export const CategoryCard: React.FC<CategoryCardProps> = ({
       <Card hoverable className={styles.card}>
         <div className={styles.topRow}>
           <div className={styles.iconWrapper}>{icon}</div>
-          <Badge variant="neutral" size="sm">
-            {serviceCount} Services
-          </Badge>
+          <span className={styles.metaLabel}>{serviceCount} Services</span>
         </div>
 
         <h3 className={styles.title}>{categoryTitle}</h3>

@@ -8,15 +8,17 @@
   background: var(--color-surface-card);
   border: 1px solid var(--color-border-subtle);
   transition:
-    transform var(--transition-base),
-    box-shadow var(--transition-base),
-    border-color var(--transition-base);
+    transform 0.25s cubic-bezier(0.16, 1, 0.3, 1),
+    box-shadow 0.25s cubic-bezier(0.16, 1, 0.3, 1),
+    border-color 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+  will-change: transform, box-shadow;
 }
 
-.card:hover {
+.card:hover,
+.card:focus-within {
   transform: translateY(-4px);
-  box-shadow: var(--shadow-md);
-  border-color: var(--color-primary-blue);
+  border-color: rgba(49, 87, 213, 0.45);
+  box-shadow: 0 12px 32px -4px rgba(49, 87, 213, 0.16), 0 0 0 1px rgba(118, 87, 232, 0.15);
 }
 
 .content {
@@ -38,9 +40,11 @@
   transition: color var(--transition-fast);
 }
 
-.titleLink:hover {
+.titleLink:hover,
+.titleLink:focus-visible {
   color: var(--color-primary-blue);
   text-decoration: underline;
+  outline: none;
 }
 
 .description {
@@ -90,16 +94,33 @@
   color: var(--color-primary-blue);
   text-decoration: none;
   transition: color var(--transition-fast);
+  border-radius: var(--radius-sm);
 }
 
-.learnMoreLink:hover {
+.learnMoreLink:hover,
+.learnMoreLink:focus-visible {
   color: var(--color-primary-hover);
+  outline: none;
 }
 
 .arrowIcon {
-  transition: transform var(--transition-fast);
+  transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
-.card:hover .arrowIcon {
+.card:hover .arrowIcon,
+.card:focus-within .arrowIcon {
   transform: translateX(4px);
+}
+
+/* Reduced Motion Override */
+@media (prefers-reduced-motion: reduce) {
+  .card,
+  .card:hover,
+  .card:focus-within,
+  .arrowIcon,
+  .card:hover .arrowIcon,
+  .card:focus-within .arrowIcon {
+    transform: none !important;
+    transition: none !important;
+  }
 }
