@@ -1,5 +1,7 @@
 .section {
-  padding: var(--space-4xl) 0;
+  padding-top: var(--section-spacing-md);
+  padding-bottom: var(--section-spacing-md);
+  background: var(--color-surface-sunken);
   position: relative;
 }
 
@@ -8,16 +10,19 @@
   flex-direction: column;
   align-items: center;
   text-align: center;
-  gap: var(--space-sm);
-  max-width: 680px;
-  margin: 0 auto var(--space-3xl) auto;
+  gap: var(--space-xs);
+  max-width: 720px;
+  margin: 0 auto 3.5rem auto;
 }
 
 .title {
-  font-size: clamp(1.8rem, 3.5vw, 2.5rem);
-  font-weight: 800;
-  color: var(--color-text-main);
-  letter-spacing: -0.02em;
+  font-size: var(--font-display-h2);
+  font-weight: 850;
+  color: var(--color-navy);
+  letter-spacing: var(--letter-spacing-heading);
+  line-height: 1.1;
+  text-wrap: balance;
+  margin-top: 0.5rem;
 }
 
 .subtitle {

@@ -1,13 +1,13 @@
 .section {
-  padding-top: var(--space-3xl);
-  padding-bottom: var(--space-3xl);
+  padding-top: var(--section-spacing-md);
+  padding-bottom: var(--section-spacing-md);
   background: var(--color-surface-sunken);
 }
 
 .header {
   text-align: center;
-  max-width: 680px;
-  margin: 0 auto var(--space-2xl) auto;
+  max-width: 720px;
+  margin: 0 auto 3.5rem auto;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -15,11 +15,13 @@
 }
 
 .title {
-  font-size: clamp(1.8rem, 3.2vw, 2.5rem);
-  font-weight: 800;
-  color: var(--color-text-main);
-  letter-spacing: -0.02em;
-  margin-top: var(--space-xs);
+  font-size: var(--font-display-h2);
+  font-weight: 850;
+  color: var(--color-navy);
+  letter-spacing: var(--letter-spacing-heading);
+  line-height: 1.1;
+  text-wrap: balance;
+  margin-top: 0.5rem;
 }
 
 .subtitle {

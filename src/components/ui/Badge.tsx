@@ -24,8 +24,8 @@ export const Badge: React.FC<BadgeProps> = ({
   ...props
 }) => {
   const sizeStyles = {
-    sm: 'text-xs px-2 py-0.5 gap-1 font-medium',
-    md: 'text-xs px-2.5 py-1 gap-1.5 font-semibold',
+    sm: 'text-[10px] px-2.5 py-0.5 gap-1 font-bold',
+    md: 'text-[11px] px-3.5 py-1 gap-1.5 font-bold',
   };
 
   const normalizedVariant =
@@ -52,7 +52,7 @@ export const Badge: React.FC<BadgeProps> = ({
 
   return (
     <span
-      className={`inline-flex items-center rounded-full tracking-wide uppercase select-none ${sizeStyles[size]} ${variantStyles[normalizedVariant]} ${className}`}
+      className={`inline-flex items-center rounded-full tracking-[0.12em] uppercase select-none transition-colors ${sizeStyles[size]} ${variantStyles[normalizedVariant]} ${className}`}
       {...props}
     >
       {dot && (
