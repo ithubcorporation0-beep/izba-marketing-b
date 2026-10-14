@@ -21,9 +21,9 @@
   transform: translateY(-100%);
 }
 
-/* State 1: Transparent over dark hero */
+/* State 1: Dark hero header */
 .headerDarkHero {
-  background-color: transparent;
+  background-color: #0D0E12;
   border-bottom: 1px solid rgba(255, 255, 255, 0.08);
   padding-top: 1.15rem;
   padding-bottom: 1.15rem;

@@ -96,14 +96,14 @@ export const featuredServices: FeaturedService[] = [
  * Exact copy from PRD 4.2
  */
 export const heroContent = {
-  badge: 'Technology, Marketing & AI',
-  title: 'Technology, Marketing & AI Solutions for Your Business',
+  badge: 'FULL-SERVICE MARKETING & TECHNOLOGY STUDIO',
+  title: 'Where Stunning Design Meets Flawless Functionality',
   subtitle:
-    'From websites and software to digital marketing, creative production, and AI automation, IZBA Marketing agency helps businesses move their ideas forward.',
-  primaryCtaText: 'Request a Quote',
+    'We craft high-converting websites, digital marketing campaigns, and AI solutions for startups, agencies, and businesses that refuse to settle for good enough.',
+  primaryCtaText: 'Book a Meeting',
   primaryCtaLink: '/contact',
-  secondaryCtaText: 'Explore Our Services',
-  secondaryCtaLink: '/services',
+  secondaryCtaText: 'Schedule a Call Now',
+  secondaryCtaLink: '/contact',
 };
 
 /**

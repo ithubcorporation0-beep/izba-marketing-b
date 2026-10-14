@@ -155,16 +155,18 @@ export const Header: React.FC = () => {
 
           {/* Header Actions */}
           <div className="flex items-center gap-3">
-            {/* The "Request a Quote" button always stays visible whenever the header is shown */}
+            {/* The "Schedule a Call Now" button always stays visible whenever the header is shown */}
             <div className="inline-flex">
-              <Button
+              <Link
                 href="/contact"
-                variant="primary"
-                size="sm"
-                icon={<ArrowRight size={14} />}
+                className={`inline-flex items-center justify-center font-semibold rounded-full transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 select-none text-xs md:text-sm px-4 md:px-5 py-2 md:py-2.5 gap-2 shadow-sm ${
+                  isDarkHero
+                    ? 'bg-white text-[#0D0E12] hover:bg-slate-100 hover:shadow-md'
+                    : 'bg-[var(--color-primary-blue)] text-white hover:bg-[var(--color-primary-hover)]'
+                }`}
               >
-                Request a Quote
-              </Button>
+                <span>Schedule a Call Now</span>
+              </Link>
             </div>
 
             {/* Mobile Menu Trigger */}
