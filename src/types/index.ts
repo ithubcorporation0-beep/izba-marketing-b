@@ -179,4 +179,9 @@ export interface SiteConfig {
   availabilityBadge?: string;
   timezone?: string;
   timezoneLabel?: string;
+  closingCta?: {
+    headline: string;
+    subheadline?: string;
+    primaryBtnText?: string;
+  };
 }

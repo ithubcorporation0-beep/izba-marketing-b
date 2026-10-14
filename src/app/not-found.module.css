@@ -14,6 +14,115 @@
   margin: 0 auto;
 }
 
+/* Playful Animated 404 Visual */
+.playfulContainer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+  user-select: none;
+}
+
+.digitFourLeft,
+.digitFourRight {
+  font-size: clamp(3.5rem, 8vw, 5.5rem);
+  font-weight: 900;
+  line-height: 1;
+  color: var(--color-navy);
+  letter-spacing: -0.04em;
+  display: inline-block;
+  will-change: transform;
+}
+
+.digitFourLeft {
+  animation: floatLeft 4s ease-in-out infinite;
+}
+
+.digitFourRight {
+  animation: floatRight 4.5s ease-in-out infinite;
+}
+
+.zeroPortal {
+  position: relative;
+  width: 68px;
+  height: 68px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, rgba(49, 87, 213, 0.12), rgba(118, 87, 232, 0.18));
+  border: 2px dashed rgba(49, 87, 213, 0.4);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--color-primary-blue);
+  animation: portalSpin 12s linear infinite;
+}
+
+.zeroPulseRing {
+  position: absolute;
+  inset: -6px;
+  border-radius: 50%;
+  border: 1px solid rgba(49, 87, 213, 0.25);
+  animation: pulseScale 3s ease-in-out infinite;
+}
+
+.compassIcon {
+  animation: compassWobble 6s ease-in-out infinite;
+}
+
+@keyframes floatLeft {
+  0%,
+  100% {
+    transform: translateY(0) rotate(-4deg);
+  }
+  50% {
+    transform: translateY(-8px) rotate(-1deg);
+  }
+}
+
+@keyframes floatRight {
+  0%,
+  100% {
+    transform: translateY(0) rotate(4deg);
+  }
+  50% {
+    transform: translateY(-9px) rotate(1deg);
+  }
+}
+
+@keyframes portalSpin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes compassWobble {
+  0%,
+  100% {
+    transform: rotate(0deg);
+  }
+  25% {
+    transform: rotate(-15deg);
+  }
+  75% {
+    transform: rotate(15deg);
+  }
+}
+
+@keyframes pulseScale {
+  0%,
+  100% {
+    transform: scale(1);
+    opacity: 0.6;
+  }
+  50% {
+    transform: scale(1.15);
+    opacity: 0.1;
+  }
+}
+
 .badge {
   display: inline-flex;
   align-items: center;
@@ -110,4 +219,20 @@
 
 .arrowIcon {
   color: var(--color-primary-blue);
+}
+
+/* Reduced Motion Override */
+@media (prefers-reduced-motion: reduce) {
+  .digitFourLeft,
+  .digitFourRight,
+  .zeroPortal,
+  .zeroPulseRing,
+  .compassIcon {
+    animation: none !important;
+    transform: none !important;
+  }
+  .categoryLink {
+    transition: none !important;
+    transform: none !important;
+  }
 }

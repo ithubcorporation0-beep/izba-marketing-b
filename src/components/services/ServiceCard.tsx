@@ -20,6 +20,7 @@ export const ServiceCard: React.FC<ServiceCardProps> = ({
   return (
     <Card
       hoverable
+      data-cursor="view"
       className={[styles.card, className].filter(Boolean).join(' ')}
     >
       <div className={styles.content}>

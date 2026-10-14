@@ -1,12 +1,66 @@
-import React from 'react';
+'use client';
+
+import React, { useState, useEffect, useRef } from 'react';
 import Link from 'next/link';
-import { Mail, Phone, MapPin, Clock, ArrowRight } from 'lucide-react';
+import { Mail, Phone, MapPin, Clock, ArrowRight, ArrowUp } from 'lucide-react';
 import { siteConfig } from '@/config/site';
 import { categories } from '@/content/categories';
 import { Badge } from '@/components/ui/Badge';
+import styles from './Footer.module.css';
 
 export const Footer: React.FC = () => {
   const currentYear = new Date().getFullYear();
+  const [localTime, setLocalTime] = useState<string>('');
+  const [isWordmarkVisible, setIsWordmarkVisible] = useState(false);
+  const wordmarkRef = useRef<HTMLDivElement>(null);
+
+  // Live local time clock
+  useEffect(() => {
+    const updateTime = () => {
+      try {
+        const timeZone = siteConfig.timezone || 'UTC';
+        const formatted = new Intl.DateTimeFormat('en-US', {
+          timeZone,
+          hour: '2-digit',
+          minute: '2-digit',
+          second: '2-digit',
+          hour12: true,
+        }).format(new Date());
+        setLocalTime(formatted);
+      } catch {
+        setLocalTime(new Date().toUTCString().slice(17, 25) + ' UTC');
+      }
+    };
+
+    updateTime();
+    const interval = setInterval(updateTime, 1000);
+    return () => clearInterval(interval);
+  }, []);
+
+  // Slide-up trigger for giant wordmark when it enters viewport
+  useEffect(() => {
+    const el = wordmarkRef.current;
+    if (!el) return;
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            setIsWordmarkVisible(true);
+            observer.unobserve(entry.target);
+          }
+        });
+      },
+      { threshold: 0.1 }
+    );
+
+    observer.observe(el);
+    return () => observer.disconnect();
+  }, []);
+
+  const scrollToTop = () => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  };
 
   const isPlaceholder = (val: string) => {
     return !val || val.startsWith('PLACEHOLDER_');
@@ -27,11 +81,30 @@ export const Footer: React.FC = () => {
   };
 
   return (
-    <footer
-      className="bg-[var(--color-navy)] text-[var(--color-white)] border-t border-[var(--color-border-dark)]/20 mt-auto"
-      role="contentinfo"
-    >
-      <div className="max-w-[var(--container-max)] mx-auto px-4 sm:px-6 lg:px-8 py-14 lg:py-16">
+    <footer className={styles.footer} role="contentinfo">
+      <div className={styles.container}>
+        {/* Top Meta Bar: Live Clock & Back to Top */}
+        <div className={styles.metaBar}>
+          <div className={styles.clockWrapper}>
+            <span className={styles.pulseDot} aria-hidden="true" />
+            <Clock size={14} className="text-[#38bdf8]" aria-hidden="true" />
+            <span>
+              {localTime ? `${localTime} (${siteConfig.timezoneLabel || 'UTC'})` : 'Studio Clock'}
+            </span>
+          </div>
+
+          <button
+            type="button"
+            onClick={scrollToTop}
+            className={styles.backToTopBtn}
+            aria-label="Scroll back to top of page"
+          >
+            <span>Back to top</span>
+            <ArrowUp size={14} aria-hidden="true" />
+          </button>
+        </div>
+
+        {/* 4-Column Navigation & Info Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-10 lg:gap-8">
           {/* Brand & Description (4 cols) */}
           <div className="lg:col-span-4 space-y-4">
@@ -63,7 +136,7 @@ export const Footer: React.FC = () => {
                 size="sm"
                 className="bg-[var(--color-white)]/10 text-[var(--color-white)] border-transparent"
               >
-                Clear Communication & Support
+                Clear Communication &amp; Support
               </Badge>
             </div>
           </div>
@@ -119,7 +192,7 @@ export const Footer: React.FC = () => {
                   href="/contact"
                   className="text-[var(--color-muted)] hover:text-[var(--color-white)] transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-[var(--color-primary-blue)] rounded-sm"
                 >
-                  Contact & Quote
+                  Contact &amp; Quote
                 </Link>
               </li>
             </ul>
@@ -134,7 +207,7 @@ export const Footer: React.FC = () => {
               {categories.map((cat) => (
                 <li key={cat.id}>
                   <Link
-                    href={`/services#${cat.slug}`}
+                    href={`/services/category/${cat.slug}`}
                     className="text-[var(--color-muted)] hover:text-[var(--color-white)] transition-colors flex items-center justify-between group focus:outline-none focus-visible:ring-2 focus-visible:ring-[var(--color-primary-blue)] rounded-sm"
                   >
                     <span className="truncate">{cat.name}</span>
@@ -151,7 +224,7 @@ export const Footer: React.FC = () => {
           {/* Contact Details (3 cols) */}
           <div className="lg:col-span-3 space-y-4">
             <h4 className="text-xs font-semibold uppercase tracking-wider text-[var(--color-white)]">
-              Contact & HQ
+              Contact &amp; HQ
             </h4>
             <div className="space-y-3 text-sm">
               <div className="flex items-start gap-2.5">
@@ -224,7 +297,7 @@ export const Footer: React.FC = () => {
           </div>
         </div>
 
-        {/* Bottom Legal Bar */}
+        {/* Legal & Copyright Row */}
         <div className="mt-12 pt-8 border-t border-[var(--color-white)]/10 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-[var(--color-muted)]">
           <p>
             &copy; {currentYear} {siteConfig.name}. All rights reserved.
@@ -244,6 +317,16 @@ export const Footer: React.FC = () => {
               Terms of Service
             </Link>
           </div>
+        </div>
+
+        {/* Giant "IT HUB" Wordmark Across the Bottom */}
+        <div
+          ref={wordmarkRef}
+          className={styles.giantWordmarkWrapper}
+          data-visible={isWordmarkVisible}
+          aria-hidden="true"
+        >
+          <div className={styles.giantWordmark}>IT HUB</div>
         </div>
       </div>
     </footer>

@@ -42,4 +42,12 @@ export const siteConfig: SiteConfig = {
   timezone: 'UTC',
   // TODO: Replace with matching friendly timezone display label (e.g. 'UTC', 'EST', 'GMT', 'PKT')
   timezoneLabel: 'UTC',
+
+  // Closing CTA Section copy (fully editable)
+  closingCta: {
+    headline: 'Ready to start your project?',
+    subheadline:
+      'From custom software architecture and digital marketing to AI workflows and creative branding — we partner with businesses to build modern, reliable operations.',
+    primaryBtnText: 'Request a Quote',
+  },
 };

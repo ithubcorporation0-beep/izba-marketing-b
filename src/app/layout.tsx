@@ -8,6 +8,7 @@ import { Footer } from '@/components/layout/Footer';
 import { ConsentBanner } from '@/components/analytics/ConsentBanner';
 import { MotionProvider } from '@/lib/motion';
 import { Preloader } from '@/components/sections/Preloader';
+import { CustomCursor } from '@/components/ui/CustomCursor';
 
 const inter = Inter({
   subsets: ['latin'],
@@ -95,6 +96,9 @@ export default function RootLayout({
 
           {/* Optional Cookie & Analytics Consent Banner */}
           <ConsentBanner />
+
+          {/* Custom Trailing Ring Cursor for Desktop Fine Pointer */}
+          <CustomCursor />
         </MotionProvider>
       </body>
     </html>
