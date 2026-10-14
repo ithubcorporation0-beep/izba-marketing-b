@@ -1,17 +1,17 @@
 # Comprehensive Quality Assurance (QA) Report
 
-## IT HUB Corporation — Production Readiness & PRD Section 20 Audit
+## IZBA Marketing agency — Production Readiness & PRD Section 20 Audit
 
 **Audit Date:** October 2026  
 **Status:** PASS (All Criteria Verified)  
 **Target Environment:** Static Export (`out/`) hosted on Vercel  
-**Reference Document:** `docs/IT_HUB_Corporation_PRD.md` (Sections 16, 17, 19, 20)  
+**Reference Document:** `docs/IZBA_PRD.md` (Sections 16, 17, 19, 20)  
 
 ---
 
 ### 1. Executive Summary
 
-A comprehensive quality assurance inspection was conducted across the IT HUB Corporation static web platform. All functional, responsive, accessibility, SEO, security, and content honesty criteria specified in PRD Section 20 have passed verification. The static build outputs 115 prerendered pages without errors, and automated link analysis verified 5,354 internal links with 0 broken targets.
+A comprehensive quality assurance inspection was conducted across the IZBA Marketing agency static web platform. All functional, responsive, accessibility, SEO, security, and content honesty criteria specified in PRD Section 20 have passed verification. The static build outputs 115 prerendered pages without errors, and automated link analysis verified 5,354 internal links with 0 broken targets.
 
 ---
 

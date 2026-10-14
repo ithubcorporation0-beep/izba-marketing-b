@@ -1,6 +1,6 @@
 # Beginner-Friendly Vercel Deployment Guide
 
-## Step-by-Step Instructions for IT HUB Corporation Website
+## Step-by-Step Instructions for IZBA Marketing agency Website
 
 This guide walks you through deploying your static Next.js website to **Vercel** from start to finish. You do not need any server management experience. Simply follow each numbered step in order.
 
@@ -29,13 +29,13 @@ This guide walks you through deploying your static Next.js website to **Vercel**
 2. Click **Sign Up** (or **Log In**) using your GitHub account.
 3. On your Vercel Dashboard, click the blue **Add New...** button in the top right corner.
 4. Select **Project** from the dropdown menu.
-5. Under "Import Git Repository", find your repository (e.g., `ithub-corporation-website`) and click the **Import** button next to it.
+5. Under "Import Git Repository", find your repository (e.g., `izba-marketing-website`) and click the **Import** button next to it.
 
 ---
 
 ### Step 3: Configure Project Build Settings
 
-1. **Project Name:** Keep the default name or enter a clean name such as `it-hub-corporation`.
+1. **Project Name:** Keep the default name or enter a clean name such as `izba-marketing-website`.
 2. **Framework Preset:** Vercel automatically detects **Next.js**. Leave it set to Next.js.
 3. **Root Directory:** Leave as `./` (the root).
 4. **Build and Output Settings:** Leave default (`npm run build`). Next.js will automatically generate the static output in the `out` directory.
@@ -47,7 +47,7 @@ This guide walks you through deploying your static Next.js website to **Vercel**
 Before clicking Deploy, expand the **Environment Variables** section on the Vercel setup screen. Add the following keys:
 
 1. **`NEXT_PUBLIC_SITE_URL`**
-   * **Value:** Your temporary or permanent website URL (e.g., `https://it-hub-corporation.vercel.app` or your final domain `https://ithubcorporation.com`).
+   * **Value:** Your temporary or permanent website URL (e.g., `https://izba-marketing.vercel.app` or your final domain `https://izbamarketing.com`).
    * Click **Add**.
 
 2. **`NEXT_PUBLIC_WEB3FORMS_KEY`**
@@ -77,14 +77,14 @@ Before clicking Deploy, expand the **Environment Variables** section on the Verc
 
 1. In your Vercel project dashboard, click on the **Settings** tab at the top.
 2. In the left sidebar, click **Domains**.
-3. In the input field, enter your domain name (e.g., `ithubcorporation.com`) and click **Add**.
-4. Select the recommended option: add both `ithubcorporation.com` and `www.ithubcorporation.com` (with redirect).
+3. In the input field, enter your domain name (e.g., `izbamarketing.com`) and click **Add**.
+4. Select the recommended option: add both `izbamarketing.com` and `www.izbamarketing.com` (with redirect).
 5. Vercel will show the exact DNS records to add:
-   * **Apex Domain (`ithubcorporation.com`):**
+   * **Apex Domain (`izbamarketing.com`):**
      * Type: `A`
      * Name / Host: `@`
      * Value: `76.76.21.21`
-   * **Subdomain (`www.ithubcorporation.com`):**
+   * **Subdomain (`www.izbamarketing.com`):**
      * Type: `CNAME`
      * Name / Host: `www`
      * Value: `cname.vercel-dns.com`
@@ -97,7 +97,7 @@ Before clicking Deploy, expand the **Environment Variables** section on the Verc
 1. Return to the Vercel **Domains** page.
 2. Vercel automatically checks DNS propagation and generates a free, auto-renewing SSL certificate via Let's Encrypt.
 3. Once DNS propagation completes (usually 5 to 30 minutes), you will see green checkmarks next to your domain names.
-4. Open `https://ithubcorporation.com` in your browser and verify the secure padlock icon appears.
+4. Open `https://izbamarketing.com` in your browser and verify the secure padlock icon appears.
 
 ---
 
@@ -105,7 +105,7 @@ Before clicking Deploy, expand the **Environment Variables** section on the Verc
 
 1. Go to **Settings** > **Environment Variables** in Vercel.
 2. Edit the **`NEXT_PUBLIC_SITE_URL`** variable:
-   * Change its value to your official domain: `https://ithubcorporation.com`
+   * Change its value to your official domain: `https://izbamarketing.com`
    * Click **Save**.
 3. Go to the **Deployments** tab in Vercel.
 4. Click the three dots (`...`) on the latest deployment and select **Redeploy**.
@@ -116,7 +116,7 @@ Before clicking Deploy, expand the **Environment Variables** section on the Verc
 ### Step 9: Submit Your Sitemap in Google Search Console
 
 1. Go to [https://search.google.com/search-console](https://search.google.com/search-console).
-2. Add your domain property (`ithubcorporation.com`) and verify ownership (using the DNS TXT record or HTML tag method).
+2. Add your domain property (`izbamarketing.com`) and verify ownership (using the DNS TXT record or HTML tag method).
 3. In the left navigation menu, click **Sitemaps**.
 4. Under "Add a new sitemap", enter:
    ```text

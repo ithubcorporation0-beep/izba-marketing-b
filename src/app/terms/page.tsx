@@ -9,7 +9,7 @@ import styles from '../legal.module.css';
 export const metadata: Metadata = constructMetadata({
   title: 'Terms of Service',
   description:
-    'Terms of engagement, website usage policies, and service framework for IT HUB Corporation.',
+    'Terms of engagement, website usage policies, and service framework for IZBA Marketing agency.',
   pathname: '/terms',
 });
 

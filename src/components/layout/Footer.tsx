@@ -111,13 +111,13 @@ export const Footer: React.FC = () => {
             <Link
               href="/"
               className="inline-flex items-center gap-3 focus:outline-none focus-visible:ring-2 focus-visible:ring-[var(--color-primary-blue)] rounded-[var(--radius-sm)]"
-              aria-label="IT HUB Corporation"
+              aria-label={siteConfig.name}
             >
               <div
                 className="w-9 h-9 rounded-[var(--radius-md)] bg-[var(--color-primary-blue)] flex items-center justify-center text-[var(--color-white)] font-bold text-base"
                 aria-hidden="true"
               >
-                IT
+                IZ
               </div>
               <div className="flex flex-col">
                 <span className="font-extrabold text-lg text-[var(--color-white)] tracking-tight leading-tight">
@@ -322,14 +322,14 @@ export const Footer: React.FC = () => {
           </div>
         </div>
 
-        {/* Giant "IT HUB" Wordmark Across the Bottom */}
+        {/* Giant "IZBA" Wordmark Across the Bottom */}
         <div
           ref={wordmarkRef}
           className={styles.giantWordmarkWrapper}
           data-visible={isWordmarkVisible}
           aria-hidden="true"
         >
-          <div className={styles.giantWordmark}>IT HUB</div>
+          <div className={styles.giantWordmark}>IZBA</div>
         </div>
       </div>
     </footer>

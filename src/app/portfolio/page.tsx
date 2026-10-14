@@ -13,7 +13,7 @@ import styles from './page.module.css';
 export const metadata: Metadata = constructMetadata({
   title: 'Portfolio & Case Studies',
   description:
-    'Explore verified case studies and technical implementations delivered by IT HUB Corporation.',
+    'Explore verified case studies and technical implementations delivered by IZBA Marketing agency.',
   pathname: '/portfolio',
 });
 

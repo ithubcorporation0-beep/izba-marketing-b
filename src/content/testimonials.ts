@@ -16,7 +16,7 @@ import { Testimonial } from '@/types';
  *     clientName: 'Jane Smith',
  *     role: 'Founder & CEO',
  *     company: 'Acme Logistics',
- *     content: 'IT HUB Corporation delivered our website ahead of schedule with exceptional communication.',
+ *     content: 'IZBA Marketing agency delivered our website ahead of schedule with exceptional communication.',
  *     serviceSlug: 'website-development',
  *     rating: 5,
  *     isPublished: true,

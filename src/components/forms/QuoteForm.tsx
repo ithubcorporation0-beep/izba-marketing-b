@@ -156,7 +156,7 @@ function QuoteFormInner() {
 
       const payload = {
         access_key: accessKey,
-        subject: 'New enquiry from IT HUB website',
+        subject: 'New enquiry from IZBA website',
         from_name: formData.fullName,
         name: formData.fullName,
         email: formData.email,
@@ -632,7 +632,7 @@ function QuoteFormInner() {
           />
           <div className="flex-1">
             <label htmlFor="field-consent" className={styles.consentText}>
-              I consent to IT HUB Corporation processing my name, email, and
+              I consent to {siteConfig.name} processing my name, email, and
               project details in accordance with the{' '}
               <Link
                 href="/privacy"

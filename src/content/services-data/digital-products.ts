@@ -74,7 +74,7 @@ export const digitalProductsServices: Service[] = [
     ],
     status: 'published',
     isFeatured: true,
-    seoTitle: 'Digital Product Creation & Packaging — IT HUB Corporation',
+    seoTitle: 'Digital Product Creation & Packaging — IZBA Marketing agency',
     seoDescription:
       'Turn your expertise into sellable digital products. Design, packaging, licensing, and automated instant download delivery systems.',
   },
@@ -124,7 +124,7 @@ export const digitalProductsServices: Service[] = [
     ],
     status: 'published',
     isFeatured: false,
-    seoTitle: 'Custom Website Templates & Themes — IT HUB Corporation',
+    seoTitle: 'Custom Website Templates & Themes — IZBA Marketing agency',
     seoDescription:
       'High-performance, responsive website templates built with clean code and modern design systems. Easy to customize and deploy.',
   },
@@ -175,7 +175,7 @@ export const digitalProductsServices: Service[] = [
     ],
     status: 'published',
     isFeatured: false,
-    seoTitle: 'Figma UI Kits & Design System Templates — IT HUB Corporation',
+    seoTitle: 'Figma UI Kits & Design System Templates — IZBA Marketing agency',
     seoDescription:
       'Professional Figma UI kits and design system templates. Auto-layout components, dark/light modes, and pre-built screens to accelerate app design.',
   },
@@ -225,7 +225,7 @@ export const digitalProductsServices: Service[] = [
     ],
     status: 'published',
     isFeatured: false,
-    seoTitle: 'Canva Social Media Templates — IT HUB Corporation',
+    seoTitle: 'Canva Social Media Templates — IZBA Marketing agency',
     seoDescription:
       'Reusable social media templates for Canva and Figma. Keep your Instagram, LinkedIn, and Facebook branding consistent in minutes.',
   },
@@ -275,7 +275,7 @@ export const digitalProductsServices: Service[] = [
     ],
     status: 'published',
     isFeatured: false,
-    seoTitle: 'E-book Design & Digital Guide Formatting — IT HUB Corporation',
+    seoTitle: 'E-book Design & Digital Guide Formatting — IZBA Marketing agency',
     seoDescription:
       'Professional e-book and whitepaper design. Beautiful interior layouts, clickable PDFs, ePub files, and 3D promotional book mockups.',
   },
@@ -325,7 +325,7 @@ export const digitalProductsServices: Service[] = [
     ],
     status: 'published',
     isFeatured: false,
-    seoTitle: 'Interactive Digital Planners (GoodNotes) — IT HUB Corporation',
+    seoTitle: 'Interactive Digital Planners (GoodNotes) — IZBA Marketing agency',
     seoDescription:
       'Custom hyperlinked digital planners for GoodNotes and tablet note apps. Beautiful tab navigation, habit trackers, and store mockups.',
   },
@@ -377,7 +377,7 @@ export const digitalProductsServices: Service[] = [
     status: 'published',
     isFeatured: false,
     seoTitle:
-      'Presentation Templates (PowerPoint & Google Slides) — IT HUB Corporation',
+      'Presentation Templates (PowerPoint & Google Slides) — IZBA Marketing agency',
     seoDescription:
       'Professional PowerPoint and Google Slides templates. 30+ slide layouts, master themes, and clean vector charts for corporate decks.',
   },
@@ -426,7 +426,7 @@ export const digitalProductsServices: Service[] = [
     ],
     status: 'published',
     isFeatured: false,
-    seoTitle: 'Printable Products & Planner Design — IT HUB Corporation',
+    seoTitle: 'Printable Products & Planner Design — IZBA Marketing agency',
     seoDescription:
       'Print-at-home printable products and worksheets. High-resolution 300 DPI PDFs in Letter and A4 with ink-friendly layouts.',
   },
@@ -479,7 +479,7 @@ export const digitalProductsServices: Service[] = [
     status: 'published',
     isFeatured: false,
     seoTitle:
-      'Turnkey Online Store Setup (Shopify & WooCommerce) — IT HUB Corporation',
+      'Turnkey Online Store Setup (Shopify & WooCommerce) — IZBA Marketing agency',
     seoDescription:
       'Complete online store setup services. Domain mapping, payment gateway integration, shipping rules, and launch-ready checkouts.',
   },
@@ -529,7 +529,7 @@ export const digitalProductsServices: Service[] = [
     ],
     status: 'published',
     isFeatured: false,
-    seoTitle: 'Digital Product Store Management — IT HUB Corporation',
+    seoTitle: 'Digital Product Store Management — IZBA Marketing agency',
     seoDescription:
       'Complete management for digital download stores. File updates, promotional campaigns, customer download support, and sales reporting.',
   },

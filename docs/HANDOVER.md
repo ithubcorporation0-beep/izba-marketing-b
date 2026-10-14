@@ -1,8 +1,8 @@
 # Developer Handover & System Architecture Guide
 
-## IT HUB Corporation Digital Flagship (Static Architecture)
+## IZBA Marketing agency Digital Flagship (Static Architecture)
 
-Welcome to the IT HUB Corporation codebase! This document provides everything an incoming engineer or content editor needs to understand, update, and maintain the website.
+Welcome to the IZBA Marketing agency codebase! This document provides everything an incoming engineer or content editor needs to understand, update, and maintain the website.
 
 ---
 
@@ -25,9 +25,9 @@ Welcome to the IT HUB Corporation codebase! This document provides everything an
 ### 2. Comprehensive Folder Map
 
 ```text
-it-hub-website/
+izba-marketing-website/
 ├── docs/                      # Project manuals and handover documentation
-│   ├── IT_HUB_Corporation_PRD.md # Source of truth product specification
+│   ├── IZBA_PRD.md            # Source of truth product specification
 │   ├── CONTENT_GUIDE.md       # Content editing instructions for non-technical users
 │   ├── QA_REPORT.md           # Pre-launch audit pass/fail matrix
 │   ├── DEPLOYMENT.md          # Step-by-step Vercel deployment guide
@@ -138,7 +138,7 @@ All editable text is decoupled from JSX templates and stored in TypeScript files
     categorySlug: 'web-software-development',
     summary: 'Brief overview of the project outcome.',
     challenge: 'The technical or business obstacle faced.',
-    approach: 'How IT HUB Corporation engineered the solution.',
+    approach: 'How IZBA Marketing agency engineered the solution.',
     outcome: 'The verified result achieved.',
     deliverables: ['Web Portal', 'Source Code', 'Documentation'],
     isPublished: true,
@@ -211,11 +211,11 @@ All 5 checks must pass with exit code `0`.
 
 ### 7. Accounts & Ownership Matrix
 
-Use this table to record account ownership, credentials managers, and administrator contacts for IT HUB Corporation:
+Use this table to record account ownership, credentials managers, and administrator contacts for IZBA Marketing agency:
 
 | Account / Service | Purpose | Registered Owner / Admin Email | Location of Credentials |
 | :--- | :--- | :--- | :--- |
-| **Domain Registrar** (e.g., Namecheap) | Manages `ithubcorporation.com` DNS | `____________________________` | Password Manager |
+| **Domain Registrar** (e.g., Namecheap) | Manages `izbamarketing.com` DNS | `____________________________` | Password Manager |
 | **Vercel** | Hosting & CDN deployment platform | `____________________________` | Password Manager / GitHub SSO |
 | **GitHub** | Git source code repository | `____________________________` | Organization Admin |
 | **Web3Forms** | Contact form enquiry email delivery | `____________________________` | Key stored in Vercel Env Vars |

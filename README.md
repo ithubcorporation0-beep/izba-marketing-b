@@ -1,6 +1,6 @@
-# IT HUB Corporation — Digital Web Platform
+# IZBA Marketing agency — Digital Web Platform
 
-The official modern digital web platform for **IT HUB Corporation**, built with **Next.js (App Router)**, **TypeScript**, and **Vanilla CSS Modules** driven by design tokens.
+The official modern digital web platform for **IZBA Marketing agency**, built with **Next.js (App Router)**, **TypeScript**, and **Vanilla CSS Modules** driven by design tokens.
 
 Compiled as a high-performance **static export** (`output: 'export'`), the website runs with zero database overhead and can be hosted seamlessly on **Vercel**, **Cloudflare Pages**, or any static global CDN.
 
@@ -24,7 +24,7 @@ cp .env.example .env.local
 
 | Variable | Description | Default / Example |
 | :--- | :--- | :--- |
-| `NEXT_PUBLIC_SITE_URL` | Canonical public website URL | `https://ithubcorporation.com` |
+| `NEXT_PUBLIC_SITE_URL` | Canonical public website URL | `https://izbamarketing.com` |
 | `NEXT_PUBLIC_WEB3FORMS_KEY` | Web3Forms access key for enquiry delivery | Available at [web3forms.com](https://web3forms.com) |
 | `NEXT_PUBLIC_GA_ID` | Optional Google Analytics 4 Measurement ID | `G-XXXXXXXXXX` |
 
@@ -66,9 +66,9 @@ All 5 commands must pass with exit code `0`.
 ## 📁 Project Architecture & Folder Map
 
 ```text
-it-hub-website/
+izba-marketing-website/
 ├── docs/                      # 📖 Project Documentation & Manuals
-│   ├── IT_HUB_Corporation_PRD.md # Source of truth product specification
+│   ├── IZBA_PRD.md            # Source of truth product specification
 │   ├── QA_REPORT.md           # Pre-launch quality assurance pass/fail report
 │   ├── DEPLOYMENT.md          # Step-by-step Vercel deployment guide
 │   ├── HANDOVER.md            # Developer handover & architecture guide
@@ -113,4 +113,4 @@ Follow the beginner-friendly, step-by-step instructions in [`docs/DEPLOYMENT.md`
 
 ## 📄 License & Ownership
 
-Proprietary digital asset developed for **IT HUB Corporation**. All rights reserved.
+Proprietary digital asset developed for **IZBA Marketing agency**. All rights reserved.

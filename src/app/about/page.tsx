@@ -18,7 +18,7 @@ import styles from './page.module.css';
 export const metadata: Metadata = constructMetadata({
   title: 'About Us',
   description:
-    'Learn about IT HUB Corporation, our mission, core values of honesty, clarity, quality, and support, and our practical approach to digital solutions.',
+    'Learn about IZBA Marketing agency, our mission, core values of honesty, clarity, quality, and support, and our practical approach to digital solutions.',
   pathname: '/about',
 });
 
@@ -112,7 +112,7 @@ export default function AboutPage() {
         <Container size="default">
           <Reveal className={styles.heroContent}>
             <Badge variant="blue" size="md">
-              About IT HUB Corporation
+              About IZBA Marketing agency
             </Badge>
             <h1 className={styles.pageTitle}>
               Dedicated to Practical, Reliable{' '}
@@ -142,7 +142,7 @@ export default function AboutPage() {
                 Who We Are
               </h2>
               <p className={styles.positioningLead}>
-                IT HUB Corporation provides technology, marketing, creative, AI,
+                IZBA Marketing agency provides technology, marketing, creative, AI,
                 and business-support services to help organizations build and
                 improve their digital operations.
               </p>

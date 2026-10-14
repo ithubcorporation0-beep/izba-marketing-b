@@ -74,7 +74,7 @@ export const aiAutomationServices: Service[] = [
     ],
     status: 'published',
     isFeatured: true,
-    seoTitle: 'AI Video Creation & Avatar Production — IT HUB Corporation',
+    seoTitle: 'AI Video Creation & Avatar Production — IZBA Marketing agency',
     seoDescription:
       'AI video generation for business. Explainer videos, realistic synthetic avatars, voiceovers, and rapid training video production.',
   },
@@ -125,7 +125,7 @@ export const aiAutomationServices: Service[] = [
     ],
     status: 'published',
     isFeatured: true,
-    seoTitle: 'AI Image Generation & Concept Art — IT HUB Corporation',
+    seoTitle: 'AI Image Generation & Concept Art — IZBA Marketing agency',
     seoDescription:
       'Custom AI image generation for websites and marketing. High-resolution visuals, consistent brand styling, and professional retouching.',
   },
@@ -175,7 +175,7 @@ export const aiAutomationServices: Service[] = [
     ],
     status: 'published',
     isFeatured: false,
-    seoTitle: 'AI Chatbot Development for Websites — IT HUB Corporation',
+    seoTitle: 'AI Chatbot Development for Websites — IZBA Marketing agency',
     seoDescription:
       'Custom AI chatbot development. Train conversational bots on your documents to answer customer questions 24/7 with zero hallucinations.',
   },
@@ -225,7 +225,7 @@ export const aiAutomationServices: Service[] = [
     ],
     status: 'published',
     isFeatured: false,
-    seoTitle: 'Custom AI Agent Development — IT HUB Corporation',
+    seoTitle: 'Custom AI Agent Development — IZBA Marketing agency',
     seoDescription:
       'Build autonomous AI agents for your business. Multi-step reasoning, tool execution, API integration, and human-in-the-loop safeguards.',
   },
@@ -275,7 +275,7 @@ export const aiAutomationServices: Service[] = [
     ],
     status: 'published',
     isFeatured: false,
-    seoTitle: 'Business Process Automation Services — IT HUB Corporation',
+    seoTitle: 'Business Process Automation Services — IZBA Marketing agency',
     seoDescription:
       'Automate repetitive company workflows. Connect CRMs, forms, and spreadsheets with Zapier, Make, and custom webhooks to save hours weekly.',
   },
@@ -326,7 +326,7 @@ export const aiAutomationServices: Service[] = [
     ],
     status: 'published',
     isFeatured: false,
-    seoTitle: 'AI Voice Assistant & Phone Automation — IT HUB Corporation',
+    seoTitle: 'AI Voice Assistant & Phone Automation — IZBA Marketing agency',
     seoDescription:
       'Natural AI voice assistants for customer calls. Low-latency conversational voice bots for phone scheduling, inquiries, and automated routing.',
   },
@@ -376,7 +376,7 @@ export const aiAutomationServices: Service[] = [
     ],
     status: 'published',
     isFeatured: false,
-    seoTitle: 'AI-Powered Content Creation & Copywriting — IT HUB Corporation',
+    seoTitle: 'AI-Powered Content Creation & Copywriting — IZBA Marketing agency',
     seoDescription:
       'Accelerate content production with AI drafting and human editorial refinement. Consistent brand tone, verified accuracy, and bulk product copy.',
   },
@@ -426,7 +426,7 @@ export const aiAutomationServices: Service[] = [
     ],
     status: 'published',
     isFeatured: false,
-    seoTitle: 'AI Presentation Creation & Slide Design — IT HUB Corporation',
+    seoTitle: 'AI Presentation Creation & Slide Design — IZBA Marketing agency',
     seoDescription:
       'Fast, professional presentation design powered by AI structuring and human creative polishing. Pitch decks, executive briefings, and webinars.',
   },
@@ -476,7 +476,7 @@ export const aiAutomationServices: Service[] = [
     ],
     status: 'published',
     isFeatured: false,
-    seoTitle: 'AI Workflow Integration & API Engineering — IT HUB Corporation',
+    seoTitle: 'AI Workflow Integration & API Engineering — IZBA Marketing agency',
     seoDescription:
       'Integrate AI models directly into your business software. Custom LLM endpoints, automated data parsing, and secure API configurations.',
   },
@@ -527,7 +527,7 @@ export const aiAutomationServices: Service[] = [
     ],
     status: 'published',
     isFeatured: false,
-    seoTitle: 'AI Customer Support Automation — IT HUB Corporation',
+    seoTitle: 'AI Customer Support Automation — IZBA Marketing agency',
     seoDescription:
       'Automate customer support with AI ticket triage and agent co-pilots. Reduce response times and resolve routine customer inquiries 24/7.',
   },

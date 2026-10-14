@@ -74,7 +74,7 @@ export const videoProductionServices: Service[] = [
     ],
     status: 'published',
     isFeatured: false,
-    seoTitle: 'AI Explainer Video Production — IT HUB Corporation',
+    seoTitle: 'AI Explainer Video Production — IZBA Marketing agency',
     seoDescription:
       'Engaging AI explainer videos for software and businesses. Clear scripts, realistic voiceovers, and motion graphics that convert viewers.',
   },
@@ -123,7 +123,7 @@ export const videoProductionServices: Service[] = [
     ],
     status: 'published',
     isFeatured: false,
-    seoTitle: 'Promotional Video Creation & Editing — IT HUB Corporation',
+    seoTitle: 'Promotional Video Creation & Editing — IZBA Marketing agency',
     seoDescription:
       'High-impact promotional videos for business announcements and campaigns. Cinematic cuts, bold text motion, and multi-platform formats.',
   },
@@ -172,7 +172,7 @@ export const videoProductionServices: Service[] = [
     ],
     status: 'published',
     isFeatured: false,
-    seoTitle: 'YouTube Video Editing Services — IT HUB Corporation',
+    seoTitle: 'YouTube Video Editing Services — IZBA Marketing agency',
     seoDescription:
       'Professional YouTube video editing. High audience retention pacing, dynamic B-roll, sound design, and color grading for creator channels.',
   },
@@ -222,7 +222,7 @@ export const videoProductionServices: Service[] = [
     ],
     status: 'published',
     isFeatured: false,
-    seoTitle: 'Instagram Reels & YouTube Shorts Editing — IT HUB Corporation',
+    seoTitle: 'Instagram Reels & YouTube Shorts Editing — IZBA Marketing agency',
     seoDescription:
       'Short-form vertical video editing for Reels, Shorts, and TikTok. Dynamic animated captions, punchy hooks, and viral pacing.',
   },
@@ -271,7 +271,7 @@ export const videoProductionServices: Service[] = [
     ],
     status: 'published',
     isFeatured: false,
-    seoTitle: 'High-Converting Video Ads Creation — IT HUB Corporation',
+    seoTitle: 'High-Converting Video Ads Creation — IZBA Marketing agency',
     seoDescription:
       'Performance video ad creative for Meta, TikTok, and YouTube. Strong opening hooks, conversion-focused scripting, and multi-format exports.',
   },
@@ -321,7 +321,7 @@ export const videoProductionServices: Service[] = [
     ],
     status: 'published',
     isFeatured: false,
-    seoTitle: '2D Animated Explainer Videos — IT HUB Corporation',
+    seoTitle: '2D Animated Explainer Videos — IZBA Marketing agency',
     seoDescription:
       'Custom 2D animated videos for businesses. Engaging characters, bespoke storyboarding, professional voiceovers, and smooth keyframe animation.',
   },
@@ -371,7 +371,7 @@ export const videoProductionServices: Service[] = [
     ],
     status: 'published',
     isFeatured: false,
-    seoTitle: 'Motion Graphics & Logo Animation — IT HUB Corporation',
+    seoTitle: 'Motion Graphics & Logo Animation — IZBA Marketing agency',
     seoDescription:
       'Premium motion graphics in After Effects. Animated logo stings, kinetic typography, UI motion mockups, and transparent overlay packages.',
   },
@@ -420,7 +420,7 @@ export const videoProductionServices: Service[] = [
     ],
     status: 'published',
     isFeatured: false,
-    seoTitle: 'Video Subtitles & Closed Captioning (SRT) — IT HUB Corporation',
+    seoTitle: 'Video Subtitles & Closed Captioning (SRT) — IZBA Marketing agency',
     seoDescription:
       'Accurate subtitles and closed captioning services. Time-synced SRT/VTT files, burned-in social captions, and accessible video transcripts.',
   },
@@ -470,7 +470,7 @@ export const videoProductionServices: Service[] = [
     ],
     status: 'published',
     isFeatured: false,
-    seoTitle: 'Professional Video Scriptwriting Services — IT HUB Corporation',
+    seoTitle: 'Professional Video Scriptwriting Services — IZBA Marketing agency',
     seoDescription:
       'High-impact video scriptwriting for commercials, explainers, and YouTube. Two-column AV scripts, natural narration, and compelling hooks.',
   },
@@ -521,7 +521,7 @@ export const videoProductionServices: Service[] = [
     ],
     status: 'published',
     isFeatured: false,
-    seoTitle: 'Product Promotional Video Production — IT HUB Corporation',
+    seoTitle: 'Product Promotional Video Production — IZBA Marketing agency',
     seoDescription:
       'Engaging product promotional videos for e-commerce, Amazon, and social ads. Macro close-ups, feature callouts, and 3D device mockups.',
   },

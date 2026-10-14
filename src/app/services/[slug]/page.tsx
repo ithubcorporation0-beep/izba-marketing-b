@@ -11,6 +11,7 @@ import {
   ShieldCheck,
   Clock,
 } from 'lucide-react';
+import { siteConfig } from '@/config/site';
 import { services } from '@/content/services';
 import { categories } from '@/content/categories';
 import { constructMetadata } from '@/lib/seo/metadata';
@@ -46,7 +47,7 @@ export async function generateMetadata({
 
   if (!service) {
     return {
-      title: 'Service Not Found | IT HUB Corporation',
+      title: `Service Not Found | ${siteConfig.name}`,
     };
   }
 

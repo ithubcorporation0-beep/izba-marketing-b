@@ -1,6 +1,6 @@
 # Content Editing Guide
 
-Welcome to the IT HUB Corporation content editing guide. This guide is written in plain language so that anyone—whether a business owner, copywriter, or developer—can easily update the website's words, services, projects, and contact details without needing to write code or modify web page layouts.
+Welcome to the IZBA Marketing agency content editing guide. This guide is written in plain language so that anyone—whether a business owner, copywriter, or developer—can easily update the website's words, services, projects, and contact details without needing to write code or modify web page layouts.
 
 All website content lives in simple data files inside the `src/content/` folder and `src/config/site.ts`.
 
@@ -29,7 +29,7 @@ Here is a quick map of the files you will edit:
 | **All 90 Services**    | `src/content/services-data/*.ts` | Service descriptions, deliverables, FAQs, and scope            |
 | **Categories**         | `src/content/categories.ts`      | The 9 service categories, their names, descriptions, and icons |
 | **Featured Items**     | `src/content/featured.ts`        | Highlights displayed on the homepage                           |
-| **Company FAQs**       | `src/content/faqs.ts`            | General questions about working with IT HUB                    |
+| **Company FAQs**       | `src/content/faqs.ts`            | General questions about working with IZBA                      |
 | **Portfolio Projects** | `src/content/projects.ts`        | Case studies and past projects                                 |
 | **Testimonials**       | `src/content/testimonials.ts`    | Real client reviews and quotes                                 |
 | **Company Info**       | `src/config/site.ts`             | Company phone, email, address, working hours, and social links |
@@ -65,7 +65,7 @@ To make changes to a service (such as fixing a typo, updating what's included, o
 
 ## 3. How to Hide or Temporarily Disable a Service
 
-If IT HUB is not currently offering a specific service or wants to pause inquiries for it:
+If IZBA is not currently offering a specific service or wants to pause inquiries for it:
 
 1. Open the file containing the service in `src/content/services-data/`.
 2. Locate the service and find the `status` field:
@@ -127,8 +127,8 @@ If IT HUB is not currently offering a specific service or wants to pause inquiri
      ],
      status: 'published',
      isFeatured: false,
-     seoTitle: 'New Service Name | IT HUB Corporation',
-     seoDescription: 'Professional new service offerings by IT HUB Corporation.'
+     seoTitle: 'New Service Name | IZBA Marketing agency',
+     seoDescription: 'Professional new service offerings by IZBA Marketing agency.'
    }
    ```
 3. Run `npm run check:content` in your terminal to ensure there are no duplicate slugs or broken links.
@@ -182,7 +182,7 @@ export const projects: Project[] = [
       'Centralized all warehouse logs into a single interface, significantly reducing administrative reconciliations and order turnaround times.',
     technologies: ['TypeScript', 'Next.js', 'PostgreSQL', 'Tailwind CSS'],
     testimonialQuote:
-      'IT HUB delivered exactly what we scoped, on time and with clear weekly communication.',
+      'IZBA delivered exactly what we scoped, on time and with clear weekly communication.',
     testimonialAuthor: 'Operations Director',
     isPublished: true,
     publishedAt: '2026-03-01',
@@ -206,7 +206,7 @@ export const testimonials: Testimonial[] = [
     role: 'Director of Marketing',
     company: 'Acme Retail Group',
     content:
-      'The team at IT HUB built our marketing landing pages quickly and with great attention to detail. Communication was clear throughout the project.',
+      'The team at IZBA built our marketing landing pages quickly and with great attention to detail. Communication was clear throughout the project.',
     rating: 5,
     serviceSlug: 'website-development',
     avatarText: 'SJ',
@@ -220,7 +220,7 @@ export const testimonials: Testimonial[] = [
     role: 'Founder & CEO',
     company: 'FinTrack Analytics',
     content:
-      'From technical architecture to final deployment, IT HUB delivered reliable, performant software. We appreciate their transparent milestones.',
+      'From technical architecture to final deployment, IZBA delivered reliable, performant software. We appreciate their transparent milestones.',
     rating: 5,
     serviceSlug: 'custom-web-application-development',
     avatarText: 'DC',
@@ -247,8 +247,8 @@ Open `src/config/site.ts` and modify the fields under `contact`:
 
 ```typescript
 contact: {
-  email: 'info@ithubcorp.com',           // Main contact inbox
-  salesEmail: 'sales@ithubcorp.com',     // Project quotation inbox
+  email: 'info@izbamarketing.com',           // Main contact inbox
+  salesEmail: 'sales@izbamarketing.com',     // Project quotation inbox
   phone: '+1 (800) 555-0199',            // Public phone number
   address: '100 Innovation Way, Suite 400, Tech City, CA 94016', // Physical office address
   workingHours: 'Monday - Friday: 9:00 AM - 6:00 PM EST',

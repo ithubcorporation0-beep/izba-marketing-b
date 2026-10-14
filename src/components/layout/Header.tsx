@@ -79,7 +79,7 @@ export const Header: React.FC = () => {
           <Link
             href="/"
             className="flex items-center gap-3 group focus:outline-none focus-visible:ring-2 focus-visible:ring-[var(--color-primary-blue)] rounded-[var(--radius-sm)]"
-            aria-label="IT HUB Corporation"
+            aria-label="IZBA Marketing agency"
           >
             <div
               className={`w-10 h-10 rounded-[var(--radius-md)] flex items-center justify-center font-bold text-lg tracking-tight transition-all duration-200 ${
@@ -89,7 +89,7 @@ export const Header: React.FC = () => {
               }`}
               aria-hidden="true"
             >
-              IT
+              IZ
             </div>
             <div className="flex flex-col">
               <span
@@ -99,14 +99,14 @@ export const Header: React.FC = () => {
                     : 'text-[var(--color-navy)] group-hover:text-[var(--color-primary-blue)]'
                 }`}
               >
-                IT HUB
+                IZBA
               </span>
               <span
                 className={`text-[10px] uppercase tracking-widest font-semibold leading-none ${
                   isDarkHero ? 'text-slate-300' : 'text-[var(--color-muted)]'
                 }`}
               >
-                Corporation
+                MARKETING AGENCY
               </span>
             </div>
           </Link>

@@ -75,7 +75,7 @@ export const dataEntryServices: Service[] = [
     ],
     status: 'published',
     isFeatured: true,
-    seoTitle: 'Professional Data Entry Services — IT HUB Corporation',
+    seoTitle: 'Professional Data Entry Services — IZBA Marketing agency',
     seoDescription:
       'Accurate, confidential data entry services for businesses. Fast turnaround, quality verification, and secure spreadsheet management.',
   },
@@ -124,7 +124,7 @@ export const dataEntryServices: Service[] = [
     ],
     status: 'published',
     isFeatured: false,
-    seoTitle: 'B2B Data Collection Services — IT HUB Corporation',
+    seoTitle: 'B2B Data Collection Services — IZBA Marketing agency',
     seoDescription:
       'Systematic data collection for business intelligence. Structured aggregation of public market data, contact lists, and commercial directories.',
   },
@@ -173,7 +173,7 @@ export const dataEntryServices: Service[] = [
     ],
     status: 'published',
     isFeatured: false,
-    seoTitle: 'Online Web Research & Competitor Analysis — IT HUB Corporation',
+    seoTitle: 'Online Web Research & Competitor Analysis — IZBA Marketing agency',
     seoDescription:
       'In-depth web research for business leaders. Competitor benchmarking, vendor discovery, market intelligence, and structured data summaries.',
   },
@@ -224,7 +224,7 @@ export const dataEntryServices: Service[] = [
     ],
     status: 'published',
     isFeatured: false,
-    seoTitle: 'Data Cleaning & Formatting Services — IT HUB Corporation',
+    seoTitle: 'Data Cleaning & Formatting Services — IZBA Marketing agency',
     seoDescription:
       'Professional data cleaning and deduplication. Clean messy spreadsheets, fix formatting errors, and standardize customer databases.',
   },
@@ -274,7 +274,7 @@ export const dataEntryServices: Service[] = [
     ],
     status: 'published',
     isFeatured: false,
-    seoTitle: 'Excel & Google Sheets Management — IT HUB Corporation',
+    seoTitle: 'Excel & Google Sheets Management — IZBA Marketing agency',
     seoDescription:
       'Expert Excel and Google Sheets consulting. Advanced formulas, automated dashboards, pivot summaries, and custom Apps Script workflows.',
   },
@@ -324,7 +324,7 @@ export const dataEntryServices: Service[] = [
     ],
     status: 'published',
     isFeatured: false,
-    seoTitle: 'PDF to Word & Excel Conversion Services — IT HUB Corporation',
+    seoTitle: 'PDF to Word & Excel Conversion Services — IZBA Marketing agency',
     seoDescription:
       'Accurate PDF conversion to Word and Excel. Flawless table extraction, financial statement recreation, and searchable document formats.',
   },
@@ -374,7 +374,7 @@ export const dataEntryServices: Service[] = [
     ],
     status: 'published',
     isFeatured: false,
-    seoTitle: 'Copy-Paste & Data Migration Services — IT HUB Corporation',
+    seoTitle: 'Copy-Paste & Data Migration Services — IZBA Marketing agency',
     seoDescription:
       'Reliable manual copy-paste tasks and content migration. Move data across portals, websites, and CRMs with 100% accuracy and strict quality checks.',
   },
@@ -424,7 +424,7 @@ export const dataEntryServices: Service[] = [
     ],
     status: 'published',
     isFeatured: false,
-    seoTitle: 'E-commerce Product Listing Management — IT HUB Corporation',
+    seoTitle: 'E-commerce Product Listing Management — IZBA Marketing agency',
     seoDescription:
       'Product listing and catalog management for Shopify, WooCommerce, and Amazon. Variant setup, image optimization, and accurate SKU mapping.',
   },
@@ -473,7 +473,7 @@ export const dataEntryServices: Service[] = [
     ],
     status: 'published',
     isFeatured: false,
-    seoTitle: 'Professional Document Formatting Services — IT HUB Corporation',
+    seoTitle: 'Professional Document Formatting Services — IZBA Marketing agency',
     seoDescription:
       'Professional formatting for corporate reports, proposals, and manuals in Microsoft Word and PDF. Dynamic tables of contents, clean styles, and executive polish.',
   },
@@ -524,7 +524,7 @@ export const dataEntryServices: Service[] = [
     ],
     status: 'published',
     isFeatured: false,
-    seoTitle: 'Virtual Assistant Services for Businesses — IT HUB Corporation',
+    seoTitle: 'Virtual Assistant Services for Businesses — IZBA Marketing agency',
     seoDescription:
       'Dedicated remote virtual assistant services. Calendar management, inbox organization, data entry, and dependable administrative support.',
   },

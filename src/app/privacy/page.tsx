@@ -9,7 +9,7 @@ import styles from '../legal.module.css';
 export const metadata: Metadata = constructMetadata({
   title: 'Privacy Policy',
   description:
-    'Overview of data handling, enquiry form transmission, and privacy practices for IT HUB Corporation.',
+    'Overview of data handling, enquiry form transmission, and privacy practices for IZBA Marketing agency.',
   pathname: '/privacy',
 });
 

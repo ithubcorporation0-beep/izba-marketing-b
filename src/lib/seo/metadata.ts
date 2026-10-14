@@ -20,7 +20,7 @@ export const getSiteUrl = (): string => {
   if (siteConfig.url && siteConfig.url.startsWith('http')) {
     return siteConfig.url.replace(/\/$/, '');
   }
-  return 'https://ithubcorporation.com';
+  return 'https://izbamarketing.com';
 };
 
 /**
@@ -41,7 +41,9 @@ export function constructMetadata({
   let rawTitle = title?.trim() || '';
   if (rawTitle) {
     // Strip any trailing brand suffix to avoid duplicates
-    rawTitle = rawTitle.replace(/\s*(\||\—|-)\s*IT HUB Corporation.*$/i, '').trim();
+    rawTitle = rawTitle
+      .replace(/\s*(\||\—|-)\s*(IZBA Marketing agency).*$/i, '')
+      .trim();
   }
 
   const pageTitle = rawTitle

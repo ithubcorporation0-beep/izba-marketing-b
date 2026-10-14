@@ -1,12 +1,14 @@
 import { SiteConfig } from '@/types';
 
 export const siteConfig: SiteConfig = {
-  name: 'IT HUB Corporation',
-  tagline: 'Enterprise Technology & Digital Transformation',
+  name: 'IZBA Marketing agency',
+  siteName: 'IZBA Marketing agency',
+  shortName: 'IZBA',
+  tagline: 'Marketing Strategy, Digital Growth & Technology Solutions',
   // TODO: Replace with real public website URL
   url: 'PLACEHOLDER_SITE_URL',
   description:
-    'Enterprise IT Solutions, Cloud Architecture, Software Engineering, and Cybersecurity Platform.',
+    'Full-service marketing agency providing digital marketing, SEO, AI automation, web development, graphic design, and content production.',
   contact: {
     // TODO: Replace with real company email
     email: 'PLACEHOLDER_EMAIL',
@@ -51,3 +53,6 @@ export const siteConfig: SiteConfig = {
     primaryBtnText: 'Request a Quote',
   },
 };
+
+export const siteName = siteConfig.name;
+export const shortName = siteConfig.shortName || 'IZBA';

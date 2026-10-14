@@ -23,7 +23,7 @@ export const FeaturedServicesSection: React.FC = () => {
             Featured Services
           </h2>
           <p className={styles.subtitle}>
-            Key capabilities prioritized by IT HUB Corporation to deliver
+            Key capabilities prioritized by IZBA Marketing agency to deliver
             high-impact technical, marketing, and creative outcomes for your
             business.
           </p>

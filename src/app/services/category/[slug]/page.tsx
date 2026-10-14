@@ -1,6 +1,7 @@
 import React from 'react';
 import type { Metadata } from 'next';
 import { notFound } from 'next/navigation';
+import { siteConfig } from '@/config/site';
 import { categories } from '@/content/categories';
 import { services } from '@/content/services';
 import { constructMetadata } from '@/lib/seo/metadata';
@@ -34,7 +35,7 @@ export async function generateMetadata({
 
   if (!category) {
     return {
-      title: 'Category Not Found | IT HUB Corporation',
+      title: `Category Not Found | ${siteConfig.name}`,
     };
   }
 

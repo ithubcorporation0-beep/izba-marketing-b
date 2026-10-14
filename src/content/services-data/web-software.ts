@@ -74,7 +74,7 @@ export const webSoftwareServices: Service[] = [
     ],
     status: 'published',
     isFeatured: true,
-    seoTitle: 'Website Development Services — IT HUB Corporation',
+    seoTitle: 'Website Development Services — IZBA Marketing agency',
     seoDescription:
       'Professional responsive website development services tailored for small and medium businesses. Clean code, fast loading, and accessible design.',
   },
@@ -124,7 +124,7 @@ export const webSoftwareServices: Service[] = [
     ],
     status: 'published',
     isFeatured: false,
-    seoTitle: 'E-commerce Website Development — IT HUB Corporation',
+    seoTitle: 'E-commerce Website Development — IZBA Marketing agency',
     seoDescription:
       'Launch your digital store with custom e-commerce website development. Secure checkouts, product catalog management, and mobile shopping experiences.',
   },
@@ -174,7 +174,7 @@ export const webSoftwareServices: Service[] = [
     ],
     status: 'published',
     isFeatured: false,
-    seoTitle: 'WordPress Website Development — IT HUB Corporation',
+    seoTitle: 'WordPress Website Development — IZBA Marketing agency',
     seoDescription:
       'Professional WordPress website development. Custom themes, speed optimization, and easy content management for your growing business.',
   },
@@ -224,7 +224,7 @@ export const webSoftwareServices: Service[] = [
     ],
     status: 'published',
     isFeatured: false,
-    seoTitle: 'Web Application Development — IT HUB Corporation',
+    seoTitle: 'Web Application Development — IZBA Marketing agency',
     seoDescription:
       'Custom web application development with React, Next.js, and TypeScript. Build fast, secure dashboards and customer portals.',
   },
@@ -274,7 +274,7 @@ export const webSoftwareServices: Service[] = [
     ],
     status: 'published',
     isFeatured: true,
-    seoTitle: 'Custom Software Development — IT HUB Corporation',
+    seoTitle: 'Custom Software Development — IZBA Marketing agency',
     seoDescription:
       'Bespoke software development for growing companies. Purpose-built systems, clean architectures, and full intellectual property ownership.',
   },
@@ -324,7 +324,7 @@ export const webSoftwareServices: Service[] = [
     ],
     status: 'published',
     isFeatured: false,
-    seoTitle: 'SaaS Product Development — IT HUB Corporation',
+    seoTitle: 'SaaS Product Development — IZBA Marketing agency',
     seoDescription:
       'Build scalable multi-tenant SaaS applications with subscription billing, secure customer onboarding, and modern cloud architectures.',
   },
@@ -375,7 +375,7 @@ export const webSoftwareServices: Service[] = [
     ],
     status: 'published',
     isFeatured: false,
-    seoTitle: 'ERP & CRM Software Development — IT HUB Corporation',
+    seoTitle: 'ERP & CRM Software Development — IZBA Marketing agency',
     seoDescription:
       'Custom ERP and CRM software to unify customer data, sales pipelines, and inventory workflows in one reliable company platform.',
   },
@@ -425,7 +425,7 @@ export const webSoftwareServices: Service[] = [
     ],
     status: 'published',
     isFeatured: false,
-    seoTitle: 'Mobile App Development (iOS & Android) — IT HUB Corporation',
+    seoTitle: 'Mobile App Development (iOS & Android) — IZBA Marketing agency',
     seoDescription:
       'Cross-platform mobile app development for iOS and Android. High-performance, intuitive UI, and complete App Store release guidance.',
   },
@@ -476,7 +476,7 @@ export const webSoftwareServices: Service[] = [
     ],
     status: 'published',
     isFeatured: false,
-    seoTitle: 'Website Redesign & Maintenance Services — IT HUB Corporation',
+    seoTitle: 'Website Redesign & Maintenance Services — IZBA Marketing agency',
     seoDescription:
       'Transform outdated sites with modern redesigns, speed optimization, and ongoing maintenance. Preserve SEO equity while modernizing UI/UX.',
   },
@@ -527,7 +527,7 @@ export const webSoftwareServices: Service[] = [
     ],
     status: 'published',
     isFeatured: false,
-    seoTitle: 'Landing Page Design & Development — IT HUB Corporation',
+    seoTitle: 'Landing Page Design & Development — IZBA Marketing agency',
     seoDescription:
       'High-converting landing page design for campaigns, product launches, and lead capture. Fast, mobile-optimized, and conversion-focused.',
   },

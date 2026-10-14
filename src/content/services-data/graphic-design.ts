@@ -75,7 +75,7 @@ export const graphicDesignServices: Service[] = [
     ],
     status: 'published',
     isFeatured: false,
-    seoTitle: 'Custom Logo Design Services — IT HUB Corporation',
+    seoTitle: 'Custom Logo Design Services — IZBA Marketing agency',
     seoDescription:
       'Professional logo design for companies and startups. Memorable vector marks, versatile formats, and full commercial copyright ownership.',
   },
@@ -125,7 +125,7 @@ export const graphicDesignServices: Service[] = [
     ],
     status: 'published',
     isFeatured: true,
-    seoTitle: 'Professional Graphic Design Services — IT HUB Corporation',
+    seoTitle: 'Professional Graphic Design Services — IZBA Marketing agency',
     seoDescription:
       'Creative graphic design services for digital and print. Branded visuals, marketing graphics, and custom corporate collateral.',
   },
@@ -175,7 +175,7 @@ export const graphicDesignServices: Service[] = [
     ],
     status: 'published',
     isFeatured: false,
-    seoTitle: 'Brand Identity Design & Brand Guidelines — IT HUB Corporation',
+    seoTitle: 'Brand Identity Design & Brand Guidelines — IZBA Marketing agency',
     seoDescription:
       'Complete corporate brand identity design. Logo systems, typography rules, color palettes, and comprehensive brand guideline manuals.',
   },
@@ -226,7 +226,7 @@ export const graphicDesignServices: Service[] = [
     ],
     status: 'published',
     isFeatured: false,
-    seoTitle: 'Social Media Post Design Services — IT HUB Corporation',
+    seoTitle: 'Social Media Post Design Services — IZBA Marketing agency',
     seoDescription:
       'Custom social media post and carousel design for LinkedIn, Instagram, and Facebook. Stand out in feeds with branded, mobile-optimized graphics.',
   },
@@ -275,7 +275,7 @@ export const graphicDesignServices: Service[] = [
     ],
     status: 'published',
     isFeatured: false,
-    seoTitle: 'YouTube Thumbnail Design — IT HUB Corporation',
+    seoTitle: 'YouTube Thumbnail Design — IZBA Marketing agency',
     seoDescription:
       'High-CTR YouTube thumbnail design. Bold typography, high-contrast compositions, and mobile-optimized visual hierarchy to grow channel views.',
   },
@@ -324,7 +324,7 @@ export const graphicDesignServices: Service[] = [
     ],
     status: 'published',
     isFeatured: false,
-    seoTitle: 'Banner & Social Cover Design — IT HUB Corporation',
+    seoTitle: 'Banner & Social Cover Design — IZBA Marketing agency',
     seoDescription:
       'Professional header banners for LinkedIn, YouTube, Facebook, and Twitter. Safe-zone aligned, mobile-tested, and brand-consistent.',
   },
@@ -374,7 +374,7 @@ export const graphicDesignServices: Service[] = [
     ],
     status: 'published',
     isFeatured: false,
-    seoTitle: 'Brochure & Flyer Design Services — IT HUB Corporation',
+    seoTitle: 'Brochure & Flyer Design Services — IZBA Marketing agency',
     seoDescription:
       'Professional bi-fold, tri-fold, and flyer design for corporate marketing. Prepress calibrated print files and interactive digital PDFs.',
   },
@@ -424,7 +424,7 @@ export const graphicDesignServices: Service[] = [
     ],
     status: 'published',
     isFeatured: false,
-    seoTitle: 'Custom Business Card Design — IT HUB Corporation',
+    seoTitle: 'Custom Business Card Design — IZBA Marketing agency',
     seoDescription:
       'Modern business card design with QR code integration. Print-ready vector files, multi-employee templates, and premium finish specifications.',
   },
@@ -474,7 +474,7 @@ export const graphicDesignServices: Service[] = [
     ],
     status: 'published',
     isFeatured: false,
-    seoTitle: 'Product Packaging & Label Design — IT HUB Corporation',
+    seoTitle: 'Product Packaging & Label Design — IZBA Marketing agency',
     seoDescription:
       'Retail and e-commerce packaging and label design. Dieline precision, 3D product mockups, and factory-ready print files.',
   },
@@ -525,7 +525,7 @@ export const graphicDesignServices: Service[] = [
     ],
     status: 'published',
     isFeatured: false,
-    seoTitle: 'UI/UX Design & Figma Prototyping — IT HUB Corporation',
+    seoTitle: 'UI/UX Design & Figma Prototyping — IZBA Marketing agency',
     seoDescription:
       'Human-centered UI/UX design for web and mobile applications. Wireframes, design systems, and interactive Figma prototypes.',
   },

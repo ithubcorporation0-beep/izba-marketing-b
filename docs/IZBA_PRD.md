@@ -1,10 +1,10 @@
-# IT HUB Corporation
+# IZBA Marketing agency
 
 ## Product Requirements Document (PRD)
 
 **Document version:** 2.0  
 **Status:** Initial product specification — ready for phased implementation  
-**Project:** IT HUB Corporation website  
+**Project:** IZBA Marketing agency website  
 **Purpose:** A beginner-friendly, implementation-ready blueprint for Claude AI and Antigravity IDE.
 
 ---
@@ -13,7 +13,7 @@
 
 ### 1.1 Product vision
 
-Build a professional, modern, responsive website for **IT HUB Corporation** that presents its IT, software, digital marketing, AI, design, data, digital product, video production, and business support services. The website should build trust, explain offerings clearly, showcase verified work, and generate qualified enquiries.
+Build a professional, modern, responsive website for **IZBA Marketing agency** that presents its IT, software, digital marketing, AI, design, data, digital product, video production, and business support services. The website should build trust, explain offerings clearly, showcase verified work, and generate qualified enquiries.
 
 ### 1.2 Business goals
 
@@ -89,13 +89,13 @@ Use editable placeholders until the owner confirms:
 
 ### 4.1 Positioning
 
-IT HUB Corporation provides technology, marketing, creative, AI, and business-support services to help organizations build and improve their digital operations.
+IZBA Marketing agency provides technology, marketing, creative, AI, and business-support services to help organizations build and improve their digital operations.
 
 ### 4.2 Proposed homepage copy
 
 **Headline:** Technology, Marketing & AI Solutions for Your Business
 
-**Supporting text:** From websites and software to digital marketing, creative production, and AI automation, IT HUB Corporation helps businesses move their ideas forward.
+**Supporting text:** From websites and software to digital marketing, creative production, and AI automation, IZBA Marketing agency helps businesses move their ideas forward.
 
 **Primary CTA:** Request a Quote  
 **Secondary CTA:** Explore Our Services
@@ -770,7 +770,7 @@ Possible environment variables, depending on implementation:
 
 ## 20. Acceptance Criteria
 
-- Visitors can understand IT HUB Corporation’s offer from the homepage.
+- Visitors can understand IZBA Marketing agency’s offer from the homepage.
 - The 10 main categories and approved detailed services are easy to browse.
 - Every published service has a consistent detail page or clear description.
 - All navigation and CTAs work with mouse, touch, and keyboard.
@@ -785,7 +785,7 @@ Possible environment variables, depending on implementation:
 
 Copy and paste this prompt into your coding agent after placing this file in the project root:
 
-> You are a senior full-stack engineer and UI/UX developer. Build the IT HUB Corporation website according to `IT_HUB_Corporation_PRD.md`.
+> You are a senior full-stack engineer and UI/UX developer. Build the IZBA Marketing agency website according to `IZBA_PRD.md`.
 >
 > **First, inspect the existing repository** and report the stack, routes, components, existing design, current functionality, and risks. Do not overwrite or redesign existing work without approval.
 >
@@ -809,7 +809,7 @@ Copy and paste this prompt into your coding agent after placing this file in the
 
 - `chore: inspect project and confirm requirements`
 - `feat: add shared design system and layout`
-- `feat: build IT HUB public pages`
+- `feat: build IZBA public pages`
 - `feat: organize service directory`
 - `feat: add validated enquiry form`
 - `feat: add admin content management`

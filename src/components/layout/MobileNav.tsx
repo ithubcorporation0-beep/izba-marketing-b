@@ -196,15 +196,18 @@ export const MobileNav: React.FC<MobileNavProps> = ({ isOpen, onClose }) => {
             href="/"
             onClick={handleAnimatedClose}
             className="flex items-center gap-2.5"
-            aria-label="IT HUB Corporation Home"
+            aria-label={`${siteConfig.name} Home`}
           >
-            <div className="w-8 h-8 rounded-[var(--radius-sm)] bg-[var(--color-navy)] flex items-center justify-center text-[var(--color-white)] font-bold text-sm">
-              IT
+            <div
+              className="w-8 h-8 rounded-[var(--radius-sm)] bg-[var(--color-navy)] flex items-center justify-center text-[var(--color-white)] font-bold text-sm"
+              aria-hidden="true"
+            >
+              IZ
             </div>
             <span className="font-extrabold text-base text-[var(--color-navy)] tracking-tight">
-              IT HUB{' '}
+              IZBA{' '}
               <span className="font-normal text-[var(--color-muted)] text-xs">
-                Corp
+                Agency
               </span>
             </span>
           </Link>

@@ -74,7 +74,7 @@ export const educationOfficeServices: Service[] = [
     ],
     status: 'published',
     isFeatured: false,
-    seoTitle: 'Custom PowerPoint Presentation Design — IT HUB Corporation',
+    seoTitle: 'Custom PowerPoint Presentation Design — IZBA Marketing agency',
     seoDescription:
       'Executive PowerPoint presentation design. Pitch decks, corporate slides, and webinar decks with custom charts and master templates.',
   },
@@ -125,7 +125,7 @@ export const educationOfficeServices: Service[] = [
     ],
     status: 'published',
     isFeatured: false,
-    seoTitle: 'Corporate Document & Report Formatting — IT HUB Corporation',
+    seoTitle: 'Corporate Document & Report Formatting — IZBA Marketing agency',
     seoDescription:
       'Executive formatting for annual reports, proposals, and whitepapers. Dynamic tables of contents, clean typography, and branded layouts.',
   },
@@ -177,7 +177,7 @@ export const educationOfficeServices: Service[] = [
     status: 'published',
     isFeatured: false,
     seoTitle:
-      'Professional Resume & CV Design (ATS-Friendly) — IT HUB Corporation',
+      'Professional Resume & CV Design (ATS-Friendly) — IZBA Marketing agency',
     seoDescription:
       'ATS-friendly resume and executive CV design. Scannable layouts, modern typography, matching cover letters, and editable Word files.',
   },
@@ -227,7 +227,7 @@ export const educationOfficeServices: Service[] = [
     status: 'published',
     isFeatured: false,
     seoTitle:
-      'Academic Paper Typing & Formatting (APA/MLA) — IT HUB Corporation',
+      'Academic Paper Typing & Formatting (APA/MLA) — IZBA Marketing agency',
     seoDescription:
       'Accurate typing and academic formatting in APA, MLA, Chicago, and Harvard styles. Reference lists, title pages, and clean Word formatting.',
   },
@@ -279,7 +279,7 @@ export const educationOfficeServices: Service[] = [
     status: 'published',
     isFeatured: false,
     seoTitle:
-      'Academic & Business Online Research Assistance — IT HUB Corporation',
+      'Academic & Business Online Research Assistance — IZBA Marketing agency',
     seoDescription:
       'Professional research assistance and literature searches. Annotated bibliographies, scholarly source retrieval, and executive summaries.',
   },
@@ -331,7 +331,7 @@ export const educationOfficeServices: Service[] = [
     status: 'published',
     isFeatured: false,
     seoTitle:
-      'Educational Video Creation & Course Production — IT HUB Corporation',
+      'Educational Video Creation & Course Production — IZBA Marketing agency',
     seoDescription:
       'Instructional video production for e-learning and corporate training. Step-by-step screen tutorials, professional voiceovers, and student handouts.',
   },
@@ -383,7 +383,7 @@ export const educationOfficeServices: Service[] = [
     ],
     status: 'published',
     isFeatured: false,
-    seoTitle: 'Training Materials & SOP Development — IT HUB Corporation',
+    seoTitle: 'Training Materials & SOP Development — IZBA Marketing agency',
     seoDescription:
       'Corporate training manuals, employee onboarding guides, and SOP documentation. Clear visual instructions, step-by-step screenshots, and fillable workbooks.',
   },
@@ -434,7 +434,7 @@ export const educationOfficeServices: Service[] = [
     ],
     status: 'published',
     isFeatured: false,
-    seoTitle: 'Custom Invoice & Fillable PDF Form Design — IT HUB Corporation',
+    seoTitle: 'Custom Invoice & Fillable PDF Form Design — IZBA Marketing agency',
     seoDescription:
       'Professional invoice, estimate, and fillable PDF form design. Automated calculation scripts, digital signatures, and branded company stationery.',
   },
@@ -486,7 +486,7 @@ export const educationOfficeServices: Service[] = [
     status: 'published',
     isFeatured: false,
     seoTitle:
-      'Microsoft Office Consulting & Template Design — IT HUB Corporation',
+      'Microsoft Office Consulting & Template Design — IZBA Marketing agency',
     seoDescription:
       'Specialized Microsoft Office services. Custom Word templates, Excel macro automation, PowerPoint master decks, and Outlook HTML email signatures.',
   },
@@ -537,7 +537,7 @@ export const educationOfficeServices: Service[] = [
     ],
     status: 'published',
     isFeatured: false,
-    seoTitle: 'PDF Editing & Document Formatting Services — IT HUB Corporation',
+    seoTitle: 'PDF Editing & Document Formatting Services — IZBA Marketing agency',
     seoDescription:
       'Direct PDF editing, font-matched text revisions, file compression, and interactive form fields. Modify read-only PDFs without losing layout quality.',
   },

@@ -1,5 +1,5 @@
 /**
- * IT HUB Corporation — TypeScript Type Definitions
+ * IZBA Marketing agency — TypeScript Type Definitions
  * Derived from PRD sections 5, 6, 8.1, and 12.
  */
 
@@ -150,6 +150,8 @@ export interface FormValidationResult {
 
 export interface SiteConfig {
   name: string;
+  siteName?: string;
+  shortName?: string;
   legalName?: string;
   tagline: string;
   description?: string;

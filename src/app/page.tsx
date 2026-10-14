@@ -17,7 +17,7 @@ import { constructMetadata } from '@/lib/seo/metadata';
 export const metadata: Metadata = constructMetadata({
   title: 'Technology, Marketing & AI Solutions for Business',
   description:
-    'From custom software and web development to digital marketing, creative production, and AI automation, IT HUB Corporation helps businesses build and grow.',
+    'From custom software and web development to digital marketing, creative production, and AI automation, IZBA Marketing agency helps businesses build and grow.',
   pathname: '/',
 });
 

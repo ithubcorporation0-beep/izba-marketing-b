@@ -1,4 +1,4 @@
-# AGENT RULES: IT HUB CORPORATION (STATIC NEXT.JS)
+# AGENT RULES: IZBA MARKETING AGENCY (STATIC NEXT.JS)
 
 Every AI coding assistant, agent, or developer working on this codebase MUST strictly follow these rules without exception.
 

@@ -26,8 +26,8 @@ export const FAQSection: React.FC = () => {
             Frequently Asked Questions
           </h2>
           <p className={styles.subtitle}>
-            Clear answers to common questions about working with IT HUB
-            Corporation, requesting quotes, delivery timelines, and project
+            Clear answers to common questions about working with IZBA Marketing
+            agency, requesting quotes, delivery timelines, and project
             confidentiality.
           </p>
         </Reveal>

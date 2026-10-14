@@ -5,7 +5,7 @@ import gsap from 'gsap';
 import { useReducedMotion } from '@/lib/motion';
 import styles from './Preloader.module.css';
 
-const SESSION_STORAGE_KEY = 'it_hub_preloader_seen';
+const SESSION_STORAGE_KEY = 'izba_preloader_seen';
 const SAFETY_TIMEOUT_MS = 2400; // Hard fallback safety timer
 
 export const Preloader: React.FC = () => {
@@ -132,7 +132,7 @@ export const Preloader: React.FC = () => {
       className={styles.preloaderOverlay}
       role="status"
       aria-live="polite"
-      aria-label="Loading IT HUB Corporation"
+      aria-label="Loading IZBA Marketing agency"
     >
       <div className={styles.ambientGlow} aria-hidden="true" />
 
@@ -140,7 +140,7 @@ export const Preloader: React.FC = () => {
         <div className={styles.wordmark}>
           {/* Logo Badge (or Official SVG Vector with class 'preloader-logo-stroke') */}
           <div className={styles.logoBadge} aria-hidden="true">
-            IT
+            IZ
           </div>
           {/* 
             To activate official SVG logo stroke animation:
@@ -150,8 +150,8 @@ export const Preloader: React.FC = () => {
             </svg>
           */}
           <div className={styles.brandText}>
-            <span className={styles.title}>IT HUB</span>
-            <span className={styles.subtitle}>Corporation</span>
+            <span className={styles.title}>IZBA</span>
+            <span className={styles.subtitle}>MARKETING AGENCY</span>
           </div>
         </div>
 

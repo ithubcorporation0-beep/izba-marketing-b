@@ -99,7 +99,7 @@ export const heroContent = {
   badge: 'Technology, Marketing & AI',
   title: 'Technology, Marketing & AI Solutions for Your Business',
   subtitle:
-    'From websites and software to digital marketing, creative production, and AI automation, IT HUB Corporation helps businesses move their ideas forward.',
+    'From websites and software to digital marketing, creative production, and AI automation, IZBA Marketing agency helps businesses move their ideas forward.',
   primaryCtaText: 'Request a Quote',
   primaryCtaLink: '/contact',
   secondaryCtaText: 'Explore Our Services',

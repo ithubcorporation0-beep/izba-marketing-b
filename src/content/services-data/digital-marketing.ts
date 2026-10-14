@@ -75,7 +75,7 @@ export const digitalMarketingServices: Service[] = [
     ],
     status: 'published',
     isFeatured: true,
-    seoTitle: 'Digital Marketing Services — IT HUB Corporation',
+    seoTitle: 'Digital Marketing Services — IZBA Marketing agency',
     seoDescription:
       'Integrated digital marketing services for businesses. Multi-channel search, social, and paid advertising strategies focused on qualified lead acquisition.',
   },
@@ -125,7 +125,7 @@ export const digitalMarketingServices: Service[] = [
     ],
     status: 'published',
     isFeatured: true,
-    seoTitle: 'Search Engine Optimization (SEO) — IT HUB Corporation',
+    seoTitle: 'Search Engine Optimization (SEO) — IZBA Marketing agency',
     seoDescription:
       'Professional SEO services to increase organic search presence. Technical audits, on-page optimization, and ethical keyword ranking strategies.',
   },
@@ -176,7 +176,7 @@ export const digitalMarketingServices: Service[] = [
     status: 'published',
     isFeatured: false,
     seoTitle:
-      'Local SEO & Google Business Profile Management — IT HUB Corporation',
+      'Local SEO & Google Business Profile Management — IZBA Marketing agency',
     seoDescription:
       'Dominate local search and Google Maps results. Complete Google Business Profile optimization, local citation management, and review strategies.',
   },
@@ -226,7 +226,7 @@ export const digitalMarketingServices: Service[] = [
     ],
     status: 'published',
     isFeatured: false,
-    seoTitle: 'Social Media Marketing & Management — IT HUB Corporation',
+    seoTitle: 'Social Media Marketing & Management — IZBA Marketing agency',
     seoDescription:
       'Organic social media management for LinkedIn, Instagram, and Facebook. Consistent posting, branded graphics, and community engagement.',
   },
@@ -276,7 +276,7 @@ export const digitalMarketingServices: Service[] = [
     ],
     status: 'published',
     isFeatured: false,
-    seoTitle: 'Facebook & Instagram Ads Management — IT HUB Corporation',
+    seoTitle: 'Facebook & Instagram Ads Management — IZBA Marketing agency',
     seoDescription:
       'High-performance Meta ad management. Targeted campaigns, creative testing, and lead generation on Facebook and Instagram.',
   },
@@ -326,7 +326,7 @@ export const digitalMarketingServices: Service[] = [
     ],
     status: 'published',
     isFeatured: false,
-    seoTitle: 'Google Ads Management (PPC) — IT HUB Corporation',
+    seoTitle: 'Google Ads Management (PPC) — IZBA Marketing agency',
     seoDescription:
       'Certified Google Ads management. High-intent search campaigns, conversion tracking, and ongoing bid optimization to capture ready-to-buy clients.',
   },
@@ -376,7 +376,7 @@ export const digitalMarketingServices: Service[] = [
     ],
     status: 'published',
     isFeatured: false,
-    seoTitle: 'YouTube Marketing & Video SEO — IT HUB Corporation',
+    seoTitle: 'YouTube Marketing & Video SEO — IZBA Marketing agency',
     seoDescription:
       'Grow your video presence with YouTube marketing. Channel optimization, video SEO metadata, and targeted YouTube advertising campaigns.',
   },
@@ -426,7 +426,7 @@ export const digitalMarketingServices: Service[] = [
     ],
     status: 'published',
     isFeatured: false,
-    seoTitle: 'Content Marketing & Article Writing — IT HUB Corporation',
+    seoTitle: 'Content Marketing & Article Writing — IZBA Marketing agency',
     seoDescription:
       'Educational content marketing and blog writing services. Authoritative articles that answer customer questions and boost organic search authority.',
   },
@@ -476,7 +476,7 @@ export const digitalMarketingServices: Service[] = [
     ],
     status: 'published',
     isFeatured: false,
-    seoTitle: 'Email Marketing & Automation Services — IT HUB Corporation',
+    seoTitle: 'Email Marketing & Automation Services — IZBA Marketing agency',
     seoDescription:
       'Professional email marketing campaigns and automated sequences. Clean template design, domain authentication, and responsive client newsletters.',
   },
@@ -526,7 +526,7 @@ export const digitalMarketingServices: Service[] = [
     ],
     status: 'published',
     isFeatured: false,
-    seoTitle: 'B2B Lead Generation & Funnel Design — IT HUB Corporation',
+    seoTitle: 'B2B Lead Generation & Funnel Design — IZBA Marketing agency',
     seoDescription:
       'High-intent B2B lead generation funnels. Capture qualified quotes, filter inquiries, and connect with prospective clients reliably.',
   },

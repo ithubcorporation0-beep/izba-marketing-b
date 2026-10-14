@@ -108,7 +108,7 @@ const TestimonialsCarousel: React.FC<CarouselInnerProps> = ({ items }) => {
           </h2>
           <p className={styles.subtitle}>
             Direct reviews and verified experiences from organizations
-            partnering with IT HUB Corporation.
+            partnering with IZBA Marketing agency.
           </p>
         </div>
 

@@ -1,6 +1,6 @@
 # Motion System Guide
 
-This guide explains the motion foundation in IT HUB Corporation's website, built using **Lenis** (smooth scrolling) and **GSAP ScrollTrigger** (choreographed animations).
+This guide explains the motion foundation in IZBA Marketing agency's website, built using **Lenis** (smooth scrolling) and **GSAP ScrollTrigger** (choreographed animations).
 
 ---
 

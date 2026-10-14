@@ -76,7 +76,7 @@ export const itSupportServices: Service[] = [
     ],
     status: 'published',
     isFeatured: false,
-    seoTitle: 'Strategic IT Consulting & Advisory — IT HUB Corporation',
+    seoTitle: 'Strategic IT Consulting & Advisory — IZBA Marketing agency',
     seoDescription:
       'Vendor-neutral IT consulting and architecture advisory. Technology roadmaps, software stack audits, and strategic modernization planning.',
   },
@@ -127,7 +127,7 @@ export const itSupportServices: Service[] = [
     ],
     status: 'published',
     isFeatured: false,
-    seoTitle: 'Website Hosting Setup & Migration — IT HUB Corporation',
+    seoTitle: 'Website Hosting Setup & Migration — IZBA Marketing agency',
     seoDescription:
       'Professional website hosting setup and zero-downtime migration. Serverless edge hosting, managed VPS, automated SSL, and daily cloud backups.',
   },
@@ -177,7 +177,7 @@ export const itSupportServices: Service[] = [
     ],
     status: 'published',
     isFeatured: false,
-    seoTitle: 'Domain Setup & DNS Management — IT HUB Corporation',
+    seoTitle: 'Domain Setup & DNS Management — IZBA Marketing agency',
     seoDescription:
       'Professional domain setup and DNS configuration. Registrar security, nameserver migration, 301 redirects, and global propagation checks.',
   },
@@ -230,7 +230,7 @@ export const itSupportServices: Service[] = [
     status: 'published',
     isFeatured: false,
     seoTitle:
-      'Professional Business Email Setup (Google & M365) — IT HUB Corporation',
+      'Professional Business Email Setup (Google & M365) — IZBA Marketing agency',
     seoDescription:
       'Setup custom business email with Google Workspace or Microsoft 365. Full SPF, DKIM, DMARC authentication for flawless inbox deliverability.',
   },
@@ -282,7 +282,7 @@ export const itSupportServices: Service[] = [
     status: 'published',
     isFeatured: false,
     seoTitle:
-      'Database Design & Management (PostgreSQL & MySQL) — IT HUB Corporation',
+      'Database Design & Management (PostgreSQL & MySQL) — IZBA Marketing agency',
     seoDescription:
       'Relational database architecture, query optimization, and schema design. PostgreSQL, MySQL, and Supabase database consulting.',
   },
@@ -333,7 +333,7 @@ export const itSupportServices: Service[] = [
     ],
     status: 'published',
     isFeatured: false,
-    seoTitle: 'Custom API Integration & Webhook Services — IT HUB Corporation',
+    seoTitle: 'Custom API Integration & Webhook Services — IZBA Marketing agency',
     seoDescription:
       'Secure third-party API integrations. Connect Stripe, CRMs, shipping gateways, and cloud platforms with robust error handling.',
   },
@@ -383,7 +383,7 @@ export const itSupportServices: Service[] = [
     ],
     status: 'published',
     isFeatured: false,
-    seoTitle: 'Cloud Architecture & Cloud-Based Solutions — IT HUB Corporation',
+    seoTitle: 'Cloud Architecture & Cloud-Based Solutions — IZBA Marketing agency',
     seoDescription:
       'Scalable cloud infrastructure on AWS, Google Cloud, and DigitalOcean. Object storage, serverless functions, and cost-optimized cloud setups.',
   },
@@ -434,7 +434,7 @@ export const itSupportServices: Service[] = [
     status: 'published',
     isFeatured: false,
     seoTitle:
-      'Website Security Hardening & Malware Removal — IT HUB Corporation',
+      'Website Security Hardening & Malware Removal — IZBA Marketing agency',
     seoDescription:
       'Comprehensive website security hardening. Malware cleanup, Web Application Firewall (WAF) configuration, and vulnerability patching.',
   },
@@ -483,7 +483,7 @@ export const itSupportServices: Service[] = [
     ],
     status: 'published',
     isFeatured: false,
-    seoTitle: 'Software Testing & Bug Fixing Services — IT HUB Corporation',
+    seoTitle: 'Software Testing & Bug Fixing Services — IZBA Marketing agency',
     seoDescription:
       'Expert QA testing and software bug fixing. Cross-browser testing, console error resolution, and root-cause code debugging for web applications.',
   },
@@ -534,7 +534,7 @@ export const itSupportServices: Service[] = [
     status: 'published',
     isFeatured: false,
     seoTitle:
-      'Technical Support & Website Maintenance Retainers — IT HUB Corporation',
+      'Technical Support & Website Maintenance Retainers — IZBA Marketing agency',
     seoDescription:
       'Reliable technical support and website maintenance. 24/7 uptime monitoring, security patching, cloud backups, and dedicated developer hours.',
   },
