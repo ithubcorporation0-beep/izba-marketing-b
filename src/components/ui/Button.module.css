@@ -20,7 +20,7 @@
 }
 
 .button:focus-visible {
-  outline: 2px solid var(--color-primary-blue);
+  outline: 2px solid var(--color-gold);
   outline-offset: 2px;
 }
 
@@ -41,23 +41,24 @@
   font-size: 1.05rem;
 }
 
-/* Primary Variant — Tech Studio Blue to Violet Gradient */
+/* Primary Variant — Corporate Navy with Gold Accent Border */
 .primary {
-  background: var(--gradient-brand);
+  background: var(--color-navy);
   color: var(--color-white);
-  border: 1px solid rgba(255, 255, 255, 0.22);
-  box-shadow: 0 4px 14px 0 rgba(49, 87, 213, 0.35);
+  border: 1px solid var(--color-gold);
+  box-shadow: 0 4px 14px 0 rgba(11, 31, 58, 0.25);
 }
 
 .primary:hover:not(.disabled) {
-  background: var(--gradient-brand-hover);
+  background: var(--color-navy-light);
+  border-color: var(--color-gold-light);
   transform: translateY(-2px);
-  box-shadow: 0 8px 24px -2px rgba(49, 87, 213, 0.48);
+  box-shadow: 0 8px 24px -2px rgba(201, 162, 39, 0.35);
 }
 
 .primary:active:not(.disabled) {
   transform: translateY(0) scale(0.98);
-  box-shadow: 0 2px 8px rgba(49, 87, 213, 0.3);
+  box-shadow: 0 2px 8px rgba(11, 31, 58, 0.2);
 }
 
 /* Secondary Variant */
@@ -69,9 +70,9 @@
 }
 
 .secondary:hover:not(.disabled) {
-  background: var(--color-soft-bg);
-  border-color: var(--color-border-dark);
-  color: var(--color-primary-blue);
+  background: var(--color-gold-tint);
+  border-color: var(--color-gold);
+  color: var(--color-navy);
   transform: translateY(-2px);
   box-shadow: var(--shadow-md);
 }

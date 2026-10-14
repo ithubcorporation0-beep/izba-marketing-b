@@ -33,8 +33,8 @@
 
 .statCard:hover {
   transform: translateY(-2px);
-  border-color: rgba(49, 87, 213, 0.3);
-  box-shadow: var(--shadow-md);
+  border-color: var(--color-gold);
+  box-shadow: 0 8px 24px -2px rgba(201, 162, 39, 0.18);
 }
 
 .numberRow {
@@ -56,7 +56,7 @@
 .statSuffix {
   font-size: clamp(1.5rem, 2.5vw, 2rem);
   font-weight: 700;
-  color: var(--color-primary-blue);
+  color: var(--color-gold);
   line-height: 1;
 }
 

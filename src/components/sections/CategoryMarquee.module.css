@@ -72,13 +72,13 @@
 }
 
 .pauseButton:hover {
-  background: var(--color-primary-blue);
-  color: #ffffff;
-  border-color: rgba(255, 255, 255, 0.4);
+  background: var(--color-gold);
+  color: var(--color-navy);
+  border-color: var(--color-gold-light);
 }
 
 .pauseButton:focus-visible {
-  outline: 2px solid var(--color-primary-blue);
+  outline: 2px solid var(--color-gold);
   outline-offset: 2px;
 }
 
@@ -96,15 +96,15 @@
 }
 
 .categoryItem:hover {
-  color: var(--color-accent-cyan);
+  color: var(--color-gold-light);
 }
 
 .dividerDot {
   width: 5px;
   height: 5px;
   border-radius: 50%;
-  background-color: var(--color-accent-violet);
-  box-shadow: 0 0 8px rgba(118, 87, 232, 0.6);
+  background-color: var(--color-gold);
+  box-shadow: 0 0 8px rgba(201, 162, 39, 0.7);
   flex-shrink: 0;
 }
 

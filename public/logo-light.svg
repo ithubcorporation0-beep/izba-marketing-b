@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 80" width="320" height="80">
+  <!-- Navy Elevated Icon Tile with Gold Border and Accent -->
+  <rect x="10" y="14" width="52" height="52" rx="14" fill="#16304F" />
+  <rect x="11" y="15" width="50" height="50" rx="13" fill="none" stroke="#E6C65C" stroke-width="2" stroke-opacity="0.9" />
+  <text x="36" y="50" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-weight="900" font-size="26" fill="#E6C65C" text-anchor="middle" letter-spacing="-1">IZ</text>
+  
+  <!-- Brand Name in White and Marketing Agency in Light Gold -->
+  <text x="76" y="44" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-weight="850" font-size="26" fill="#FFFFFF" letter-spacing="-0.5">IZBA</text>
+  <text x="76" y="60" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-weight="700" font-size="11" fill="#E6C65C" letter-spacing="3">MARKETING AGENCY</text>
+</svg>

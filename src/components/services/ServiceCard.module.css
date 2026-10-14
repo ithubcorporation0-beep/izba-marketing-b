@@ -17,8 +17,8 @@
 .card:hover,
 .card:focus-within {
   transform: translateY(-4px);
-  border-color: rgba(49, 87, 213, 0.45);
-  box-shadow: 0 12px 32px -4px rgba(49, 87, 213, 0.16), 0 0 0 1px rgba(118, 87, 232, 0.15);
+  border-color: var(--color-gold);
+  box-shadow: 0 12px 32px -4px var(--color-gold-glow);
 }
 
 .content {
@@ -42,7 +42,7 @@
 
 .titleLink:hover,
 .titleLink:focus-visible {
-  color: var(--color-primary-blue);
+  color: var(--color-gold);
   text-decoration: underline;
   outline: none;
 }
@@ -73,7 +73,7 @@
 }
 
 .checkIcon {
-  color: var(--color-primary-blue);
+  color: var(--color-gold);
   flex-shrink: 0;
   margin-top: 2px;
 }
@@ -91,7 +91,7 @@
   width: 100%;
   font-size: 0.85rem;
   font-weight: 600;
-  color: var(--color-primary-blue);
+  color: var(--color-navy);
   text-decoration: none;
   transition: color var(--transition-fast);
   border-radius: var(--radius-sm);
@@ -99,7 +99,7 @@
 
 .learnMoreLink:hover,
 .learnMoreLink:focus-visible {
-  color: var(--color-primary-hover);
+  color: var(--color-gold);
   outline: none;
 }
 

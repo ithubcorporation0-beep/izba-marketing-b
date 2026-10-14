@@ -2,6 +2,7 @@
 
 import React, { useState, useEffect, useRef } from 'react';
 import Link from 'next/link';
+import Image from 'next/image';
 import { usePathname } from 'next/navigation';
 import { Menu, ArrowRight } from 'lucide-react';
 import { MobileNav } from './MobileNav';
@@ -78,37 +79,17 @@ export const Header: React.FC = () => {
           {/* Brand Logo */}
           <Link
             href="/"
-            className="flex items-center gap-3 group focus:outline-none focus-visible:ring-2 focus-visible:ring-[var(--color-primary-blue)] rounded-[var(--radius-sm)]"
-            aria-label="IZBA Marketing agency"
+            className="flex items-center gap-3 group focus:outline-none focus-visible:ring-2 focus-visible:ring-[var(--color-gold)] rounded-[var(--radius-sm)]"
+            aria-label="IT HUB Corporation logo"
           >
-            <div
-              className={`w-10 h-10 rounded-[var(--radius-md)] flex items-center justify-center font-bold text-lg tracking-tight transition-all duration-200 ${
-                isDarkHero
-                  ? 'bg-gradient-to-br from-[var(--color-primary-blue)] to-[var(--color-accent-violet)] text-white shadow-md shadow-blue-500/20'
-                  : 'bg-[var(--color-navy)] text-[var(--color-white)] group-hover:bg-[var(--color-primary-blue)]'
-              }`}
-              aria-hidden="true"
-            >
-              IZ
-            </div>
-            <div className="flex flex-col">
-              <span
-                className={`font-extrabold text-lg tracking-tight leading-tight transition-colors duration-200 ${
-                  isDarkHero
-                    ? 'text-white group-hover:text-[var(--color-accent-cyan)]'
-                    : 'text-[var(--color-navy)] group-hover:text-[var(--color-primary-blue)]'
-                }`}
-              >
-                IZBA
-              </span>
-              <span
-                className={`text-[10px] uppercase tracking-widest font-semibold leading-none ${
-                  isDarkHero ? 'text-slate-300' : 'text-[var(--color-muted)]'
-                }`}
-              >
-                MARKETING AGENCY
-              </span>
-            </div>
+            <Image
+              src={isDarkHero ? '/logo-light.svg' : '/logo.svg'}
+              alt="IT HUB Corporation logo"
+              width={160}
+              height={40}
+              priority
+              className="h-9 md:h-10 w-auto object-contain transition-opacity duration-200"
+            />
           </Link>
 
           {/* Desktop Navigation with Animated Underlines */}
@@ -116,7 +97,7 @@ export const Header: React.FC = () => {
             className={`hidden md:flex items-center px-3 py-1.5 rounded-full border transition-colors ${
               isDarkHero
                 ? 'bg-white/10 border-white/15 backdrop-blur-md'
-                : 'bg-[var(--color-soft-bg)] border-[var(--color-border)]/80'
+                : 'bg-[var(--color-white)] border-[var(--color-border)] shadow-xs'
             }`}
             aria-label="Primary Navigation"
           >
@@ -142,7 +123,7 @@ export const Header: React.FC = () => {
                         : isActive
                           ? styles.navLinkActiveLight
                           : 'text-[var(--color-text-main)] hover:text-[var(--color-navy)]'
-                    } focus:outline-none focus-visible:ring-2 focus-visible:ring-[var(--color-primary-blue)]`}
+                    } focus:outline-none focus-visible:ring-2 focus-visible:ring-[var(--color-gold)]`}
                     aria-current={isActive ? 'page' : undefined}
                   >
                     <span>{link.label}</span>
@@ -159,10 +140,10 @@ export const Header: React.FC = () => {
             <div className="inline-flex">
               <Link
                 href="/contact"
-                className={`inline-flex items-center justify-center font-semibold rounded-full transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 select-none text-xs md:text-sm px-4 md:px-5 py-2 md:py-2.5 gap-2 shadow-sm ${
+                className={`inline-flex items-center justify-center font-bold rounded-full transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--color-gold)] focus-visible:ring-offset-2 select-none text-xs md:text-sm px-4 md:px-5 py-2 md:py-2.5 gap-2 shadow-sm ${
                   isDarkHero
-                    ? 'bg-white text-[#0D0E12] hover:bg-slate-100 hover:shadow-md'
-                    : 'bg-[var(--color-primary-blue)] text-white hover:bg-[var(--color-primary-hover)]'
+                    ? 'bg-[var(--color-gold)] text-[var(--color-navy)] hover:bg-[var(--color-gold-light)] shadow-md shadow-amber-500/15'
+                    : 'bg-[var(--color-navy)] text-white hover:bg-[var(--color-navy-light)] border border-[var(--color-gold)]/40 hover:border-[var(--color-gold)]'
                 }`}
               >
                 <span>Schedule a Call Now</span>
@@ -172,10 +153,10 @@ export const Header: React.FC = () => {
             {/* Mobile Menu Trigger */}
             <button
               type="button"
-              className={`md:hidden p-2 rounded-[var(--radius-md)] border focus:outline-none focus-visible:ring-2 focus-visible:ring-[var(--color-primary-blue)] transition-colors ${
+              className={`md:hidden p-2 rounded-[var(--radius-md)] border focus:outline-none focus-visible:ring-2 focus-visible:ring-[var(--color-gold)] transition-colors ${
                 isDarkHero
                   ? 'text-white border-white/20 hover:bg-white/10'
-                  : 'text-[var(--color-text-main)] hover:bg-[var(--color-soft-bg)] border-[var(--color-border)]'
+                  : 'text-[var(--color-navy)] hover:bg-[var(--color-white)] border-[var(--color-border)]'
               }`}
               onClick={() => setIsMobileNavOpen(true)}
               aria-label="Open mobile navigation"

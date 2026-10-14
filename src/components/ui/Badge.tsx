@@ -2,6 +2,7 @@ import React from 'react';
 
 export interface BadgeProps extends React.HTMLAttributes<HTMLSpanElement> {
   variant?:
+    | 'gold'
     | 'blue'
     | 'violet'
     | 'navy'
@@ -17,7 +18,7 @@ export interface BadgeProps extends React.HTMLAttributes<HTMLSpanElement> {
 
 export const Badge: React.FC<BadgeProps> = ({
   children,
-  variant = 'blue',
+  variant = 'gold',
   size = 'md',
   dot = false,
   className = '',
@@ -29,25 +30,23 @@ export const Badge: React.FC<BadgeProps> = ({
   };
 
   const normalizedVariant =
-    variant === 'cyan'
-      ? 'blue'
+    variant === 'cyan' || variant === 'blue' || variant === 'purple' || variant === 'violet'
+      ? 'gold'
       : variant === 'emerald'
         ? 'success'
-        : variant === 'purple'
-          ? 'violet'
-          : variant;
+        : variant;
 
   const variantStyles = {
-    blue: 'bg-[rgba(49,87,213,0.08)] text-[var(--color-primary-blue)] border border-[rgba(49,87,213,0.2)]',
-    violet:
-      'bg-[rgba(118,87,232,0.08)] text-[var(--color-accent-violet)] border border-[rgba(118,87,232,0.2)]',
-    navy: 'bg-[var(--color-navy)] text-[var(--color-white)]',
+    gold: 'bg-[var(--color-gold-tint)] text-[var(--color-navy)] border border-[var(--color-gold)] shadow-xs',
+    blue: 'bg-[var(--color-gold-tint)] text-[var(--color-navy)] border border-[var(--color-gold)] shadow-xs',
+    violet: 'bg-[var(--color-gold-tint)] text-[var(--color-navy)] border border-[var(--color-gold)] shadow-xs',
+    navy: 'bg-[var(--color-navy)] text-[var(--color-white)] border border-[var(--color-gold)]/35',
     success:
       'bg-[var(--color-success-bg)] text-[var(--color-success)] border border-[rgba(6,118,71,0.2)]',
     error:
       'bg-[var(--color-error-bg)] text-[var(--color-error)] border border-[rgba(180,35,24,0.2)]',
     neutral:
-      'bg-[var(--color-soft-bg)] text-[var(--color-muted)] border border-[var(--color-border)]',
+      'bg-[var(--color-soft-bg)] text-[var(--color-navy)] border border-[var(--color-border)]',
   };
 
   return (

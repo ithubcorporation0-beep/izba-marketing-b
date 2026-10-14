@@ -1,6 +1,7 @@
 'use client';
 
 import React, { useEffect, useRef, useState } from 'react';
+import Image from 'next/image';
 import gsap from 'gsap';
 import { useReducedMotion } from '@/lib/motion';
 import styles from './Preloader.module.css';
@@ -138,9 +139,14 @@ export const Preloader: React.FC = () => {
 
       <div ref={contentRef} className={styles.contentWrapper}>
         <div className={styles.wordmark}>
-          {/* Logo Badge (or Official SVG Vector with class 'preloader-logo-stroke') */}
+          {/* Logo Badge */}
           <div className={styles.logoBadge} aria-hidden="true">
-            IZ
+            <Image
+              src="/logo-icon.svg"
+              alt="IT HUB Corporation logo"
+              width={34}
+              height={34}
+            />
           </div>
           {/* 
             To activate official SVG logo stroke animation:

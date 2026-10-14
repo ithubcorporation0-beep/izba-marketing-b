@@ -25,7 +25,7 @@ export const SectionHeading: React.FC<SectionHeadingProps> = ({
       className={`flex flex-col gap-3.5 max-w-2xl mb-14 ${alignClass} ${className}`}
     >
       {badge && (
-        <span className="eyebrow px-3.5 py-1 rounded-full text-[11px] font-bold uppercase tracking-[0.12em] text-[var(--color-primary-blue)] bg-[rgba(49,87,213,0.08)] border border-[rgba(49,87,213,0.2)]">
+        <span className="eyebrow px-3.5 py-1 rounded-full text-[11px] font-bold uppercase tracking-[0.12em] text-[var(--color-navy)] bg-[var(--color-gold-tint)] border border-[var(--color-gold)]">
           {badge}
         </span>
       )}

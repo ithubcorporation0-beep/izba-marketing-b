@@ -108,17 +108,17 @@ export const Hero: React.FC = () => {
           xmlns="http://www.w3.org/2000/svg"
           preserveAspectRatio="none"
         >
-          {/* Angled facets radiating from center behind headline */}
-          <polygon points="720,220 0,0 280,0" fill="#13151D" fillOpacity="0.75" />
-          <polygon points="720,220 280,0 620,0" fill="#181B26" fillOpacity="0.8" />
-          <polygon points="720,220 620,0 820,0" fill="#1C202E" fillOpacity="0.85" />
-          <polygon points="720,220 820,0 1160,0" fill="#181B26" fillOpacity="0.8" />
-          <polygon points="720,220 1160,0 1440,0" fill="#13151D" fillOpacity="0.75" />
+          {/* Angled facets radiating from center behind headline (Corporate Navy) */}
+          <polygon points="720,220 0,0 280,0" fill="#0B1F3A" fillOpacity="0.7" />
+          <polygon points="720,220 280,0 620,0" fill="#16304F" fillOpacity="0.75" />
+          <polygon points="720,220 620,0 820,0" fill="#16304F" fillOpacity="0.85" />
+          <polygon points="720,220 820,0 1160,0" fill="#16304F" fillOpacity="0.75" />
+          <polygon points="720,220 1160,0 1440,0" fill="#0B1F3A" fillOpacity="0.7" />
 
-          <polygon points="720,220 1440,0 1440,480" fill="#151722" fillOpacity="0.6" />
-          <polygon points="720,220 1440,480 1440,900" fill="#0F1118" fillOpacity="0.7" />
-          <polygon points="720,220 0,480 0,0" fill="#151722" fillOpacity="0.6" />
-          <polygon points="720,220 0,900 0,480" fill="#0F1118" fillOpacity="0.7" />
+          <polygon points="720,220 1440,0 1440,480" fill="#0E2340" fillOpacity="0.6" />
+          <polygon points="720,220 1440,480 1440,900" fill="#071427" fillOpacity="0.7" />
+          <polygon points="720,220 0,480 0,0" fill="#0E2340" fillOpacity="0.6" />
+          <polygon points="720,220 0,900 0,480" fill="#071427" fillOpacity="0.7" />
         </svg>
 
         {/* Ambient Radial Spotlight */}

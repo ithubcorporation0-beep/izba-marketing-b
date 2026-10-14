@@ -6,16 +6,26 @@
   --color-navy-dark: var(--color-navy-dark);
   --color-navy-light: var(--color-navy-light);
   --color-navy-elevated: var(--color-navy-elevated);
+  --color-gold: var(--color-gold);
+  --color-gold-light: var(--color-gold-light);
+  --color-gold-tint: var(--color-gold-tint);
+  --color-gold-hover: var(--color-gold-hover);
+  --color-primary-navy: var(--color-primary-navy);
+  --color-primary-gold: var(--color-primary-gold);
   --color-primary-blue: var(--color-primary-blue);
   --color-primary-hover: var(--color-primary-hover);
   --color-accent-violet: var(--color-accent-violet);
   --color-accent-hover: var(--color-accent-hover);
   --color-white: var(--color-white);
+  --color-page-bg: var(--color-page-bg);
   --color-soft-bg: var(--color-soft-bg);
+  --color-card-bg: var(--color-card-bg);
   --color-text-main: var(--color-text-main);
+  --color-text-heading: var(--color-text-heading);
   --color-muted: var(--color-muted);
   --color-border: var(--color-border);
   --color-border-dark: var(--color-border-dark);
+  --color-border-gold: var(--color-border-gold);
   --color-success: var(--color-success);
   --color-success-bg: var(--color-success-bg);
   --color-error: var(--color-error);
@@ -65,7 +75,7 @@ body {
   min-height: 100vh;
   display: flex;
   flex-direction: column;
-  background-color: var(--color-white);
+  background-color: var(--color-page-bg);
   color: var(--color-text-main);
   overflow-x: clip;
 }
@@ -161,9 +171,9 @@ html.lenis body {
   }
 }
 
-/* Global Focus-Visible styling for accessibility */
+/* Global Focus-Visible styling for accessibility (Corporate Gold) */
 :focus-visible {
-  outline: 2px solid var(--color-primary-blue);
+  outline: 2px solid var(--color-gold);
   outline-offset: 2px;
 }
 
@@ -187,14 +197,14 @@ html.lenis body {
   top: 1rem;
 }
 
-/* Typography Hierarchy (PRD Section 10.3 & Modern Tech Studio Scale) */
+/* Typography Hierarchy — Navy Headings */
 h1,
 .h1 {
   font-size: var(--font-display-h1);
   font-weight: 850;
   line-height: var(--line-height-display);
   letter-spacing: var(--letter-spacing-display);
-  color: inherit;
+  color: var(--color-navy);
   text-wrap: balance;
 }
 
@@ -204,7 +214,7 @@ h2,
   font-weight: 800;
   line-height: 1.1;
   letter-spacing: var(--letter-spacing-heading);
-  color: inherit;
+  color: var(--color-navy);
   text-wrap: balance;
 }
 
@@ -214,7 +224,7 @@ h3,
   font-weight: 700;
   line-height: 1.2;
   letter-spacing: -0.025em;
-  color: inherit;
+  color: var(--color-navy);
 }
 
 h4,
@@ -223,7 +233,18 @@ h4,
   font-weight: 600;
   line-height: 1.35;
   letter-spacing: -0.015em;
-  color: inherit;
+  color: var(--color-navy);
+}
+
+.section-dark h1,
+.section-dark .h1,
+.section-dark h2,
+.section-dark .h2,
+.section-dark h3,
+.section-dark .h3,
+.section-dark h4,
+.section-dark .h4 {
+  color: var(--color-white);
 }
 
 .text-lead {

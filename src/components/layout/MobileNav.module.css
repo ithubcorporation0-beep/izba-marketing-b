@@ -109,9 +109,9 @@
 }
 
 .active {
-  background: rgba(0, 242, 254, 0.1);
-  color: var(--color-accent-cyan);
-  border-left: 3px solid var(--color-accent-cyan);
+  background: var(--color-gold-tint);
+  color: var(--color-navy);
+  border-left: 3px solid var(--color-gold);
 }
 
 .arrowIcon {
@@ -142,17 +142,18 @@
 }
 
 .contactIcon {
-  color: var(--color-accent-cyan);
+  color: var(--color-gold);
 }
 
 .ctaButton {
   display: block;
   text-align: center;
   padding: 0.85rem;
-  background: var(--gradient-brand);
-  color: var(--color-text-inverse);
+  background: var(--color-navy);
+  color: var(--color-white);
+  border: 1px solid var(--color-gold);
   font-weight: 700;
   border-radius: var(--radius-md);
   font-size: 0.95rem;
-  box-shadow: 0 4px 20px rgba(0, 242, 254, 0.3);
+  box-shadow: 0 4px 14px var(--color-gold-glow);
 }

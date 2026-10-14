@@ -15,11 +15,13 @@
   left: 0;
   width: 8px;
   height: 8px;
-  background-color: var(--color-primary-blue);
+  background-color: var(--color-gold);
+  box-shadow: 0 0 8px rgba(201, 162, 39, 0.7);
   border-radius: 50%;
   pointer-events: none;
   margin-top: -4px;
   margin-left: -4px;
+  opacity: 0;
   transition: opacity 0.2s ease;
   will-change: transform;
 }
@@ -33,12 +35,13 @@
   margin-top: -17px;
   margin-left: -17px;
   border-radius: 50%;
-  border: 1.5px solid rgba(49, 87, 213, 0.45);
+  border: 1.5px solid rgba(201, 162, 39, 0.6);
   background-color: transparent;
   pointer-events: none;
   display: flex;
   align-items: center;
   justify-content: center;
+  opacity: 0;
   transition:
     width 0.25s cubic-bezier(0.16, 1, 0.3, 1),
     height 0.25s cubic-bezier(0.16, 1, 0.3, 1),
@@ -49,40 +52,45 @@
   will-change: transform, width, height;
 }
 
+.visible {
+  opacity: 1 !important;
+}
+
+.hidden {
+  opacity: 0 !important;
+}
+
 /* Hovering links, buttons, interactive elements */
 .ringHover {
   width: 48px;
   height: 48px;
   margin-top: -24px;
   margin-left: -24px;
-  background-color: rgba(49, 87, 213, 0.1);
-  border-color: var(--color-primary-blue);
+  background-color: rgba(201, 162, 39, 0.12);
+  border-color: var(--color-gold);
+  box-shadow: 0 0 12px rgba(201, 162, 39, 0.25);
 }
 
 /* Hovering service cards: displays "View" text badge */
 .ringView {
-  width: 60px;
-  height: 60px;
-  margin-top: -30px;
-  margin-left: -30px;
-  background-color: rgba(16, 24, 40, 0.9);
-  border-color: rgba(118, 87, 232, 0.8);
+  width: 58px;
+  height: 58px;
+  margin-top: -29px;
+  margin-left: -29px;
+  background-color: rgba(11, 31, 58, 0.92);
+  border-color: var(--color-gold);
   backdrop-filter: blur(4px);
   -webkit-backdrop-filter: blur(4px);
-  box-shadow: 0 4px 16px rgba(16, 24, 40, 0.3);
+  box-shadow: 0 4px 18px rgba(11, 31, 58, 0.45);
 }
 
 .viewText {
-  color: #ffffff;
+  color: var(--color-gold-light);
   font-size: 10px;
-  font-weight: 700;
-  letter-spacing: 0.06em;
+  font-weight: 750;
+  letter-spacing: 0.08em;
   text-transform: uppercase;
   user-select: none;
-}
-
-.hidden {
-  opacity: 0 !important;
 }
 
 /* Hide on touch devices or reduced motion */

@@ -40,18 +40,19 @@
 
 .acceptBtn {
   padding: 0.5rem 1rem;
-  background: var(--color-primary-blue);
+  background: var(--color-navy);
   color: var(--color-white);
-  border: none;
+  border: 1px solid var(--color-gold);
   border-radius: var(--radius-md);
   font-size: 0.8125rem;
   font-weight: 600;
   cursor: pointer;
-  transition: background-color 0.15s ease;
+  transition: background-color 0.15s ease, border-color 0.15s ease;
 }
 
 .acceptBtn:hover {
-  background: #2546b8;
+  background: var(--color-navy-deep);
+  border-color: var(--color-gold-light);
 }
 
 .declineBtn {

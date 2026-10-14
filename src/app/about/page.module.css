@@ -8,7 +8,7 @@
   padding: var(--space-4xl) 0 var(--space-3xl) 0;
   background: radial-gradient(
     circle at 50% 0%,
-    rgba(37, 99, 235, 0.08) 0%,
+    rgba(201, 162, 39, 0.12) 0%,
     transparent 60%
   );
   border-bottom: 1px solid var(--color-border-subtle);
@@ -80,7 +80,7 @@
   font-size: 1.15rem;
   font-weight: 600;
   line-height: 1.65;
-  color: var(--color-primary-blue);
+  color: var(--color-navy);
 }
 
 .overviewBody {
@@ -169,23 +169,27 @@
 }
 
 .iconBlue {
-  background: rgba(37, 99, 235, 0.1);
-  color: var(--color-primary-blue);
+  background: var(--color-gold-tint);
+  color: var(--color-gold);
+  border: 1px solid var(--color-border-soft);
 }
 
 .iconCyan {
-  background: rgba(6, 182, 212, 0.1);
-  color: var(--color-accent-cyan);
+  background: var(--color-gold-tint);
+  color: var(--color-gold);
+  border: 1px solid var(--color-border-soft);
 }
 
 .iconPurple {
-  background: rgba(124, 58, 237, 0.1);
-  color: var(--color-accent-violet);
+  background: var(--color-gold-tint);
+  color: var(--color-gold);
+  border: 1px solid var(--color-border-soft);
 }
 
 .iconEmerald {
-  background: rgba(16, 185, 129, 0.1);
-  color: var(--color-success);
+  background: var(--color-gold-tint);
+  color: var(--color-gold);
+  border: 1px solid var(--color-border-soft);
 }
 
 .valueTitle {
@@ -233,8 +237,8 @@
   font-size: 1.3rem;
   font-weight: 800;
   font-family: var(--font-mono, monospace);
-  color: var(--color-primary-blue);
-  opacity: 0.8;
+  color: var(--color-gold);
+  opacity: 0.95;
 }
 
 .approachTitle {

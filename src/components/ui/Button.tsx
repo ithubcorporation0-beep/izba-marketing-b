@@ -32,7 +32,7 @@ export const Button = React.forwardRef<
     ref
   ) => {
     const baseStyles =
-      'inline-flex items-center justify-center font-semibold rounded-md transition-all duration-150 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-[var(--color-primary-blue)] disabled:opacity-50 disabled:pointer-events-none select-none';
+      'inline-flex items-center justify-center font-semibold rounded-md transition-all duration-150 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-[var(--color-gold)] disabled:opacity-50 disabled:pointer-events-none select-none';
 
     const sizeStyles = {
       sm: 'text-xs px-3 py-1.5 gap-1.5',
@@ -44,11 +44,11 @@ export const Button = React.forwardRef<
 
     const variantStyles = {
       primary:
-        'bg-[var(--color-primary-blue)] text-[var(--color-white)] hover:bg-[var(--color-primary-hover)] active:scale-[0.99] shadow-sm',
+        'bg-[var(--color-navy)] text-[var(--color-white)] hover:bg-[var(--color-navy-light)] border border-[var(--color-gold)] active:scale-[0.99] shadow-sm',
       secondary:
-        'bg-[var(--color-soft-bg)] text-[var(--color-navy)] border border-[var(--color-border)] hover:bg-[var(--color-white)] hover:border-[var(--color-border-dark)] active:scale-[0.99] shadow-sm',
+        'bg-[var(--color-gold-tint)] text-[var(--color-navy)] border border-[var(--color-gold)] hover:bg-[var(--color-white)] hover:border-[var(--color-gold-light)] active:scale-[0.99] shadow-sm',
       ghost:
-        'bg-transparent text-[var(--color-muted)] hover:text-[var(--color-navy)] hover:bg-[var(--color-soft-bg)]',
+        'bg-transparent text-[var(--color-text-main)] hover:text-[var(--color-navy)] hover:bg-[var(--color-gold-tint)]',
     };
 
     const widthStyle = fullWidth ? 'w-full' : 'w-auto';

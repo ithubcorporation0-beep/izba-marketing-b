@@ -1,6 +1,6 @@
 .heroSection {
   position: relative;
-  background-color: #0D0E12;
+  background-color: #071427;
   color: #FFFFFF;
   min-height: 100vh;
   min-height: 100svh;
@@ -42,8 +42,8 @@
   height: min(600px, 60vh);
   background: radial-gradient(
     ellipse at center,
-    rgba(212, 255, 55, 0.06) 0%,
-    rgba(49, 87, 213, 0.1) 40%,
+    rgba(201, 162, 39, 0.15) 0%,
+    rgba(11, 31, 58, 0.3) 45%,
     transparent 75%
   );
   filter: blur(60px);
@@ -88,22 +88,22 @@
   padding: 0 1.25rem;
 }
 
-/* Top Eyebrow Badge */
+/* Top Eyebrow Badge — Soft gold tint with gold border & navy text */
 .eyebrowBadge {
   display: inline-flex;
   align-items: center;
   gap: 8px;
   padding: 6px 18px;
   border-radius: var(--radius-full);
-  background: rgba(255, 255, 255, 0.05);
-  border: 1px solid rgba(255, 255, 255, 0.14);
-  color: #E2E8F0;
+  background: var(--color-gold-tint);
+  border: 1px solid var(--color-gold);
+  color: var(--color-navy);
   font-size: 0.75rem;
-  font-weight: 700;
-  letter-spacing: 0.16em;
+  font-weight: 750;
+  letter-spacing: 0.14em;
   text-transform: uppercase;
   margin-bottom: 1.5rem;
-  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.3);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.25);
   backdrop-filter: blur(10px);
   -webkit-backdrop-filter: blur(10px);
 }
@@ -115,8 +115,8 @@
   width: 18px;
   height: 18px;
   border-radius: 50%;
-  background: #FFFFFF;
-  color: #0D0E12;
+  background: var(--color-navy);
+  color: var(--color-gold);
   font-size: 0.65rem;
   font-weight: 800;
   line-height: 1;
@@ -136,6 +136,7 @@
   max-width: 920px;
   text-wrap: balance;
   overflow-wrap: break-word;
+  outline: none;
 }
 
 .lineMask {
@@ -182,14 +183,14 @@
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  background-color: #D4FF37;
-  color: #0D0E12;
+  background-color: var(--color-gold);
+  color: var(--color-navy);
   font-size: 1.05rem;
-  font-weight: 750;
+  font-weight: 800;
   padding: 1rem 2.6rem;
   border-radius: var(--radius-full);
   text-decoration: none;
-  box-shadow: 0 4px 22px rgba(212, 255, 55, 0.35);
+  box-shadow: 0 4px 22px rgba(201, 162, 39, 0.35);
   transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1),
               box-shadow 0.25s cubic-bezier(0.16, 1, 0.3, 1),
               background-color 0.2s ease;
@@ -198,8 +199,8 @@
 
 .limePillButton:hover {
   transform: translateY(-2px);
-  background-color: #DEFF54;
-  box-shadow: 0 8px 32px rgba(212, 255, 55, 0.55);
+  background-color: var(--color-gold-light);
+  box-shadow: 0 8px 32px rgba(201, 162, 39, 0.55);
 }
 
 .limePillButton:active {
@@ -211,7 +212,7 @@
   align-items: center;
   justify-content: center;
   background: rgba(255, 255, 255, 0.08);
-  border: 1px solid rgba(255, 255, 255, 0.2);
+  border: 1px solid rgba(230, 198, 92, 0.35);
   color: #FFFFFF;
   font-size: 1.05rem;
   font-weight: 650;
@@ -229,7 +230,7 @@
 .secondaryPillButton:hover {
   transform: translateY(-2px);
   background: rgba(255, 255, 255, 0.16);
-  border-color: rgba(255, 255, 255, 0.4);
+  border-color: var(--color-gold);
   color: #FFFFFF;
 }
 

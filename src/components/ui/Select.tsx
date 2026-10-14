@@ -57,7 +57,7 @@ export const Select = React.forwardRef<HTMLSelectElement, SelectProps>(
             className={`w-full appearance-none px-3.5 py-2.5 pr-10 bg-[var(--color-white)] text-[var(--color-text-main)] border rounded-lg text-sm transition-all duration-150 focus:outline-none focus:ring-4 cursor-pointer ${
               hasError
                 ? 'border-[var(--color-error)] focus:border-[var(--color-error)] focus:ring-[rgba(180,35,24,0.14)]'
-                : 'border-[var(--color-border)] focus:border-[var(--color-primary-blue)] focus:ring-[rgba(49,87,213,0.14)]'
+                : 'border-[var(--color-border)] focus:border-[var(--color-gold)] focus:ring-[rgba(201,162,39,0.18)]'
             } disabled:bg-[var(--color-soft-bg)] disabled:cursor-not-allowed ${className}`}
             {...props}
           >

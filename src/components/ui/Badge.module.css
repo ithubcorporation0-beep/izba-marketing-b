@@ -19,16 +19,22 @@
   font-size: 0.78rem;
 }
 
+.gold {
+  background: var(--color-gold-tint);
+  color: var(--color-navy);
+  border: 1px solid var(--color-gold);
+}
+
 .cyan {
-  background: rgba(0, 242, 254, 0.12);
-  color: var(--color-accent-cyan);
-  border: 1px solid rgba(0, 242, 254, 0.3);
+  background: var(--color-gold-tint);
+  color: var(--color-navy);
+  border: 1px solid var(--color-gold);
 }
 
 .purple {
-  background: rgba(121, 40, 202, 0.15);
-  color: #d8b4fe;
-  border: 1px solid rgba(121, 40, 202, 0.35);
+  background: var(--color-gold-tint);
+  color: var(--color-navy);
+  border: 1px solid var(--color-gold);
 }
 
 .emerald {

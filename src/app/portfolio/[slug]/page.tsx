@@ -119,7 +119,7 @@ export default async function ProjectDetailPage({ params }: PageProps) {
               {/* Context / Overview */}
               <section className={styles.sectionBlock}>
                 <h2 className={styles.sectionTitle}>
-                  <Briefcase size={20} className="text-[var(--color-primary-blue)]" />
+                  <Briefcase size={20} className="text-[var(--color-gold)]" />
                   <span>Context & Background</span>
                 </h2>
                 <p className={styles.sectionText}>
@@ -131,7 +131,7 @@ export default async function ProjectDetailPage({ params }: PageProps) {
               {project.challenge && (
                 <section className={styles.sectionBlock}>
                   <h2 className={styles.sectionTitle}>
-                    <Layers size={20} className="text-[var(--color-primary-blue)]" />
+                    <Layers size={20} className="text-[var(--color-gold)]" />
                     <span>The Challenge</span>
                   </h2>
                   <p className={styles.sectionText}>{project.challenge}</p>
@@ -142,7 +142,7 @@ export default async function ProjectDetailPage({ params }: PageProps) {
               {(project.approach || project.solution) && (
                 <section className={styles.sectionBlock}>
                   <h2 className={styles.sectionTitle}>
-                    <CheckCircle size={20} className="text-[var(--color-primary-blue)]" />
+                    <CheckCircle size={20} className="text-[var(--color-gold)]" />
                     <span>Our Approach & Implementation</span>
                   </h2>
                   <p className={styles.sectionText}>
@@ -155,7 +155,7 @@ export default async function ProjectDetailPage({ params }: PageProps) {
               {deliverables.length > 0 && (
                 <section className={styles.sectionBlock}>
                   <h2 className={styles.sectionTitle}>
-                    <FileCheck size={20} className="text-[var(--color-primary-blue)]" />
+                    <FileCheck size={20} className="text-[var(--color-gold)]" />
                     <span>Deliverables Handed Over</span>
                   </h2>
                   <div className={styles.deliverablesList}>

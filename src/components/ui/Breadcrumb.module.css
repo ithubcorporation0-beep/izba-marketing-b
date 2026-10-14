@@ -33,7 +33,7 @@
 
 .homeLink:hover,
 .link:hover {
-  color: var(--color-primary-blue);
+  color: var(--color-gold);
   text-decoration: underline;
 }
 

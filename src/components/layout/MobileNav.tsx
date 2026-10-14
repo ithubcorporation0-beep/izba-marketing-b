@@ -2,6 +2,7 @@
 
 import React, { useEffect, useRef, useState, useCallback } from 'react';
 import Link from 'next/link';
+import Image from 'next/image';
 import { usePathname } from 'next/navigation';
 import { X, ArrowRight, Mail, Phone, MapPin } from 'lucide-react';
 import gsap from 'gsap';
@@ -195,27 +196,22 @@ export const MobileNav: React.FC<MobileNavProps> = ({ isOpen, onClose }) => {
           <Link
             href="/"
             onClick={handleAnimatedClose}
-            className="flex items-center gap-2.5"
-            aria-label={`${siteConfig.name} Home`}
+            className="flex items-center gap-2.5 focus:outline-none focus-visible:ring-2 focus-visible:ring-[var(--color-gold)] rounded-[var(--radius-sm)]"
+            aria-label="IT HUB Corporation logo"
           >
-            <div
-              className="w-8 h-8 rounded-[var(--radius-sm)] bg-[var(--color-navy)] flex items-center justify-center text-[var(--color-white)] font-bold text-sm"
-              aria-hidden="true"
-            >
-              IZ
-            </div>
-            <span className="font-extrabold text-base text-[var(--color-navy)] tracking-tight">
-              IZBA{' '}
-              <span className="font-normal text-[var(--color-muted)] text-xs">
-                Agency
-              </span>
-            </span>
+            <Image
+              src="/logo.svg"
+              alt="IT HUB Corporation logo"
+              width={140}
+              height={36}
+              className="h-8 w-auto object-contain"
+            />
           </Link>
 
           <button
             ref={closeButtonRef}
             type="button"
-            className="p-2 rounded-[var(--radius-md)] text-[var(--color-muted)] hover:text-[var(--color-navy)] hover:bg-[var(--color-soft-bg)] transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-[var(--color-primary-blue)]"
+            className="p-2 rounded-[var(--radius-md)] text-[var(--color-muted)] hover:text-[var(--color-navy)] hover:bg-[var(--color-soft-bg)] transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-[var(--color-gold)]"
             onClick={handleAnimatedClose}
             aria-label="Close navigation menu"
           >
@@ -239,7 +235,7 @@ export const MobileNav: React.FC<MobileNavProps> = ({ isOpen, onClose }) => {
                   onClick={handleAnimatedClose}
                   className={`flex items-center justify-between p-3 rounded-[var(--radius-md)] text-base font-medium transition-all ${
                     isActive
-                      ? 'bg-[var(--color-soft-bg)] text-[var(--color-primary-blue)] font-semibold'
+                      ? 'bg-[var(--color-gold-tint)] text-[var(--color-navy)] font-semibold'
                       : 'text-[var(--color-navy)] hover:bg-[var(--color-soft-bg)]/60'
                   }`}
                   aria-current={isActive ? 'page' : undefined}
@@ -249,7 +245,7 @@ export const MobileNav: React.FC<MobileNavProps> = ({ isOpen, onClose }) => {
                     size={16}
                     className={
                       isActive
-                        ? 'text-[var(--color-primary-blue)]'
+                        ? 'text-[var(--color-gold)]'
                         : 'text-[var(--color-muted)]'
                     }
                   />
@@ -265,21 +261,21 @@ export const MobileNav: React.FC<MobileNavProps> = ({ isOpen, onClose }) => {
             <div className="flex items-center gap-2">
               <Mail
                 size={14}
-                className="text-[var(--color-primary-blue)] shrink-0"
+                className="text-[var(--color-gold)] shrink-0"
               />
               <span className="truncate">{siteConfig.contact.email}</span>
             </div>
             <div className="flex items-center gap-2">
               <Phone
                 size={14}
-                className="text-[var(--color-primary-blue)] shrink-0"
+                className="text-[var(--color-gold)] shrink-0"
               />
               <span>{siteConfig.contact.phone}</span>
             </div>
             <div className="flex items-center gap-2">
               <MapPin
                 size={14}
-                className="text-[var(--color-primary-blue)] shrink-0"
+                className="text-[var(--color-gold)] shrink-0"
               />
               <span className="truncate">{siteConfig.contact.address}</span>
             </div>

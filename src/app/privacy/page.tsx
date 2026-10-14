@@ -51,7 +51,7 @@ export default function PrivacyPage() {
               ) : (
                 <a
                   href={`mailto:${siteConfig.contact.email}`}
-                  className="text-[var(--color-primary-blue)] underline"
+                  className="text-[var(--color-navy)] underline hover:text-[var(--color-gold)]"
                 >
                   {siteConfig.contact.email}
                 </a>

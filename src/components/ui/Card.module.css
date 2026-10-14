@@ -21,7 +21,7 @@
   border-radius: inherit;
   background: radial-gradient(
     380px circle at var(--mouse-x, -1000px) var(--mouse-y, -1000px),
-    rgba(49, 87, 213, 0.08),
+    rgba(201, 162, 39, 0.08),
     transparent 70%
   );
   opacity: 0;
@@ -41,22 +41,19 @@
   z-index: 1;
 }
 
-/* Gentle lift and blue/violet border glow on hover or keyboard focus */
+/* Gentle lift and gold border glow on hover or keyboard focus */
 .hoverable:hover,
 .hoverable:focus-within {
-  border-color: rgba(49, 87, 213, 0.45);
+  border-color: var(--color-gold);
   transform: translateY(-4px);
-  box-shadow: 0 12px 32px -4px rgba(49, 87, 213, 0.16), 0 0 0 1px rgba(118, 87, 232, 0.15);
+  box-shadow: 0 12px 32px -4px rgba(11, 31, 58, 0.08), 0 0 0 1px var(--color-gold);
 }
 
-.glowCyan {
-  border-color: rgba(6, 182, 212, 0.35);
-  box-shadow: 0 8px 24px -4px rgba(6, 182, 212, 0.25);
-}
-
-.glowPurple {
-  border-color: rgba(118, 87, 232, 0.35);
-  box-shadow: var(--shadow-glow-violet);
+.glowCyan,
+.glowPurple,
+.glowGold {
+  border-color: var(--color-gold);
+  box-shadow: 0 8px 24px -4px rgba(201, 162, 39, 0.28);
 }
 
 .glowEmerald {

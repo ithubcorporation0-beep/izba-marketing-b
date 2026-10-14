@@ -58,8 +58,9 @@
   width: 36px;
   height: 36px;
   border-radius: var(--radius-md);
-  background: rgba(49, 87, 213, 0.08);
-  color: var(--color-primary-blue);
+  background: var(--color-gold-tint);
+  border: 1px solid var(--color-border-soft);
+  color: var(--color-gold);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -88,13 +89,14 @@
 }
 
 .methodLink {
-  color: var(--color-primary-blue);
+  color: var(--color-navy);
   text-decoration: none;
   font-weight: 600;
   transition: color 0.15s ease;
 }
 
 .methodLink:hover {
+  color: var(--color-gold);
   text-decoration: underline;
 }
 

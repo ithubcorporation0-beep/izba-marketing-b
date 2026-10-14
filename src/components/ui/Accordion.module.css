@@ -17,8 +17,8 @@
 }
 
 .item[data-open="true"] {
-  border-color: rgba(49, 87, 213, 0.35);
-  box-shadow: 0 4px 16px -2px rgba(49, 87, 213, 0.08);
+  border-color: var(--color-gold);
+  box-shadow: 0 4px 16px -2px rgba(201, 162, 39, 0.15);
 }
 
 .header {
@@ -44,12 +44,12 @@
 }
 
 .trigger:hover {
-  color: var(--color-primary-blue);
+  color: var(--color-gold);
 }
 
 .trigger:focus-visible {
   outline: none;
-  box-shadow: inset 0 0 0 2px var(--color-primary-blue);
+  box-shadow: inset 0 0 0 2px var(--color-gold);
 }
 
 /* Plus / Minus Morph Icon */
@@ -70,8 +70,8 @@
 
 .trigger:hover .iconWrapper,
 .item[data-open="true"] .iconWrapper {
-  background: rgba(49, 87, 213, 0.1);
-  color: var(--color-primary-blue);
+  background: var(--color-gold-tint);
+  color: var(--color-gold);
 }
 
 .morphIcon {

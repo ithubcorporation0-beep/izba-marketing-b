@@ -22,10 +22,11 @@ export const CustomCursor: React.FC = () => {
 
     setIsSupported(true);
 
-    let mouseX = -100;
-    let mouseY = -100;
-    let ringX = -100;
-    let ringY = -100;
+    let mouseX = -1000;
+    let mouseY = -1000;
+    let ringX = -1000;
+    let ringY = -1000;
+    let hasMoved = false;
     let rafId: number;
 
     const onPointerMove = (e: PointerEvent) => {
@@ -35,7 +36,10 @@ export const CustomCursor: React.FC = () => {
       mouseX = e.clientX;
       mouseY = e.clientY;
 
-      if (!isVisible) {
+      if (!hasMoved) {
+        hasMoved = true;
+        ringX = mouseX;
+        ringY = mouseY;
         setIsVisible(true);
       }
 
@@ -52,6 +56,8 @@ export const CustomCursor: React.FC = () => {
         setIsVisible(false);
         return;
       }
+
+      setIsVisible(true);
 
       // Check if over service cards or viewable items
       const isServiceCard = Boolean(
@@ -81,7 +87,9 @@ export const CustomCursor: React.FC = () => {
     };
 
     const onPointerEnter = () => {
-      setIsVisible(true);
+      if (hasMoved) {
+        setIsVisible(true);
+      }
     };
 
     // When typing in inputs, hide custom cursor
@@ -99,17 +107,19 @@ export const CustomCursor: React.FC = () => {
 
     // Animation loop using lerp for smooth trailing ring
     const render = () => {
-      // Dot follows immediately
-      if (dotRef.current) {
-        dotRef.current.style.transform = `translate3d(${mouseX}px, ${mouseY}px, 0)`;
-      }
+      if (hasMoved) {
+        // Dot follows immediately
+        if (dotRef.current) {
+          dotRef.current.style.transform = `translate3d(${mouseX}px, ${mouseY}px, 0)`;
+        }
 
-      // Ring lags gently with smooth lerp
-      ringX += (mouseX - ringX) * 0.2;
-      ringY += (mouseY - ringY) * 0.2;
+        // Ring lags gently with smooth lerp
+        ringX += (mouseX - ringX) * 0.2;
+        ringY += (mouseY - ringY) * 0.2;
 
-      if (ringRef.current) {
-        ringRef.current.style.transform = `translate3d(${ringX}px, ${ringY}px, 0)`;
+        if (ringRef.current) {
+          ringRef.current.style.transform = `translate3d(${ringX}px, ${ringY}px, 0)`;
+        }
       }
 
       rafId = requestAnimationFrame(render);
@@ -129,7 +139,7 @@ export const CustomCursor: React.FC = () => {
       window.removeEventListener('keydown', onKeyDown);
       cancelAnimationFrame(rafId);
     };
-  }, [isVisible]);
+  }, []);
 
   if (!isSupported) {
     return null;
@@ -139,12 +149,12 @@ export const CustomCursor: React.FC = () => {
     styles.ring,
     cursorState === 'hover' ? styles.ringHover : '',
     cursorState === 'view' ? styles.ringView : '',
-    !isVisible ? styles.hidden : '',
+    isVisible ? styles.visible : styles.hidden,
   ]
     .filter(Boolean)
     .join(' ');
 
-  const dotClass = [styles.dot, !isVisible ? styles.hidden : '']
+  const dotClass = [styles.dot, isVisible ? styles.visible : styles.hidden]
     .filter(Boolean)
     .join(' ');
 

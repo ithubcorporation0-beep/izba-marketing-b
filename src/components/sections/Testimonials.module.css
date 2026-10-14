@@ -39,7 +39,7 @@
 }
 
 .carouselContainer:focus-visible {
-  box-shadow: 0 0 0 3px rgba(49, 87, 213, 0.35);
+  box-shadow: 0 0 0 3px rgba(201, 162, 39, 0.4);
 }
 
 .quoteCard {
@@ -47,7 +47,7 @@
   border: 1px solid var(--color-border);
   border-radius: var(--radius-2xl);
   padding: 2.5rem 2rem;
-  box-shadow: 0 10px 30px -4px rgba(16, 24, 40, 0.06);
+  box-shadow: 0 10px 30px -4px rgba(11, 31, 58, 0.06);
   position: relative;
   transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.3s ease;
 }
@@ -67,11 +67,11 @@
 .ratingStars {
   display: flex;
   gap: 4px;
-  color: #f59e0b;
+  color: var(--color-gold);
 }
 
 .quoteIcon {
-  color: rgba(49, 87, 213, 0.15);
+  color: rgba(201, 162, 39, 0.22);
 }
 
 .largeQuote {
@@ -96,14 +96,15 @@
   width: 48px;
   height: 48px;
   border-radius: 50%;
-  background: linear-gradient(135deg, var(--color-primary-blue), var(--color-accent-violet));
-  color: #ffffff;
+  background: var(--color-navy);
+  border: 1.5px solid var(--color-gold);
+  color: var(--color-gold-light);
   font-weight: 700;
   font-size: 0.95rem;
   display: flex;
   align-items: center;
   justify-content: center;
-  box-shadow: 0 4px 12px rgba(49, 87, 213, 0.25);
+  box-shadow: 0 4px 12px var(--color-gold-glow);
   flex-shrink: 0;
 }
 
@@ -149,16 +150,16 @@
 }
 
 .navBtn:hover {
-  background: var(--color-primary-blue);
-  border-color: var(--color-primary-blue);
-  color: #ffffff;
+  background: var(--color-gold);
+  border-color: var(--color-gold);
+  color: var(--color-navy);
   transform: translateY(-2px);
-  box-shadow: 0 6px 16px rgba(49, 87, 213, 0.25);
+  box-shadow: 0 6px 16px rgba(201, 162, 39, 0.35);
 }
 
 .navBtn:focus-visible {
   outline: none;
-  box-shadow: 0 0 0 3px rgba(49, 87, 213, 0.35);
+  box-shadow: 0 0 0 3px rgba(201, 162, 39, 0.4);
 }
 
 .paginationText {

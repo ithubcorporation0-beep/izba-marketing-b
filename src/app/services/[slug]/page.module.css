@@ -14,7 +14,7 @@
   padding: var(--space-3xl) 0 var(--space-4xl) 0;
   background: radial-gradient(
     circle at 50% 0%,
-    rgba(37, 99, 235, 0.08) 0%,
+    rgba(201, 162, 39, 0.12) 0%,
     transparent 60%
   );
   border-bottom: 1px solid var(--color-border-subtle);
@@ -82,7 +82,7 @@
 }
 
 .sparkleIcon {
-  color: var(--color-primary-blue);
+  color: var(--color-gold);
 }
 
 .quoteCardText {
@@ -109,7 +109,7 @@
 }
 
 .pointIcon {
-  color: var(--color-primary-blue);
+  color: var(--color-gold);
   flex-shrink: 0;
 }
 
@@ -141,7 +141,7 @@
   font-size: 1.12rem;
   font-weight: 600;
   line-height: 1.65;
-  color: var(--color-primary-blue);
+  color: var(--color-navy);
 }
 
 .bodyParagraph {
@@ -191,8 +191,9 @@
   width: 40px;
   height: 40px;
   border-radius: var(--radius-md);
-  background: rgba(37, 99, 235, 0.08);
-  color: var(--color-primary-blue);
+  background: var(--color-gold-tint);
+  border: 1px solid var(--color-border-soft);
+  color: var(--color-gold);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -224,13 +225,13 @@
 }
 
 .checkIcon {
-  color: var(--color-primary-blue);
+  color: var(--color-gold);
   flex-shrink: 0;
   margin-top: 3px;
 }
 
 .docIcon {
-  color: var(--color-accent-cyan);
+  color: var(--color-gold);
   flex-shrink: 0;
   margin-top: 3px;
 }
@@ -289,8 +290,9 @@
   font-family: var(--font-mono, monospace);
   font-size: 0.85rem;
   font-weight: 700;
-  color: var(--color-primary-blue);
-  background: rgba(37, 99, 235, 0.08);
+  color: var(--color-navy);
+  background: var(--color-gold-tint);
+  border: 1px solid var(--color-border-soft);
   padding: 4px 10px;
   border-radius: var(--radius-full);
   width: fit-content;
@@ -335,7 +337,7 @@
 }
 
 .accordionItem.itemOpen {
-  border-color: var(--color-primary-blue);
+  border-color: var(--color-gold);
 }
 
 .questionBtn {
@@ -355,7 +357,7 @@
 }
 
 .questionBtn:hover {
-  color: var(--color-primary-blue);
+  color: var(--color-gold);
 }
 
 .arrowIcon {
@@ -366,7 +368,7 @@
 
 .arrowOpen {
   transform: rotate(180deg);
-  color: var(--color-primary-blue);
+  color: var(--color-gold);
 }
 
 .answerBox {

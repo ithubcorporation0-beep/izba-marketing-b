@@ -38,7 +38,7 @@ export const ProjectCard: React.FC<ProjectCardProps> = ({ project }) => {
       <h3 className={styles.title}>
         <Link
           href={`/portfolio/${project.slug}`}
-          className="hover:text-[var(--color-primary-blue)] transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-[var(--color-primary-blue)] rounded-sm"
+          className="hover:text-[var(--color-gold)] transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-[var(--color-gold)] rounded-sm"
         >
           {project.title}
         </Link>

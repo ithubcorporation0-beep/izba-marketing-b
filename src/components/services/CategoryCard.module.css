@@ -8,7 +8,7 @@
 }
 
 .cardLink:focus-visible {
-  box-shadow: 0 0 0 3px var(--color-primary-blue), 0 0 0 6px rgba(49, 87, 213, 0.2);
+  box-shadow: 0 0 0 3px var(--color-gold), 0 0 0 6px var(--color-gold-glow);
 }
 
 .card {
@@ -29,8 +29,8 @@
 .cardLink:hover .card,
 .cardLink:focus-visible .card {
   transform: translateY(-4px);
-  border-color: rgba(49, 87, 213, 0.45);
-  box-shadow: 0 12px 32px -4px rgba(49, 87, 213, 0.16), 0 0 0 1px rgba(118, 87, 232, 0.15);
+  border-color: var(--color-gold);
+  box-shadow: 0 12px 32px -4px var(--color-gold-glow);
 }
 
 .topRow {
@@ -45,9 +45,9 @@
   width: 48px;
   height: 48px;
   border-radius: var(--radius-md);
-  background: rgba(49, 87, 213, 0.08);
-  border: 1px solid rgba(49, 87, 213, 0.15);
-  color: var(--color-primary-blue);
+  background: var(--color-navy);
+  border: 1px solid var(--color-gold);
+  color: var(--color-gold);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -62,10 +62,10 @@
 .cardLink:hover .iconWrapper,
 .cardLink:focus-visible .iconWrapper {
   transform: scale(1.1) rotate(4deg);
-  background: linear-gradient(135deg, var(--color-primary-blue), var(--color-accent-violet));
-  color: #ffffff;
-  border-color: transparent;
-  box-shadow: 0 4px 14px rgba(49, 87, 213, 0.35);
+  background: var(--color-navy-deep);
+  color: var(--color-gold-light);
+  border-color: var(--color-gold);
+  box-shadow: 0 4px 14px var(--color-gold-glow);
 }
 
 .metaLabel {
@@ -105,7 +105,13 @@
   border-top: 1px solid var(--color-border);
   font-size: 0.875rem;
   font-weight: 600;
-  color: var(--color-primary-blue);
+  color: var(--color-navy);
+  transition: color 0.15s ease;
+}
+
+.cardLink:hover .footer,
+.cardLink:focus-visible .footer {
+  color: var(--color-gold);
 }
 
 .arrowIcon {

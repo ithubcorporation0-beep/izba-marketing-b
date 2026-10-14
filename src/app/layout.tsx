@@ -47,17 +47,20 @@ export const metadata: Metadata = {
     description: siteConfig.description,
     images: ['/images/og-image.png'],
   },
-  icons: {
+    icons: {
     icon: [
-      { url: '/icon.svg', type: 'image/svg+xml' },
+      { url: '/favicon.svg', type: 'image/svg+xml' },
       { url: '/favicon.ico' },
     ],
-    apple: [{ url: '/icons/favicon.svg' }],
+    apple: [
+      { url: '/apple-touch-icon.png', sizes: '180x180' },
+      { url: '/icons/favicon.svg' },
+    ],
   },
 };
 
 export const viewport: Viewport = {
-  themeColor: '#101828',
+  themeColor: '#0B1F3A',
   width: 'device-width',
   initialScale: 1,
 };
@@ -69,7 +72,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" className={inter.variable}>
-      <body className="min-h-screen flex flex-col font-sans bg-[var(--color-white)] text-[var(--color-text-main)] antialiased selection:bg-[var(--color-primary-blue)] selection:text-[var(--color-white)]">
+      <body className="min-h-screen flex flex-col font-sans bg-[var(--color-page-bg)] text-[var(--color-text-main)] antialiased selection:bg-[var(--color-gold)] selection:text-[var(--color-navy)]">
         <MotionProvider>
           {/* Branded First-Visit Preloader */}
           <Preloader />

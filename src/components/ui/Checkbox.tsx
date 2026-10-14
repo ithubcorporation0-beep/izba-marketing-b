@@ -29,7 +29,7 @@ export const Checkbox = React.forwardRef<HTMLInputElement, CheckboxProps>(
               {...props}
             />
             <div
-              className={`w-5 h-5 rounded border transition-all duration-150 flex items-center justify-center bg-[var(--color-white)] border-[var(--color-border-dark)] peer-checked:bg-[var(--color-primary-blue)] peer-checked:border-[var(--color-primary-blue)] peer-focus-visible:ring-4 peer-focus-visible:ring-[rgba(49,87,213,0.16)] peer-disabled:opacity-50 peer-disabled:cursor-not-allowed ${
+              className={`w-5 h-5 rounded border transition-all duration-150 flex items-center justify-center bg-[var(--color-white)] border-[var(--color-border-dark)] peer-checked:bg-[var(--color-navy)] peer-checked:border-[var(--color-gold)] peer-focus-visible:ring-4 peer-focus-visible:ring-[rgba(201,162,39,0.25)] peer-disabled:opacity-50 peer-disabled:cursor-not-allowed ${
                 error ? 'border-[var(--color-error)]' : ''
               } ${className}`}
             >

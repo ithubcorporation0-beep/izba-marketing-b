@@ -2,6 +2,7 @@
 
 import React, { useState, useEffect, useRef } from 'react';
 import Link from 'next/link';
+import Image from 'next/image';
 import { Mail, Phone, MapPin, Clock, ArrowRight, ArrowUp } from 'lucide-react';
 import { siteConfig } from '@/config/site';
 import { categories } from '@/content/categories';
@@ -110,23 +111,16 @@ export const Footer: React.FC = () => {
           <div className="lg:col-span-4 space-y-4">
             <Link
               href="/"
-              className="inline-flex items-center gap-3 focus:outline-none focus-visible:ring-2 focus-visible:ring-[var(--color-primary-blue)] rounded-[var(--radius-sm)]"
-              aria-label={siteConfig.name}
+              className="inline-flex items-center gap-3 focus:outline-none focus-visible:ring-2 focus-visible:ring-[var(--color-gold)] rounded-[var(--radius-sm)]"
+              aria-label="IT HUB Corporation logo"
             >
-              <div
-                className="w-9 h-9 rounded-[var(--radius-md)] bg-[var(--color-primary-blue)] flex items-center justify-center text-[var(--color-white)] font-bold text-base"
-                aria-hidden="true"
-              >
-                IZ
-              </div>
-              <div className="flex flex-col">
-                <span className="font-extrabold text-lg text-[var(--color-white)] tracking-tight leading-tight">
-                  {siteConfig.name}
-                </span>
-                <span className="text-[10px] uppercase tracking-wider text-[var(--color-text-muted-dark)] font-semibold">
-                  {siteConfig.tagline}
-                </span>
-              </div>
+              <Image
+                src="/logo-light.svg"
+                alt="IT HUB Corporation logo"
+                width={160}
+                height={40}
+                className="h-9 w-auto object-contain"
+              />
             </Link>
 
             <p className="text-sm text-[var(--color-text-muted-dark)] leading-relaxed max-w-sm">
@@ -153,7 +147,7 @@ export const Footer: React.FC = () => {
               <li>
                 <Link
                   href="/"
-                  className="text-[var(--color-text-muted-dark)] hover:text-[var(--color-white)] transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-[var(--color-primary-blue)] rounded-sm"
+                  className="text-[var(--color-text-muted-dark)] hover:text-[var(--color-white)] transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-[var(--color-gold)] rounded-sm"
                 >
                   Home
                 </Link>
@@ -161,7 +155,7 @@ export const Footer: React.FC = () => {
               <li>
                 <Link
                   href="/about"
-                  className="text-[var(--color-text-muted-dark)] hover:text-[var(--color-white)] transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-[var(--color-primary-blue)] rounded-sm"
+                  className="text-[var(--color-text-muted-dark)] hover:text-[var(--color-white)] transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-[var(--color-gold)] rounded-sm"
                 >
                   About Us
                 </Link>
@@ -169,7 +163,7 @@ export const Footer: React.FC = () => {
               <li>
                 <Link
                   href="/services"
-                  className="text-[var(--color-text-muted-dark)] hover:text-[var(--color-white)] transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-[var(--color-primary-blue)] rounded-sm"
+                  className="text-[var(--color-text-muted-dark)] hover:text-[var(--color-white)] transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-[var(--color-gold)] rounded-sm"
                 >
                   Services
                 </Link>
@@ -177,7 +171,7 @@ export const Footer: React.FC = () => {
               <li>
                 <Link
                   href="/portfolio"
-                  className="text-[var(--color-text-muted-dark)] hover:text-[var(--color-white)] transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-[var(--color-primary-blue)] rounded-sm"
+                  className="text-[var(--color-text-muted-dark)] hover:text-[var(--color-white)] transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-[var(--color-gold)] rounded-sm"
                 >
                   Portfolio
                 </Link>
@@ -185,7 +179,7 @@ export const Footer: React.FC = () => {
               <li>
                 <Link
                   href="/digital-products"
-                  className="text-[var(--color-text-muted-dark)] hover:text-[var(--color-white)] transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-[var(--color-primary-blue)] rounded-sm"
+                  className="text-[var(--color-text-muted-dark)] hover:text-[var(--color-white)] transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-[var(--color-gold)] rounded-sm"
                 >
                   Digital Products
                 </Link>
@@ -193,7 +187,7 @@ export const Footer: React.FC = () => {
               <li>
                 <Link
                   href="/contact"
-                  className="text-[var(--color-text-muted-dark)] hover:text-[var(--color-white)] transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-[var(--color-primary-blue)] rounded-sm"
+                  className="text-[var(--color-text-muted-dark)] hover:text-[var(--color-white)] transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-[var(--color-gold)] rounded-sm"
                 >
                   Contact &amp; Quote
                 </Link>
@@ -211,12 +205,12 @@ export const Footer: React.FC = () => {
                 <li key={cat.id}>
                   <Link
                     href={`/services/category/${cat.slug}`}
-                    className="text-[var(--color-text-muted-dark)] hover:text-[var(--color-white)] transition-colors flex items-center justify-between group focus:outline-none focus-visible:ring-2 focus-visible:ring-[var(--color-primary-blue)] rounded-sm"
+                    className="text-[var(--color-text-muted-dark)] hover:text-[var(--color-white)] transition-colors flex items-center justify-between group focus:outline-none focus-visible:ring-2 focus-visible:ring-[var(--color-gold)] rounded-sm"
                   >
                     <span className="truncate">{cat.name}</span>
                     <ArrowRight
                       size={12}
-                      className="opacity-0 -translate-x-1 group-hover:opacity-100 group-hover:translate-x-0 transition-all text-[var(--color-primary-blue)]"
+                      className="opacity-0 -translate-x-1 group-hover:opacity-100 group-hover:translate-x-0 transition-all text-[var(--color-gold)]"
                     />
                   </Link>
                 </li>
@@ -233,7 +227,7 @@ export const Footer: React.FC = () => {
               <div className="flex items-start gap-2.5">
                 <MapPin
                   size={16}
-                  className="text-[var(--color-primary-blue)] shrink-0 mt-0.5"
+                  className="text-[var(--color-gold)] shrink-0 mt-0.5"
                 />
                 <div>
                   {renderContactValue(
@@ -246,7 +240,7 @@ export const Footer: React.FC = () => {
               <div className="flex items-start gap-2.5">
                 <Mail
                   size={16}
-                  className="text-[var(--color-primary-blue)] shrink-0 mt-0.5"
+                  className="text-[var(--color-gold)] shrink-0 mt-0.5"
                 />
                 <div>
                   {isPlaceholder(siteConfig.contact.email) ? (
@@ -268,7 +262,7 @@ export const Footer: React.FC = () => {
               <div className="flex items-start gap-2.5">
                 <Phone
                   size={16}
-                  className="text-[var(--color-primary-blue)] shrink-0 mt-0.5"
+                  className="text-[var(--color-gold)] shrink-0 mt-0.5"
                 />
                 <div>
                   {isPlaceholder(siteConfig.contact.phone) ? (
@@ -287,7 +281,7 @@ export const Footer: React.FC = () => {
               <div className="flex items-start gap-2.5">
                 <Clock
                   size={16}
-                  className="text-[var(--color-primary-blue)] shrink-0 mt-0.5"
+                  className="text-[var(--color-gold)] shrink-0 mt-0.5"
                 />
                 <div>
                   {renderContactValue(
@@ -309,13 +303,13 @@ export const Footer: React.FC = () => {
           <div className="flex items-center gap-6">
             <Link
               href="/privacy"
-              className="hover:text-[var(--color-white)] transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-[var(--color-primary-blue)] rounded-sm"
+              className="hover:text-[var(--color-white)] transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-[var(--color-gold)] rounded-sm"
             >
               Privacy Policy
             </Link>
             <Link
               href="/terms"
-              className="hover:text-[var(--color-white)] transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-[var(--color-primary-blue)] rounded-sm"
+              className="hover:text-[var(--color-white)] transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-[var(--color-gold)] rounded-sm"
             >
               Terms of Service
             </Link>

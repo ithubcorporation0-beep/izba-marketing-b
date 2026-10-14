@@ -33,8 +33,8 @@
 
 .input:focus,
 .textarea:focus {
-  border-color: var(--color-accent-cyan);
-  box-shadow: 0 0 0 3px rgba(0, 242, 254, 0.15);
+  border-color: var(--color-gold);
+  box-shadow: 0 0 0 3px var(--color-gold-glow);
   background-color: var(--color-bg-surface-elevated);
 }
 

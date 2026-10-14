@@ -41,9 +41,10 @@
 }
 
 .alertLink {
-  color: var(--color-primary-blue);
-  font-weight: 600;
+  color: var(--color-navy);
+  font-weight: 700;
   text-decoration: underline;
+  text-decoration-color: var(--color-gold);
 }
 
 .errorSummary {
@@ -131,10 +132,10 @@
 .input:focus,
 .select:focus,
 .textarea:focus {
-  border-color: var(--color-primary-blue);
+  border-color: var(--color-gold);
   box-shadow:
-    0 0 0 4px rgba(49, 87, 213, 0.16),
-    0 2px 8px rgba(49, 87, 213, 0.08);
+    0 0 0 3px rgba(201, 162, 39, 0.2),
+    0 2px 8px rgba(201, 162, 39, 0.08);
 }
 
 .textarea {
@@ -211,7 +212,7 @@
   width: 1.125rem;
   height: 1.125rem;
   margin-top: 0.15rem;
-  accent-color: var(--color-primary-blue);
+  accent-color: var(--color-gold);
   cursor: pointer;
   flex-shrink: 0;
 }
@@ -223,9 +224,10 @@
 }
 
 .consentLink {
-  color: var(--color-primary-blue);
+  color: var(--color-navy);
   text-decoration: underline;
-  font-weight: 500;
+  text-decoration-color: var(--color-gold);
+  font-weight: 600;
 }
 
 /* Honeypot hidden input */
@@ -249,12 +251,12 @@
   gap: 0.5rem;
   width: 100%;
   padding: 0.875rem 1.75rem;
-  background: var(--color-primary-blue);
+  background: var(--color-navy);
   color: var(--color-white);
-  border: none;
+  border: 1px solid var(--color-gold);
   border-radius: var(--radius-md);
   font-size: 1rem;
-  font-weight: 600;
+  font-weight: 700;
   cursor: pointer;
   transition:
     background-color 0.2s ease,
@@ -264,14 +266,14 @@
 }
 
 .submitBtn:hover:not(:disabled) {
-  background: #2546b8;
+  background: var(--color-navy-light);
   transform: translateY(-1px);
-  box-shadow: 0 4px 14px rgba(49, 87, 213, 0.25);
+  box-shadow: 0 4px 14px rgba(201, 162, 39, 0.35);
 }
 
 .submitBtn:focus-visible {
   outline: none;
-  box-shadow: 0 0 0 3px rgba(49, 87, 213, 0.4);
+  box-shadow: 0 0 0 3px rgba(201, 162, 39, 0.4);
 }
 
 .submitBtn:disabled {
@@ -282,8 +284,8 @@
 .submitting {
   opacity: 0.9;
   cursor: wait !important;
-  background: linear-gradient(135deg, var(--color-primary-blue), var(--color-accent-violet));
-  box-shadow: 0 4px 16px rgba(49, 87, 213, 0.35);
+  background: linear-gradient(135deg, var(--color-navy), var(--color-navy-light));
+  box-shadow: 0 4px 16px rgba(201, 162, 39, 0.35);
 }
 
 @keyframes spin {
@@ -398,9 +400,9 @@
 }
 
 .resetBtn:hover {
-  background: var(--color-white);
-  border-color: var(--color-primary-blue);
-  color: var(--color-primary-blue);
+  background: var(--color-gold-tint);
+  border-color: var(--color-gold);
+  color: var(--color-navy);
 }
 
 /* Reduced Motion Override */

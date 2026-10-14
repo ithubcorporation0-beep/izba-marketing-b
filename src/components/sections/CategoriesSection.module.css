@@ -1,7 +1,7 @@
 .section {
   padding-top: var(--section-spacing-md);
   padding-bottom: var(--section-spacing-md);
-  background: var(--color-surface-sunken);
+  background: var(--color-page-bg);
 }
 
 .header {
@@ -26,7 +26,7 @@
 
 .subtitle {
   font-size: 1.05rem;
-  color: var(--color-text-muted);
+  color: var(--color-text-main);
   line-height: 1.6;
 }
 
@@ -53,6 +53,13 @@
   color: inherit;
   display: block;
   height: 100%;
+  border-radius: var(--radius-lg);
+  outline: none;
+}
+
+.cardLink:focus-visible {
+  outline: 2px solid var(--color-gold);
+  outline-offset: 3px;
 }
 
 .card {
@@ -61,8 +68,8 @@
   flex-direction: column;
   padding: var(--space-xl);
   border-radius: var(--radius-lg);
-  background: var(--color-surface-card);
-  border: 1px solid var(--color-border-subtle);
+  background: var(--color-card-bg);
+  border: 1px solid var(--color-border);
   transition:
     transform var(--transition-base),
     box-shadow var(--transition-base),
@@ -71,40 +78,45 @@
 
 .cardLink:hover .card {
   transform: translateY(-4px);
-  box-shadow: var(--shadow-md);
-  border-color: var(--color-primary-blue);
+  box-shadow: 0 12px 28px -4px rgba(11, 31, 58, 0.08), 0 4px 12px -2px rgba(201, 162, 39, 0.12);
+  border-color: var(--color-gold);
 }
 
+/* Card icon tile: Navy square with GOLD icon */
 .iconWrapper {
   width: 48px;
   height: 48px;
   border-radius: var(--radius-md);
-  background: rgba(37, 99, 235, 0.08);
-  color: var(--color-primary-blue);
+  background: var(--color-navy);
+  color: var(--color-gold);
   display: flex;
   align-items: center;
   justify-content: center;
   margin-bottom: var(--space-md);
+  border: 1px solid rgba(201, 162, 39, 0.3);
+  box-shadow: 0 2px 8px rgba(11, 31, 58, 0.15);
   transition:
     background-color var(--transition-base),
-    color var(--transition-base);
+    border-color var(--transition-base),
+    transform var(--transition-base);
 }
 
 .cardLink:hover .iconWrapper {
-  background: var(--color-primary-blue);
-  color: #ffffff;
+  border-color: var(--color-gold);
+  transform: scale(1.05);
+  box-shadow: 0 4px 12px rgba(201, 162, 39, 0.25);
 }
 
 .cardTitle {
   font-size: 1.2rem;
   font-weight: 700;
-  color: var(--color-text-main);
+  color: var(--color-navy);
   margin-bottom: var(--space-xs);
 }
 
 .cardDesc {
   font-size: 0.92rem;
-  color: var(--color-text-muted);
+  color: var(--color-text-main);
   line-height: 1.55;
   flex-grow: 1;
   margin-bottom: var(--space-md);
@@ -115,16 +127,21 @@
   align-items: center;
   justify-content: space-between;
   padding-top: var(--space-sm);
-  border-top: 1px solid var(--color-border-subtle);
+  border-top: 1px solid var(--color-border);
   font-size: 0.85rem;
-  font-weight: 600;
-  color: var(--color-primary-blue);
+  font-weight: 700;
+  color: var(--color-navy);
+}
+
+.actionText {
+  color: var(--color-navy);
 }
 
 .arrowIcon {
+  color: var(--color-gold);
   transition: transform var(--transition-fast);
 }
 
 .cardLink:hover .arrowIcon {
-  transform: translateX(4px);
+  transform: translateX(5px);
 }
