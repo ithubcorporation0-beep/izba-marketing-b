@@ -1,6 +1,8 @@
 import React from 'react';
 import type { Metadata } from 'next';
 import { Hero } from '@/components/sections/Hero';
+import { CategoryMarquee } from '@/components/sections/CategoryMarquee';
+import { StatsSection } from '@/components/sections/Stats';
 import { CategoriesSection } from '@/components/sections/CategoriesSection';
 import { FeaturedServicesSection } from '@/components/sections/FeaturedServicesSection';
 import { Process } from '@/components/sections/Process';
@@ -30,25 +32,31 @@ export default function HomePage() {
       {/* 1. Hero with PRD 4.2 copy & 2. Verifiable trust points */}
       <Hero />
 
-      {/* 3. Service Category Cards (all 9 categories) */}
+      {/* 2. Infinite Continuous Category Marquee */}
+      <CategoryMarquee />
+
+      {/* 3. Verified Project Statistics Row */}
+      <StatsSection />
+
+      {/* 4. Service Category Cards (all 9 categories) */}
       <CategoriesSection />
 
-      {/* 4. Featured Services Section (10 owner-featured offerings) */}
+      {/* 5. Featured Services Section (10 owner-featured offerings) */}
       <FeaturedServicesSection />
 
-      {/* 5. How We Work Process (4 steps: Discuss, Plan, Build, Deliver and support) */}
+      {/* 6. How We Work Process (Animated connected timeline) */}
       <Process />
 
-      {/* 6. Portfolio Preview (graceful 'coming soon' state when empty) */}
+      {/* 7. Portfolio Preview (graceful 'coming soon' state when empty) */}
       <PortfolioPreview />
 
-      {/* 7. Client Testimonials (automatically hidden when array is empty) */}
+      {/* 8. Client Testimonials (automatically hidden when array is empty) */}
       <TestimonialsSection />
 
-      {/* 8. FAQ Accordion from faqs.ts */}
+      {/* 9. FAQ Accordion from faqs.ts */}
       <FAQSection />
 
-      {/* 9. Final CTA Banner */}
+      {/* 10. Final CTA Banner */}
       <CTASection />
     </div>
   );

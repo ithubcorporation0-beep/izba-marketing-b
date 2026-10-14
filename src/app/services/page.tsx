@@ -7,6 +7,7 @@ import { Badge } from '@/components/ui/Badge';
 import { CategoryCard } from '@/components/services/CategoryCard';
 import { ServiceSearch } from '@/components/services/ServiceSearch';
 import { CTASection } from '@/components/sections/CTA';
+import { Reveal, RevealStagger } from '@/components/ui/motion';
 import { constructMetadata } from '@/lib/seo/metadata';
 import styles from './page.module.css';
 
@@ -23,7 +24,7 @@ export default function ServicesPage() {
       {/* 1. Page Intro Header */}
       <header className={styles.headerSection}>
         <Container size="default">
-          <div className={styles.headerContainer}>
+          <Reveal className={styles.headerContainer}>
             <Badge variant="blue" size="md">
               Full Service Catalog
             </Badge>
@@ -36,7 +37,7 @@ export default function ServicesPage() {
               workflows, creative design, and data assistance — discover our 90
               detailed service offerings organized across 9 core disciplines.
             </p>
-          </div>
+          </Reveal>
         </Container>
       </header>
 
@@ -46,7 +47,7 @@ export default function ServicesPage() {
         aria-labelledby="categories-overview-heading"
       >
         <Container size="default">
-          <div className={styles.sectionHeader}>
+          <Reveal className={styles.sectionHeader}>
             <Badge variant="neutral" size="sm">
               Overview
             </Badge>
@@ -60,9 +61,9 @@ export default function ServicesPage() {
               Select a category to view its dedicated overview, or browse the
               full directory below.
             </p>
-          </div>
+          </Reveal>
 
-          <div className={styles.categoriesGrid}>
+          <RevealStagger className={styles.categoriesGrid}>
             {categories.map((category) => (
               <CategoryCard
                 key={category.id}
@@ -70,17 +71,17 @@ export default function ServicesPage() {
                 serviceCount={10}
               />
             ))}
-          </div>
+          </RevealStagger>
         </Container>
       </section>
 
-      {/* 3. Full Directory with Search & Category Filter (Grouped under their category) */}
+      {/* 3. Full Directory with Search & Category Filter */}
       <section
         className={styles.directorySection}
         aria-labelledby="directory-heading"
       >
         <Container size="default">
-          <div className={styles.sectionHeader}>
+          <Reveal className={styles.sectionHeader}>
             <Badge variant="cyan" size="sm">
               Directory
             </Badge>
@@ -91,7 +92,7 @@ export default function ServicesPage() {
               Filter by category or search by keyword to locate the exact
               solution for your business.
             </p>
-          </div>
+          </Reveal>
 
           <ServiceSearch services={services} categories={categories} />
         </Container>

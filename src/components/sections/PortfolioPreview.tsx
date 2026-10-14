@@ -1,11 +1,12 @@
 import React from 'react';
 import Link from 'next/link';
-import { Briefcase, ArrowRight, Clock, ShieldCheck } from 'lucide-react';
+import { ArrowRight, Clock, ShieldCheck } from 'lucide-react';
 import { projects } from '@/content/projects';
 import { Badge } from '@/components/ui/Badge';
 import { Button } from '@/components/ui/Button';
 import { Card } from '@/components/ui/Card';
 import { Container } from '@/components/ui/Container';
+import { Reveal, RevealStagger } from '@/components/ui/motion';
 import styles from './PortfolioPreview.module.css';
 
 export const PortfolioPreview: React.FC = () => {
@@ -17,7 +18,7 @@ export const PortfolioPreview: React.FC = () => {
       aria-labelledby="portfolio-preview-heading"
     >
       <Container>
-        <div className={styles.header}>
+        <Reveal className={styles.header}>
           <Badge variant="blue" size="md">
             Verified Work
           </Badge>
@@ -28,35 +29,37 @@ export const PortfolioPreview: React.FC = () => {
             A showcase of client deliverables, web development, and digital
             solutions.
           </p>
-        </div>
+        </Reveal>
 
         {publishedProjects.length === 0 ? (
           /* Tasteful Coming Soon State (No invented client projects, fake logos, or false metrics) */
-          <div className={styles.comingSoonCard}>
-            <div className={styles.iconCircle}>
-              <Clock size={28} className={styles.comingSoonIcon} />
-            </div>
-            <h3 className={styles.comingSoonTitle}>Portfolio Coming Soon</h3>
-            <p className={styles.comingSoonText}>
-              In accordance with our strict honesty policy, we only showcase
-              real, client-permitted case studies and verified results. Client
-              project features are currently being documented and will be
-              published here shortly.
-            </p>
-            <div className={styles.comingSoonMeta}>
-              <div className={styles.metaBadge}>
-                <ShieldCheck size={16} />
-                <span>NDA &amp; Client Privacy Protected</span>
+          <Reveal>
+            <div className={styles.comingSoonCard}>
+              <div className={styles.iconCircle}>
+                <Clock size={28} className={styles.comingSoonIcon} />
+              </div>
+              <h3 className={styles.comingSoonTitle}>Portfolio Coming Soon</h3>
+              <p className={styles.comingSoonText}>
+                In accordance with our strict honesty policy, we only showcase
+                real, client-permitted case studies and verified results. Client
+                project features are currently being documented and will be
+                published here shortly.
+              </p>
+              <div className={styles.comingSoonMeta}>
+                <div className={styles.metaBadge}>
+                  <ShieldCheck size={16} />
+                  <span>NDA &amp; Client Privacy Protected</span>
+                </div>
+              </div>
+              <div className={styles.comingSoonAction}>
+                <Button href="/contact" variant="secondary" size="md">
+                  Discuss Your Project Scope
+                </Button>
               </div>
             </div>
-            <div className={styles.comingSoonAction}>
-              <Button href="/contact" variant="secondary" size="md">
-                Discuss Your Project Scope
-              </Button>
-            </div>
-          </div>
+          </Reveal>
         ) : (
-          <div className={styles.grid}>
+          <RevealStagger className={styles.grid}>
             {publishedProjects.slice(0, 3).map((project) => (
               <Card key={project.id} hoverable className={styles.projectCard}>
                 <Badge variant="cyan" size="sm">
@@ -76,7 +79,7 @@ export const PortfolioPreview: React.FC = () => {
                 </div>
               </Card>
             ))}
-          </div>
+          </RevealStagger>
         )}
       </Container>
     </section>

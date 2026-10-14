@@ -17,6 +17,7 @@ import { categories } from '@/content/categories';
 import { Badge } from '@/components/ui/Badge';
 import { Card } from '@/components/ui/Card';
 import { Container } from '@/components/ui/Container';
+import { Reveal, RevealStagger } from '@/components/ui/motion';
 import styles from './CategoriesSection.module.css';
 
 const iconMap: Record<string, React.ReactNode> = {
@@ -35,7 +36,7 @@ export const CategoriesSection: React.FC = () => {
   return (
     <section className={styles.section} aria-labelledby="categories-heading">
       <Container>
-        <div className={styles.header}>
+        <Reveal className={styles.header}>
           <Badge variant="blue" size="md">
             Core Service Disciplines
           </Badge>
@@ -47,9 +48,9 @@ export const CategoriesSection: React.FC = () => {
             marketing, AI, design, data management, and day-to-day business
             operations.
           </p>
-        </div>
+        </Reveal>
 
-        <div className={styles.grid}>
+        <RevealStagger className={styles.grid}>
           {categories.map((category) => {
             const icon = iconMap[category.icon] || <Sparkles size={24} />;
             return (
@@ -73,7 +74,7 @@ export const CategoriesSection: React.FC = () => {
               </Link>
             );
           })}
-        </div>
+        </RevealStagger>
       </Container>
     </section>
   );

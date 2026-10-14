@@ -5,14 +5,13 @@ import {
   Compass,
   Sparkles,
   Headphones,
-  CheckCircle2,
-  ArrowRight,
 } from 'lucide-react';
 import { Container } from '@/components/ui/Container';
 import { Badge } from '@/components/ui/Badge';
 import { Card } from '@/components/ui/Card';
-import { Button } from '@/components/ui/Button';
 import { CTASection } from '@/components/sections/CTA';
+import { StatsSection } from '@/components/sections/Stats';
+import { Reveal, RevealStagger } from '@/components/ui/motion';
 import { constructMetadata } from '@/lib/seo/metadata';
 import styles from './page.module.css';
 
@@ -111,7 +110,7 @@ export default function AboutPage() {
       {/* 1. Hero Header */}
       <header className={styles.heroSection}>
         <Container size="default">
-          <div className={styles.heroContent}>
+          <Reveal className={styles.heroContent}>
             <Badge variant="blue" size="md">
               About IT HUB Corporation
             </Badge>
@@ -124,7 +123,7 @@ export default function AboutPage() {
               partner helping organizations build and improve their digital
               operations.
             </p>
-          </div>
+          </Reveal>
         </Container>
       </header>
 
@@ -135,7 +134,7 @@ export default function AboutPage() {
       >
         <Container size="default">
           <div className={styles.overviewGrid}>
-            <div className={styles.overviewContent}>
+            <Reveal className={styles.overviewContent}>
               <Badge variant="neutral" size="sm">
                 Company Overview
               </Badge>
@@ -160,9 +159,9 @@ export default function AboutPage() {
                 milestones, and practical recommendations suited to your current
                 operational scale.
               </p>
-            </div>
+            </Reveal>
 
-            <div className={styles.missionCard}>
+            <Reveal delay={0.15} className={styles.missionCard}>
               <div className={styles.missionBadge}>
                 <Badge variant="cyan" size="sm">
                   Our Mission
@@ -177,18 +176,21 @@ export default function AboutPage() {
                 every business — delivered with transparent pricing,
                 business-friendly explanations, and dedicated support.
               </p>
-            </div>
+            </Reveal>
           </div>
         </Container>
       </section>
 
-      {/* 3. Core Values (Honesty, Clarity, Quality, Support) */}
+      {/* 3. Verified Statistics Row */}
+      <StatsSection />
+
+      {/* 4. Core Values (Honesty, Clarity, Quality, Support) */}
       <section
         className={styles.valuesSection}
         aria-labelledby="values-heading"
       >
         <Container size="default">
-          <div className={styles.sectionHeaderCenter}>
+          <Reveal className={styles.sectionHeaderCenter}>
             <Badge variant="blue" size="md">
               Guiding Principles
             </Badge>
@@ -199,9 +201,9 @@ export default function AboutPage() {
               These four pillars guide every proposal, line of code, design
               deliverable, and client interaction.
             </p>
-          </div>
+          </Reveal>
 
-          <div className={styles.valuesGrid}>
+          <RevealStagger className={styles.valuesGrid}>
             {coreValues.map((val, idx) => (
               <Card key={idx} hoverable className={styles.valueCard}>
                 <div className={[styles.valueIcon, val.styleClass].join(' ')}>
@@ -211,17 +213,17 @@ export default function AboutPage() {
                 <p className={styles.valueDesc}>{val.description}</p>
               </Card>
             ))}
-          </div>
+          </RevealStagger>
         </Container>
       </section>
 
-      {/* 4. Our Working Approach */}
+      {/* 5. Our Working Approach */}
       <section
         className={styles.approachSection}
         aria-labelledby="approach-heading"
       >
         <Container size="default">
-          <div className={styles.sectionHeaderCenter}>
+          <Reveal className={styles.sectionHeaderCenter}>
             <Badge variant="cyan" size="md">
               How We Collaborate
             </Badge>
@@ -232,9 +234,9 @@ export default function AboutPage() {
               A collaborative methodology centered on understanding your goals,
               delivering with discipline, and providing long-term reliability.
             </p>
-          </div>
+          </Reveal>
 
-          <div className={styles.approachGrid}>
+          <RevealStagger className={styles.approachGrid}>
             {approachPillars.map((pillar, idx) => (
               <div key={idx} className={styles.approachCard}>
                 <span className={styles.approachStepNum}>{pillar.step}</span>
@@ -242,11 +244,11 @@ export default function AboutPage() {
                 <p className={styles.approachDesc}>{pillar.description}</p>
               </div>
             ))}
-          </div>
+          </RevealStagger>
         </Container>
       </section>
 
-      {/* 5. Team / Founding Story Placeholder (Hidden until confirmed by owner) */}
+      {/* 6. Team / Founding Story Placeholder (Hidden until confirmed by owner) */}
       {isStoryPublished && ownerStoryData.teamMembers.length > 0 && (
         <section className={styles.teamSection} aria-labelledby="team-heading">
           <Container size="default">
@@ -258,12 +260,11 @@ export default function AboutPage() {
                 Meet Our Team
               </h2>
             </div>
-            {/* Real verified team members will be rendered here */}
           </Container>
         </section>
       )}
 
-      {/* 6. Contact CTA */}
+      {/* 7. Contact CTA */}
       <CTASection />
     </div>
   );

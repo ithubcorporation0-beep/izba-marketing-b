@@ -1,8 +1,9 @@
 .section {
-  padding-top: var(--section-spacing-md);
-  padding-bottom: var(--section-spacing-md);
+  padding-top: var(--section-spacing-lg);
+  padding-bottom: var(--section-spacing-lg);
   background: var(--color-surface-sunken);
   position: relative;
+  overflow: hidden;
 }
 
 .sectionHeader {
@@ -31,10 +32,48 @@
   color: var(--color-text-muted);
 }
 
+.timelineWrapper {
+  position: relative;
+  width: 100%;
+}
+
+/* Horizontal Connecting Timeline Track (Desktop) */
+.desktopTimelineTrack {
+  display: none;
+}
+
+@media (min-width: 1024px) {
+  .desktopTimelineTrack {
+    display: block;
+    position: absolute;
+    top: 42px;
+    left: calc(12.5% + 22px);
+    right: calc(12.5% + 22px);
+    height: 3px;
+    background-color: rgba(49, 87, 213, 0.15);
+    border-radius: var(--radius-full);
+    z-index: 1;
+    overflow: hidden;
+  }
+
+  .desktopTimelineFill {
+    height: 100%;
+    width: 100%;
+    transform: scaleX(0);
+    transform-origin: left center;
+    background: linear-gradient(90deg, var(--color-primary-blue), var(--color-accent-cyan), var(--color-accent-violet));
+    border-radius: var(--radius-full);
+    box-shadow: 0 0 12px rgba(6, 182, 212, 0.7);
+    will-change: transform;
+  }
+}
+
 .timelineGrid {
   display: grid;
   grid-template-columns: 1fr;
   gap: var(--space-xl);
+  position: relative;
+  z-index: 2;
 }
 
 @media (min-width: 640px) {
@@ -54,21 +93,42 @@
   flex-direction: column;
   gap: var(--space-md);
   position: relative;
+  background-color: var(--color-white);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-xl);
+  padding: 1.75rem 1.5rem;
+  box-shadow: var(--shadow-sm);
+  transition: transform 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.stepCardActive {
+  border-color: rgba(49, 87, 213, 0.45);
+  box-shadow: 0 8px 30px -4px rgba(49, 87, 213, 0.15);
+  transform: translateY(-4px);
 }
 
 .stepNumberBadge {
   width: 44px;
   height: 44px;
-  border-radius: var(--radius-sm);
-  background: rgba(0, 242, 254, 0.1);
-  border: 1px solid rgba(0, 242, 254, 0.3);
+  border-radius: var(--radius-md);
+  background: rgba(49, 87, 213, 0.08);
+  border: 1px solid rgba(49, 87, 213, 0.25);
   display: flex;
   align-items: center;
   justify-content: center;
   font-family: var(--font-mono);
   font-weight: 800;
   font-size: 1.15rem;
-  color: var(--color-accent-cyan);
+  color: var(--color-primary-blue);
+  transition: all 0.3s ease;
+}
+
+.stepBadgeActive {
+  background: linear-gradient(135deg, var(--color-primary-blue), var(--color-accent-cyan));
+  color: var(--color-white);
+  border-color: transparent;
+  box-shadow: 0 0 16px rgba(6, 182, 212, 0.5);
+  transform: scale(1.08);
 }
 
 .stepTitle {

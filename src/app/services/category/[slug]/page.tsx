@@ -1,8 +1,6 @@
 import React from 'react';
 import type { Metadata } from 'next';
 import { notFound } from 'next/navigation';
-import Link from 'next/link';
-import { ArrowLeft, ArrowRight } from 'lucide-react';
 import { categories } from '@/content/categories';
 import { services } from '@/content/services';
 import { constructMetadata } from '@/lib/seo/metadata';
@@ -13,6 +11,7 @@ import { CategoryCard } from '@/components/services/CategoryCard';
 import { Breadcrumb } from '@/components/ui/Breadcrumb';
 import { Badge } from '@/components/ui/Badge';
 import { CTASection } from '@/components/sections/CTA';
+import { Reveal, RevealStagger } from '@/components/ui/motion';
 import styles from './page.module.css';
 
 interface CategoryPageProps {
@@ -89,11 +88,13 @@ export default async function CategoryServicesPage({
       {/* Category Intro Header */}
       <header className={styles.headerSection}>
         <div className={`container ${styles.headerContainer}`}>
-          <Badge variant="blue" size="md">
-            Service Category
-          </Badge>
-          <h1 className={styles.title}>{categoryName}</h1>
-          <p className={styles.subtitle}>{categoryDesc}</p>
+          <Reveal>
+            <Badge variant="blue" size="md">
+              Service Category
+            </Badge>
+            <h1 className={styles.title}>{categoryName}</h1>
+            <p className={styles.subtitle}>{categoryDesc}</p>
+          </Reveal>
         </div>
       </header>
 
@@ -103,7 +104,7 @@ export default async function CategoryServicesPage({
         aria-labelledby="services-list-heading"
       >
         <div className="container">
-          <div className={styles.sectionHeadingBox}>
+          <Reveal className={styles.sectionHeadingBox}>
             <h2 id="services-list-heading" className={styles.sectionHeading}>
               {categoryServices.length} Specialized Services
             </h2>
@@ -111,33 +112,35 @@ export default async function CategoryServicesPage({
               Detailed technical, marketing, and creative capabilities available
               within {categoryName}.
             </p>
-          </div>
+          </Reveal>
 
-          <div className={styles.grid}>
+          <RevealStagger className={styles.grid}>
             {categoryServices.map((service) => (
               <ServiceCard key={service.id} service={service} />
             ))}
-          </div>
+          </RevealStagger>
 
           {/* Related Categories */}
           <div
             className={styles.otherCategoriesSection}
             aria-labelledby="related-categories-heading"
           >
-            <h2
-              id="related-categories-heading"
-              className={styles.relatedHeading}
-            >
-              Explore Related Categories
-            </h2>
-            <div className={styles.otherCategoriesGrid}>
+            <Reveal>
+              <h2
+                id="related-categories-heading"
+                className={styles.relatedHeading}
+              >
+                Explore Related Categories
+              </h2>
+            </Reveal>
+            <RevealStagger className={styles.otherCategoriesGrid}>
               {categories
                 .filter((c) => c.id !== category.id)
                 .slice(0, 3)
                 .map((cat) => (
                   <CategoryCard key={cat.id} category={cat} serviceCount={10} />
                 ))}
-            </div>
+            </RevealStagger>
           </div>
         </div>
       </section>

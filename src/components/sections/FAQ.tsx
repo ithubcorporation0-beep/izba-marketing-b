@@ -5,6 +5,7 @@ import { ChevronDown } from 'lucide-react';
 import { faqs } from '@/content/faqs';
 import { Badge } from '@/components/ui/Badge';
 import { Container } from '@/components/ui/Container';
+import { Reveal, RevealStagger } from '@/components/ui/motion';
 import styles from './FAQ.module.css';
 
 export const FAQSection: React.FC = () => {
@@ -17,7 +18,7 @@ export const FAQSection: React.FC = () => {
   return (
     <section className={styles.section} aria-labelledby="faq-heading">
       <Container size="narrow">
-        <div className={styles.header}>
+        <Reveal className={styles.header}>
           <Badge variant="blue" size="md">
             Common Inquiries
           </Badge>
@@ -29,12 +30,11 @@ export const FAQSection: React.FC = () => {
             Corporation, requesting quotes, delivery timelines, and project
             confidentiality.
           </p>
-        </div>
+        </Reveal>
 
-        <div
+        <RevealStagger
           className={styles.accordionList}
-          role="region"
-          aria-label="FAQ Accordion"
+          childSelector={`.${styles.accordionItem}`}
         >
           {faqs.map((faq, index) => {
             const isOpen = openIndex === index;
@@ -84,7 +84,7 @@ export const FAQSection: React.FC = () => {
               </div>
             );
           })}
-        </div>
+        </RevealStagger>
       </Container>
     </section>
   );

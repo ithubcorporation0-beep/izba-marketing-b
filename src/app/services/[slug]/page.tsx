@@ -8,7 +8,6 @@ import {
   ArrowRight,
   Sparkles,
   Layers,
-  HelpCircle,
   ShieldCheck,
   Clock,
 } from 'lucide-react';
@@ -24,6 +23,7 @@ import { Badge } from '@/components/ui/Badge';
 import { Button } from '@/components/ui/Button';
 import { Container } from '@/components/ui/Container';
 import { CTASection } from '@/components/sections/CTA';
+import { Reveal, RevealStagger } from '@/components/ui/motion';
 import styles from './page.module.css';
 
 interface ServicePageProps {
@@ -99,11 +99,7 @@ export default async function ServiceDetailPage({ params }: ServicePageProps) {
   const accordionItems = faqs.map((faq, index) => ({
     id: `faq-${index}`,
     title: faq.question,
-    content: (
-      <p className="text-[var(--color-text-muted)] text-[0.95rem] leading-relaxed">
-        {faq.answer}
-      </p>
-    ),
+    content: faq.answer,
   }));
 
   const breadcrumbData = getBreadcrumbJsonLd([
@@ -116,7 +112,7 @@ export default async function ServiceDetailPage({ params }: ServicePageProps) {
   ]);
 
   return (
-    <div className={styles.serviceDetailWrapper}>
+    <div className={styles.servicePageWrapper}>
       <JsonLd data={breadcrumbData} />
       {/* 1. Breadcrumbs */}
       <div className={styles.topBar}>
@@ -142,7 +138,7 @@ export default async function ServiceDetailPage({ params }: ServicePageProps) {
       <header className={styles.heroSection}>
         <Container size="default">
           <div className={styles.heroLayout}>
-            <div className={styles.heroMain}>
+            <Reveal className={styles.heroMain}>
               {category && (
                 <Link
                   href={`/services/category/${category.slug}`}
@@ -168,47 +164,49 @@ export default async function ServiceDetailPage({ params }: ServicePageProps) {
                   Request a Quote for {serviceTitle}
                 </Button>
               </div>
-            </div>
+            </Reveal>
 
             {/* Quick Scope & Inquiries Card */}
             <div className={styles.sidebar}>
-              <div className={styles.quoteCard}>
-                <div className={styles.quoteCardHeader}>
-                  <Sparkles size={20} className={styles.sparkleIcon} />
-                  <h2 className={styles.quoteCardTitle}>
-                    Project Brief &amp; Scope
-                  </h2>
-                </div>
-                <p className={styles.quoteCardText}>
-                  Get an accurate scope, clear timeline, and fixed proposal for
-                  your requirements.
-                </p>
+              <Reveal delay={0.15}>
+                <div className={styles.quoteCard}>
+                  <div className={styles.quoteCardHeader}>
+                    <Sparkles size={20} className={styles.sparkleIcon} />
+                    <h2 className={styles.quoteCardTitle}>
+                      Project Brief &amp; Scope
+                    </h2>
+                  </div>
+                  <p className={styles.quoteCardText}>
+                    Get an accurate scope, clear timeline, and fixed proposal for
+                    your requirements.
+                  </p>
 
-                <div className={styles.quoteCardPoints}>
-                  <div className={styles.quotePoint}>
-                    <ShieldCheck size={16} className={styles.pointIcon} />
-                    <span>NDA &amp; Confidentiality Protected</span>
+                  <div className={styles.quoteCardPoints}>
+                    <div className={styles.quotePoint}>
+                      <ShieldCheck size={16} className={styles.pointIcon} />
+                      <span>NDA &amp; Confidentiality Protected</span>
+                    </div>
+                    <div className={styles.quotePoint}>
+                      <Clock size={16} className={styles.pointIcon} />
+                      <span>Prompt Response within 1 Business Day</span>
+                    </div>
+                    <div className={styles.quotePoint}>
+                      <CheckCircle2 size={16} className={styles.pointIcon} />
+                      <span>Milestone-Based Delivery</span>
+                    </div>
                   </div>
-                  <div className={styles.quotePoint}>
-                    <Clock size={16} className={styles.pointIcon} />
-                    <span>Prompt Response within 1 Business Day</span>
-                  </div>
-                  <div className={styles.quotePoint}>
-                    <CheckCircle2 size={16} className={styles.pointIcon} />
-                    <span>Milestone-Based Delivery</span>
-                  </div>
-                </div>
 
-                <Button
-                  href={`/contact?service=${service.slug}`}
-                  variant="primary"
-                  size="md"
-                  icon={<ArrowRight size={16} />}
-                  className={styles.quoteButton}
-                >
-                  Request a Quote
-                </Button>
-              </div>
+                  <Button
+                    href={`/contact?service=${service.slug}`}
+                    variant="primary"
+                    size="md"
+                    icon={<ArrowRight size={16} />}
+                    className={styles.quoteButton}
+                  >
+                    Request a Quote
+                  </Button>
+                </div>
+              </Reveal>
             </div>
           </div>
         </Container>
@@ -220,7 +218,7 @@ export default async function ServiceDetailPage({ params }: ServicePageProps) {
         aria-labelledby="overview-heading"
       >
         <Container size="default">
-          <div className={styles.overviewContent}>
+          <Reveal className={styles.overviewContent}>
             <Badge variant="neutral" size="sm">
               Overview
             </Badge>
@@ -243,7 +241,7 @@ export default async function ServiceDetailPage({ params }: ServicePageProps) {
                 {service.fullDescription || service.shortDescription}
               </p>
             )}
-          </div>
+          </Reveal>
         </Container>
       </section>
 
@@ -257,7 +255,7 @@ export default async function ServiceDetailPage({ params }: ServicePageProps) {
             <h2 id="breakdown-heading" className="sr-only">
               Inclusions and Deliverables
             </h2>
-            <div className={styles.breakdownGrid}>
+            <RevealStagger className={styles.breakdownGrid}>
               {/* What It Includes */}
               {includes.length > 0 && (
                 <div className={styles.columnCard}>
@@ -313,7 +311,7 @@ export default async function ServiceDetailPage({ params }: ServicePageProps) {
                   </ul>
                 </div>
               )}
-            </div>
+            </RevealStagger>
           </Container>
         </section>
       )}
@@ -325,7 +323,7 @@ export default async function ServiceDetailPage({ params }: ServicePageProps) {
           aria-labelledby="process-steps-heading"
         >
           <Container size="default">
-            <div className={styles.sectionHeaderCenter}>
+            <Reveal className={styles.sectionHeaderCenter}>
               <Badge variant="blue" size="md">
                 Delivery Workflow
               </Badge>
@@ -336,9 +334,9 @@ export default async function ServiceDetailPage({ params }: ServicePageProps) {
                 A clear, predictable roadmap from initial consultation to final
                 handover.
               </p>
-            </div>
+            </Reveal>
 
-            <div className={styles.processGrid}>
+            <RevealStagger className={styles.processGrid}>
               {processSteps.map((step) => (
                 <div key={step.step} className={styles.processCard}>
                   <span className={styles.stepBadge}>
@@ -348,7 +346,7 @@ export default async function ServiceDetailPage({ params }: ServicePageProps) {
                   <p className={styles.stepDesc}>{step.description}</p>
                 </div>
               ))}
-            </div>
+            </RevealStagger>
           </Container>
         </section>
       )}
@@ -361,7 +359,7 @@ export default async function ServiceDetailPage({ params }: ServicePageProps) {
         >
           <Container size="default">
             <div className={styles.faqContainer}>
-              <div className={styles.sectionHeaderCenter}>
+              <Reveal className={styles.sectionHeaderCenter}>
                 <Badge variant="cyan" size="md">
                   Questions &amp; Answers
                 </Badge>
@@ -372,11 +370,11 @@ export default async function ServiceDetailPage({ params }: ServicePageProps) {
                   Specific details about timelines, requirements, and engagement
                   for {serviceTitle}.
                 </p>
-              </div>
+              </Reveal>
 
-              <div className="mt-8">
+              <Reveal className="mt-8">
                 <Accordion items={accordionItems} defaultOpenId="faq-0" />
-              </div>
+              </Reveal>
             </div>
           </Container>
         </section>
@@ -389,7 +387,7 @@ export default async function ServiceDetailPage({ params }: ServicePageProps) {
           aria-labelledby="related-services-heading"
         >
           <Container size="default">
-            <div className={styles.sectionHeaderCenter}>
+            <Reveal className={styles.sectionHeaderCenter}>
               <Badge variant="neutral" size="sm">
                 Complementary Solutions
               </Badge>
@@ -399,13 +397,13 @@ export default async function ServiceDetailPage({ params }: ServicePageProps) {
               <p className={styles.sectionSubtitle}>
                 Explore other capabilities commonly paired with {serviceTitle}.
               </p>
-            </div>
+            </Reveal>
 
-            <div className={styles.relatedGrid}>
+            <RevealStagger className={styles.relatedGrid}>
               {relatedServices.map((relService) => (
                 <ServiceCard key={relService.id} service={relService} />
               ))}
-            </div>
+            </RevealStagger>
           </Container>
         </section>
       )}

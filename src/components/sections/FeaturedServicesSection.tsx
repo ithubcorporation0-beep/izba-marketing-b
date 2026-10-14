@@ -1,10 +1,11 @@
 import React from 'react';
 import Link from 'next/link';
-import { ArrowRight, Star, Sparkles } from 'lucide-react';
+import { ArrowRight } from 'lucide-react';
 import { featuredServices } from '@/content/featured';
 import { Badge } from '@/components/ui/Badge';
 import { Card } from '@/components/ui/Card';
 import { Container } from '@/components/ui/Container';
+import { Reveal, RevealStagger } from '@/components/ui/motion';
 import styles from './FeaturedServicesSection.module.css';
 
 export const FeaturedServicesSection: React.FC = () => {
@@ -14,7 +15,7 @@ export const FeaturedServicesSection: React.FC = () => {
       aria-labelledby="featured-services-heading"
     >
       <Container>
-        <div className={styles.header}>
+        <Reveal className={styles.header}>
           <Badge variant="cyan" size="md">
             Highlighted Offerings
           </Badge>
@@ -26,9 +27,9 @@ export const FeaturedServicesSection: React.FC = () => {
             high-impact technical, marketing, and creative outcomes for your
             business.
           </p>
-        </div>
+        </Reveal>
 
-        <div className={styles.grid}>
+        <RevealStagger className={styles.grid}>
           {featuredServices.map((service, index) => {
             const targetUrl =
               service.targetType === 'category'
@@ -65,7 +66,7 @@ export const FeaturedServicesSection: React.FC = () => {
               </Link>
             );
           })}
-        </div>
+        </RevealStagger>
       </Container>
     </section>
   );
