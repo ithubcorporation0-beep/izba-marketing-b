@@ -161,17 +161,16 @@ export const Hero: React.FC = () => {
           aria-label={heroContent.title}
         >
           <span aria-hidden="true">
-            <span className={styles.lineMask}>
-              <span className={`${styles.lineInner} hero-line-inner`}>
-                Where Stunning Design Meets
-              </span>
-            </span>
-            <br />
-            <span className={styles.lineMask}>
-              <span className={`${styles.lineInner} hero-line-inner`}>
-                Flawless Functionality
-              </span>
-            </span>
+            {(heroContent.headlineLines ?? [heroContent.title]).map((line, idx, arr) => (
+              <React.Fragment key={idx}>
+                <span className={styles.lineMask}>
+                  <span className={`${styles.lineInner} hero-line-inner`}>
+                    {line}
+                  </span>
+                </span>
+                {idx < arr.length - 1 && <br />}
+              </React.Fragment>
+            ))}
           </span>
         </h1>
 
@@ -180,7 +179,7 @@ export const Hero: React.FC = () => {
           {heroContent.subtitle}
         </p>
 
-        {/* Centered CTA: Electric Lime Pill Button with Magnetic Hover */}
+        {/* Centered CTA Group: Primary Lime Pill Button + Secondary Button */}
         <div className={`${styles.ctaGroup} hero-fade-item`}>
           <div ref={magneticButtonRef} className={styles.magneticWrapper}>
             <Link
@@ -190,6 +189,14 @@ export const Hero: React.FC = () => {
               <span>{heroContent.primaryCtaText}</span>
             </Link>
           </div>
+          {heroContent.secondaryCtaText && heroContent.secondaryCtaLink && (
+            <Link
+              href={heroContent.secondaryCtaLink}
+              className={styles.secondaryPillButton}
+            >
+              <span>{heroContent.secondaryCtaText}</span>
+            </Link>
+          )}
         </div>
       </div>
 

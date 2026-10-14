@@ -96,14 +96,15 @@ export const featuredServices: FeaturedService[] = [
  * Exact copy from PRD 4.2
  */
 export const heroContent = {
-  badge: 'FULL-SERVICE MARKETING & TECHNOLOGY STUDIO',
-  title: 'Where Stunning Design Meets Flawless Functionality',
+  badge: 'ONE TEAM. EVERY DIGITAL SERVICE.',
+  title: 'Your Ideas, Designed, Built and Marketed',
+  headlineLines: ['Your Ideas, Designed,', 'Built and Marketed'],
   subtitle:
-    'We craft high-converting websites, digital marketing campaigns, and AI solutions for startups, agencies, and businesses that refuse to settle for good enough.',
-  primaryCtaText: 'Book a Meeting',
+    'Strategy, creative and technology under one roof, for startups, agencies and growing businesses that want results they can see.',
+  primaryCtaText: 'Start Your Project',
   primaryCtaLink: '/contact',
-  secondaryCtaText: 'Schedule a Call Now',
-  secondaryCtaLink: '/contact',
+  secondaryCtaText: 'See What We Do',
+  secondaryCtaLink: '/services',
 };
 
 /**

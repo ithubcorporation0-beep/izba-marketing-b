@@ -124,24 +124,26 @@
 
 /* Masked Lines for GSAP Reveal */
 .heroTitle {
-  font-size: clamp(2.6rem, 6.2vw, 5.25rem);
+  font-size: clamp(2.35rem, 5.8vw, 4.85rem);
   font-weight: 850;
-  line-height: 1.08;
+  line-height: 1.1;
   letter-spacing: -0.035em;
   color: #FFFFFF;
   text-align: center;
   text-indent: 0;
-  margin: 0 0 1.5rem;
-  padding: 0;
-  max-width: 980px;
+  margin: 0 auto 1.5rem;
+  padding: 0 0.5rem;
+  max-width: 920px;
   text-wrap: balance;
+  overflow-wrap: break-word;
 }
 
 .lineMask {
   display: inline-block;
   overflow: hidden;
   vertical-align: top;
-  margin-right: 0.2em;
+  margin: 0;
+  padding: 0 0.08em;
 }
 
 .lineInner {
@@ -157,15 +159,18 @@
   max-width: 720px;
   text-align: center;
   margin: 0 auto 2.25rem;
+  padding: 0 0.5rem;
 }
 
-/* CTA Group: Centered Lime Pill Button */
+/* CTA Group: Primary Lime Pill + Secondary Glass Pill Button */
 .ctaGroup {
   display: flex;
   align-items: center;
   justify-content: center;
+  flex-wrap: wrap;
   gap: 1rem;
   margin-bottom: 3.5rem;
+  padding: 0 0.5rem;
 }
 
 .magneticWrapper {
@@ -198,6 +203,37 @@
 }
 
 .limePillButton:active {
+  transform: translateY(0);
+}
+
+.secondaryPillButton {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  color: #FFFFFF;
+  font-size: 1.05rem;
+  font-weight: 650;
+  padding: 1rem 2.4rem;
+  border-radius: var(--radius-full);
+  text-decoration: none;
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1),
+              background-color 0.2s ease,
+              border-color 0.2s ease;
+  user-select: none;
+}
+
+.secondaryPillButton:hover {
+  transform: translateY(-2px);
+  background: rgba(255, 255, 255, 0.16);
+  border-color: rgba(255, 255, 255, 0.4);
+  color: #FFFFFF;
+}
+
+.secondaryPillButton:active {
   transform: translateY(0);
 }
 
