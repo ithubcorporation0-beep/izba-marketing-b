@@ -70,7 +70,7 @@ export const Footer: React.FC = () => {
     if (isPlaceholder(val)) {
       return (
         <span className="flex flex-col gap-1 items-start">
-          <span className="text-xs text-[var(--color-muted)]">{label}</span>
+          <span className="text-xs text-[var(--color-text-muted-dark)]">{label}</span>
           <Badge variant="error" size="sm">
             Placeholder: {val || 'Not set'}
           </Badge>
@@ -111,22 +111,25 @@ export const Footer: React.FC = () => {
             <Link
               href="/"
               className="inline-flex items-center gap-3 focus:outline-none focus-visible:ring-2 focus-visible:ring-[var(--color-primary-blue)] rounded-[var(--radius-sm)]"
-              aria-label="IT HUB Corporation Home"
+              aria-label="IT HUB Corporation"
             >
-              <div className="w-9 h-9 rounded-[var(--radius-md)] bg-[var(--color-primary-blue)] flex items-center justify-center text-[var(--color-white)] font-bold text-base">
+              <div
+                className="w-9 h-9 rounded-[var(--radius-md)] bg-[var(--color-primary-blue)] flex items-center justify-center text-[var(--color-white)] font-bold text-base"
+                aria-hidden="true"
+              >
                 IT
               </div>
               <div className="flex flex-col">
                 <span className="font-extrabold text-lg text-[var(--color-white)] tracking-tight leading-tight">
                   {siteConfig.name}
                 </span>
-                <span className="text-[10px] uppercase tracking-wider text-[var(--color-muted)] font-semibold">
+                <span className="text-[10px] uppercase tracking-wider text-[var(--color-text-muted-dark)] font-semibold">
                   {siteConfig.tagline}
                 </span>
               </div>
             </Link>
 
-            <p className="text-sm text-[var(--color-muted)] leading-relaxed max-w-sm">
+            <p className="text-sm text-[var(--color-text-muted-dark)] leading-relaxed max-w-sm">
               {siteConfig.description}
             </p>
 
@@ -143,14 +146,14 @@ export const Footer: React.FC = () => {
 
           {/* Quick Links (2 cols) */}
           <div className="lg:col-span-2 space-y-4">
-            <h4 className="text-xs font-semibold uppercase tracking-wider text-[var(--color-white)]">
+            <h3 className="text-xs font-semibold uppercase tracking-wider text-[var(--color-white)]">
               Navigation
-            </h4>
+            </h3>
             <ul className="space-y-2.5 text-sm">
               <li>
                 <Link
                   href="/"
-                  className="text-[var(--color-muted)] hover:text-[var(--color-white)] transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-[var(--color-primary-blue)] rounded-sm"
+                  className="text-[var(--color-text-muted-dark)] hover:text-[var(--color-white)] transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-[var(--color-primary-blue)] rounded-sm"
                 >
                   Home
                 </Link>
@@ -158,7 +161,7 @@ export const Footer: React.FC = () => {
               <li>
                 <Link
                   href="/about"
-                  className="text-[var(--color-muted)] hover:text-[var(--color-white)] transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-[var(--color-primary-blue)] rounded-sm"
+                  className="text-[var(--color-text-muted-dark)] hover:text-[var(--color-white)] transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-[var(--color-primary-blue)] rounded-sm"
                 >
                   About Us
                 </Link>
@@ -166,7 +169,7 @@ export const Footer: React.FC = () => {
               <li>
                 <Link
                   href="/services"
-                  className="text-[var(--color-muted)] hover:text-[var(--color-white)] transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-[var(--color-primary-blue)] rounded-sm"
+                  className="text-[var(--color-text-muted-dark)] hover:text-[var(--color-white)] transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-[var(--color-primary-blue)] rounded-sm"
                 >
                   Services
                 </Link>
@@ -174,7 +177,7 @@ export const Footer: React.FC = () => {
               <li>
                 <Link
                   href="/portfolio"
-                  className="text-[var(--color-muted)] hover:text-[var(--color-white)] transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-[var(--color-primary-blue)] rounded-sm"
+                  className="text-[var(--color-text-muted-dark)] hover:text-[var(--color-white)] transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-[var(--color-primary-blue)] rounded-sm"
                 >
                   Portfolio
                 </Link>
@@ -182,7 +185,7 @@ export const Footer: React.FC = () => {
               <li>
                 <Link
                   href="/digital-products"
-                  className="text-[var(--color-muted)] hover:text-[var(--color-white)] transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-[var(--color-primary-blue)] rounded-sm"
+                  className="text-[var(--color-text-muted-dark)] hover:text-[var(--color-white)] transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-[var(--color-primary-blue)] rounded-sm"
                 >
                   Digital Products
                 </Link>
@@ -190,7 +193,7 @@ export const Footer: React.FC = () => {
               <li>
                 <Link
                   href="/contact"
-                  className="text-[var(--color-muted)] hover:text-[var(--color-white)] transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-[var(--color-primary-blue)] rounded-sm"
+                  className="text-[var(--color-text-muted-dark)] hover:text-[var(--color-white)] transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-[var(--color-primary-blue)] rounded-sm"
                 >
                   Contact &amp; Quote
                 </Link>
@@ -200,15 +203,15 @@ export const Footer: React.FC = () => {
 
           {/* Service Categories (3 cols) */}
           <div className="lg:col-span-3 space-y-4">
-            <h4 className="text-xs font-semibold uppercase tracking-wider text-[var(--color-white)]">
+            <h3 className="text-xs font-semibold uppercase tracking-wider text-[var(--color-white)]">
               Services
-            </h4>
+            </h3>
             <ul className="space-y-2.5 text-sm">
               {categories.map((cat) => (
                 <li key={cat.id}>
                   <Link
                     href={`/services/category/${cat.slug}`}
-                    className="text-[var(--color-muted)] hover:text-[var(--color-white)] transition-colors flex items-center justify-between group focus:outline-none focus-visible:ring-2 focus-visible:ring-[var(--color-primary-blue)] rounded-sm"
+                    className="text-[var(--color-text-muted-dark)] hover:text-[var(--color-white)] transition-colors flex items-center justify-between group focus:outline-none focus-visible:ring-2 focus-visible:ring-[var(--color-primary-blue)] rounded-sm"
                   >
                     <span className="truncate">{cat.name}</span>
                     <ArrowRight
@@ -223,9 +226,9 @@ export const Footer: React.FC = () => {
 
           {/* Contact Details (3 cols) */}
           <div className="lg:col-span-3 space-y-4">
-            <h4 className="text-xs font-semibold uppercase tracking-wider text-[var(--color-white)]">
+            <h3 className="text-xs font-semibold uppercase tracking-wider text-[var(--color-white)]">
               Contact &amp; HQ
-            </h4>
+            </h3>
             <div className="space-y-3 text-sm">
               <div className="flex items-start gap-2.5">
                 <MapPin
@@ -254,7 +257,7 @@ export const Footer: React.FC = () => {
                   ) : (
                     <a
                       href={`mailto:${siteConfig.contact.email}`}
-                      className="text-[var(--color-muted)] hover:text-[var(--color-white)] transition-colors"
+                      className="text-[var(--color-text-muted-dark)] hover:text-[var(--color-white)] transition-colors"
                     >
                       {siteConfig.contact.email}
                     </a>
@@ -273,7 +276,7 @@ export const Footer: React.FC = () => {
                   ) : (
                     <a
                       href={`tel:${siteConfig.contact.phone}`}
-                      className="text-[var(--color-muted)] hover:text-[var(--color-white)] transition-colors"
+                      className="text-[var(--color-text-muted-dark)] hover:text-[var(--color-white)] transition-colors"
                     >
                       {siteConfig.contact.phone}
                     </a>
@@ -298,7 +301,7 @@ export const Footer: React.FC = () => {
         </div>
 
         {/* Legal & Copyright Row */}
-        <div className="mt-12 pt-8 border-t border-[var(--color-white)]/10 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-[var(--color-muted)]">
+        <div className="mt-12 pt-8 border-t border-[var(--color-white)]/10 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-[var(--color-text-muted-dark)]">
           <p>
             &copy; {currentYear} {siteConfig.name}. All rights reserved.
           </p>

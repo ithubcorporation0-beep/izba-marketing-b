@@ -182,6 +182,30 @@ export const Hero: React.FC = () => {
       observer.observe(heroRef.current);
     }
 
+    // If reduced motion is requested, render one static frame and avoid animation loops
+    if (isReducedMotion) {
+      // Draw static frame
+      orbs.forEach((orb) => {
+        const gradient = ctx.createRadialGradient(
+          orb.x,
+          orb.y,
+          0,
+          orb.x,
+          orb.y,
+          orb.radius
+        );
+        gradient.addColorStop(0, orb.colorStart);
+        gradient.addColorStop(1, orb.colorEnd);
+        ctx.fillStyle = gradient;
+        ctx.beginPath();
+        ctx.arc(orb.x, orb.y, orb.radius, 0, Math.PI * 2);
+        ctx.fill();
+      });
+      return () => {
+        window.removeEventListener('resize', resizeCanvas);
+      };
+    }
+
     // Start render
     animationFrameId = requestAnimationFrame(render);
 
@@ -191,7 +215,7 @@ export const Hero: React.FC = () => {
       document.removeEventListener('visibilitychange', handleVisibilityChange);
       observer.disconnect();
     };
-  }, []);
+  }, [isReducedMotion]);
 
   // 4. GSAP Headline Mask Reveal + Supporting Elements Fade Up
   useEffect(() => {
@@ -334,20 +358,25 @@ export const Hero: React.FC = () => {
           </div>
 
           {/* Masked Headline with Real HTML Text for SEO and Screen Readers */}
-          <h1 className={styles.heroTitle}>
-            <span className={styles.lineMask}>
-              <span className={`${styles.lineInner} hero-line-inner`}>
-                Technology, Marketing
-              </span>
-            </span>{' '}
-            <span className={styles.lineMask}>
-              <span className={`${styles.lineInner} hero-line-inner`}>
-                &amp; <span className={styles.gradientText}>AI Solutions</span>
-              </span>
-            </span>{' '}
-            <span className={styles.lineMask}>
-              <span className={`${styles.lineInner} hero-line-inner`}>
-                for Your Business
+          <h1
+            className={styles.heroTitle}
+            aria-label="Technology, Marketing &amp; AI Solutions for Your Business"
+          >
+            <span aria-hidden="true">
+              <span className={styles.lineMask}>
+                <span className={`${styles.lineInner} hero-line-inner`}>
+                  Technology, Marketing
+                </span>
+              </span>{' '}
+              <span className={styles.lineMask}>
+                <span className={`${styles.lineInner} hero-line-inner`}>
+                  &amp; <span className={styles.gradientText}>AI Solutions</span>
+                </span>
+              </span>{' '}
+              <span className={styles.lineMask}>
+                <span className={`${styles.lineInner} hero-line-inner`}>
+                  for Your Business
+                </span>
               </span>
             </span>
           </h1>

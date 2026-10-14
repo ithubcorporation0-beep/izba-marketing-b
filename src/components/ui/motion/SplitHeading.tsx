@@ -65,28 +65,35 @@ export const SplitHeading: React.FC<SplitHeadingProps> = ({
   }, [isReducedMotion, delay, duration, stagger]);
 
   return (
-    <Component ref={headingRef} id={id} className={className}>
-      {lines.map((line, index) => (
-        <span
-          key={index}
-          style={{
-            display: 'block',
-            overflow: 'hidden',
-            verticalAlign: 'top',
-          }}
-        >
+    <Component
+      ref={headingRef}
+      id={id}
+      className={className}
+      aria-label={text.replace(/\n/g, ' ')}
+    >
+      <span aria-hidden="true">
+        {lines.map((line, index) => (
           <span
-            className="split-line-inner"
+            key={index}
             style={{
-              display: 'inline-block',
-              transform: isReducedMotion ? 'none' : 'translate3d(0, 0, 0)',
-              willChange: isReducedMotion ? 'auto' : 'transform',
+              display: 'block',
+              overflow: 'hidden',
+              verticalAlign: 'top',
             }}
           >
-            {line}
+            <span
+              className="split-line-inner"
+              style={{
+                display: 'inline-block',
+                transform: isReducedMotion ? 'none' : 'translate3d(0, 0, 0)',
+                willChange: isReducedMotion ? 'auto' : 'transform',
+              }}
+            >
+              {line}
+            </span>
           </span>
-        </span>
-      ))}
+        ))}
+      </span>
     </Component>
   );
 };

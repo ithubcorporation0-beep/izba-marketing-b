@@ -66,7 +66,7 @@ const StatItem: React.FC<StatItemProps> = ({
         </span>
         {suffix && <span className={styles.statSuffix}>{suffix}</span>}
       </div>
-      <h3 className={styles.statLabel}>{label}</h3>
+      <div className={styles.statLabel}>{label}</div>
       <p className={styles.statDescription}>{description}</p>
     </div>
   );

@@ -67,7 +67,7 @@ body {
   flex-direction: column;
   background-color: var(--color-white);
   color: var(--color-text-main);
-  overflow-x: hidden;
+  overflow-x: clip;
 }
 
 /* Lenis Smooth Scroll Recommended Styles */

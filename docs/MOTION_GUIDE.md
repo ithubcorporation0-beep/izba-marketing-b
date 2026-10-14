@@ -128,3 +128,100 @@ export const JumpButton = () => {
   return <button onClick={handleClick}>Get in touch</button>;
 };
 ```
+
+---
+
+## 6. Where Each Animation Lives
+
+The motion system is distributed cleanly across focused client modules:
+
+| Component / Effect | File Location | Technology | Purpose & Behavior |
+| :--- | :--- | :--- | :--- |
+| **Motion Orchestration & Smooth Scroll** | `src/lib/motion/MotionProvider.tsx` | Lenis + GSAP ScrollTrigger | Global smooth scroll, ticker sync, reduced motion bypass |
+| **Motion Tokens** | `src/lib/motion/tokens.ts` | TypeScript Constants | Centralized duration & easing definitions |
+| **Scroll Reveal Primitives** | `src/components/ui/motion/Reveal.tsx`<br>`src/components/ui/motion/RevealStagger.tsx` | GSAP ScrollTrigger | Fade and rise reveals with staggered children on viewport entrance |
+| **Split Heading Reveal** | `src/components/ui/motion/SplitHeading.tsx` | GSAP ScrollTrigger + ARIA | Line-by-line typographic reveals with `aria-label` screen reader preservation |
+| **Parallax Layer** | `src/components/ui/motion/ParallaxLayer.tsx` | GSAP ScrollTrigger scrub | Subtle decorative depth layer (disabled in reduced-motion) |
+| **Page Transitions** | `src/app/template.tsx` | CSS Animation | Smooth fade + subtle rise on client-side route navigation |
+| **Branded Preloader** | `src/components/sections/Preloader.tsx` | GSAP Timeline | Intro counter (0-100) and curtain reveal (once per session) |
+| **Smart Glass Header** | `src/components/layout/Header.tsx` | React State + CSS Modules | Scroll direction detection (hide down, show up) & glass backdrop |
+| **Custom Cursor** | `src/components/ui/CustomCursor.tsx` | Pointer Events + RAF | Magnetic follower for fine pointers (suppressed on touch/inputs) |
+| **Ambient Hero Gradient Canvas** | `src/components/sections/Hero.tsx` | HTML5 Canvas 2D | Dynamic drifting gradient mesh with automatic off-screen pause |
+| **Live Stats Counter** | `src/components/sections/Stats.tsx` | GSAP ScrollTrigger | Smooth numerical count-up on scroll entrance |
+| **Category Marquee** | `src/components/sections/CategoryMarquee.tsx` | CSS Keyframes + Toggle | Endless client-side ticker with manual Pause/Play toggle (WCAG 2.2.2) |
+| **Interactive Testimonials Carousel** | `src/components/sections/Testimonials.tsx` | Touch/Keyboard State + CSS | Drag/swipe carousel with auto-rotation and pause controls |
+| **Service Directory Filter Transition** | `src/components/services/ServiceDirectory.tsx` | React State + CSS Modules | Smooth category filtering with screen reader live announcements |
+
+---
+
+## 7. How to Change Speed and Easing
+
+### A. Global Adjustments
+All animation timings originate in `src/lib/motion/tokens.ts`. To change site-wide animation feel:
+1. Open `src/lib/motion/tokens.ts`.
+2. Edit the corresponding duration or easing token:
+   ```ts
+   export const motionDurations = {
+     instant: 0,
+     fast: 0.2,       // Button hovers, micro-interactions
+     normal: 0.4,     // Modals, card elevations
+     moderate: 0.6,   // Section reveals, cards
+     slow: 0.85,      // Complex timelines
+     hero: 1.1,       // Floating accents
+   };
+
+   export const motionEasings = {
+     standard: 'power2.out',
+     smooth: 'power3.out',      // Default entrance curve
+     expressive: 'power4.out',  // Dramatic entrance curve
+     bounceSoft: 'back.out(1.4)',
+   };
+   ```
+
+### B. Per-Component Speed Overrides
+Components accepting speed props or duration variables can be adjusted directly in their JSX:
+- `<Reveal duration={0.8} delay={0.2} y={30} />`
+- `<RevealStagger stagger={0.08} duration={0.5}>`
+- In `src/app/template.tsx`: Adjust `animation: pageEnter 350ms ...` to speed up or slow down page transitions.
+- In `src/components/sections/CategoryMarquee.module.css`: Adjust `animation: marqueeTrack 45s linear infinite` to alter ticker speed.
+
+---
+
+## 8. How to Turn Each Effect Off
+
+Every animation in the system can be selectively disabled without breaking layout or content availability:
+
+| Effect | How to Disable | Fallback Behavior |
+| :--- | :--- | :--- |
+| **Preloader** | Set `showPreloader = false` or comment out `<Preloader />` in `src/app/layout.tsx`. | Page displays immediately with no overlay. |
+| **Smooth Scroll (Lenis)** | In `src/lib/motion/MotionProvider.tsx`, remove Lenis initialization or set `isReducedMotion = true`. | Native browser scrolling is used. |
+| **Custom Cursor** | Remove `<CustomCursor />` from `src/app/layout.tsx`. | Standard operating system cursor is used everywhere. |
+| **Hero Canvas Mesh** | In `src/components/sections/Hero.tsx`, remove `<canvas>` and keep static CSS gradient fallback. | Clean dark navy gradient is rendered statically. |
+| **Category Marquee** | Users can click the visible **Pause** toggle button; developers can remove `className={styles.marqueeTrack}` in `CategoryMarquee.tsx`. | Categories display in a static wrapping flex row. |
+| **Split Heading Animation** | Pass `disabled={true}` to `<SplitHeading disabled text="..." />`. | Heading text renders immediately as normal static text. |
+| **Scroll Entrance (Reveal)** | Pass `disabled={true}` to `<Reveal disabled>` or `<RevealStagger disabled>`. | Elements are rendered at `opacity: 1; transform: none;`. |
+| **Page Transitions** | Remove `className={styles.pageTransition}` wrapper in `src/app/template.tsx`. | Instantaneous page routing without CSS fade/slide. |
+
+---
+
+## 9. Accessibility & Reduced Motion Standards
+
+The motion system strictly implements **WCAG 2.2 Level AA** compliance:
+
+1. **System Reduced Motion (`prefers-reduced-motion: reduce`)**:
+   - `useReducedMotion()` immediately halts Lenis smooth scrolling.
+   - GSAP scroll triggers instantly set target elements to visible/untransformed state.
+   - Hero canvas skips continuous `requestAnimationFrame` loops and draws a single static gradient frame.
+   - CSS marquee pauses translation and displays static items.
+   - Custom cursor is hidden; default OS pointer is restored.
+   - Page transitions complete in `0.001ms`.
+
+2. **Pause, Stop, Hide (WCAG 2.2.2)**:
+   - Any auto-advancing animation lasting longer than 5 seconds (such as the Category Marquee ticker) includes a visible, keyboard-operable **Pause / Resume** button.
+   - The marquee also automatically halts on hover and on `:focus-within` when interactive items receive keyboard focus.
+
+3. **Screen Reader Heading Sanity**:
+   - When headings are split into multiple animation lines via `<SplitHeading />`, the container `<h2 aria-label="...">` preserves the full, natural sentence structure for screen readers, while inner animated line spans have `aria-hidden="true"` to prevent disjointed word announcements.
+
+4. **Off-Screen Resource Pausing**:
+   - The hero canvas uses an `IntersectionObserver` to halt rendering loops whenever scrolled out of view, preserving device battery and GPU resources.

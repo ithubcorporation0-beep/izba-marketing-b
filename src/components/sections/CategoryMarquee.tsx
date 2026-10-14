@@ -1,17 +1,33 @@
-import React from 'react';
+'use client';
+
+import React, { useState } from 'react';
 import Link from 'next/link';
+import { Pause, Play } from 'lucide-react';
 import { categories } from '@/content/categories';
 import styles from './CategoryMarquee.module.css';
 
 export const CategoryMarquee: React.FC = () => {
+  const [isPaused, setIsPaused] = useState(false);
+
   return (
     <div
-      className={styles.marqueeWrapper}
+      className={`${styles.marqueeWrapper} ${isPaused ? styles.paused : ''}`}
       aria-label="Service categories marquee"
       role="region"
     >
       <div className={styles.maskLeft} aria-hidden="true" />
       <div className={styles.maskRight} aria-hidden="true" />
+
+      {/* Manual Pause / Play Control for WCAG 2.2.2 */}
+      <button
+        type="button"
+        onClick={() => setIsPaused((prev) => !prev)}
+        className={styles.pauseButton}
+        aria-label={isPaused ? 'Resume category marquee' : 'Pause category marquee'}
+        title={isPaused ? 'Resume category marquee' : 'Pause category marquee'}
+      >
+        {isPaused ? <Play size={14} aria-hidden="true" /> : <Pause size={14} aria-hidden="true" />}
+      </button>
 
       {/* Primary Track (Accessible for Screen Readers) */}
       <div className={styles.marqueeTrack}>

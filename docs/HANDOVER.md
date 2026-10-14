@@ -243,3 +243,19 @@ When the business scales and requires dynamic capabilities, refer to PRD Section
 2. **Blog & Insights Section:** Introduce an `/insights` or `/blog` route with MDX or CMS articles to drive organic search rankings.
 3. **Turnkey Digital Product Checkout:** Integrate LemonSqueezy, Stripe, or Gumroad for automated digital product downloads and instant credit card processing.
 4. **CRM Lead Pipeline:** Connect Web3Forms webhooks to HubSpot, Notion, or Airtable to track inbound quotes automatically through sales stages.
+
+---
+
+### 10. Motion System & Visual Upgrade Notes
+
+The digital flagship includes a modern, high-performance motion system designed for subtle brand elevation without compromising performance or accessibility:
+
+* **Engine:** Built with **Lenis** (smooth scrolling) and **GSAP ScrollTrigger** (choreographed entrances), coordinated via `<MotionProvider />` in `src/lib/motion/`.
+* **Motion Tokens:** Centrally maintained in `src/lib/motion/tokens.ts` (durations: `instant`, `fast`, `normal`, `moderate`, `slow`, `hero`; easings: `standard`, `smooth`, `expressive`, `bounceSoft`).
+* **Performance Budget:** First-load JavaScript is kept minimal (~103 kB shared); GSAP ScrollTrigger plugins are dynamically initialized and torn down with `ctx.revert()` on component unmount.
+* **Canvas Optimization:** Hero ambient gradient mesh runs on HTML5 Canvas 2D and is paused via `IntersectionObserver` when scrolled out of view.
+* **Accessibility (WCAG 2.2 AA):**
+  * Fully respects `prefers-reduced-motion: reduce`: instantly disables smooth scrolling, marquee auto-scroll, custom cursor, and preloader animations; sets all reveals to `opacity: 1; transform: none;`.
+  * WCAG 2.2.2 compliance: auto-scrolling marquee provides a visible, keyboard-accessible Pause/Resume button and pauses on hover/focus.
+  * Screen reader integrity: `<SplitHeading />` exposes full unbroken text via `aria-label` while hiding split spans with `aria-hidden="true"`.
+* **Full Developer Guide:** See `docs/MOTION_GUIDE.md` for in-depth documentation on modifying animation speeds, turning effects on/off, and adding new animated components.

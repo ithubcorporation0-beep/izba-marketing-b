@@ -79,7 +79,7 @@ export const Header: React.FC = () => {
           <Link
             href="/"
             className="flex items-center gap-3 group focus:outline-none focus-visible:ring-2 focus-visible:ring-[var(--color-primary-blue)] rounded-[var(--radius-sm)]"
-            aria-label="IT HUB Corporation Home"
+            aria-label="IT HUB Corporation"
           >
             <div
               className={`w-10 h-10 rounded-[var(--radius-md)] flex items-center justify-center font-bold text-lg tracking-tight transition-all duration-200 ${
@@ -87,6 +87,7 @@ export const Header: React.FC = () => {
                   ? 'bg-gradient-to-br from-[var(--color-primary-blue)] to-[var(--color-accent-violet)] text-white shadow-md shadow-blue-500/20'
                   : 'bg-[var(--color-navy)] text-[var(--color-white)] group-hover:bg-[var(--color-primary-blue)]'
               }`}
+              aria-hidden="true"
             >
               IT
             </div>
@@ -102,7 +103,7 @@ export const Header: React.FC = () => {
               </span>
               <span
                 className={`text-[10px] uppercase tracking-widest font-semibold leading-none ${
-                  isDarkHero ? 'text-slate-400' : 'text-[var(--color-muted)]'
+                  isDarkHero ? 'text-slate-300' : 'text-[var(--color-muted)]'
                 }`}
               >
                 Corporation
