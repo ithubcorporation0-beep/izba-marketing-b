@@ -11,9 +11,11 @@ export const siteConfig: SiteConfig = {
     'Full-service marketing agency providing digital marketing, SEO, AI automation, web development, graphic design, and content production.',
   contact: {
     email: 'ibrookhnax@gmail.com',
-    phone: '+92 317 9898769',
-    whatsapp: '+92 317 9898769',
-    // TODO: Replace with real physical company address
+    // TODO: Replace with real company phone number (+[country code] [number])
+    phone: 'PLACEHOLDER_PHONE',
+    // TODO: Replace with real company WhatsApp number
+    whatsapp: 'PLACEHOLDER_WHATSAPP',
+    // TODO: Replace with real physical company address (optional)
     address: 'PLACEHOLDER_ADDRESS',
     workingHours: 'Available 24/7',
   },
@@ -24,7 +26,8 @@ export const siteConfig: SiteConfig = {
     github: 'PLACEHOLDER_GITHUB_URL',
     // TODO: Replace with real Twitter / X URL
     twitter: 'PLACEHOLDER_TWITTER_URL',
-    whatsapp: 'https://wa.me/923179898769',
+    // TODO: Replace with real WhatsApp chat link
+    whatsapp: 'PLACEHOLDER_WHATSAPP_URL',
     // TODO: Replace with real Facebook page URL
     facebook: 'PLACEHOLDER_FACEBOOK_URL',
     // TODO: Replace with real YouTube channel URL
@@ -33,9 +36,9 @@ export const siteConfig: SiteConfig = {
   // Project availability badge
   availabilityBadge: 'Available 24/7 — Now accepting new projects',
 
-  // Live local-time clock timezone for company headquarters/studio
-  timezone: 'Asia/Karachi',
-  timezoneLabel: 'PKT',
+  // Studio clock timezone
+  timezone: 'UTC',
+  timezoneLabel: 'TIMEZONE',
 
   // Closing CTA Section copy (fully editable)
   closingCta: {

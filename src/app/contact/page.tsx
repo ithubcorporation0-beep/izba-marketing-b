@@ -12,6 +12,7 @@ import {
   Clock,
   CheckCircle,
   AlertCircle,
+  Globe,
 } from 'lucide-react';
 import { constructMetadata } from '@/lib/seo/metadata';
 import styles from './page.module.css';
@@ -135,28 +136,33 @@ export default function ContactPage() {
                 </div>
               </div>
 
-              {/* Address / Service Area */}
+              {/* Service Area */}
               <div className={styles.methodItem}>
                 <div className={styles.methodIcon} aria-hidden="true">
-                  <MapPin size={18} />
+                  <Globe size={18} />
                 </div>
                 <div className={styles.methodContent}>
-                  <span className={styles.methodLabel}>Location</span>
-                  {isPlaceholder(siteConfig.contact.address) ? (
-                    <div>
-                      <span className={styles.methodValue}>Physical HQ</span>
-                      <div className={styles.placeholderTag}>
-                        <AlertCircle size={12} />
-                        <span>Placeholder: {siteConfig.contact.address}</span>
-                      </div>
-                    </div>
-                  ) : (
+                  <span className={styles.methodLabel}>Service Area</span>
+                  <span className={styles.methodValue}>
+                    Serving clients worldwide
+                  </span>
+                </div>
+              </div>
+
+              {/* Physical Office Address (shown only if filled) */}
+              {!isPlaceholder(siteConfig.contact.address) && (
+                <div className={styles.methodItem}>
+                  <div className={styles.methodIcon} aria-hidden="true">
+                    <MapPin size={18} />
+                  </div>
+                  <div className={styles.methodContent}>
+                    <span className={styles.methodLabel}>Office Location</span>
                     <span className={styles.methodValue}>
                       {siteConfig.contact.address}
                     </span>
-                  )}
+                  </div>
                 </div>
-              </div>
+              )}
 
               {/* Working Hours */}
               <div className={styles.methodItem}>

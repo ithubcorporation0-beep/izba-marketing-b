@@ -156,21 +156,20 @@ export const Footer: React.FC = () => {
           {/* Contact Details (3 cols) */}
           <div className="lg:col-span-3 space-y-4">
             <h3 className="text-xs font-semibold uppercase tracking-wider text-[var(--color-white)]">
-              Contact & HQ
+              Contact
             </h3>
             <div className="space-y-3 text-sm">
-              <div className="flex items-start gap-2.5">
-                <MapPin
-                  size={16}
-                  className="text-[var(--color-gold)] shrink-0 mt-0.5"
-                />
-                <div>
-                  {renderContactValue(
-                    siteConfig.contact.address,
-                    'Office Address'
-                  )}
+              {!isPlaceholder(siteConfig.contact.address) && (
+                <div className="flex items-start gap-2.5">
+                  <MapPin
+                    size={16}
+                    className="text-[var(--color-gold)] shrink-0 mt-0.5"
+                  />
+                  <div>
+                    <span>{siteConfig.contact.address}</span>
+                  </div>
                 </div>
-              </div>
+              )}
 
               <div className="flex items-start gap-2.5">
                 <Mail

@@ -1,5 +1,5 @@
 # IZBA Marketing agency — Content Review & TODO Guide
-**Location:** Mardan, Khyber Pakhtunkhwa, Pakistan  
+**Location:** Serving clients worldwide  
 **Brand System:** Navy (`#0B1F3A`) + Gold (`#C9A227`)  
 **Single Content File:** [`src/content/services.ts`](file:///c:/Users/koko/Documents/IZba%20Marketing/src/content/services.ts)
 
@@ -31,65 +31,65 @@ The site now features 9 dedicated category pages at `/services/[category-slug]`:
 ## 2. Items to Review & Confirm in `src/content/services.ts`
 
 ### Category 1: Web & Software Development (`web-software-development`)
-- [ ] **Starting Price (`startingPricePkr`):** Currently `null`.  
-  *Suggested placeholder to confirm:* `45000` (PKR) or keep `null` for custom quotes.
+- [ ] **Starting Price (`startingPricePkr`):** Currently `null` (shows "Custom quote, tell us what you need").  
+  *Suggested placeholder to confirm:* Confirm starting budget/quote or keep `null` for custom quotes.
 - [ ] **Typical Timeline (`typicalTimeline`):** Currently `null`.  
   *Suggested placeholder to confirm:* `"2 to 4 weeks"` or keep `null`.
-- [ ] **Who it is for bullets:** Review target client descriptions in Mardan/KP.
+- [ ] **Who it is for bullets:** Review target client descriptions.
 - [ ] **FAQs:** Confirm answers regarding hosting and domain assistance.
 
 ### Category 2: Digital Marketing & SEO (`digital-marketing-seo`)
 - [ ] **Starting Price (`startingPricePkr`):** Currently `null`.  
-  *Suggested placeholder to confirm:* `30000` (PKR monthly retainer) or keep `null`.
+  *Suggested placeholder to confirm:* Monthly retainer budget or keep `null`.
 - [ ] **Typical Timeline (`typicalTimeline`):** Currently `null`.  
   *Suggested placeholder to confirm:* `"Monthly retainer / 2 weeks initial setup"` or keep `null`.
-- [ ] **Local SEO focus:** Review Google Business Profile references for Mardan & KP.
+- [ ] **SEO focus:** Review search optimization references.
 
 ### Category 3: AI Services & Automation (`ai-services-automation`)
 - [ ] **Starting Price (`startingPricePkr`):** Currently `null`.  
-  *Suggested placeholder to confirm:* `50000` (PKR) or keep `null`.
+  *Suggested placeholder to confirm:* Confirm starting budget or keep `null`.
 - [ ] **Typical Timeline (`typicalTimeline`):** Currently `null`.  
   *Suggested placeholder to confirm:* `"1 to 3 weeks"` or keep `null`.
 - [ ] **WhatsApp Bot API:** Confirm whether client WhatsApp numbers use Cloud API or Webhook connections.
 
 ### Category 4: Graphic Design & Branding (`graphic-design-branding`)
 - [ ] **Starting Price (`startingPricePkr`):** Currently `null`.  
-  *Suggested placeholder to confirm:* `15000` (PKR) or keep `null`.
+  *Suggested placeholder to confirm:* Confirm starting budget or keep `null`.
 - [ ] **Typical Timeline (`typicalTimeline`):** Currently `null`.  
   *Suggested placeholder to confirm:* `"3 to 7 business days"` or keep `null`.
 - [ ] **Deliverable formats:** Confirm vector formats (AI, EPS, SVG, PDF) offered to print shops.
 
 ### Category 5: Data Entry & Virtual Assistance (`data-entry-virtual-assistance`)
 - [ ] **Starting Price (`startingPricePkr`):** Currently `null`.  
-  *Suggested placeholder to confirm:* `10000` (PKR) or keep `null`.
+  *Suggested placeholder to confirm:* Confirm starting budget or keep `null`.
 - [ ] **Typical Timeline (`typicalTimeline`):** Currently `null`.  
   *Suggested placeholder to confirm:* `"1 to 3 days per batch"` or keep `null`.
 - [ ] **Sample Policy:** Review offer of small test sample before high-volume batch contracts.
 
 ### Category 6: Digital Products & E-commerce (`digital-products-ecommerce`)
 - [ ] **Starting Price (`startingPricePkr`):** Currently `null`.  
-  *Suggested placeholder to confirm:* `40000` (PKR) or keep `null`.
+  *Suggested placeholder to confirm:* Confirm starting budget or keep `null`.
 - [ ] **Typical Timeline (`typicalTimeline`):** Currently `null`.  
   *Suggested placeholder to confirm:* `"1 to 3 weeks"` or keep `null`.
-- [ ] **Payment Gateways:** Confirm which domestic (Easypaisa, JazzCash, PayFast) and international gateways you support.
+- [ ] **Payment Gateways:** Confirm which payment methods (credit cards, mobile wallets, Stripe, PayPal) you support.
 
 ### Category 7: Video & Content Production (`video-content-production`)
 - [ ] **Starting Price (`startingPricePkr`):** Currently `null`.  
-  *Suggested placeholder to confirm:* `8000` (PKR per video) or keep `null`.
+  *Suggested placeholder to confirm:* Confirm starting budget or keep `null`.
 - [ ] **Typical Timeline (`typicalTimeline`):** Currently `null`.  
   *Suggested placeholder to confirm:* `"2 to 4 business days"` or keep `null`.
 - [ ] **File transfer:** Review Google Drive / Dropbox upload instructions.
 
 ### Category 8: IT Support & Business Solutions (`it-support-business-solutions`)
 - [ ] **Starting Price (`startingPricePkr`):** Currently `null`.  
-  *Suggested placeholder to confirm:* `15000` (PKR) or keep `null`.
+  *Suggested placeholder to confirm:* Confirm starting budget or keep `null`.
 - [ ] **Typical Timeline (`typicalTimeline`):** Currently `null`.  
   *Suggested placeholder to confirm:* `"1 to 2 business days"` or keep `null`.
-- [ ] **Tax & Regulatory Notice:** The FAQ explicitly notes that tax rules (FBR, KPRA) and corporate registrations change, and that IZBA Marketing agency advises on a case-by-case basis alongside certified professionals.
+- [ ] **Compliance & Software Notice:** The FAQ explicitly notes that software compliance, invoicing rules, and corporate registrations change, and that IZBA Marketing agency advises on a case-by-case basis alongside certified professionals.
 
 ### Category 9: Education & Office Services (`education-office-services`)
 - [ ] **Starting Price (`startingPricePkr`):** Currently `null`.  
-  *Suggested placeholder to confirm:* `5000` (PKR) or keep `null`.
+  *Suggested placeholder to confirm:* Confirm starting budget or keep `null`.
 - [ ] **Typical Timeline (`typicalTimeline`):** Currently `null`.  
   *Suggested placeholder to confirm:* `"1 to 3 business days"` or keep `null`.
 - [ ] **Translation languages:** Confirm English, Urdu, and Pashto human translation coverage.
@@ -111,11 +111,11 @@ The Proof section on category pages is designed to automatically hide when no ma
 
 Status of contact information:
 - `contact.email`: Configured as `ibrookhnax@gmail.com`
-- `contact.phone`: Configured as `+92 317 9898769`
-- `contact.whatsapp`: Configured as `+92 317 9898769` (`https://wa.me/923179898769`)
+- `contact.phone`: Placeholder (`PLACEHOLDER_PHONE`) ready for official international phone format
+- `contact.whatsapp`: Placeholder (`PLACEHOLDER_WHATSAPP`) ready for official international WhatsApp format
 - `contact.workingHours`: Configured as `Available 24/7`
-- `timezone`: Configured as `'Asia/Karachi'` (`PKT`)
-- `contact.address`: `PLACEHOLDER_ADDRESS` (ready for physical office street address when desired)
+- `timezone`: Configured as `'UTC'` (`TIMEZONE`)
+- `contact.address`: `PLACEHOLDER_ADDRESS` (hidden unless client provides physical office address)
 
 
 ---

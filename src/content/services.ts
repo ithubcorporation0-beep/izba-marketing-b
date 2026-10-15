@@ -12,11 +12,11 @@ import { educationOfficeServices } from './services-data/education-office';
 /**
  * IZBA MARKETING AGENCY — 9 CORE SERVICE CATEGORIES
  * Unified master content file for all 9 categories and 90 services.
- * Location: Mardan, Khyber Pakhtunkhwa, Pakistan.
+ * Serving clients worldwide.
  *
  * NOTE FOR WEBSITE OWNER:
  * Every item marked with `// TODO: confirm` represents a business variable
- * (such as starting price in PKR, delivery turnaround time, or case-specific FAQs)
+ * (such as starting price, delivery turnaround time, or case-specific FAQs)
  * that you can review and update at any time without touching page layout code.
  */
 export const serviceCategories: CategoryDetail[] = [
@@ -34,7 +34,7 @@ export const serviceCategories: CategoryDetail[] = [
     oneSentencePromise:
       'Fast, modern websites and custom web software built to convert visitors into paying clients and automate daily business workflows.',
     whoItIsFor: [
-      'Shop and retail owners in Mardan and KP transitioning from physical storefronts to online orders',
+      'Retail and store operators transitioning from physical storefronts to online orders',
       'Growing businesses needing a central client portal, CRM, or team workflow dashboard',
       'Organizations with slow or broken websites losing prospective clients to competitors',
       'Entrepreneurs and founders launching new digital brands or software products',
@@ -61,8 +61,8 @@ export const serviceCategories: CategoryDetail[] = [
         name: 'E-commerce Development',
         slug: 'ecommerce-development',
         outcomeDescription:
-          'A secure online store with product catalog management, shopping cart, and local/international payment gateway setup.',
-        bestFor: 'Retailers and wholesalers selling physical or digital products across Pakistan and abroad.',
+          'A secure online store with product catalog management, shopping cart, and multi-currency international payment gateway setup.',
+        bestFor: 'Retailers and wholesalers selling physical or digital products globally.',
       },
       {
         id: 'landing-page-development',
@@ -148,7 +148,7 @@ export const serviceCategories: CategoryDetail[] = [
         description: 'We provide administrator walkthroughs, documentation, and post-launch technical assistance.',
       },
     ],
-    startingPricePkr: null, // TODO: confirm starting price in PKR with IZBA Marketing agency (e.g. 45000)
+    startingPricePkr: null, // Custom quote based on scope
     typicalTimeline: null, // TODO: confirm typical delivery timeline with IZBA Marketing agency (e.g. "2 to 4 weeks")
     faqs: [
       {
@@ -173,9 +173,9 @@ export const serviceCategories: CategoryDetail[] = [
       },
     ],
     relatedCategorySlugs: ['digital-marketing-seo', 'it-support-business-solutions', 'graphic-design-branding'],
-    seoTitle: 'Web & Software Development in Mardan | IZBA Marketing agency',
+    seoTitle: 'Web & Software Development Services | IZBA Marketing agency',
     seoDescription:
-      'Custom website development, web applications, e-commerce stores, and software solutions built for speed and conversions in Mardan and KP.',
+      'Custom website development, web applications, e-commerce stores, and software solutions built for speed, performance, and worldwide business growth.',
   },
 
   // 2. Digital Marketing & SEO
@@ -192,7 +192,7 @@ export const serviceCategories: CategoryDetail[] = [
     oneSentencePromise:
       'Targeted search optimization and high-intent digital advertising designed to attract real customers and increase your inbound sales.',
     whoItIsFor: [
-      'Local businesses in Mardan, Peshawar, and KP looking to rank at the top of Google Maps and local search',
+      'Businesses looking to rank at the top of search engines and capture targeted customer inquiries',
       'E-commerce brands seeking profitable return on ad spend (ROAS) rather than wasted ad budget',
       'Service providers needing a steady stream of qualified customer inquiries via WhatsApp and phone',
       'Companies that ran generic ads in the past with low conversion and want data-driven management',
@@ -212,7 +212,7 @@ export const serviceCategories: CategoryDetail[] = [
         slug: 'social-media-marketing',
         outcomeDescription:
           'Targeted organic content plans and community engagement strategies across Facebook, Instagram, and LinkedIn.',
-        bestFor: 'Brands wanting to build an authentic local following and stay top-of-mind with customers.',
+        bestFor: 'Brands wanting to build an authentic audience following and stay top-of-mind with customers.',
       },
       {
         id: 'pay-per-click-advertising',
@@ -244,7 +244,7 @@ export const serviceCategories: CategoryDetail[] = [
         slug: 'local-seo-google-business-profile',
         outcomeDescription:
           'Complete profile verification, citation building, and map ranking strategies to bring nearby customers to your physical location.',
-        bestFor: 'Clinics, retail shops, showrooms, and local service providers in Mardan and KP.',
+        bestFor: 'Clinics, retail shops, showrooms, and service providers wanting stronger search visibility.',
       },
       {
         id: 'social-media-management',
@@ -259,8 +259,8 @@ export const serviceCategories: CategoryDetail[] = [
         name: 'Influencer Marketing Outreach',
         slug: 'influencer-marketing-outreach',
         outcomeDescription:
-          'Strategic collaborations with verified local and regional content creators to introduce your products to engaged audiences.',
-        bestFor: 'New product launches, local promotions, and consumer brand awareness.',
+          'Strategic collaborations with verified content creators and niche influencers to introduce your products to engaged audiences.',
+        bestFor: 'New product launches, targeted promotions, and consumer brand awareness.',
       },
       {
         id: 'digital-marketing-strategy-audit',
@@ -306,7 +306,7 @@ export const serviceCategories: CategoryDetail[] = [
         description: 'We share transparent performance reports and scale winning campaigns for sustained growth.',
       },
     ],
-    startingPricePkr: null, // TODO: confirm starting price in PKR with IZBA Marketing agency (e.g. 30000)
+    startingPricePkr: null, // Custom quote based on scope
     typicalTimeline: null, // TODO: confirm typical delivery timeline with IZBA Marketing agency (e.g. "Monthly retainer / 2 weeks setup")
     faqs: [
       {
@@ -320,9 +320,9 @@ export const serviceCategories: CategoryDetail[] = [
           'You retain full ownership of your ad accounts and pay Google or Meta directly for ad spend, ensuring complete financial transparency. We charge a dedicated fee for campaign strategy, design, and optimization.',
       },
       {
-        question: 'Can you help my physical shop or office in Mardan get more walk-in customers?',
+        question: 'Can you help my business rank higher in search results and drive more customer inquiries?',
         answer:
-          'Yes. Our Local SEO and Google Business Profile optimization specifically targets nearby residents searching for your services on Google Maps and search results in Mardan and surrounding districts.',
+          'Yes. Our SEO and Google Business Profile optimization targets relevant audiences searching for your services, enhancing search visibility and generating qualified leads.',
       },
       {
         question: 'Do you guarantee specific ranking positions or follower counts?',
@@ -331,9 +331,9 @@ export const serviceCategories: CategoryDetail[] = [
       },
     ],
     relatedCategorySlugs: ['web-software-development', 'graphic-design-branding', 'video-content-production'],
-    seoTitle: 'Digital Marketing & SEO in Mardan | IZBA Marketing agency',
+    seoTitle: 'Digital Marketing & SEO Services | IZBA Marketing agency',
     seoDescription:
-      'Search engine optimization, Google Ads, social media marketing, and local lead generation in Mardan and Khyber Pakhtunkhwa.',
+      'Search engine optimization, Google Ads, social media marketing, and performance lead generation for growing businesses worldwide.',
   },
 
   // 3. AI Services & Automation
@@ -464,7 +464,7 @@ export const serviceCategories: CategoryDetail[] = [
         description: 'We train your team to review conversation logs and update answers as your business evolves.',
       },
     ],
-    startingPricePkr: null, // TODO: confirm starting price in PKR with IZBA Marketing agency (e.g. 50000)
+    startingPricePkr: null, // Custom quote based on scope
     typicalTimeline: null, // TODO: confirm typical delivery timeline with IZBA Marketing agency (e.g. "1 to 3 weeks")
     faqs: [
       {
@@ -489,9 +489,9 @@ export const serviceCategories: CategoryDetail[] = [
       },
     ],
     relatedCategorySlugs: ['web-software-development', 'data-entry-virtual-assistance', 'it-support-business-solutions'],
-    seoTitle: 'AI Services & Automation in Mardan | IZBA Marketing agency',
+    seoTitle: 'AI Services & Automation Solutions | IZBA Marketing agency',
     seoDescription:
-      'AI chatbot development, workflow automation, custom GPT assistants, and business process automation in Mardan and KP.',
+      'AI chatbot development, workflow automation, custom GPT assistants, and intelligent business process automation for modern companies.',
   },
 
   // 4. Graphic Design & Branding
@@ -622,7 +622,7 @@ export const serviceCategories: CategoryDetail[] = [
         description: 'We deliver complete master source files ready for commercial print shops and digital use.',
       },
     ],
-    startingPricePkr: null, // TODO: confirm starting price in PKR with IZBA Marketing agency (e.g. 15000)
+    startingPricePkr: null, // Custom quote based on scope
     typicalTimeline: null, // TODO: confirm typical delivery timeline with IZBA Marketing agency (e.g. "3 to 7 business days")
     faqs: [
       {
@@ -647,9 +647,9 @@ export const serviceCategories: CategoryDetail[] = [
       },
     ],
     relatedCategorySlugs: ['web-software-development', 'digital-marketing-seo', 'video-content-production'],
-    seoTitle: 'Graphic Design & Branding in Mardan | IZBA Marketing agency',
+    seoTitle: 'Graphic Design & Branding Services | IZBA Marketing agency',
     seoDescription:
-      'Professional logo design, corporate brand identity, marketing collaterals, and packaging design in Mardan and KP.',
+      'Professional logo design, corporate brand identity, marketing collaterals, and distinctive visual design for global brands.',
   },
 
   // 5. Data Entry & Virtual Assistance
@@ -780,7 +780,7 @@ export const serviceCategories: CategoryDetail[] = [
         description: 'We deliver your completed files (Excel, Google Sheets, CSV) and confirm your satisfaction.',
       },
     ],
-    startingPricePkr: null, // TODO: confirm starting price in PKR with IZBA Marketing agency (e.g. 10000)
+    startingPricePkr: null, // Custom quote based on scope
     typicalTimeline: null, // TODO: confirm typical delivery timeline with IZBA Marketing agency (e.g. "1 to 3 days per batch")
     faqs: [
       {
@@ -805,9 +805,9 @@ export const serviceCategories: CategoryDetail[] = [
       },
     ],
     relatedCategorySlugs: ['education-office-services', 'ai-services-automation', 'digital-products-ecommerce'],
-    seoTitle: 'Data Entry & Virtual Assistance in Mardan | IZBA Marketing agency',
+    seoTitle: 'Data Entry & Virtual Assistance Services | IZBA Marketing agency',
     seoDescription:
-      'Accurate data entry, spreadsheet cleaning, web research, e-commerce product uploads, and virtual assistance in Mardan, KP.',
+      'Accurate data entry, spreadsheet cleaning, web research, e-commerce product catalog management, and virtual assistant support worldwide.',
   },
 
   // 6. Digital Products & E-commerce
@@ -826,7 +826,7 @@ export const serviceCategories: CategoryDetail[] = [
     whoItIsFor: [
       'Creators, educators, and consultants packaging knowledge into downloadable digital products',
       'Retailers launching a direct-to-consumer online shop with minimum technical hassle',
-      'Store owners needing local (Easypaisa, JazzCash, cards) or international payment setups',
+      'Store owners needing credit card processing, mobile payments, or international payment gateway integrations',
       'Entrepreneurs expanding into print-on-demand or automated digital template businesses',
     ],
     services: [
@@ -938,7 +938,7 @@ export const serviceCategories: CategoryDetail[] = [
         description: 'We publish the store and provide walkthrough videos on adding new products and tracking orders.',
       },
     ],
-    startingPricePkr: null, // TODO: confirm starting price in PKR with IZBA Marketing agency (e.g. 40000)
+    startingPricePkr: null, // Custom quote based on scope
     typicalTimeline: null, // TODO: confirm typical delivery timeline with IZBA Marketing agency (e.g. "1 to 3 weeks")
     faqs: [
       {
@@ -952,9 +952,9 @@ export const serviceCategories: CategoryDetail[] = [
           'Customers receive an instant download button on the checkout confirmation screen and an automated email containing their secure download credentials.',
       },
       {
-        question: 'Can you configure payment options for customers in Pakistan and abroad?',
+        question: 'Can you configure payment options for international customers?',
         answer:
-          'Yes. We configure gateways supporting local payment methods (such as domestic bank cards and mobile wallets) and international card processing depending on your business registration and market.',
+          'Yes. We configure multi-currency setups, credit card payments, Stripe, PayPal, and regional payment gateways tailored to your target markets.',
       },
       {
         question: 'Can I add new products myself after the store is finished?',
@@ -963,9 +963,9 @@ export const serviceCategories: CategoryDetail[] = [
       },
     ],
     relatedCategorySlugs: ['web-software-development', 'graphic-design-branding', 'digital-marketing-seo'],
-    seoTitle: 'Digital Products & E-commerce in Mardan | IZBA Marketing agency',
+    seoTitle: 'Digital Products & E-commerce Solutions | IZBA Marketing agency',
     seoDescription:
-      'Shopify store setup, WooCommerce development, digital product creation, and payment gateway configuration in Mardan, KP.',
+      'Shopify store setup, WooCommerce development, digital product creation, and global payment gateway configuration.',
   },
 
   // 7. Video & Content Production
@@ -1096,7 +1096,7 @@ export const serviceCategories: CategoryDetail[] = [
         description: 'We export high-definition MP4 files rendered to the exact specifications of your target platform.',
       },
     ],
-    startingPricePkr: null, // TODO: confirm starting price in PKR with IZBA Marketing agency (e.g. 8000 per video)
+    startingPricePkr: null, // Custom quote based on scope
     typicalTimeline: null, // TODO: confirm typical delivery timeline with IZBA Marketing agency (e.g. "2 to 4 business days")
     faqs: [
       {
@@ -1121,9 +1121,9 @@ export const serviceCategories: CategoryDetail[] = [
       },
     ],
     relatedCategorySlugs: ['graphic-design-branding', 'digital-marketing-seo', 'digital-products-ecommerce'],
-    seoTitle: 'Video & Content Production in Mardan | IZBA Marketing agency',
+    seoTitle: 'Video & Content Production Services | IZBA Marketing agency',
     seoDescription:
-      'Professional YouTube video editing, social reels, motion graphics, and promo video production in Mardan and KP.',
+      'Professional YouTube video editing, social reels, motion graphics, and promo video production for digital brands worldwide.',
   },
 
   // 8. IT Support & Business Solutions
@@ -1254,7 +1254,7 @@ export const serviceCategories: CategoryDetail[] = [
         description: 'We share updated credentials, administrative access, and best practices to prevent recurrence.',
       },
     ],
-    startingPricePkr: null, // TODO: confirm starting price in PKR with IZBA Marketing agency (e.g. 15000)
+    startingPricePkr: null, // Custom quote based on scope
     typicalTimeline: null, // TODO: confirm typical delivery timeline with IZBA Marketing agency (e.g. "1 to 2 business days")
     faqs: [
       {
@@ -1268,20 +1268,20 @@ export const serviceCategories: CategoryDetail[] = [
           'Yes. We systematically isolate the infection, clean the core files and database, remove backdoor scripts, restore lost admin access, and install firewall defenses while keeping your content intact.',
       },
       {
-        question: 'Can you assist businesses outside Mardan remotely?',
+        question: 'Can you assist businesses remotely worldwide?',
         answer:
           'Yes. Most email configuration, domain setup, hosting transfers, and software repairs are conducted remotely over encrypted connections regardless of your location.',
       },
       {
-        question: 'Do you assist with tax, FBR, KPRA or legal compliance software?',
+        question: 'Do you assist with business compliance and invoicing software?',
         answer:
-          'Tax and compliance requirements (including platforms such as FBR or KPRA) update continually. IZBA Marketing agency provides technical setup, document preparation, and digital configuration assistance on a case-by-case basis, and collaborates with certified tax and legal practitioners where formal legal or tax certification is required.',
+          'Compliance and invoicing requirements update continually. IZBA Marketing agency provides technical setup, document preparation, and digital configuration assistance on a case-by-case basis, and collaborates with certified legal practitioners where formal certification is required.',
       },
     ],
     relatedCategorySlugs: ['web-software-development', 'data-entry-virtual-assistance', 'education-office-services'],
-    seoTitle: 'IT Support & Business Solutions in Mardan | IZBA Marketing agency',
+    seoTitle: 'IT Support & Business Solutions | IZBA Marketing agency',
     seoDescription:
-      'Business email setup, cloud backup, WordPress troubleshooting, and IT consulting in Mardan and Khyber Pakhtunkhwa.',
+      'Business email setup, cloud backup, WordPress troubleshooting, and reliable IT consulting for organizations worldwide.',
   },
 
   // 9. Education & Office Services
@@ -1318,7 +1318,7 @@ export const serviceCategories: CategoryDetail[] = [
         slug: 'resume-cv-formatting',
         outcomeDescription:
           'Clean, modern CVs and resumes formatted for effortless reading and optimized for Applicant Tracking Systems (ATS).',
-        bestFor: 'Job candidates seeking career advancement in Pakistan and international markets.',
+        bestFor: 'Job candidates seeking career advancement in competitive international markets.',
       },
       {
         id: 'document-report-formatting',
@@ -1412,7 +1412,7 @@ export const serviceCategories: CategoryDetail[] = [
         description: 'We deliver fully editable source files (Word, PowerPoint, Excel) and print-ready PDFs.',
       },
     ],
-    startingPricePkr: null, // TODO: confirm starting price in PKR with IZBA Marketing agency (e.g. 5000)
+    startingPricePkr: null, // Custom quote based on scope
     typicalTimeline: null, // TODO: confirm typical delivery timeline with IZBA Marketing agency (e.g. "1 to 3 business days")
     faqs: [
       {
@@ -1437,9 +1437,9 @@ export const serviceCategories: CategoryDetail[] = [
       },
     ],
     relatedCategorySlugs: ['data-entry-virtual-assistance', 'graphic-design-branding', 'it-support-business-solutions'],
-    seoTitle: 'Education & Office Services in Mardan | IZBA Marketing agency',
+    seoTitle: 'Education & Office Support Services | IZBA Marketing agency',
     seoDescription:
-      'Professional PowerPoint design, resume formatting, document styling, and English/Urdu/Pashto translation in Mardan, KP.',
+      'Professional presentation design, resume formatting, document styling, and multi-language document translation services.',
   },
 ];
 

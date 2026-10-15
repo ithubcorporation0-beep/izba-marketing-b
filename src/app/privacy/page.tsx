@@ -160,9 +160,12 @@ export default function PrivacyPage() {
               <li>
                 <strong>Email:</strong> {siteConfig.contact.email}
               </li>
-              <li>
-                <strong>Address:</strong> {siteConfig.contact.address}
-              </li>
+              {siteConfig.contact.address &&
+              !siteConfig.contact.address.startsWith('PLACEHOLDER_') && (
+                <li>
+                  <strong>Address:</strong> {siteConfig.contact.address}
+                </li>
+              )}
             </ul>
           </section>
         </div>

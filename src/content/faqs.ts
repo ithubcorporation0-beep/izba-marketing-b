@@ -62,4 +62,12 @@ export const faqs: Faq[] = [
     category: 'Services & Delivery',
     sortOrder: 7,
   },
+  {
+    id: 'faq-clients-outside-country',
+    question: 'Do you work with clients outside your country?',
+    answer:
+      'Yes. We work with clients worldwide and communicate by email, chat and video calls, adjusting to your time zone.',
+    category: 'Services & Delivery',
+    sortOrder: 8,
+  },
 ];

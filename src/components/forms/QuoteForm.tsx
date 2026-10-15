@@ -456,7 +456,7 @@ export function QuoteForm() {
               name="phone"
               type="tel"
               autoComplete="tel"
-              placeholder="+1 (555) 000-0000"
+              placeholder="+[country code] [number]"
               value={formData.phone}
               onChange={handleChange}
               aria-invalid={!!errors.phone}

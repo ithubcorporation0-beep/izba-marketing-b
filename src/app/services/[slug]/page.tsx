@@ -56,7 +56,7 @@ export async function generateMetadata({
 
   if (!category && matchedService) {
     return constructMetadata({
-      title: `${matchedService.name} in Mardan | IZBA Marketing agency`,
+      title: `${matchedService.name} | IZBA Marketing agency`,
       description: matchedService.shortDescription,
       pathname: `/services/${matchedService.slug}`,
     });
@@ -69,7 +69,7 @@ export async function generateMetadata({
   }
 
   return constructMetadata({
-    title: category.seoTitle || `${category.name} in Mardan | IZBA Marketing agency`,
+    title: category.seoTitle || `${category.name} | IZBA Marketing agency`,
     description: category.seoDescription || category.shortDescription,
     pathname: `/services/${category.slug}`,
   });
@@ -165,25 +165,20 @@ export default async function CategoryDetailPage({ params }: CategoryPageProps) 
       : category.oneSentencePromise,
     url: `${siteUrl}/services/${matchedService ? matchedService.slug : category.slug}`,
     provider: {
-      '@type': 'LocalBusiness',
-      name: 'IZBA Marketing agency',
-      address: {
-        '@type': 'PostalAddress',
-        addressLocality: 'Mardan',
-        addressRegion: 'Khyber Pakhtunkhwa',
-        addressCountry: 'PK',
-      },
+      '@type': 'Organization',
+      name: siteConfig.name,
+      url: siteUrl,
+      ...(siteConfig.contact.address &&
+      !siteConfig.contact.address.startsWith('PLACEHOLDER_')
+        ? {
+            address: {
+              '@type': 'PostalAddress',
+              streetAddress: siteConfig.contact.address,
+            },
+          }
+        : {}),
     },
-    areaServed: [
-      {
-        '@type': 'AdministrativeArea',
-        name: 'Khyber Pakhtunkhwa',
-      },
-      {
-        '@type': 'Country',
-        name: 'Pakistan',
-      },
-    ],
+    areaServed: 'Worldwide',
     hasOfferCatalog: {
       '@type': 'OfferCatalog',
       name: `${categoryName} Offerings`,
@@ -236,8 +231,7 @@ export default async function CategoryDetailPage({ params }: CategoryPageProps) 
             </div>
 
             <h1 className={styles.title}>
-              {pageHeading}{' '}
-              <span className={styles.titleAccent}>in Mardan</span>
+              {pageHeading}
             </h1>
 
             <p className={styles.promise}>
@@ -410,13 +404,9 @@ export default async function CategoryDetailPage({ params }: CategoryPageProps) 
                   <Coins size={18} className="text-[var(--color-gold)]" aria-hidden="true" />
                   <span className={styles.priceLabel}>Estimated Starting Rate</span>
                 </div>
-                {category.startingPricePkr !== null ? (
-                  <p className={styles.priceValue}>
-                    Starting from PKR {category.startingPricePkr.toLocaleString()}
-                  </p>
-                ) : (
-                  <p className={styles.priceValue}>Custom quote, tell us what you need</p>
-                )}
+                <p className={styles.priceValue}>
+                  Custom quote, tell us what you need
+                </p>
                 <p className={styles.priceSub}>
                   Final pricing is determined by functional scope and required deliverables.
                 </p>

@@ -143,9 +143,9 @@ export default function AboutPage() {
                 Who We Are
               </h2>
               <p className={styles.positioningLead}>
-                IZBA Marketing agency provides technology, marketing, creative, AI,
-                and business-support services to help organizations build and
-                improve their digital operations.
+                We work with startups, agencies and businesses around the world,
+                providing technology, marketing, creative, AI, and business-support
+                services to build and scale modern digital operations.
               </p>
               <p className={styles.overviewBody}>
                 We understand that modern businesses often struggle with
