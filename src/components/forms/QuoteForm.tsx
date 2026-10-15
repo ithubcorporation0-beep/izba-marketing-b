@@ -14,7 +14,6 @@ import {
 import { quoteFormSchema } from '@/lib/validation/quoteSchema';
 import { categories } from '@/content/categories';
 import { getPublishedServices } from '@/lib/services';
-import { budgetOptions } from '@/content/budget';
 import { siteConfig } from '@/config/site';
 import { Service } from '@/types';
 import { trackFormSubmit } from '@/lib/analytics';
@@ -162,9 +161,6 @@ export function QuoteForm() {
       const selectedService = publishedServices.find(
         (s) => s.slug === formData.service
       );
-      const selectedBudget = budgetOptions.find(
-        (b) => b.value === formData.budget
-      );
 
       const payload = {
         access_key: accessKey,
@@ -175,7 +171,7 @@ export function QuoteForm() {
         phone: formData.phone || 'Not provided',
         company: formData.company || 'Not provided',
         service: selectedService ? selectedService.name : formData.service,
-        budget: selectedBudget ? selectedBudget.label : 'Not specified',
+        budget: formData.budget?.trim() || 'Not specified',
         message: formData.message,
         source_page:
           typeof window !== 'undefined' ? window.location.href : '/contact',
@@ -566,24 +562,19 @@ export function QuoteForm() {
               <span>Estimated Budget</span>
               <span className={styles.optionalTag}>Optional</span>
             </label>
-            <select
+            <input
               id="field-budget"
               name="budget"
+              type="text"
+              placeholder="e.g. $50, $200, or custom budget"
               value={formData.budget}
               onChange={handleChange}
               aria-invalid={!!errors.budget}
               aria-describedby={errors.budget ? 'budget-error' : undefined}
-              className={`${styles.select} ${
-                errors.budget ? styles.selectError : ''
+              className={`${styles.input} ${
+                errors.budget ? styles.inputError : ''
               }`}
-            >
-              <option value="">Select a budget range...</option>
-              {budgetOptions.map((opt) => (
-                <option key={opt.value} value={opt.value}>
-                  {opt.label}
-                </option>
-              ))}
-            </select>
+            />
             {errors.budget && (
               <p id="budget-error" className={styles.errorMessage} role="alert">
                 <AlertCircle size={14} />

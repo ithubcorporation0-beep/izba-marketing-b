@@ -178,7 +178,7 @@ export interface QuoteFormData {
   email: string;
   company: string;
   serviceCategory: string;
-  budgetRange: string;
+  budgetRange?: string;
   timeline: string;
   projectScope: string;
 }

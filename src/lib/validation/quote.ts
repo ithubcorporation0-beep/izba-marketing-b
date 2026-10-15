@@ -26,9 +26,9 @@ export function validateQuoteForm(
     errors.serviceCategory = 'Please select a primary service category.';
   }
 
-  // Budget range validation
-  if (!data.budgetRange || data.budgetRange === '') {
-    errors.budgetRange = 'Please select an estimated budget tier.';
+  // Budget range validation (optional custom budget)
+  if (data.budgetRange && data.budgetRange.length > 100) {
+    errors.budgetRange = 'Budget description must not exceed 100 characters.';
   }
 
   // Timeline validation
