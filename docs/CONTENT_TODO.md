@@ -1,4 +1,4 @@
-# IT HUB Corporation — Content Review & TODO Guide
+# IZBA Marketing agency — Content Review & TODO Guide
 **Location:** Mardan, Khyber Pakhtunkhwa, Pakistan  
 **Brand System:** Navy (`#0B1F3A`) + Gold (`#C9A227`)  
 **Single Content File:** [`src/content/services.ts`](file:///c:/Users/koko/Documents/IZba%20Marketing/src/content/services.ts)
@@ -85,7 +85,7 @@ The site now features 9 dedicated category pages at `/services/[category-slug]`:
   *Suggested placeholder to confirm:* `15000` (PKR) or keep `null`.
 - [ ] **Typical Timeline (`typicalTimeline`):** Currently `null`.  
   *Suggested placeholder to confirm:* `"1 to 2 business days"` or keep `null`.
-- [ ] **Tax & Regulatory Notice:** The FAQ explicitly notes that tax rules (FBR, KPRA) and corporate registrations change, and that IT HUB advises on a case-by-case basis alongside certified professionals.
+- [ ] **Tax & Regulatory Notice:** The FAQ explicitly notes that tax rules (FBR, KPRA) and corporate registrations change, and that IZBA Marketing agency advises on a case-by-case basis alongside certified professionals.
 
 ### Category 9: Education & Office Services (`education-office-services`)
 - [ ] **Starting Price (`startingPricePkr`):** Currently `null`.  

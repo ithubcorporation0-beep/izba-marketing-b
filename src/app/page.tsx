@@ -1,7 +1,6 @@
 import React from 'react';
 import type { Metadata } from 'next';
 import { Hero } from '@/components/sections/Hero';
-import { CategoryMarquee } from '@/components/sections/CategoryMarquee';
 import { StatsSection } from '@/components/sections/Stats';
 import { CategoriesSection } from '@/components/sections/CategoriesSection';
 import { FeaturedServicesSection } from '@/components/sections/FeaturedServicesSection';
@@ -32,10 +31,7 @@ export default function HomePage() {
       {/* 1. Hero with PRD 4.2 copy & 2. Verifiable trust points */}
       <Hero />
 
-      {/* 2. Infinite Continuous Category Marquee */}
-      <CategoryMarquee />
-
-      {/* 3. Verified Project Statistics Row */}
+      {/* 2. Verified Project Statistics Row */}
       <StatsSection />
 
       {/* 4. Service Category Cards (all 9 categories) */}

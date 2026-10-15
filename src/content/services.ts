@@ -10,7 +10,7 @@ import { itSupportServices } from './services-data/it-support';
 import { educationOfficeServices } from './services-data/education-office';
 
 /**
- * IT HUB CORPORATION — 9 CORE SERVICE CATEGORIES
+ * IZBA MARKETING AGENCY — 9 CORE SERVICE CATEGORIES
  * Unified master content file for all 9 categories and 90 services.
  * Location: Mardan, Khyber Pakhtunkhwa, Pakistan.
  *
@@ -148,8 +148,8 @@ export const serviceCategories: CategoryDetail[] = [
         description: 'We provide administrator walkthroughs, documentation, and post-launch technical assistance.',
       },
     ],
-    startingPricePkr: null, // TODO: confirm starting price in PKR with IT HUB (e.g. 45000)
-    typicalTimeline: null, // TODO: confirm typical delivery timeline with IT HUB (e.g. "2 to 4 weeks")
+    startingPricePkr: null, // TODO: confirm starting price in PKR with IZBA Marketing agency (e.g. 45000)
+    typicalTimeline: null, // TODO: confirm typical delivery timeline with IZBA Marketing agency (e.g. "2 to 4 weeks")
     faqs: [
       {
         question: 'Will my website display correctly on mobile phones?',
@@ -167,13 +167,13 @@ export const serviceCategories: CategoryDetail[] = [
           'Yes. We assist with domain registration, DNS record configuration, and setting up reliable, high-speed cloud hosting.',
       },
       {
-        question: 'How do we begin a new web development project with IT HUB?',
+        question: 'How do we begin a new web development project with IZBA Marketing agency?',
         answer:
           'Click the "Get a Free Quote" button to share your requirements, or contact our team directly via WhatsApp or phone. We will discuss your goals and provide a clear proposal.',
       },
     ],
     relatedCategorySlugs: ['digital-marketing-seo', 'it-support-business-solutions', 'graphic-design-branding'],
-    seoTitle: 'Web & Software Development in Mardan | IT HUB Corporation',
+    seoTitle: 'Web & Software Development in Mardan | IZBA Marketing agency',
     seoDescription:
       'Custom website development, web applications, e-commerce stores, and software solutions built for speed and conversions in Mardan and KP.',
   },
@@ -306,8 +306,8 @@ export const serviceCategories: CategoryDetail[] = [
         description: 'We share transparent performance reports and scale winning campaigns for sustained growth.',
       },
     ],
-    startingPricePkr: null, // TODO: confirm starting price in PKR with IT HUB (e.g. 30000)
-    typicalTimeline: null, // TODO: confirm typical delivery timeline with IT HUB (e.g. "Monthly retainer / 2 weeks setup")
+    startingPricePkr: null, // TODO: confirm starting price in PKR with IZBA Marketing agency (e.g. 30000)
+    typicalTimeline: null, // TODO: confirm typical delivery timeline with IZBA Marketing agency (e.g. "Monthly retainer / 2 weeks setup")
     faqs: [
       {
         question: 'How quickly will I see results from SEO compared to paid ads?',
@@ -315,7 +315,7 @@ export const serviceCategories: CategoryDetail[] = [
           'Paid advertising (Google and Meta Ads) can begin delivering phone and WhatsApp inquiries within 24 to 48 hours of campaign launch. Search Engine Optimization (SEO) is a compounding organic investment that typically takes 3 to 6 months to secure top Google positions.',
       },
       {
-        question: 'Do I pay ad platforms directly or through IT HUB?',
+        question: 'Do I pay ad platforms directly or through IZBA Marketing agency?',
         answer:
           'You retain full ownership of your ad accounts and pay Google or Meta directly for ad spend, ensuring complete financial transparency. We charge a dedicated fee for campaign strategy, design, and optimization.',
       },
@@ -331,7 +331,7 @@ export const serviceCategories: CategoryDetail[] = [
       },
     ],
     relatedCategorySlugs: ['web-software-development', 'graphic-design-branding', 'video-content-production'],
-    seoTitle: 'Digital Marketing & SEO in Mardan | IT HUB Corporation',
+    seoTitle: 'Digital Marketing & SEO in Mardan | IZBA Marketing agency',
     seoDescription:
       'Search engine optimization, Google Ads, social media marketing, and local lead generation in Mardan and Khyber Pakhtunkhwa.',
   },
@@ -464,8 +464,8 @@ export const serviceCategories: CategoryDetail[] = [
         description: 'We train your team to review conversation logs and update answers as your business evolves.',
       },
     ],
-    startingPricePkr: null, // TODO: confirm starting price in PKR with IT HUB (e.g. 50000)
-    typicalTimeline: null, // TODO: confirm typical delivery timeline with IT HUB (e.g. "1 to 3 weeks")
+    startingPricePkr: null, // TODO: confirm starting price in PKR with IZBA Marketing agency (e.g. 50000)
+    typicalTimeline: null, // TODO: confirm typical delivery timeline with IZBA Marketing agency (e.g. "1 to 3 weeks")
     faqs: [
       {
         question: 'Can the AI chatbot connect to our WhatsApp business phone number?',
@@ -489,7 +489,7 @@ export const serviceCategories: CategoryDetail[] = [
       },
     ],
     relatedCategorySlugs: ['web-software-development', 'data-entry-virtual-assistance', 'it-support-business-solutions'],
-    seoTitle: 'AI Services & Automation in Mardan | IT HUB Corporation',
+    seoTitle: 'AI Services & Automation in Mardan | IZBA Marketing agency',
     seoDescription:
       'AI chatbot development, workflow automation, custom GPT assistants, and business process automation in Mardan and KP.',
   },
@@ -622,8 +622,8 @@ export const serviceCategories: CategoryDetail[] = [
         description: 'We deliver complete master source files ready for commercial print shops and digital use.',
       },
     ],
-    startingPricePkr: null, // TODO: confirm starting price in PKR with IT HUB (e.g. 15000)
-    typicalTimeline: null, // TODO: confirm typical delivery timeline with IT HUB (e.g. "3 to 7 business days")
+    startingPricePkr: null, // TODO: confirm starting price in PKR with IZBA Marketing agency (e.g. 15000)
+    typicalTimeline: null, // TODO: confirm typical delivery timeline with IZBA Marketing agency (e.g. "3 to 7 business days")
     faqs: [
       {
         question: 'Will I receive vector source files that print shops require?',
@@ -647,7 +647,7 @@ export const serviceCategories: CategoryDetail[] = [
       },
     ],
     relatedCategorySlugs: ['web-software-development', 'digital-marketing-seo', 'video-content-production'],
-    seoTitle: 'Graphic Design & Branding in Mardan | IT HUB Corporation',
+    seoTitle: 'Graphic Design & Branding in Mardan | IZBA Marketing agency',
     seoDescription:
       'Professional logo design, corporate brand identity, marketing collaterals, and packaging design in Mardan and KP.',
   },
@@ -780,8 +780,8 @@ export const serviceCategories: CategoryDetail[] = [
         description: 'We deliver your completed files (Excel, Google Sheets, CSV) and confirm your satisfaction.',
       },
     ],
-    startingPricePkr: null, // TODO: confirm starting price in PKR with IT HUB (e.g. 10000)
-    typicalTimeline: null, // TODO: confirm typical delivery timeline with IT HUB (e.g. "1 to 3 days per batch")
+    startingPricePkr: null, // TODO: confirm starting price in PKR with IZBA Marketing agency (e.g. 10000)
+    typicalTimeline: null, // TODO: confirm typical delivery timeline with IZBA Marketing agency (e.g. "1 to 3 days per batch")
     faqs: [
       {
         question: 'How do you guarantee that entered data is error-free?',
@@ -805,7 +805,7 @@ export const serviceCategories: CategoryDetail[] = [
       },
     ],
     relatedCategorySlugs: ['education-office-services', 'ai-services-automation', 'digital-products-ecommerce'],
-    seoTitle: 'Data Entry & Virtual Assistance in Mardan | IT HUB Corporation',
+    seoTitle: 'Data Entry & Virtual Assistance in Mardan | IZBA Marketing agency',
     seoDescription:
       'Accurate data entry, spreadsheet cleaning, web research, e-commerce product uploads, and virtual assistance in Mardan, KP.',
   },
@@ -938,8 +938,8 @@ export const serviceCategories: CategoryDetail[] = [
         description: 'We publish the store and provide walkthrough videos on adding new products and tracking orders.',
       },
     ],
-    startingPricePkr: null, // TODO: confirm starting price in PKR with IT HUB (e.g. 40000)
-    typicalTimeline: null, // TODO: confirm typical delivery timeline with IT HUB (e.g. "1 to 3 weeks")
+    startingPricePkr: null, // TODO: confirm starting price in PKR with IZBA Marketing agency (e.g. 40000)
+    typicalTimeline: null, // TODO: confirm typical delivery timeline with IZBA Marketing agency (e.g. "1 to 3 weeks")
     faqs: [
       {
         question: 'Should I choose Shopify or WooCommerce for my online store?',
@@ -963,7 +963,7 @@ export const serviceCategories: CategoryDetail[] = [
       },
     ],
     relatedCategorySlugs: ['web-software-development', 'graphic-design-branding', 'digital-marketing-seo'],
-    seoTitle: 'Digital Products & E-commerce in Mardan | IT HUB Corporation',
+    seoTitle: 'Digital Products & E-commerce in Mardan | IZBA Marketing agency',
     seoDescription:
       'Shopify store setup, WooCommerce development, digital product creation, and payment gateway configuration in Mardan, KP.',
   },
@@ -1096,8 +1096,8 @@ export const serviceCategories: CategoryDetail[] = [
         description: 'We export high-definition MP4 files rendered to the exact specifications of your target platform.',
       },
     ],
-    startingPricePkr: null, // TODO: confirm starting price in PKR with IT HUB (e.g. 8000 per video)
-    typicalTimeline: null, // TODO: confirm typical delivery timeline with IT HUB (e.g. "2 to 4 business days")
+    startingPricePkr: null, // TODO: confirm starting price in PKR with IZBA Marketing agency (e.g. 8000 per video)
+    typicalTimeline: null, // TODO: confirm typical delivery timeline with IZBA Marketing agency (e.g. "2 to 4 business days")
     faqs: [
       {
         question: 'How do I upload large raw video files to your team?',
@@ -1121,7 +1121,7 @@ export const serviceCategories: CategoryDetail[] = [
       },
     ],
     relatedCategorySlugs: ['graphic-design-branding', 'digital-marketing-seo', 'digital-products-ecommerce'],
-    seoTitle: 'Video & Content Production in Mardan | IT HUB Corporation',
+    seoTitle: 'Video & Content Production in Mardan | IZBA Marketing agency',
     seoDescription:
       'Professional YouTube video editing, social reels, motion graphics, and promo video production in Mardan and KP.',
   },
@@ -1254,8 +1254,8 @@ export const serviceCategories: CategoryDetail[] = [
         description: 'We share updated credentials, administrative access, and best practices to prevent recurrence.',
       },
     ],
-    startingPricePkr: null, // TODO: confirm starting price in PKR with IT HUB (e.g. 15000)
-    typicalTimeline: null, // TODO: confirm typical delivery timeline with IT HUB (e.g. "1 to 2 business days")
+    startingPricePkr: null, // TODO: confirm starting price in PKR with IZBA Marketing agency (e.g. 15000)
+    typicalTimeline: null, // TODO: confirm typical delivery timeline with IZBA Marketing agency (e.g. "1 to 2 business days")
     faqs: [
       {
         question: 'Why are our company emails landing in our clients spam folders?',
@@ -1275,11 +1275,11 @@ export const serviceCategories: CategoryDetail[] = [
       {
         question: 'Do you assist with tax, FBR, KPRA or legal compliance software?',
         answer:
-          'Tax and compliance requirements (including platforms such as FBR or KPRA) update continually. IT HUB provides technical setup, document preparation, and digital configuration assistance on a case-by-case basis, and collaborates with certified tax and legal practitioners where formal legal or tax certification is required.',
+          'Tax and compliance requirements (including platforms such as FBR or KPRA) update continually. IZBA Marketing agency provides technical setup, document preparation, and digital configuration assistance on a case-by-case basis, and collaborates with certified tax and legal practitioners where formal legal or tax certification is required.',
       },
     ],
     relatedCategorySlugs: ['web-software-development', 'data-entry-virtual-assistance', 'education-office-services'],
-    seoTitle: 'IT Support & Business Solutions in Mardan | IT HUB Corporation',
+    seoTitle: 'IT Support & Business Solutions in Mardan | IZBA Marketing agency',
     seoDescription:
       'Business email setup, cloud backup, WordPress troubleshooting, and IT consulting in Mardan and Khyber Pakhtunkhwa.',
   },
@@ -1412,8 +1412,8 @@ export const serviceCategories: CategoryDetail[] = [
         description: 'We deliver fully editable source files (Word, PowerPoint, Excel) and print-ready PDFs.',
       },
     ],
-    startingPricePkr: null, // TODO: confirm starting price in PKR with IT HUB (e.g. 5000)
-    typicalTimeline: null, // TODO: confirm typical delivery timeline with IT HUB (e.g. "1 to 3 business days")
+    startingPricePkr: null, // TODO: confirm starting price in PKR with IZBA Marketing agency (e.g. 5000)
+    typicalTimeline: null, // TODO: confirm typical delivery timeline with IZBA Marketing agency (e.g. "1 to 3 business days")
     faqs: [
       {
         question: 'Will I receive editable files (Word / PowerPoint) or only PDFs?',
@@ -1437,7 +1437,7 @@ export const serviceCategories: CategoryDetail[] = [
       },
     ],
     relatedCategorySlugs: ['data-entry-virtual-assistance', 'graphic-design-branding', 'it-support-business-solutions'],
-    seoTitle: 'Education & Office Services in Mardan | IT HUB Corporation',
+    seoTitle: 'Education & Office Services in Mardan | IZBA Marketing agency',
     seoDescription:
       'Professional PowerPoint design, resume formatting, document styling, and English/Urdu/Pashto translation in Mardan, KP.',
   },

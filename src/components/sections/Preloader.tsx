@@ -143,7 +143,7 @@ export const Preloader: React.FC = () => {
           <div className={styles.logoBadge} aria-hidden="true">
             <Image
               src="/logo-icon.svg"
-              alt="IT HUB Corporation logo"
+              alt="IZBA Marketing Agency logo"
               width={34}
               height={34}
             />

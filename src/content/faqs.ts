@@ -43,7 +43,7 @@ export const faqs: Faq[] = [
       'How do you safeguard client confidentiality and intellectual property?',
     answer:
       'We respect client privacy and are happy to sign bilateral Non-Disclosure Agreements (NDAs). All source files, project assets, and custom deliverables become your full property upon project completion.',
-    category: 'Security & Compliance',
+    category: 'Confidentiality & Ownership',
     sortOrder: 5,
   },
   {

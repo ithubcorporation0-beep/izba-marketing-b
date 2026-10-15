@@ -9,6 +9,7 @@ import gsap from 'gsap';
 import { siteConfig } from '@/config/site';
 import { Button } from '@/components/ui/Button';
 import { useReducedMotion } from '@/lib/motion';
+import { projects } from '@/content/projects';
 
 interface MobileNavProps {
   isOpen: boolean;
@@ -164,7 +165,7 @@ export const MobileNav: React.FC<MobileNavProps> = ({ isOpen, onClose }) => {
     { label: 'Home', href: '/' },
     { label: 'About', href: '/about' },
     { label: 'Services', href: '/services' },
-    { label: 'Portfolio', href: '/portfolio' },
+    ...(projects.length > 0 ? [{ label: 'Portfolio', href: '/portfolio' }] : []),
     { label: 'Digital Products', href: '/digital-products' },
     { label: 'Contact', href: '/contact' },
   ];
@@ -197,11 +198,11 @@ export const MobileNav: React.FC<MobileNavProps> = ({ isOpen, onClose }) => {
             href="/"
             onClick={handleAnimatedClose}
             className="flex items-center gap-2.5 focus:outline-none focus-visible:ring-2 focus-visible:ring-[var(--color-gold)] rounded-[var(--radius-sm)]"
-            aria-label="IT HUB Corporation logo"
+            aria-label="IZBA Marketing Agency logo"
           >
             <Image
               src="/logo.svg"
-              alt="IT HUB Corporation logo"
+              alt="IZBA Marketing Agency logo"
               width={140}
               height={36}
               className="h-8 w-auto object-contain"

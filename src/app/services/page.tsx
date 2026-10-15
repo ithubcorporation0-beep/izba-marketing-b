@@ -29,7 +29,7 @@ export default function ServicesPage() {
               Full Service Catalog
             </Badge>
             <h1 className={styles.title}>
-              Services &amp; Digital{' '}
+              Services & Digital{' '}
               <span className={styles.gradientText}>Capabilities</span>
             </h1>
             <p className={styles.subtitle}>

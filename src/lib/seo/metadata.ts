@@ -23,6 +23,17 @@ export const getSiteUrl = (): string => {
   return 'https://izbamarketing.com';
 };
 
+function cleanSeoText(text?: string): string {
+  if (!text) return '';
+  return text
+    .replace(/&amp;/g, '&')
+    .replace(/&quot;/g, '"')
+    .replace(/&#39;/g, "'")
+    .replace(/&lt;/g, '<')
+    .replace(/&gt;/g, '>')
+    .trim();
+}
+
 /**
  * Standardized metadata builder for Next.js App Router pages.
  * Enforces canonical URLs, consistent title structure, Open Graph, and Twitter cards.
@@ -38,7 +49,7 @@ export function constructMetadata({
   const canonicalUrl = `${siteUrl}${cleanPath === '/' ? '' : cleanPath}`;
   const metadataBase = new URL(siteUrl);
 
-  let rawTitle = title?.trim() || '';
+  let rawTitle = cleanSeoText(title?.trim() || '');
   if (rawTitle) {
     // Strip any trailing brand suffix to avoid duplicates
     rawTitle = rawTitle
@@ -46,22 +57,26 @@ export function constructMetadata({
       .trim();
   }
 
-  const pageTitle = rawTitle
-    ? `${rawTitle} | ${siteConfig.name}`
-    : `${siteConfig.name} — ${siteConfig.tagline}`;
+  const cleanDescription = cleanSeoText(description);
+
+  const pageTitle = cleanSeoText(
+    rawTitle
+      ? `${rawTitle} | ${siteConfig.name}`
+      : `${siteConfig.name} — ${siteConfig.tagline}`
+  );
 
   return {
     title: {
       absolute: pageTitle,
     },
-    description,
+    description: cleanDescription,
     metadataBase,
     alternates: {
       canonical: canonicalUrl,
     },
     openGraph: {
       title: pageTitle,
-      description,
+      description: cleanDescription,
       url: canonicalUrl,
       siteName: siteConfig.name,
       images: [
@@ -78,7 +93,7 @@ export function constructMetadata({
     twitter: {
       card: 'summary_large_image',
       title: pageTitle,
-      description,
+      description: cleanDescription,
       images: [image],
     },
     robots: {

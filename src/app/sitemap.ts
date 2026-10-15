@@ -1,6 +1,6 @@
 import { MetadataRoute } from 'next';
 import { getSiteUrl } from '@/lib/seo/metadata';
-import { serviceCategories } from '@/content/services';
+import { serviceCategories, services } from '@/content/services';
 import { projects } from '@/content/projects';
 
 export const dynamic = 'force-static';
@@ -8,7 +8,7 @@ export const dynamic = 'force-static';
 export default function sitemap(): MetadataRoute.Sitemap {
   const baseUrl = getSiteUrl();
 
-  // Static core routes
+  // Static core routes (8 routes)
   const staticRoutes = [
     '',
     '/about',
@@ -33,6 +33,14 @@ export default function sitemap(): MetadataRoute.Sitemap {
     priority: 0.9,
   }));
 
+  // 90 Individual Service Detail Pages
+  const serviceRoutes = services.map((svc) => ({
+    url: `${baseUrl}/services/${svc.slug}`,
+    lastModified: new Date(),
+    changeFrequency: 'monthly' as const,
+    priority: 0.7,
+  }));
+
   // Dynamic project routes (if any are published)
   const projectRoutes = projects.map((project) => ({
     url: `${baseUrl}/portfolio/${project.slug}`,
@@ -41,5 +49,10 @@ export default function sitemap(): MetadataRoute.Sitemap {
     priority: 0.7,
   }));
 
-  return [...staticRoutes, ...categoryRoutes, ...projectRoutes];
+  return [
+    ...staticRoutes,
+    ...categoryRoutes,
+    ...serviceRoutes,
+    ...projectRoutes,
+  ];
 }

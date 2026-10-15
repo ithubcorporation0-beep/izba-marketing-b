@@ -59,7 +59,7 @@ export const CategoryCard: React.FC<CategoryCardProps> = ({
         <p className={styles.description}>{description}</p>
 
         <div className={styles.footer}>
-          <span className={styles.linkText}>Browse Category</span>
+          <span className={styles.linkText}>Browse {categoryTitle}</span>
           <ArrowRight
             size={16}
             className={styles.arrowIcon}

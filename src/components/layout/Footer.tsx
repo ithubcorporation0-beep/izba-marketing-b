@@ -11,53 +11,6 @@ import styles from './Footer.module.css';
 
 export const Footer: React.FC = () => {
   const currentYear = new Date().getFullYear();
-  const [localTime, setLocalTime] = useState<string>('');
-  const [isWordmarkVisible, setIsWordmarkVisible] = useState(false);
-  const wordmarkRef = useRef<HTMLDivElement>(null);
-
-  // Live local time clock
-  useEffect(() => {
-    const updateTime = () => {
-      try {
-        const timeZone = siteConfig.timezone || 'UTC';
-        const formatted = new Intl.DateTimeFormat('en-US', {
-          timeZone,
-          hour: '2-digit',
-          minute: '2-digit',
-          second: '2-digit',
-          hour12: true,
-        }).format(new Date());
-        setLocalTime(formatted);
-      } catch {
-        setLocalTime(new Date().toUTCString().slice(17, 25) + ' UTC');
-      }
-    };
-
-    updateTime();
-    const interval = setInterval(updateTime, 1000);
-    return () => clearInterval(interval);
-  }, []);
-
-  // Slide-up trigger for giant wordmark when it enters viewport
-  useEffect(() => {
-    const el = wordmarkRef.current;
-    if (!el) return;
-
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            setIsWordmarkVisible(true);
-            observer.unobserve(entry.target);
-          }
-        });
-      },
-      { threshold: 0.1 }
-    );
-
-    observer.observe(el);
-    return () => observer.disconnect();
-  }, []);
 
   const scrollToTop = () => {
     window.scrollTo({ top: 0, behavior: 'smooth' });
@@ -84,16 +37,8 @@ export const Footer: React.FC = () => {
   return (
     <footer className={styles.footer} role="contentinfo">
       <div className={styles.container}>
-        {/* Top Meta Bar: Live Clock & Back to Top */}
+        {/* Top Meta Bar: Back to Top */}
         <div className={styles.metaBar}>
-          <div className={styles.clockWrapper}>
-            <span className={styles.pulseDot} aria-hidden="true" />
-            <Clock size={14} className="text-[#38bdf8]" aria-hidden="true" />
-            <span>
-              {localTime ? `${localTime} (${siteConfig.timezoneLabel || 'UTC'})` : 'Studio Clock'}
-            </span>
-          </div>
-
           <button
             type="button"
             onClick={scrollToTop}
@@ -112,11 +57,11 @@ export const Footer: React.FC = () => {
             <Link
               href="/"
               className="inline-flex items-center gap-3 focus:outline-none focus-visible:ring-2 focus-visible:ring-[var(--color-gold)] rounded-[var(--radius-sm)]"
-              aria-label="IT HUB Corporation logo"
+              aria-label="IZBA Marketing Agency logo"
             >
               <Image
                 src="/logo-light.svg"
-                alt="IT HUB Corporation logo"
+                alt="IZBA Marketing Agency logo"
                 width={160}
                 height={40}
                 className="h-9 w-auto object-contain"
@@ -126,16 +71,6 @@ export const Footer: React.FC = () => {
             <p className="text-sm text-[var(--color-text-muted-dark)] leading-relaxed max-w-sm">
               {siteConfig.description}
             </p>
-
-            <div className="pt-2">
-              <Badge
-                variant="neutral"
-                size="sm"
-                className="bg-[var(--color-white)]/10 text-[var(--color-white)] border-transparent"
-              >
-                Clear Communication &amp; Support
-              </Badge>
-            </div>
           </div>
 
           {/* Quick Links (2 cols) */}
@@ -221,7 +156,7 @@ export const Footer: React.FC = () => {
           {/* Contact Details (3 cols) */}
           <div className="lg:col-span-3 space-y-4">
             <h3 className="text-xs font-semibold uppercase tracking-wider text-[var(--color-white)]">
-              Contact &amp; HQ
+              Contact & HQ
             </h3>
             <div className="space-y-3 text-sm">
               <div className="flex items-start gap-2.5">
@@ -314,16 +249,6 @@ export const Footer: React.FC = () => {
               Terms of Service
             </Link>
           </div>
-        </div>
-
-        {/* Giant "IZBA" Wordmark Across the Bottom */}
-        <div
-          ref={wordmarkRef}
-          className={styles.giantWordmarkWrapper}
-          data-visible={isWordmarkVisible}
-          aria-hidden="true"
-        >
-          <div className={styles.giantWordmark}>IZBA</div>
         </div>
       </div>
     </footer>

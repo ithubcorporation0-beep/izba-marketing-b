@@ -7,6 +7,7 @@ import { usePathname } from 'next/navigation';
 import { Menu, ArrowRight } from 'lucide-react';
 import { MobileNav } from './MobileNav';
 import { Button } from '@/components/ui/Button';
+import { projects } from '@/content/projects';
 import styles from './Header.module.css';
 
 export const Header: React.FC = () => {
@@ -54,7 +55,7 @@ export const Header: React.FC = () => {
     { label: 'Home', href: '/' },
     { label: 'About', href: '/about' },
     { label: 'Services', href: '/services' },
-    { label: 'Portfolio', href: '/portfolio' },
+    ...(projects.length > 0 ? [{ label: 'Portfolio', href: '/portfolio' }] : []),
     { label: 'Digital Products', href: '/digital-products' },
     { label: 'Contact', href: '/contact' },
   ];
@@ -80,11 +81,11 @@ export const Header: React.FC = () => {
           <Link
             href="/"
             className="flex items-center gap-3 group focus:outline-none focus-visible:ring-2 focus-visible:ring-[var(--color-gold)] rounded-[var(--radius-sm)]"
-            aria-label="IT HUB Corporation logo"
+            aria-label="IZBA Marketing Agency logo"
           >
             <Image
               src={isDarkHero ? '/logo-light.svg' : '/logo.svg'}
-              alt="IT HUB Corporation logo"
+              alt="IZBA Marketing Agency logo"
               width={160}
               height={40}
               priority
@@ -136,7 +137,7 @@ export const Header: React.FC = () => {
 
           {/* Header Actions */}
           <div className="flex items-center gap-3">
-            {/* The "Schedule a Call Now" button always stays visible whenever the header is shown */}
+            {/* The "Get in Touch" button always stays visible whenever the header is shown */}
             <div className="inline-flex">
               <Link
                 href="/contact"
@@ -146,7 +147,7 @@ export const Header: React.FC = () => {
                     : 'bg-[var(--color-navy)] text-white hover:bg-[var(--color-navy-light)] border border-[var(--color-gold)]/40 hover:border-[var(--color-gold)]'
                 }`}
               >
-                <span>Schedule a Call Now</span>
+                <span>Get in Touch</span>
               </Link>
             </div>
 

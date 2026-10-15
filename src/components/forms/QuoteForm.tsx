@@ -44,14 +44,27 @@ const initialFormState: FormState = {
   honeypot: '',
 };
 
-function QuoteFormInner() {
-  const searchParams = useSearchParams();
-  const serviceParam = searchParams.get('service') || '';
+const DEFAULT_ACCESS_KEY = 'd54f97d2-e7c5-4ec5-b282-ed968dda322f';
 
-  const [formData, setFormData] = useState<FormState>(() => ({
-    ...initialFormState,
-    service: serviceParam,
-  }));
+function SearchParamSync({
+  onServiceParamChange,
+}: {
+  onServiceParamChange: (param: string) => void;
+}) {
+  const searchParams = useSearchParams();
+  const serviceParam = searchParams?.get('service') || '';
+
+  useEffect(() => {
+    if (serviceParam) {
+      onServiceParamChange(serviceParam);
+    }
+  }, [serviceParam, onServiceParamChange]);
+
+  return null;
+}
+
+export function QuoteForm() {
+  const [formData, setFormData] = useState<FormState>(initialFormState);
   const [errors, setErrors] = useState<Partial<Record<keyof FormState, string>>>({});
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSubmitted, setIsSubmitted] = useState(false);
@@ -64,23 +77,22 @@ function QuoteFormInner() {
   const publishedServices: Service[] = getPublishedServices();
   const publishedCategories = categories.filter((c) => c.isPublished);
 
-  // Pre-select service from URL parameter if provided
-  useEffect(() => {
-    if (serviceParam) {
+  // Pre-select service from URL parameter when client hydrates
+  const handleServiceParamChange = React.useCallback(
+    (serviceParam: string) => {
       const match = publishedServices.find((s) => s.slug === serviceParam);
       if (match) {
         setFormData((prev) => ({ ...prev, service: match.slug }));
       }
-    }
-  }, [serviceParam, publishedServices]);
-
-  // Access key check
-  const accessKey = process.env.NEXT_PUBLIC_WEB3FORMS_KEY || '';
-  const isKeyConfigured = Boolean(
-    accessKey &&
-      !accessKey.startsWith('PLACEHOLDER_') &&
-      accessKey.trim().length > 0
+    },
+    [publishedServices]
   );
+
+  // Access key check: uses user key d54f97d2-e7c5-4ec5-b282-ed968dda322f as default
+  const envKey = process.env.NEXT_PUBLIC_WEB3FORMS_KEY?.trim() || '';
+  const accessKey =
+    envKey && !envKey.startsWith('PLACEHOLDER_') ? envKey : DEFAULT_ACCESS_KEY;
+  const isKeyConfigured = Boolean(accessKey && accessKey.length > 0);
 
   const handleChange = (
     e: React.ChangeEvent<
@@ -335,7 +347,24 @@ function QuoteFormInner() {
         </div>
       )}
 
-      <form onSubmit={handleSubmit} className={styles.form} noValidate>
+      <Suspense fallback={null}>
+        <SearchParamSync onServiceParamChange={handleServiceParamChange} />
+      </Suspense>
+
+      <form
+        action="https://api.web3forms.com/submit"
+        method="POST"
+        onSubmit={handleSubmit}
+        className={styles.form}
+        noValidate
+      >
+        <input type="hidden" name="access_key" value={accessKey} />
+        <input type="hidden" name="subject" value="New enquiry from IZBA website" />
+        <input
+          type="hidden"
+          name="from_name"
+          value={formData.fullName || 'IZBA Marketing Enquiry'}
+        />
         {/* Anti-spam Honeypot */}
         <div className={styles.honeypotWrapper} aria-hidden="true">
           <label htmlFor="field-honeypot">Leave this field blank</label>
@@ -695,19 +724,5 @@ function QuoteFormInner() {
         </div>
       </form>
     </div>
-  );
-}
-
-export function QuoteForm() {
-  return (
-    <Suspense
-      fallback={
-        <div className="p-8 text-center text-sm text-[var(--color-muted)]">
-          Loading quote form...
-        </div>
-      }
-    >
-      <QuoteFormInner />
-    </Suspense>
   );
 }

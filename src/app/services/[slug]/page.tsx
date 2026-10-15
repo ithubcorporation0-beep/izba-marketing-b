@@ -38,9 +38,13 @@ interface CategoryPageProps {
 }
 
 export async function generateStaticParams() {
-  return serviceCategories.map((cat) => ({
+  const categoryParams = serviceCategories.map((cat) => ({
     slug: cat.slug,
   }));
+  const serviceParams = services.map((svc) => ({
+    slug: svc.slug,
+  }));
+  return [...categoryParams, ...serviceParams];
 }
 
 export async function generateMetadata({
@@ -48,6 +52,15 @@ export async function generateMetadata({
 }: CategoryPageProps): Promise<Metadata> {
   const { slug } = await params;
   const category = getCategoryDetailBySlug(slug);
+  const matchedService = services.find((s) => s.slug === slug);
+
+  if (!category && matchedService) {
+    return constructMetadata({
+      title: `${matchedService.name} in Mardan | IZBA Marketing agency`,
+      description: matchedService.shortDescription,
+      pathname: `/services/${matchedService.slug}`,
+    });
+  }
 
   if (!category) {
     return {
@@ -56,7 +69,7 @@ export async function generateMetadata({
   }
 
   return constructMetadata({
-    title: category.seoTitle || `${category.name} in Mardan | IT HUB`,
+    title: category.seoTitle || `${category.name} in Mardan | IZBA Marketing agency`,
     description: category.seoDescription || category.shortDescription,
     pathname: `/services/${category.slug}`,
   });
@@ -64,27 +77,29 @@ export async function generateMetadata({
 
 export default async function CategoryDetailPage({ params }: CategoryPageProps) {
   const { slug } = await params;
-  const category = getCategoryDetailBySlug(slug);
+  const matchedService = services.find((s) => s.slug === slug);
+  const category =
+    getCategoryDetailBySlug(slug) ||
+    (matchedService ? getCategoryDetailBySlug(matchedService.categorySlug) : undefined);
 
-  // If slug is not a category, check if it was an individual service slug and redirect to its category block
   if (!category) {
-    const matchedService = services.find((s) => s.slug === slug);
-    if (matchedService && matchedService.categorySlug) {
-      redirect(`/services/${matchedService.categorySlug}#${matchedService.slug}`);
-    }
     notFound();
   }
 
   const categoryName: string = category.name || category.title || 'Category';
+  const pageHeading = matchedService ? matchedService.name : categoryName;
   const siteUrl = getSiteUrl();
 
-  // Quote link with category and first service pre-selected
-  const primaryQuoteHref = `/contact?category=${category.slug}&service=${category.services[0]?.slug || category.slug}`;
-  const whatsappNumber = siteConfig.contact.whatsapp && !siteConfig.contact.whatsapp.startsWith('PLACEHOLDER_')
-    ? siteConfig.contact.whatsapp.replace(/[^0-9]/g, '')
-    : '923149140414';
+  // Quote link with category and service pre-selected
+  const selectedServiceSlug =
+    matchedService?.slug || category.services[0]?.slug || category.slug;
+  const primaryQuoteHref = `/contact?category=${category.slug}&service=${selectedServiceSlug}`;
+  const whatsappNumber =
+    siteConfig.contact.whatsapp && !siteConfig.contact.whatsapp.startsWith('PLACEHOLDER_')
+      ? siteConfig.contact.whatsapp.replace(/[^0-9]/g, '')
+      : '923149140414';
   const whatsappUrl = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(
-    `Hi IT HUB, I am interested in ${categoryName}.`
+    `Hi IZBA Marketing agency, I am interested in ${pageHeading}.`
   )}`;
 
   // Related portfolio and testimonials (proof)
@@ -92,7 +107,11 @@ export default async function CategoryDetailPage({ params }: CategoryPageProps) 
     (p) => p.categorySlug === category.slug && p.isPublished
   );
   const proofTestimonials = testimonials.filter(
-    (t) => t.isPublished && (t.serviceSlug ? category.services.some((s) => s.slug === t.serviceSlug) : true)
+    (t) =>
+      t.isPublished &&
+      (t.serviceSlug
+        ? category.services.some((s) => s.slug === t.serviceSlug)
+        : true)
   );
   const hasProof = proofProjects.length > 0 || proofTestimonials.length > 0;
 
@@ -109,21 +128,45 @@ export default async function CategoryDetailPage({ params }: CategoryPageProps) 
   }));
 
   // Structured Data
-  const breadcrumbJsonLd = getBreadcrumbJsonLd([
-    { name: 'Home', path: '/' },
-    { name: 'Services', path: '/services' },
-    { name: categoryName, path: `/services/${category.slug}` },
-  ]);
+  const breadcrumbItems = matchedService
+    ? [
+        { label: 'Home', href: '/' },
+        { label: 'Services', href: '/services' },
+        { label: categoryName, href: `/services/${category.slug}` },
+        { label: matchedService.name },
+      ]
+    : [
+        { label: 'Home', href: '/' },
+        { label: 'Services', href: '/services' },
+        { label: categoryName },
+      ];
+
+  const breadcrumbJsonLd = getBreadcrumbJsonLd(
+    matchedService
+      ? [
+          { name: 'Home', path: '/' },
+          { name: 'Services', path: '/services' },
+          { name: categoryName, path: `/services/${category.slug}` },
+          { name: matchedService.name, path: `/services/${matchedService.slug}` },
+        ]
+      : [
+          { name: 'Home', path: '/' },
+          { name: 'Services', path: '/services' },
+          { name: categoryName, path: `/services/${category.slug}` },
+        ]
+  );
 
   const serviceJsonLd = {
     '@context': 'https://schema.org',
     '@type': 'Service',
-    name: categoryName,
-    description: category.oneSentencePromise,
-    url: `${siteUrl}/services/${category.slug}`,
+    name: pageHeading,
+    description: matchedService
+      ? matchedService.shortDescription
+      : category.oneSentencePromise,
+    url: `${siteUrl}/services/${matchedService ? matchedService.slug : category.slug}`,
     provider: {
       '@type': 'LocalBusiness',
-      name: 'IT HUB Corporation',
+      name: 'IZBA Marketing agency',
       address: {
         '@type': 'PostalAddress',
         addressLocality: 'Mardan',
@@ -178,31 +221,30 @@ export default async function CategoryDetailPage({ params }: CategoryPageProps) 
       {/* Top Breadcrumb Navigation */}
       <div className={styles.topBar}>
         <Container size="default">
-          <Breadcrumb
-            items={[
-              { label: 'Services', href: '/services' },
-              { label: categoryName },
-            ]}
-          />
+          <Breadcrumb items={breadcrumbItems} />
         </Container>
       </div>
 
-      {/* 1. HERO: category title, one-sentence promise, ONE primary button */}
+      {/* 1. HERO: title, promise, ONE primary button */}
       <header className={styles.heroSection}>
         <Container size="default">
           <Reveal className={styles.heroContent}>
             <div className={styles.heroBadge}>
               <Badge variant="gold" size="md">
-                Service Category
+                {matchedService ? 'Featured Service' : 'Service Category'}
               </Badge>
             </div>
 
             <h1 className={styles.title}>
-              {categoryName}{' '}
+              {pageHeading}{' '}
               <span className={styles.titleAccent}>in Mardan</span>
             </h1>
 
-            <p className={styles.promise}>{category.oneSentencePromise}</p>
+            <p className={styles.promise}>
+              {matchedService
+                ? matchedService.shortDescription
+                : category.oneSentencePromise}
+            </p>
 
             <div className={styles.heroActionGroup}>
               <Button
@@ -220,7 +262,7 @@ export default async function CategoryDetailPage({ params }: CategoryPageProps) 
                   href={whatsappUrl}
                   target="_blank"
                   rel="noopener noreferrer"
-                  aria-label={`Chat with IT HUB on WhatsApp about ${categoryName}`}
+                  aria-label={`Chat with IZBA Marketing agency on WhatsApp about ${pageHeading}`}
                 >
                   0314 9140414
                 </a>
@@ -350,10 +392,10 @@ export default async function CategoryDetailPage({ params }: CategoryPageProps) 
         <Container size="default">
           <Reveal className={styles.sectionHeaderCenter}>
             <Badge variant="gold" size="sm">
-              Investment &amp; Schedule
+              Investment & Schedule
             </Badge>
             <h2 id="price-heading" className={styles.sectionTitle}>
-              Pricing &amp; Delivery Timeline
+              Pricing & Delivery Timeline
             </h2>
             <p className={styles.sectionSubtitle}>
               Clear commercial terms tailored to your specific project scope with zero unexpected fees.
@@ -419,7 +461,7 @@ export default async function CategoryDetailPage({ params }: CategoryPageProps) 
                 Proven Client Results
               </h2>
               <p className={styles.sectionSubtitle}>
-                Verified work delivered by IT HUB Corporation.
+                Verified work delivered by IZBA Marketing agency.
               </p>
             </Reveal>
 
@@ -447,7 +489,7 @@ export default async function CategoryDetailPage({ params }: CategoryPageProps) 
                 Frequently Asked Questions
               </h2>
               <p className={styles.sectionSubtitle}>
-                Clear answers regarding project requirements, turnarounds, and working with IT HUB.
+                Clear answers regarding project requirements, turnarounds, and working with IZBA Marketing agency.
               </p>
             </Reveal>
 
@@ -463,7 +505,7 @@ export default async function CategoryDetailPage({ params }: CategoryPageProps) 
         <Container size="default">
           <Reveal className={styles.finalCtaBox}>
             <h2 id="final-cta-heading" className={styles.finalCtaTitle}>
-              Ready to Start Your {categoryName} Project?
+              Ready to Start Your {pageHeading} Project?
             </h2>
             <p className={styles.finalCtaSubtitle}>
               Tell us about your requirements and we will prepare a clear, itemized proposal for your business.
@@ -485,7 +527,7 @@ export default async function CategoryDetailPage({ params }: CategoryPageProps) 
                   href={whatsappUrl}
                   target="_blank"
                   rel="noopener noreferrer"
-                  aria-label={`Message IT HUB on WhatsApp regarding ${categoryName}`}
+                  aria-label={`Message IZBA Marketing agency on WhatsApp regarding ${pageHeading}`}
                 >
                   Click here to chat with our team
                 </a>
@@ -507,7 +549,7 @@ export default async function CategoryDetailPage({ params }: CategoryPageProps) 
                 Related Service Categories
               </h2>
               <p className={styles.sectionSubtitle}>
-                Discover other specialized disciplines offered by IT HUB Corporation.
+                Discover other specialized disciplines offered by IZBA Marketing agency.
               </p>
             </Reveal>
 

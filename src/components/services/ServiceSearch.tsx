@@ -17,31 +17,38 @@ import { Button } from '@/components/ui/Button';
 import { Badge } from '@/components/ui/Badge';
 import styles from './ServiceSearch.module.css';
 
-interface ServiceSearchInnerProps {
+interface ServiceSearchProps {
   services: Service[];
   categories: Category[];
 }
 
-const ServiceSearchInner: React.FC<ServiceSearchInnerProps> = ({
+function CategoryParamSync({
+  onCategoryChange,
+}: {
+  onCategoryChange: (category: string) => void;
+}) {
+  const searchParams = useSearchParams();
+  const urlCategory = searchParams?.get('category') || 'all';
+
+  useEffect(() => {
+    if (urlCategory) {
+      onCategoryChange(urlCategory);
+    }
+  }, [urlCategory, onCategoryChange]);
+
+  return null;
+}
+
+export const ServiceSearch: React.FC<ServiceSearchProps> = ({
   services,
   categories,
 }) => {
-  const searchParams = useSearchParams();
   const router = useRouter();
   const pathname = usePathname();
 
-  const urlCategory = searchParams?.get('category') || 'all';
-
   const [searchQuery, setSearchQuery] = useState('');
-  const [selectedCategory, setSelectedCategory] = useState(urlCategory);
+  const [selectedCategory, setSelectedCategory] = useState('all');
   const [activeScrollSpyCategory, setActiveScrollSpyCategory] = useState<string>('all');
-
-  // Sync category if URL parameter changes
-  useEffect(() => {
-    if (urlCategory) {
-      setSelectedCategory(urlCategory);
-    }
-  }, [urlCategory]);
 
   // Scroll-spy observer for category sections when viewing all categories
   useEffect(() => {
@@ -79,7 +86,8 @@ const ServiceSearchInner: React.FC<ServiceSearchInnerProps> = ({
   const handleCategoryChange = (newCat: string) => {
     setSelectedCategory(newCat);
     setActiveScrollSpyCategory(newCat);
-    const params = new URLSearchParams(searchParams?.toString() || '');
+    const search = typeof window !== 'undefined' ? window.location.search : '';
+    const params = new URLSearchParams(search);
     if (newCat === 'all') {
       params.delete('category');
     } else {
@@ -143,6 +151,10 @@ const ServiceSearchInner: React.FC<ServiceSearchInnerProps> = ({
 
   return (
     <div className={styles.wrapper}>
+      <Suspense fallback={null}>
+        <CategoryParamSync onCategoryChange={setSelectedCategory} />
+      </Suspense>
+
       {/* Search Input Box */}
       <div className={styles.searchBarContainer}>
         <div className={styles.searchBox}>
@@ -346,15 +358,5 @@ const ServiceSearchInner: React.FC<ServiceSearchInnerProps> = ({
         </div>
       )}
     </div>
-  );
-};
-
-export const ServiceSearch: React.FC<ServiceSearchInnerProps> = (props) => {
-  return (
-    <Suspense
-      fallback={<div className={styles.loading}>Loading directory...</div>}
-    >
-      <ServiceSearchInner {...props} />
-    </Suspense>
   );
 };

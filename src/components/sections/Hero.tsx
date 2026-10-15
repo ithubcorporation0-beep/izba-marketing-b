@@ -213,7 +213,7 @@ export const Hero: React.FC = () => {
           />
           <div className={styles.showcaseBadge} aria-hidden="true">
             <span className={styles.pulseDot} />
-            <span>Creative Studio Operations &bull; Global Delivery</span>
+            <span>Creative Studio Operations</span>
           </div>
         </div>
       </div>

@@ -59,7 +59,7 @@ export const FeaturedServicesSection: React.FC = () => {
                   <p className={styles.cardDesc}>{service.description}</p>
 
                   <div className={styles.cardFooter}>
-                    <span className={styles.actionText}>View Details</span>
+                    <span className={styles.actionText}>View {service.displayName}</span>
                     <ArrowRight size={16} className={styles.arrowIcon} />
                   </div>
                 </Card>

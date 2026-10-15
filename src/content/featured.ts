@@ -81,14 +81,6 @@ export const featuredServices: FeaturedService[] = [
     description:
       'Design, packaging, licensing, and automated instant delivery for downloadable digital assets.',
   },
-  {
-    displayName: 'AI Solutions and Automation',
-    targetType: 'category',
-    slug: 'ai-services-automation',
-    categorySlug: 'ai-services-automation',
-    description:
-      'Full suite of intelligent chatbots, workflow automations, and operational AI tool integrations.',
-  },
 ];
 
 /**

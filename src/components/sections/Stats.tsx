@@ -25,7 +25,7 @@ const StatItem: React.FC<StatItemProps> = ({
   description,
   isReducedMotion,
 }) => {
-  const [displayValue, setDisplayValue] = useState(isReducedMotion ? numericValue : 0);
+  const [displayValue, setDisplayValue] = useState(numericValue);
   const cardRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
@@ -37,6 +37,7 @@ const StatItem: React.FC<StatItemProps> = ({
     gsap.registerPlugin(ScrollTrigger);
 
     const counterObj = { val: 0 };
+    setDisplayValue(0);
 
     const tween = gsap.to(counterObj, {
       val: numericValue,

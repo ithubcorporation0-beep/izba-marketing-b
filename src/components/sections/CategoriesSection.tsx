@@ -44,7 +44,7 @@ export const CategoriesSection: React.FC = () => {
           <Badge variant="gold" size="md" className="inline-flex items-center gap-2 pl-2.5 pr-4 py-1.5 shadow-xs">
             <Image
               src="/logo-icon.svg"
-              alt="IT HUB Corporation logo"
+              alt="IZBA Marketing Agency logo"
               width={16}
               height={16}
               className="w-4 h-4 rounded-xs shrink-0"
@@ -84,7 +84,7 @@ export const CategoriesSection: React.FC = () => {
                   <p className={styles.cardDesc}>{category.shortDescription}</p>
                   <div className={styles.cardFooter}>
                     <span className={styles.actionText}>
-                      Explore {serviceCount} Services
+                      Explore {category.title} ({serviceCount})
                     </span>
                     <ArrowRight size={16} strokeWidth={2.2} className={styles.arrowIcon} aria-hidden="true" />
                   </div>

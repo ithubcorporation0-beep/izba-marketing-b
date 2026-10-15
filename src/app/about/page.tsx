@@ -166,7 +166,7 @@ export default function AboutPage() {
               <div className={styles.founderImageContainer}>
                 <Image
                   src="/images/ceo-founder.jpg"
-                  alt="CEO and Founder of IZBA marketing agency"
+                  alt="Ibrar Khan - CEO and Founder of IZBA marketing agency"
                   width={768}
                   height={1024}
                   className={styles.founderImage}
@@ -177,7 +177,7 @@ export default function AboutPage() {
               <div className={styles.founderMeta}>
                 <div className={styles.founderBadgeWrapper}>
                   <Badge variant="gold" size="sm">
-                    LEADERSHIP
+                    IBRAR KHAN
                   </Badge>
                 </div>
                 <h3 className={styles.founderTitle}>

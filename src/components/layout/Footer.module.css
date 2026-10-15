@@ -23,9 +23,9 @@
   display: flex;
   flex-wrap: wrap;
   align-items: center;
-  justify-content: space-between;
+  justify-content: flex-end;
   gap: 1rem;
-  padding-bottom: 2.5rem;
+  padding-bottom: 2rem;
   margin-bottom: 2.5rem;
   border-bottom: 1px solid rgba(230, 198, 92, 0.12);
 }

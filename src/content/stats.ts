@@ -24,8 +24,6 @@ export interface VerifiedStat {
 // Dynamically computed verified facts
 const totalCategoriesCount = categories.length;
 const totalServicesCount = services.length;
-const featuredServicesCount = services.filter((s) => s.isFeatured).length;
-
 export const verifiedStats: VerifiedStat[] = [
   {
     id: 'categories',
@@ -37,23 +35,9 @@ export const verifiedStats: VerifiedStat[] = [
   {
     id: 'services',
     numericValue: totalServicesCount,
-    suffix: '+',
-    label: 'Defined Offerings',
-    description: 'Distinct, documented services with clear deliverables and processes',
-  },
-  {
-    id: 'featured',
-    numericValue: featuredServicesCount,
     suffix: '',
-    label: 'Core Specialties',
-    description: 'Primary high-impact solutions featured for immediate business deployment',
-  },
-  {
-    id: 'coverage',
-    numericValue: 100,
-    suffix: '%',
-    label: 'Asset Ownership',
-    description: 'Complete source code, design assets, and credential transfer upon project handover',
+    label: 'Services Offered',
+    description: 'Distinct, documented services with clear deliverables and processes',
   },
 ];
 
