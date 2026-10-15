@@ -61,21 +61,21 @@ export const Preloader: React.FC = () => {
       tl.fromTo(
         contentRef.current,
         { opacity: 0, scale: 0.96, y: 12 },
-        { opacity: 1, scale: 1, y: 0, duration: 0.35, ease: 'power2.out' }
+        { opacity: 1, scale: 1, y: 0, duration: 0.2, ease: 'power2.out' }
       );
 
-      // Smooth progress counter from 0 to 100 in ~0.95 seconds
+      // Smooth progress counter from 0 to 100 in ~0.45 seconds
       tl.to(
         counterObj,
         {
           value: 100,
-          duration: 0.95,
+          duration: 0.45,
           ease: 'power2.inOut',
           onUpdate: () => {
             setCounterValue(Math.round(counterObj.value));
           },
         },
-        '-=0.1'
+        '-=0.05'
       );
 
       // Progress bar fill width
@@ -84,7 +84,7 @@ export const Preloader: React.FC = () => {
           progressBarRef.current,
           {
             width: '100%',
-            duration: 0.95,
+            duration: 0.45,
             ease: 'power2.inOut',
           },
           '<'
@@ -99,7 +99,7 @@ export const Preloader: React.FC = () => {
           tl.fromTo(
             path,
             { strokeDasharray: length, strokeDashoffset: length },
-            { strokeDashoffset: 0, duration: 0.95, ease: 'power2.inOut' },
+            { strokeDashoffset: 0, duration: 0.45, ease: 'power2.inOut' },
             '<'
           );
         });
@@ -110,10 +110,10 @@ export const Preloader: React.FC = () => {
         overlayRef.current,
         {
           yPercent: -100,
-          duration: 0.45,
+          duration: 0.3,
           ease: 'power3.inOut',
         },
-        '+=0.1'
+        '+=0.05'
       );
     }, overlayRef);
 

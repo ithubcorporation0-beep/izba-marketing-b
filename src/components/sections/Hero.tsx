@@ -19,8 +19,11 @@ export const Hero: React.FC = () => {
   useEffect(() => {
     if (isReducedMotion) return;
 
+    let tl: gsap.core.Timeline | null = null;
+    const heroEl = heroRef.current;
+
     const ctx = gsap.context(() => {
-      const tl = gsap.timeline({ defaults: { ease: 'power4.out' } });
+      tl = gsap.timeline({ defaults: { ease: 'power4.out' } });
 
       // Headline lines reveal from under masks
       tl.fromTo(
@@ -50,7 +53,38 @@ export const Hero: React.FC = () => {
       );
     }, heroRef);
 
-    return () => ctx.revert();
+    // Pause animation when tab is hidden, resume when tab is active
+    const handleVisibilityChange = () => {
+      if (document.hidden) {
+        tl?.pause();
+      } else {
+        tl?.resume();
+      }
+    };
+
+    document.addEventListener('visibilitychange', handleVisibilityChange);
+
+    // Pause animation when scrolled out of viewport to preserve CPU/GPU
+    let observer: IntersectionObserver | null = null;
+    if (heroEl && typeof IntersectionObserver !== 'undefined') {
+      observer = new IntersectionObserver(
+        ([entry]) => {
+          if (!entry.isIntersecting) {
+            tl?.pause();
+          } else if (!document.hidden) {
+            tl?.resume();
+          }
+        },
+        { threshold: 0.05 }
+      );
+      observer.observe(heroEl);
+    }
+
+    return () => {
+      document.removeEventListener('visibilitychange', handleVisibilityChange);
+      observer?.disconnect();
+      ctx.revert();
+    };
   }, [isReducedMotion]);
 
   // 2. Magnetic Effect on Primary CTA (desktop cursor only, disabled for touch & reduced motion)
@@ -201,14 +235,15 @@ export const Hero: React.FC = () => {
       </div>
 
       {/* 3. Bottom Showcase Frame (Creative Studio Interior Workspace) */}
-      <div className={`${styles.showcaseContainer} hero-fade-item`}>
+      <div className={styles.showcaseContainer}>
         <div className={styles.showcaseFrame}>
           <Image
-            src="/images/hero-studio-showcase.jpg"
+            src="/images/hero-studio-showcase.webp"
             alt="IZBA Marketing agency creative studio and collaborative digital workspace"
             width={1440}
             height={810}
             priority
+            sizes="(max-width: 768px) 100vw, 1200px"
             className={styles.showcaseImage}
           />
           <div className={styles.showcaseBadge} aria-hidden="true">

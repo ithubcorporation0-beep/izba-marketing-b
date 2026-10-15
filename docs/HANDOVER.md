@@ -260,6 +260,18 @@ The digital flagship includes a modern, high-performance motion system designed 
   * Screen reader integrity: `<SplitHeading />` exposes full unbroken text via `aria-label` while hiding split spans with `aria-hidden="true"`.
 * **Full Developer Guide:** See `docs/MOTION_GUIDE.md` for in-depth documentation on modifying animation speeds, turning effects on/off, and adding new animated components.
 
+#### Motion QA Pass / Fail Summary
+| Category | Requirement & Standard | Result | Evidence |
+| :--- | :--- | :---: | :--- |
+| **Prefers Reduced Motion** | Smooth scroll, parallax, marquee animation, preloader, and custom cursor disabled | **PASS** | Lenis destroyed, animations disabled, instant visibility |
+| **Keyboard Operability** | Focus is never lost; visible focus rings on all controls; modal & carousel navigable | **PASS** | `focus-visible` gold rings, focus trap in drawer, keyboard arrows |
+| **5-Second Auto-Motion** | Content moving > 5s has manual pause option (WCAG 2.2.2) | **PASS** | Marquee pause button, carousel hover/focus pause |
+| **Heading Screen Readers** | Split line animation does not disjoint words in assistive tech | **PASS** | Heading has `aria-label`, animated spans have `aria-hidden="true"` |
+| **Hero Contrast** | Dark hero text and elements meet WCAG AA | **PASS** | >= 4.5:1 on all text; pure white on dark footer |
+| **Device Responsive Check** | 360, 768, 1280, 1920 px: no horizontal scroll, no jank | **PASS** | Fluid clamp typography, `overflow-x: clip`, cursor off on touch |
+| **Browser Fallbacks** | Safari/Firefox fallbacks for `backdrop-filter` and `svh` | **PASS** | `-webkit-backdrop-filter` + semi-opaque colors; `100vh` fallback |
+| **Resource Efficiency** | Off-screen & tab-hidden pause for heavy animations | **PASS** | `IntersectionObserver` & `visibilitychange` in Hero; Lenis bypassed on touch |
+
 ---
 
 ### 11. Client Asset Integration & Next-Phase Guide
@@ -278,7 +290,7 @@ When client assets become available, follow these streamlined implementation ste
 * **Assets:** Official corporate SVG logo with distinct vector paths/strokes.
 * **Placement:** `public/images/logo.svg` and `public/icons/favicon.svg`.
 * **Activation:** Supply the SVG code and ask: *"Animate the SVG logo stroke in the preloader."*
-* **Implementation:** In `src/components/sections/Preloader.tsx`, replace the temporary text badge `<div className={styles.logoBadge}>IT</div>` with your SVG logo markup. Apply the CSS class `.preloader-logo-stroke` to the SVG `<path>` elements. The preloader's GSAP timeline automatically calculates path lengths via `getTotalLength()` and smoothly draws the strokes (`strokeDashoffset` from length to 0) in sync with the progress counter.
+* **Implementation:** In `src/components/sections/Preloader.tsx`, replace the `<div className={styles.logoBadge}>` image badge with your SVG logo markup. Apply the CSS class `.preloader-logo-stroke` to the SVG `<path>` elements. The preloader's GSAP timeline automatically calculates path lengths via `getTotalLength()` and smoothly draws the strokes (`strokeDashoffset` from length to 0) in sync with the progress counter.
 
 #### 3. Case-Study Pages & Portfolio Image Reveals
 * **Assets:** Real project case studies approved by clients with cover mockup images (`16:9` aspect ratio, e.g. `1200x675` WebP).

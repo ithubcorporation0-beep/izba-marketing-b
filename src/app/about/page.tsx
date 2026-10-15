@@ -170,7 +170,6 @@ export default function AboutPage() {
                   width={768}
                   height={1024}
                   className={styles.founderImage}
-                  priority
                 />
                 <div className={styles.founderImageGlow} aria-hidden="true" />
               </div>

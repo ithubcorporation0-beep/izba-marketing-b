@@ -6,6 +6,7 @@ export interface SectionHeadingProps {
   subtitle?: string;
   align?: 'left' | 'center';
   className?: string;
+  as?: 'h1' | 'h2';
 }
 
 export const SectionHeading: React.FC<SectionHeadingProps> = ({
@@ -14,6 +15,7 @@ export const SectionHeading: React.FC<SectionHeadingProps> = ({
   subtitle,
   align = 'center',
   className = '',
+  as: HeadingTag = 'h2',
 }) => {
   const alignClass =
     align === 'center'
@@ -29,9 +31,9 @@ export const SectionHeading: React.FC<SectionHeadingProps> = ({
           {badge}
         </span>
       )}
-      <h2 className="text-3xl sm:text-4xl md:text-5xl font-extrabold text-[var(--color-navy)] tracking-[-0.035em] leading-[1.08] text-balance">
+      <HeadingTag className="text-3xl sm:text-4xl md:text-5xl font-extrabold text-[var(--color-navy)] tracking-[-0.035em] leading-[1.08] text-balance">
         {title}
-      </h2>
+      </HeadingTag>
       {subtitle && (
         <p className="text-base sm:text-lg text-[var(--color-muted)] leading-relaxed max-w-xl">
           {subtitle}

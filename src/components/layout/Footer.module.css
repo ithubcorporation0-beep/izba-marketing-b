@@ -7,6 +7,13 @@
   overflow: hidden;
 }
 
+.footer h1,
+.footer h2,
+.footer h3,
+.footer h4 {
+  color: #ffffff;
+}
+
 .container {
   max-width: var(--container-max);
   margin: 0 auto;

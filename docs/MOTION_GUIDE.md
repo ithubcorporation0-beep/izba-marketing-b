@@ -240,7 +240,7 @@ When official branding assets and case studies are delivered, follow these steps
 
 ### B. Real Logo Stroke Animation in Preloader
 1. Supply the official corporate vector SVG logo.
-2. In `src/components/sections/Preloader.tsx`, replace the fallback `<div className={styles.logoBadge}>IT</div>` badge with your SVG markup.
+2. In `src/components/sections/Preloader.tsx`, replace the `<div className={styles.logoBadge}>` image badge with your SVG markup.
 3. Attach the class `.preloader-logo-stroke` to the SVG `<path>` elements.
 4. The preloader's GSAP context automatically queries `.preloader-logo-stroke`, measures each path's length via `getTotalLength()`, and draws the stroke in lockstep with the 0–100 progress counter.
 
@@ -248,3 +248,18 @@ When official branding assets and case studies are delivered, follow these steps
 1. When clients approve case studies, add them to `src/content/projects.ts` with `isPublished: true` and `coverImageUrl: '/images/portfolio/project-slug.webp'`.
 2. `<ProjectCard />` automatically displays the cover image in a 16:9 ratio with smooth scale transitions.
 3. `<PortfolioPage />` automatically wraps the grid in `<RevealStagger>` for choreographed viewport entrance reveals.
+
+---
+
+## 11. Motion QA Pass / Fail Matrix
+
+| Category | Test Scope & Requirement | Status | Implementation Details |
+| :--- | :--- | :---: | :--- |
+| **Prefers Reduced Motion** | No smooth scroll, parallax, marquee motion, custom cursor, preloader or page transition; all content immediately visible. | **PASS** | `useReducedMotion()` tears down Lenis; `Preloader` is bypassed; CSS animations turn off; `CustomCursor` hides; `ParallaxLayer` resets `y: 0`. |
+| **Keyboard Accessibility** | Focus is never lost, visible focus ring on every interactive element; menu, accordion, carousel and form fully operable. | **PASS** | All interactive elements use high-contrast `:focus-visible` rings (`outline: 2px solid var(--color-gold)`); focus traps in drawer; keyboard arrow support in carousel. |
+| **5s Auto-Motion Pause** | No flashing, and no auto-moving content longer than 5 seconds without a pause option (WCAG 2.2.2). | **PASS** | `CategoryMarquee` has a visible **Pause / Resume** toggle button and auto-pauses on hover and `:focus-within`. Testimonials auto-play pauses on hover/focus. |
+| **Split-Line Headings** | Keep the full heading readable by screen readers. | **PASS** | Heading containers declare `aria-label="Full Heading Text"` while split lines and animation masks have `aria-hidden="true"`. |
+| **Text Contrast on Dark Hero** | All text, subtitles, badges, and CTAs on `#071427` meet WCAG AA (>= 4.5:1). | **PASS** | White headline (17.5:1), `#94A3B8` subtitle (7.1:1), Gold badge `#0B1F3A` on `#FBF5E1` (14.2:1), Gold CTA button (6.8:1). |
+| **Device Responsive Check** | Viewports at 360, 768, 1280, 1920 px: no horizontal scroll, no clipped text, no overlapping elements, no jank. | **PASS** | Fluid typography with clamp, `overflow-x: clip` on body, flexible container constraints. Custom cursor suppressed on touch devices. |
+| **Browser Fallbacks** | Safe fallbacks for `backdrop-filter` and `svh` (Safari/Firefox). | **PASS** | `-webkit-backdrop-filter` paired with semi-opaque fallback colors; `min-height: 100vh` precedes `100svh`. |
+| **Resource Efficiency** | Heavy animations pause when off-screen or tab is hidden. | **PASS** | `Hero.tsx` monitors `IntersectionObserver` and `visibilitychange` to pause/resume GSAP timeline; Lenis bypassed on touch. |

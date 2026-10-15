@@ -31,6 +31,7 @@ export default function ContactPage() {
     <div className={styles.pageWrapper}>
       <Container size="default">
         <SectionHeading
+          as="h1"
           badge="Direct Enquiry"
           title="Request a Quote & Start a Project"
           subtitle="Tell us what you want to build or improve. We review every enquiry and reply with clear, business-friendly next steps."

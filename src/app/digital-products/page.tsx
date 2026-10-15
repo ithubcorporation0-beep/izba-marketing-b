@@ -152,6 +152,7 @@ export default function DigitalProductsPage() {
     <div className={styles.pageWrapper}>
       <Container size="default">
         <SectionHeading
+          as="h1"
           badge="Digital Assets & Templates"
           title="Digital Products & Reusable Templates"
           subtitle="We craft tailored digital assets, downloadable workbooks, branded templates, and business kits built for your audience or commercial distribution."

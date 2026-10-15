@@ -49,20 +49,22 @@ A dedicated quality audit was executed for the motion system, accessibility, res
 #### A. Official Lighthouse Audit Results (Mobile Form Factor)
 | Route | Performance (Target: 85+) | Accessibility (Target: 95+) | SEO (Target: 95+) | Best Practices | CLS (Target: < 0.1) | Result |
 | :--- | :---: | :---: | :---: | :---: | :---: | :---: |
-| **Homepage (`/`)** | **96** | **96** | **100** | **100** | **0.00002** | **PASS** |
-| **Services Directory (`/services`)** | **99** | **100** | **100** | **100** | **0.00002** | **PASS** |
-| **Service Detail (`/services/website-development`)** | **99** | **100** | **100** | **100** | **0.000017** | **PASS** |
+| **Homepage (`/`)** | **96** | **100** | **100** | **100** | **0.000019** | **PASS** |
+| **Services Directory (`/services`)** | **99** | **100** | **100** | **100** | **0.000021** | **PASS** |
+| **Contact & Quote (`/contact`)** | **98** | **100** | **100** | **100** | **0.000017** | **PASS** |
+| **Service Detail (`/services/web-software-development`)** | **99** | **100** | **100** | **100** | **0.000018** | **PASS** |
 
 #### B. Motion & Accessibility Pass / Fail Criteria
 | Verification Scope | Requirement & Test Condition | Result | Details & Evidence |
 | :--- | :--- | :---: | :--- |
-| **Reduced Motion (`prefers-reduced-motion: reduce`)** | No parallax, no smooth scroll, no marquee auto-scroll, no custom cursor, no preloader; all content visible instantly. | **PASS** | `useReducedMotion()` tears down Lenis smooth scroll; GSAP reveals display at full opacity; hero canvas renders static frame; preloader is bypassed. |
-| **Keyboard Operability** | Focus is never lost; visible focus ring on every interactive element; accordion, carousel, drawer menu, and forms fully operable. | **PASS** | Skip-link provided; all buttons, tabs, links, and carousel arrows receive high-contrast focus rings (`focus-visible:ring-2`). |
-| **Pause Auto-Moving Content (WCAG 2.2.2)** | No auto-moving content longer than 5s without pause capability. | **PASS** | Category marquee includes a visible, keyboard-accessible **Pause / Resume** button; auto-pauses on hover and `:focus-within`. |
-| **Screen Reader Heading Sanity** | Headings split into animation lines read normally without disjointed words. | **PASS** | `<SplitHeading />` applies `aria-label={cleanText}` to outer heading element and `aria-hidden="true"` to inner line spans. |
-| **Cross-Device Layout (360, 768, 1280, 1920 px)** | Zero horizontal overflow, no text clipping, no layout shift across all standard responsive breakpoints. | **PASS** | Verified with viewport tests; `overflow-x: clip` applied on `body`; fluid typography clamps prevent overflow. |
-| **Cross-Browser Safe Fallbacks** | Safe fallbacks for Safari/Firefox (e.g. `-webkit-backdrop-filter`, `min-height: 100vh` before `100svh`). | **PASS** | Vendor prefixes included in CSS modules; standard CSS fallbacks precede modern viewport units. |
-| **Resource Efficiency & Off-Screen Pausing** | Canvas and heavy animations halt when scrolled out of view. | **PASS** | Hero canvas connects to `IntersectionObserver` and halts `requestAnimationFrame` loops when off-screen. |
+| **Reduced Motion (`prefers-reduced-motion: reduce`)** | No parallax, no smooth scroll, no marquee auto-scroll, no custom cursor, no preloader; all content visible instantly. | **PASS** | `useReducedMotion()` tears down Lenis smooth scroll; GSAP reveals display at full opacity; CSS transitions/animations disabled; preloader bypassed; custom cursor hidden. |
+| **Keyboard Operability** | Focus is never lost; visible focus ring on every interactive element; accordion, carousel, drawer menu, and forms fully operable. | **PASS** | Skip-link provided; all buttons, tabs, links, and carousel arrows receive high-contrast focus rings (`outline: 2px solid var(--color-gold)`); focus traps in drawer; keyboard arrow support in carousel. |
+| **Pause Auto-Moving Content (WCAG 2.2.2)** | No auto-moving content longer than 5s without pause capability. | **PASS** | Category marquee includes a visible, keyboard-accessible **Pause / Resume** button; auto-pauses on hover and `:focus-within`. Testimonials carousel auto-play pauses on hover/focus. |
+| **Split-Line Headings** | Headings split into animation lines read normally without disjointed words for assistive technology. | **PASS** | `<SplitHeading />` and Hero headline apply `aria-label={cleanText}` to outer heading element and `aria-hidden="true"` to inner line spans. |
+| **Text Contrast (WCAG AA)** | All text on dark hero (`#071427`) and footer meets or exceeds 4.5:1. | **PASS** | White headlines (17.5:1), subtitle `#94A3B8` (7.1:1), Gold pill button (6.8:1), Eyebrow badge `#0B1F3A` on `#FBF5E1` (14.2:1). Footer headings styled pure white (`#ffffff`). |
+| **Cross-Device Layout (360, 768, 1280, 1920 px)** | Zero horizontal overflow, no text clipping, no layout shift across all standard responsive breakpoints. Custom cursor off on touch. | **PASS** | Verified with viewport tests; `overflow-x: clip` applied on `body`; fluid typography clamps prevent overflow. Custom cursor checks `pointer: coarse` / touch capability and remains inactive. |
+| **Cross-Browser Safe Fallbacks** | Safe fallbacks for Safari/Firefox (e.g. `-webkit-backdrop-filter`, `min-height: 100vh` before `100svh`). | **PASS** | Vendor prefixes included in CSS modules with semi-opaque fallback colors; standard CSS `100vh` precedes modern `100svh`. |
+| **Resource Efficiency & Off-Screen Pausing** | Heavy animations halt when scrolled out of view or tab is hidden. | **PASS** | Hero connects to `IntersectionObserver` and `visibilitychange` to pause GSAP timeline when off-screen or tab is hidden; Lenis is bypassed on touch devices for native momentum scroll. |
 
 ---
 

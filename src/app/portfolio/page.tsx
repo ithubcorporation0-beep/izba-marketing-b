@@ -24,6 +24,7 @@ export default function PortfolioPage() {
     <div className={styles.pageWrapper}>
       <Container size="default">
         <SectionHeading
+          as="h1"
           badge="Client Projects"
           title="Portfolio & Case Studies"
           subtitle="Real-world technology outcomes and implementations. We publish only verified work with explicit client permission."

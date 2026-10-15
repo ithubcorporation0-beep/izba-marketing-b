@@ -1,14 +1,21 @@
 import type { Metadata, Viewport } from 'next';
 import { Inter } from 'next/font/google';
 import '@/styles/globals.css';
+import dynamic from 'next/dynamic';
 import { siteConfig } from '@/config/site';
 import { getSiteUrl } from '@/lib/seo/metadata';
 import { Header } from '@/components/layout/Header';
 import { Footer } from '@/components/layout/Footer';
 import { ConsentBanner } from '@/components/analytics/ConsentBanner';
 import { MotionProvider } from '@/lib/motion';
-import { Preloader } from '@/components/sections/Preloader';
-import { CustomCursor } from '@/components/ui/CustomCursor';
+
+const Preloader = dynamic(
+  () => import('@/components/sections/Preloader').then((m) => m.Preloader)
+);
+
+const CustomCursor = dynamic(
+  () => import('@/components/ui/CustomCursor').then((m) => m.CustomCursor)
+);
 
 const inter = Inter({
   subsets: ['latin'],

@@ -40,15 +40,26 @@ export const MotionProvider: React.FC<MotionProviderProps> = ({ children }) => {
 
     if (typeof window === 'undefined') return;
 
-    // Detect touch / coarse pointer to adapt scrolling intensity
-    const isTouch = window.matchMedia('(pointer: coarse)').matches;
+    // Detect touch / coarse pointer: preserve native momentum scrolling without JS overhead
+    const isTouch =
+      window.matchMedia('(pointer: coarse)').matches ||
+      window.matchMedia('(hover: none)').matches;
+
+    if (isTouch) {
+      if (lenisRef.current) {
+        lenisRef.current.destroy();
+        lenisRef.current = null;
+        setLenisInstance(null);
+      }
+      return;
+    }
 
     // Register GSAP ScrollTrigger plugin safely
     gsap.registerPlugin(ScrollTrigger);
 
-    // Initialize Lenis smooth scrolling instance
+    // Initialize Lenis smooth scrolling instance for desktop fine pointers
     const lenis = new Lenis({
-      duration: isTouch ? 0.9 : 1.2,
+      duration: 1.2,
       easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
       orientation: 'vertical',
       gestureOrientation: 'vertical',

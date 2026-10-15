@@ -12,11 +12,18 @@ export const CustomCursor: React.FC = () => {
   const [isSupported, setIsSupported] = useState(false);
 
   useEffect(() => {
-    // 1. Check for desktop fine pointer and no reduced motion
+    // 1. Check for desktop fine pointer, zero touch support, and no reduced motion
+    const isTouch =
+      typeof window !== 'undefined' &&
+      ('ontouchstart' in window ||
+        (navigator.maxTouchPoints && navigator.maxTouchPoints > 0) ||
+        window.matchMedia('(pointer: coarse)').matches ||
+        window.matchMedia('(hover: none)').matches);
+
     const finePointer = window.matchMedia('(hover: hover) and (pointer: fine)').matches;
     const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
-    if (!finePointer || reducedMotion) {
+    if (isTouch || !finePointer || reducedMotion) {
       return;
     }
 
