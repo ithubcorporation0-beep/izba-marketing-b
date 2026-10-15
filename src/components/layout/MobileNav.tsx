@@ -264,22 +264,34 @@ export const MobileNav: React.FC<MobileNavProps> = ({ isOpen, onClose }) => {
                 size={14}
                 className="text-[var(--color-gold)] shrink-0"
               />
-              <span className="truncate">{siteConfig.contact.email}</span>
+              <a
+                href={`mailto:${siteConfig.contact.email}`}
+                className="truncate hover:text-[var(--color-gold)] transition-colors"
+              >
+                {siteConfig.contact.email}
+              </a>
             </div>
             <div className="flex items-center gap-2">
               <Phone
                 size={14}
                 className="text-[var(--color-gold)] shrink-0"
               />
-              <span>{siteConfig.contact.phone}</span>
+              <a
+                href={`tel:${siteConfig.contact.phone}`}
+                className="hover:text-[var(--color-gold)] transition-colors"
+              >
+                {siteConfig.contact.phone}
+              </a>
             </div>
-            <div className="flex items-center gap-2">
-              <MapPin
-                size={14}
-                className="text-[var(--color-gold)] shrink-0"
-              />
-              <span className="truncate">{siteConfig.contact.address}</span>
-            </div>
+            {!siteConfig.contact.address.startsWith('PLACEHOLDER_') && (
+              <div className="flex items-center gap-2">
+                <MapPin
+                  size={14}
+                  className="text-[var(--color-gold)] shrink-0"
+                />
+                <span className="truncate">{siteConfig.contact.address}</span>
+              </div>
+            )}
           </div>
 
           <Button

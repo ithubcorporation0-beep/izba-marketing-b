@@ -10,16 +10,12 @@ export const siteConfig: SiteConfig = {
   description:
     'Full-service marketing agency providing digital marketing, SEO, AI automation, web development, graphic design, and content production.',
   contact: {
-    // TODO: Replace with real company email
-    email: 'PLACEHOLDER_EMAIL',
-    // TODO: Replace with real company phone number
-    phone: 'PLACEHOLDER_PHONE',
-    // TODO: Replace with real company WhatsApp number
-    whatsapp: 'PLACEHOLDER_WHATSAPP',
+    email: 'ibrookhnax@gmail.com',
+    phone: '+92 317 9898769',
+    whatsapp: '+92 317 9898769',
     // TODO: Replace with real physical company address
     address: 'PLACEHOLDER_ADDRESS',
-    // TODO: Replace with real business operating hours
-    workingHours: 'PLACEHOLDER_WORKING_HOURS',
+    workingHours: 'Available 24/7',
   },
   socials: {
     // TODO: Replace with real LinkedIn URL
@@ -28,22 +24,18 @@ export const siteConfig: SiteConfig = {
     github: 'PLACEHOLDER_GITHUB_URL',
     // TODO: Replace with real Twitter / X URL
     twitter: 'PLACEHOLDER_TWITTER_URL',
-    // TODO: Replace with real WhatsApp chat link
-    whatsapp: 'PLACEHOLDER_WHATSAPP_URL',
+    whatsapp: 'https://wa.me/923179898769',
     // TODO: Replace with real Facebook page URL
     facebook: 'PLACEHOLDER_FACEBOOK_URL',
     // TODO: Replace with real YouTube channel URL
     youtube: 'PLACEHOLDER_YOUTUBE_URL',
   },
-  // Project availability badge (editable; mark as needs client confirmation)
-  // TODO: Needs client confirmation on availability text
-  availabilityBadge: 'Now accepting new projects',
+  // Project availability badge
+  availabilityBadge: 'Available 24/7 — Now accepting new projects',
 
   // Live local-time clock timezone for company headquarters/studio
-  // TODO: Replace with real client primary office/studio timezone (e.g. 'America/New_York', 'Europe/London', 'Asia/Karachi')
-  timezone: 'UTC',
-  // TODO: Replace with matching friendly timezone display label (e.g. 'UTC', 'EST', 'GMT', 'PKT')
-  timezoneLabel: 'UTC',
+  timezone: 'Asia/Karachi',
+  timezoneLabel: 'PKT',
 
   // Closing CTA Section copy (fully editable)
   closingCta: {

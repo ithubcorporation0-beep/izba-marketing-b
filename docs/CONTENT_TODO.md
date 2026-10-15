@@ -109,13 +109,14 @@ The Proof section on category pages is designed to automatically hide when no ma
 
 ## 4. Global Contact Information in `src/config/site.ts`
 
-Review and replace the following placeholder values when ready:
-- `contact.email`: Replace `PLACEHOLDER_EMAIL` with official business email (e.g., `info@ithubcorp.com`).
-- `contact.phone`: Replace `PLACEHOLDER_PHONE` with official office phone number.
-- `contact.whatsapp`: Replace `PLACEHOLDER_WHATSAPP` with official WhatsApp number (e.g., `+92 314 9140414`).
-- `contact.address`: Replace `PLACEHOLDER_ADDRESS` with your physical office location in Mardan, KP.
-- `contact.workingHours`: Replace `PLACEHOLDER_WORKING_HOURS` (e.g., `Monday - Saturday: 9:00 AM - 6:00 PM PKT`).
-- `timezone`: Set to `'Asia/Karachi'` and `timezoneLabel` to `'PKT'`.
+Status of contact information:
+- `contact.email`: Configured as `ibrookhnax@gmail.com`
+- `contact.phone`: Configured as `+92 317 9898769`
+- `contact.whatsapp`: Configured as `+92 317 9898769` (`https://wa.me/923179898769`)
+- `contact.workingHours`: Configured as `Available 24/7`
+- `timezone`: Configured as `'Asia/Karachi'` (`PKT`)
+- `contact.address`: `PLACEHOLDER_ADDRESS` (ready for physical office street address when desired)
+
 
 ---
 
