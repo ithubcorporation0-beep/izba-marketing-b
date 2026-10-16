@@ -23,14 +23,19 @@
   margin: 0 auto;
 }
 
-/* Playful Animated 404 Visual */
-.playfulContainer {
+/* Original 404 Illustration */
+.illustrationWrapper {
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 1rem;
   margin-bottom: 1.5rem;
-  user-select: none;
+  max-width: 100%;
+}
+
+.illustration {
+  max-width: 100%;
+  height: auto;
+  filter: drop-shadow(0 12px 30px rgba(0, 0, 0, 0.35));
 }
 
 .digitFourLeft,

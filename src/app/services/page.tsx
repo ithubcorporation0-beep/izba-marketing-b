@@ -9,6 +9,8 @@ import { CategoryCard } from '@/components/services/CategoryCard';
 import { ServiceSearch } from '@/components/services/ServiceSearch';
 import { CTASection } from '@/components/sections/CTA';
 import { Reveal, RevealStagger } from '@/components/ui/motion';
+import { PageHeaderBanner } from '@/components/ui/PageHeaderBanner';
+import { ServicesIllustration } from '@/components/illustrations/ServicesIllustration';
 import { constructMetadata } from '@/lib/seo/metadata';
 import styles from './page.module.css';
 
@@ -22,28 +24,19 @@ export const metadata: Metadata = constructMetadata({
 export default function ServicesPage() {
   return (
     <div className={styles.servicesPageWrapper}>
-      {/* 1. Page Intro Header */}
-      <header className={styles.headerSection}>
-        <Container size="default">
-          <div className="mb-4">
-            <Breadcrumb items={[{ label: 'Services' }]} variant="dark" />
-          </div>
-          <Reveal className={styles.headerContainer}>
-            <Badge variant="gold" size="md">
-              Full Service Catalog
-            </Badge>
-            <h1 className={styles.title}>
-              Services &amp; Digital{' '}
-              <span className={styles.gradientText}>Capabilities</span>
-            </h1>
-            <p className={styles.subtitle}>
-              From custom websites and software to digital marketing, AI
-              workflows, creative design, and data assistance — discover our 90
-              detailed service offerings organized across 9 core disciplines.
-            </p>
-          </Reveal>
-        </Container>
-      </header>
+      {/* 1. Page Header Banner with Breadcrumb & Original SVG Illustration */}
+      <PageHeaderBanner
+        badge="Full Service Catalog"
+        title={
+          <>
+            Services &amp; Digital{' '}
+            <span className="highlight-gold">Capabilities</span>
+          </>
+        }
+        subtitle="From custom websites and software to digital marketing, AI workflows, creative design, and data assistance — discover our 90 detailed service offerings organized across 9 core disciplines."
+        breadcrumbs={[{ label: 'Services' }]}
+        illustration={<ServicesIllustration width={380} height={280} />}
+      />
 
       {/* 2. 9 Category Cards Overview */}
       <section

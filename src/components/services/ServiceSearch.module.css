@@ -244,6 +244,12 @@
   gap: var(--space-md);
 }
 
+.emptyIllustrationWrapper {
+  max-width: 240px;
+  width: 100%;
+  margin: 0 auto;
+}
+
 .emptyIconCircle {
   width: 56px;
   height: 56px;

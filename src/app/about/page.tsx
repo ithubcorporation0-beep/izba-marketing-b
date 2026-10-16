@@ -14,6 +14,8 @@ import { Card } from '@/components/ui/Card';
 import { CTASection } from '@/components/sections/CTA';
 import { StatsSection } from '@/components/sections/Stats';
 import { Reveal, RevealStagger } from '@/components/ui/motion';
+import { PageHeaderBanner } from '@/components/ui/PageHeaderBanner';
+import { AboutIllustration } from '@/components/illustrations/AboutIllustration';
 import { constructMetadata } from '@/lib/seo/metadata';
 import styles from './page.module.css';
 
@@ -109,28 +111,19 @@ const ownerStoryData: {
 export default function AboutPage() {
   return (
     <div className={styles.aboutWrapper}>
-      {/* 1. Hero Header */}
-      <header className={styles.heroSection}>
-        <Container size="default">
-          <div className="mb-4">
-            <Breadcrumb items={[{ label: 'About Us' }]} variant="dark" />
-          </div>
-          <Reveal className={styles.heroContent}>
-            <Badge variant="gold" size="md">
-              About IZBA Marketing agency
-            </Badge>
-            <h1 className={styles.pageTitle}>
-              Dedicated to Practical, Reliable{' '}
-              <span className={styles.gradientText}>Digital Solutions</span>
-            </h1>
-            <p className={styles.pageSubtitle}>
-              A comprehensive technology, marketing, and business-support
-              partner helping organizations build and improve their digital
-              operations.
-            </p>
-          </Reveal>
-        </Container>
-      </header>
+      {/* 1. Page Header Banner with Breadcrumb & Original SVG Illustration */}
+      <PageHeaderBanner
+        badge="About IZBA Marketing agency"
+        title={
+          <>
+            Dedicated to Practical, Reliable{' '}
+            <span className="highlight-gold">Digital Solutions</span>
+          </>
+        }
+        subtitle="A comprehensive technology, marketing, and business-support partner helping organizations build and improve their digital operations."
+        breadcrumbs={[{ label: 'About Us' }]}
+        illustration={<AboutIllustration width={380} height={280} />}
+      />
 
       {/* 2. Company Overview & Mission */}
       <section

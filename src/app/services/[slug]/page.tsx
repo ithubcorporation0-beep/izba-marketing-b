@@ -29,6 +29,8 @@ import { Button } from '@/components/ui/Button';
 import { Container } from '@/components/ui/Container';
 import { CategoryCard } from '@/components/services/CategoryCard';
 import { Reveal, RevealStagger } from '@/components/ui/motion';
+import { PageHeaderBanner } from '@/components/ui/PageHeaderBanner';
+import { CategoryIcon } from '@/components/illustrations/CategoryIcon';
 import styles from './page.module.css';
 
 interface CategoryPageProps {
@@ -213,54 +215,30 @@ export default async function CategoryDetailPage({ params }: CategoryPageProps) 
       <JsonLd data={serviceJsonLd} />
       <JsonLd data={faqJsonLd} />
 
-      {/* 1. HERO: title, promise, ONE primary button */}
-      <header className={styles.heroSection}>
-        <Container size="default">
-          <div className="mb-4">
-            <Breadcrumb items={breadcrumbItems} variant="dark" />
+      {/* 1. Page Header Banner with Breadcrumb & Category Badge */}
+      <PageHeaderBanner
+        badge={matchedService ? `${categoryName} Service` : 'Service Category'}
+        title={
+          <>
+            {pageHeading}{' '}
+            <span className="highlight-gold">Scope</span>
+          </>
+        }
+        subtitle={
+          matchedService
+            ? matchedService.shortDescription
+            : category.oneSentencePromise
+        }
+        breadcrumbs={breadcrumbItems}
+        illustration={
+          <div className="flex flex-col items-center justify-center p-8 bg-[rgba(22,48,79,0.6)] border border-[rgba(201,162,39,0.35)] rounded-[var(--radius-22)] backdrop-blur-md shadow-xl text-center">
+            <CategoryIcon slug={category.slug} size={52} variant="badge-gold" />
+            <span className="mt-3 text-xs font-bold uppercase tracking-wider text-[var(--color-gold-light)]">
+              {categoryName}
+            </span>
           </div>
-          <Reveal className={styles.heroContent}>
-            <div className={styles.heroBadge}>
-              <Badge variant="gold" size="md">
-                {matchedService ? 'Featured Service' : 'Service Category'}
-              </Badge>
-            </div>
-
-            <h1 className={styles.title}>
-              {pageHeading}
-            </h1>
-
-            <p className={styles.promise}>
-              {matchedService
-                ? matchedService.shortDescription
-                : category.oneSentencePromise}
-            </p>
-
-            <div className={styles.heroActionGroup}>
-              <Button
-                href={primaryQuoteHref}
-                variant="primary"
-                size="lg"
-                icon={<ArrowRight size={18} />}
-              >
-                Get a Free Quote
-              </Button>
-
-              <p className={styles.directChatLink}>
-                Or chat with us directly on WhatsApp:{' '}
-                <a
-                  href={whatsappUrl}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  aria-label={`Chat with IZBA Marketing agency on WhatsApp about ${pageHeading}`}
-                >
-                  0314 9140414
-                </a>
-              </p>
-            </div>
-          </Reveal>
-        </Container>
-      </header>
+        }
+      />
 
       {/* 2. WHO IT IS FOR: 3 to 5 short bullets describing ideal client */}
       <section className={styles.whoSection} aria-labelledby="who-heading">

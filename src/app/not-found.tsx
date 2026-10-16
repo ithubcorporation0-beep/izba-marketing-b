@@ -9,6 +9,7 @@ import {
   ArrowRight,
   Compass,
 } from 'lucide-react';
+import { NotFoundIllustration } from '@/components/illustrations/NotFoundIllustration';
 import styles from './not-found.module.css';
 
 const popularCategories = [
@@ -43,14 +44,9 @@ export default function NotFound() {
     <div className={styles.wrapper}>
       <Container size="default">
         <div className={styles.content}>
-          {/* Playful Animated 404 Visual */}
-          <div className={styles.playfulContainer} aria-hidden="true">
-            <span className={styles.digitFourLeft}>4</span>
-            <div className={styles.zeroPortal}>
-              <div className={styles.zeroPulseRing} />
-              <Compass size={34} className={styles.compassIcon} />
-            </div>
-            <span className={styles.digitFourRight}>4</span>
+          {/* Original Vector 404 Illustration */}
+          <div className={styles.illustrationWrapper} aria-hidden="true">
+            <NotFoundIllustration width={340} height={230} className={styles.illustration} />
           </div>
 
           <div className={styles.badge} aria-hidden="true">

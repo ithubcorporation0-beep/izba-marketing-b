@@ -1,176 +1,97 @@
 'use client';
 
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useEffect, useState, useRef } from 'react';
+import { useReducedMotion } from '@/lib/motion';
 import styles from './CustomCursor.module.css';
 
 export const CustomCursor: React.FC = () => {
-  const dotRef = useRef<HTMLDivElement>(null);
-  const ringRef = useRef<HTMLDivElement>(null);
-
-  const [cursorState, setCursorState] = useState<'default' | 'hover' | 'view'>('default');
-  const [isVisible, setIsVisible] = useState(false);
-  const [isSupported, setIsSupported] = useState(false);
+  const isReducedMotion = useReducedMotion();
+  const [mounted, setMounted] = useState(false);
+  const [visible, setVisible] = useState(false);
+  const [hoveringInteractive, setHoveringInteractive] = useState(false);
+  const [overFormElement, setOverFormElement] = useState(false);
+  const cursorRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    // 1. Check for desktop fine pointer, zero touch support, and no reduced motion
-    const isTouch =
-      typeof window !== 'undefined' &&
-      ('ontouchstart' in window ||
-        (navigator.maxTouchPoints && navigator.maxTouchPoints > 0) ||
-        window.matchMedia('(pointer: coarse)').matches ||
-        window.matchMedia('(hover: none)').matches);
+    // Only on client, fine pointer (desktop mouse), and when reduced motion is NOT preferred
+    if (isReducedMotion) return;
+    if (typeof window === 'undefined') return;
 
-    const finePointer = window.matchMedia('(hover: hover) and (pointer: fine)').matches;
-    const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    const isFinePointer = window.matchMedia('(pointer: fine)').matches;
+    if (!isFinePointer) return;
 
-    if (isTouch || !finePointer || reducedMotion) {
-      return;
-    }
+    setMounted(true);
 
-    setIsSupported(true);
+    let mouseX = -100;
+    let mouseY = -100;
+    let currentX = -100;
+    let currentY = -100;
+    let animId: number;
 
-    let mouseX = -1000;
-    let mouseY = -1000;
-    let ringX = -1000;
-    let ringY = -1000;
-    let hasMoved = false;
-    let rafId: number;
-
-    const onPointerMove = (e: PointerEvent) => {
-      // Ignore touch pointers
-      if (e.pointerType !== 'mouse') return;
-
+    const handleMouseMove = (e: MouseEvent) => {
       mouseX = e.clientX;
       mouseY = e.clientY;
+      setVisible(true);
 
-      if (!hasMoved) {
-        hasMoved = true;
-        ringX = mouseX;
-        ringY = mouseY;
-        setIsVisible(true);
-      }
-
-      // Check hovered element
       const target = e.target as HTMLElement | null;
       if (!target) return;
 
-      // Inside form fields or typing: hide custom cursor, keep native cursor intact
-      const isFormField = Boolean(
-        target.closest('input, textarea, select, [contenteditable="true"], label')
-      );
+      // Check if over form inputs (must not interfere with text selection or inputs)
+      const isFormInput = !!target.closest('input, textarea, select, [contenteditable="true"]');
+      setOverFormElement(isFormInput);
 
-      if (isFormField) {
-        setIsVisible(false);
-        return;
-      }
-
-      setIsVisible(true);
-
-      // Check if over service cards or viewable items
-      const isServiceCard = Boolean(
-        target.closest('[data-cursor="view"], a[href^="/services/"]')
-      );
-
-      if (isServiceCard) {
-        setCursorState('view');
-        return;
-      }
-
-      // Check if over interactive elements (links, buttons, clickable cards)
-      const isInteractive = Boolean(
-        target.closest('a, button, [role="button"], [role="tab"], .card, [data-cursor="hover"]')
-      );
-
-      if (isInteractive) {
-        setCursorState('hover');
-        return;
-      }
-
-      setCursorState('default');
+      // Check if over clickable interactive elements
+      const isInteractive = !!target.closest('button, a, [role="button"], [role="tab"], summary');
+      setHoveringInteractive(isInteractive);
     };
 
-    const onPointerLeave = () => {
-      setIsVisible(false);
+    const handleMouseLeave = () => {
+      setVisible(false);
     };
 
-    const onPointerEnter = () => {
-      if (hasMoved) {
-        setIsVisible(true);
-      }
+    const handleMouseEnter = () => {
+      setVisible(true);
     };
 
-    // When typing in inputs, hide custom cursor
-    const onKeyDown = () => {
-      const activeEl = document.activeElement;
-      if (
-        activeEl &&
-        (activeEl.tagName === 'INPUT' ||
-          activeEl.tagName === 'TEXTAREA' ||
-          activeEl.hasAttribute('contenteditable'))
-      ) {
-        setIsVisible(false);
-      }
-    };
-
-    // Animation loop using lerp for smooth trailing ring
+    // Smooth lerp RAF loop
     const render = () => {
-      if (hasMoved) {
-        // Dot follows immediately
-        if (dotRef.current) {
-          dotRef.current.style.transform = `translate3d(${mouseX}px, ${mouseY}px, 0)`;
-        }
+      currentX += (mouseX - currentX) * 0.25;
+      currentY += (mouseY - currentY) * 0.25;
 
-        // Ring lags gently with smooth lerp
-        ringX += (mouseX - ringX) * 0.2;
-        ringY += (mouseY - ringY) * 0.2;
-
-        if (ringRef.current) {
-          ringRef.current.style.transform = `translate3d(${ringX}px, ${ringY}px, 0)`;
-        }
+      if (cursorRef.current) {
+        cursorRef.current.style.transform = `translate3d(${currentX}px, ${currentY}px, 0)`;
       }
 
-      rafId = requestAnimationFrame(render);
+      animId = requestAnimationFrame(render);
     };
 
-    window.addEventListener('pointermove', onPointerMove, { passive: true });
-    document.addEventListener('mouseleave', onPointerLeave);
-    document.addEventListener('mouseenter', onPointerEnter);
-    window.addEventListener('keydown', onKeyDown, { passive: true });
-
-    rafId = requestAnimationFrame(render);
+    window.addEventListener('mousemove', handleMouseMove, { passive: true });
+    document.addEventListener('mouseleave', handleMouseLeave);
+    document.addEventListener('mouseenter', handleMouseEnter);
+    animId = requestAnimationFrame(render);
 
     return () => {
-      window.removeEventListener('pointermove', onPointerMove);
-      document.removeEventListener('mouseleave', onPointerLeave);
-      document.removeEventListener('mouseenter', onPointerEnter);
-      window.removeEventListener('keydown', onKeyDown);
-      cancelAnimationFrame(rafId);
+      window.removeEventListener('mousemove', handleMouseMove);
+      document.removeEventListener('mouseleave', handleMouseLeave);
+      document.removeEventListener('mouseenter', handleMouseEnter);
+      cancelAnimationFrame(animId);
     };
-  }, []);
+  }, [isReducedMotion]);
 
-  if (!isSupported) {
+  if (!mounted || isReducedMotion || overFormElement || !visible) {
     return null;
   }
 
-  const ringClass = [
-    styles.ring,
-    cursorState === 'hover' ? styles.ringHover : '',
-    cursorState === 'view' ? styles.ringView : '',
-    isVisible ? styles.visible : styles.hidden,
-  ]
-    .filter(Boolean)
-    .join(' ');
-
-  const dotClass = [styles.dot, isVisible ? styles.visible : styles.hidden]
-    .filter(Boolean)
-    .join(' ');
-
   return (
-    <div className={styles.cursorWrapper} aria-hidden="true">
-      <div ref={dotRef} className={dotClass} />
-      <div ref={ringRef} className={ringClass}>
-        {cursorState === 'view' && <span className={styles.viewText}>View</span>}
-      </div>
-    </div>
+    <div
+      ref={cursorRef}
+      className={[
+        styles.cursorRing,
+        hoveringInteractive ? styles.cursorHover : '',
+      ]
+        .filter(Boolean)
+        .join(' ')}
+      aria-hidden="true"
+    />
   );
 };

@@ -6,6 +6,8 @@ import { Breadcrumb } from '@/components/ui/Breadcrumb';
 import { Badge } from '@/components/ui/Badge';
 import { SectionHeading } from '@/components/ui/SectionHeading';
 import { Button } from '@/components/ui/Button';
+import { PageHeaderBanner } from '@/components/ui/PageHeaderBanner';
+import { DigitalProductsIllustration } from '@/components/illustrations/DigitalProductsIllustration';
 import { constructMetadata } from '@/lib/seo/metadata';
 import {
   FileText,
@@ -152,26 +154,19 @@ const offerings: ProductOffering[] = [
 export default function DigitalProductsPage() {
   return (
     <div className={styles.pageWrapper}>
-      {/* Navy Page-Header Banner */}
-      <header className={styles.headerSection}>
-        <Container size="default">
-          <div className="mb-4">
-            <Breadcrumb items={[{ label: 'Digital Products' }]} variant="dark" />
-          </div>
-          <div className={styles.headerContainer}>
-            <Badge variant="gold" size="md">
-              Digital Assets &amp; Templates
-            </Badge>
-            <h1 className={styles.title}>
-              Digital Products &amp;{' '}
-              <span className={styles.gradientText}>Reusable Templates</span>
-            </h1>
-            <p className={styles.subtitle}>
-              We craft tailored digital assets, downloadable workbooks, branded templates, and business kits built for your audience or commercial distribution.
-            </p>
-          </div>
-        </Container>
-      </header>
+      {/* 1. Page Header Banner with Breadcrumb & Original SVG Illustration */}
+      <PageHeaderBanner
+        badge="Digital Assets &amp; Templates"
+        title={
+          <>
+            Digital Products &amp;{' '}
+            <span className="highlight-gold">Reusable Templates</span>
+          </>
+        }
+        subtitle="We craft tailored digital assets, downloadable workbooks, branded templates, and business kits built for your audience or commercial distribution."
+        breadcrumbs={[{ label: 'Digital Products' }]}
+        illustration={<DigitalProductsIllustration width={380} height={280} />}
+      />
 
       {/* Main Content Section */}
       <section className={styles.contentSection}>

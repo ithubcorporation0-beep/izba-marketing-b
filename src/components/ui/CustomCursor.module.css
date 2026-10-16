@@ -1,101 +1,23 @@
-.cursorWrapper {
+.cursorRing {
   position: fixed;
-  top: 0;
-  left: 0;
-  width: 100vw;
-  height: 100vh;
-  pointer-events: none;
-  z-index: 99999;
-  overflow: hidden;
-}
-
-.dot {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 8px;
-  height: 8px;
-  background-color: var(--color-gold);
-  box-shadow: 0 0 8px rgba(201, 162, 39, 0.7);
+  top: -16px;
+  left: -16px;
+  width: 32px;
+  height: 32px;
   border-radius: 50%;
+  border: 1.5px solid rgba(201, 162, 39, 0.65);
+  background: rgba(201, 162, 39, 0.05);
   pointer-events: none;
-  margin-top: -4px;
-  margin-left: -4px;
-  opacity: 0;
-  transition: opacity 0.2s ease;
+  z-index: 9998;
   will-change: transform;
+  transition: width 0.2s ease, height 0.2s ease, top 0.2s ease, left 0.2s ease, border-color 0.2s ease, background-color 0.2s ease;
 }
 
-.ring {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 34px;
-  height: 34px;
-  margin-top: -17px;
-  margin-left: -17px;
-  border-radius: 50%;
-  border: 1.5px solid rgba(201, 162, 39, 0.6);
-  background-color: transparent;
-  pointer-events: none;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  opacity: 0;
-  transition:
-    width 0.25s cubic-bezier(0.16, 1, 0.3, 1),
-    height 0.25s cubic-bezier(0.16, 1, 0.3, 1),
-    margin 0.25s cubic-bezier(0.16, 1, 0.3, 1),
-    background-color 0.25s ease,
-    border-color 0.25s ease,
-    opacity 0.2s ease;
-  will-change: transform, width, height;
-}
-
-.visible {
-  opacity: 1 !important;
-}
-
-.hidden {
-  opacity: 0 !important;
-}
-
-/* Hovering links, buttons, interactive elements */
-.ringHover {
+.cursorHover {
+  top: -24px;
+  left: -24px;
   width: 48px;
   height: 48px;
-  margin-top: -24px;
-  margin-left: -24px;
-  background-color: rgba(201, 162, 39, 0.12);
   border-color: var(--color-gold);
-  box-shadow: 0 0 12px rgba(201, 162, 39, 0.25);
-}
-
-/* Hovering service cards: displays "View" text badge */
-.ringView {
-  width: 58px;
-  height: 58px;
-  margin-top: -29px;
-  margin-left: -29px;
-  background-color: rgba(11, 31, 58, 0.92);
-  border-color: var(--color-gold);
-  backdrop-filter: blur(4px);
-  -webkit-backdrop-filter: blur(4px);
-  box-shadow: 0 4px 18px rgba(11, 31, 58, 0.45);
-}
-
-.viewText {
-  color: var(--color-gold-light);
-  font-size: 10px;
-  font-weight: 750;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-  user-select: none;
-}
-
-/* Hide on touch devices or reduced motion */
-@media (prefers-reduced-motion: reduce), (pointer: coarse), (hover: none) {
-  .cursorWrapper {
-    display: none !important;
-  }
+  background: rgba(201, 162, 39, 0.12);
 }

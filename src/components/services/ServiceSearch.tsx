@@ -15,6 +15,7 @@ import { Service, Category } from '@/types';
 import { ServiceCard } from './ServiceCard';
 import { Button } from '@/components/ui/Button';
 import { Badge } from '@/components/ui/Badge';
+import { EmptyStateIllustration } from '@/components/illustrations/EmptyStateIllustration';
 import styles from './ServiceSearch.module.css';
 
 interface ServiceSearchProps {
@@ -282,8 +283,8 @@ export const ServiceSearch: React.FC<ServiceSearchProps> = ({
       {/* Directory Content (Always grouped under its category) */}
       {totalCount === 0 ? (
         <div className={styles.emptyState}>
-          <div className={styles.emptyIconCircle}>
-            <Search size={28} className={styles.emptyIcon} />
+          <div className={styles.emptyIllustrationWrapper} aria-hidden="true">
+            <EmptyStateIllustration width={220} height={165} />
           </div>
           <h3 className={styles.emptyTitle}>No services found</h3>
           <p className={styles.emptyText}>

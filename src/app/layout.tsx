@@ -17,6 +17,10 @@ const CustomCursor = dynamic(
   () => import('@/components/ui/CustomCursor').then((m) => m.CustomCursor)
 );
 
+const ScrollProgressBar = dynamic(
+  () => import('@/components/ui/ScrollProgressBar').then((m) => m.ScrollProgressBar)
+);
+
 const inter = Inter({
   subsets: ['latin'],
   display: 'swap',
@@ -91,6 +95,9 @@ export default function RootLayout({
 
           {/* Global Sticky Header */}
           <Header />
+
+          {/* Reading / Scroll Progress Bar at very top of screen */}
+          <ScrollProgressBar />
 
           {/* Main Content Landmark */}
           <main
