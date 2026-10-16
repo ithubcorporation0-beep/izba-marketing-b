@@ -1,9 +1,24 @@
 .section {
   padding-top: var(--section-spacing-md);
   padding-bottom: var(--section-spacing-md);
-  background: var(--color-white);
+  background-color: var(--color-white);
+  background-image: radial-gradient(rgba(11, 31, 58, 0.05) 1px, transparent 1px);
+  background-size: 28px 28px;
   position: relative;
   overflow: hidden;
+}
+
+.section::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: min(900px, 90vw);
+  height: 450px;
+  background: radial-gradient(ellipse at center, rgba(201, 162, 39, 0.06) 0%, transparent 70%);
+  pointer-events: none;
+  z-index: 0;
 }
 
 .header {
