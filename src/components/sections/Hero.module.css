@@ -14,8 +14,8 @@
   width: 100%;
 }
 
-/* Faceted Studio Background with Angled Polygons & Subtle Spotlight */
-.facetedBackdrop {
+/* Animated Mesh / Aurora Backdrop */
+.auroraBackdrop {
   position: absolute;
   inset: 0;
   width: 100%;
@@ -23,31 +23,177 @@
   pointer-events: none;
   z-index: 0;
   overflow: hidden;
+  background-color: #071427;
 }
 
-.facetedSvg {
+/* Floating Orb 1: Warm Radiant Gold (Upper Center / Behind Headline) */
+.auroraOrbCenter {
+  position: absolute;
+  top: 18%;
+  left: 50%;
+  width: clamp(380px, 50vw, 680px);
+  height: clamp(380px, 50vw, 680px);
+  margin-left: calc(clamp(380px, 50vw, 680px) / -2);
+  margin-top: calc(clamp(380px, 50vw, 680px) / -2);
+  border-radius: 50%;
+  background: radial-gradient(
+    circle,
+    rgba(201, 162, 39, 0.22) 0%,
+    rgba(230, 198, 92, 0.12) 40%,
+    transparent 70%
+  );
+  filter: blur(80px);
+  will-change: transform;
+  animation: floatOrbCenter 18s ease-in-out infinite alternate;
+}
+
+/* Floating Orb 2: Secondary Gold Filament (Drifting Top-Left to Center) */
+.auroraOrbGold1 {
+  position: absolute;
+  top: 10%;
+  left: 20%;
+  width: clamp(320px, 40vw, 540px);
+  height: clamp(320px, 40vw, 540px);
+  border-radius: 50%;
+  background: radial-gradient(
+    circle,
+    rgba(230, 198, 92, 0.18) 0%,
+    rgba(201, 162, 39, 0.08) 50%,
+    transparent 70%
+  );
+  filter: blur(90px);
+  will-change: transform;
+  animation: floatOrbLeft 22s ease-in-out infinite alternate;
+}
+
+/* Floating Orb 3: Deep Sapphire / Radiant Navy (Drifting Top-Right) */
+.auroraOrbNavy {
+  position: absolute;
+  top: 15%;
+  right: 15%;
+  width: clamp(400px, 52vw, 700px);
+  height: clamp(400px, 52vw, 700px);
+  border-radius: 50%;
+  background: radial-gradient(
+    circle,
+    rgba(22, 48, 79, 0.85) 0%,
+    rgba(11, 31, 58, 0.5) 45%,
+    transparent 70%
+  );
+  filter: blur(80px);
+  will-change: transform;
+  animation: floatOrbRight 25s ease-in-out infinite alternate;
+}
+
+/* Floating Orb 4: Subtle Amber / Gold Accent (Drifting lower behind CTA) */
+.auroraOrbGold2 {
+  position: absolute;
+  top: 42%;
+  left: 48%;
+  width: clamp(300px, 38vw, 500px);
+  height: clamp(240px, 30vw, 400px);
+  border-radius: 50%;
+  background: radial-gradient(
+    ellipse,
+    rgba(201, 162, 39, 0.14) 0%,
+    transparent 65%
+  );
+  filter: blur(75px);
+  will-change: transform;
+  animation: floatOrbBottom 16s ease-in-out infinite alternate;
+}
+
+/* Fine Blueprint Grid Texture Overlay */
+.meshGridOverlay {
   position: absolute;
   inset: 0;
   width: 100%;
   height: 100%;
-  object-fit: cover;
+  background-image:
+    linear-gradient(to right, rgba(201, 162, 39, 0.04) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(201, 162, 39, 0.04) 1px, transparent 1px);
+  background-size: 48px 48px;
+  mask-image: radial-gradient(ellipse at 50% 35%, black 40%, transparent 80%);
+  -webkit-mask-image: radial-gradient(ellipse at 50% 35%, black 40%, transparent 80%);
+  opacity: 0.75;
 }
 
+/* Ambient Radial Spotlight (gentle top-down spotlight cone) */
 .radialSpotlight {
   position: absolute;
-  top: 15%;
+  top: 0;
   left: 50%;
-  transform: translate(-50%, -50%);
-  width: min(1000px, 90vw);
-  height: min(600px, 60vh);
+  transform: translateX(-50%);
+  width: min(1100px, 100vw);
+  height: min(650px, 70vh);
   background: radial-gradient(
-    ellipse at center,
-    rgba(201, 162, 39, 0.15) 0%,
-    rgba(11, 31, 58, 0.3) 45%,
+    ellipse at 50% 0%,
+    rgba(201, 162, 39, 0.16) 0%,
+    rgba(11, 31, 58, 0.25) 50%,
     transparent 75%
   );
-  filter: blur(60px);
+  filter: blur(50px);
   pointer-events: none;
+}
+
+/* Keyframes for Smooth Floating Orbs */
+@keyframes floatOrbCenter {
+  0% {
+    transform: translate3d(0, 0, 0) scale(1);
+  }
+  50% {
+    transform: translate3d(25px, -30px, 0) scale(1.08);
+  }
+  100% {
+    transform: translate3d(-20px, 20px, 0) scale(0.95);
+  }
+}
+
+@keyframes floatOrbLeft {
+  0% {
+    transform: translate3d(0, 0, 0) scale(1);
+  }
+  50% {
+    transform: translate3d(40px, 35px, 0) scale(1.12);
+  }
+  100% {
+    transform: translate3d(-30px, -20px, 0) scale(0.92);
+  }
+}
+
+@keyframes floatOrbRight {
+  0% {
+    transform: translate3d(0, 0, 0) scale(1);
+  }
+  50% {
+    transform: translate3d(-35px, 30px, 0) scale(1.06);
+  }
+  100% {
+    transform: translate3d(20px, -25px, 0) scale(0.96);
+  }
+}
+
+@keyframes floatOrbBottom {
+  0% {
+    transform: translate3d(0, 0, 0) scale(1);
+  }
+  50% {
+    transform: translate3d(-25px, -20px, 0) scale(1.15);
+  }
+  100% {
+    transform: translate3d(30px, 15px, 0) scale(0.9);
+  }
+}
+
+/* Respect Prefers Reduced Motion */
+@media (prefers-reduced-motion: reduce) {
+  .auroraOrbCenter,
+  .auroraOrbGold1,
+  .auroraOrbNavy,
+  .auroraOrbGold2 {
+    animation: none !important;
+    transform: none !important;
+  }
 }
 
 /* Optional Video Background Styling */

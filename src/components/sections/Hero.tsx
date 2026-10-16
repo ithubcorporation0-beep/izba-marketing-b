@@ -133,29 +133,18 @@ export const Hero: React.FC = () => {
 
   return (
     <section ref={heroRef} className={styles.heroSection} aria-label="Introduction">
-      {/* 1. Dimensional Faceted Studio Backdrop (Angled architectural rays & soft spotlights) */}
-      <div className={styles.facetedBackdrop} aria-hidden="true">
-        <svg
-          className={styles.facetedSvg}
-          viewBox="0 0 1440 900"
-          fill="none"
-          xmlns="http://www.w3.org/2000/svg"
-          preserveAspectRatio="none"
-        >
-          {/* Angled facets radiating from center behind headline (Corporate Navy) */}
-          <polygon points="720,220 0,0 280,0" fill="#0B1F3A" fillOpacity="0.7" />
-          <polygon points="720,220 280,0 620,0" fill="#16304F" fillOpacity="0.75" />
-          <polygon points="720,220 620,0 820,0" fill="#16304F" fillOpacity="0.85" />
-          <polygon points="720,220 820,0 1160,0" fill="#16304F" fillOpacity="0.75" />
-          <polygon points="720,220 1160,0 1440,0" fill="#0B1F3A" fillOpacity="0.7" />
+      {/* 1. Dynamic Animated Mesh / Aurora Backdrop */}
+      <div className={styles.auroraBackdrop} aria-hidden="true">
+        {/* Soft Aurora Mesh Floating Orbs */}
+        <div className={styles.auroraOrbCenter} />
+        <div className={styles.auroraOrbGold1} />
+        <div className={styles.auroraOrbNavy} />
+        <div className={styles.auroraOrbGold2} />
 
-          <polygon points="720,220 1440,0 1440,480" fill="#0E2340" fillOpacity="0.6" />
-          <polygon points="720,220 1440,480 1440,900" fill="#071427" fillOpacity="0.7" />
-          <polygon points="720,220 0,480 0,0" fill="#0E2340" fillOpacity="0.6" />
-          <polygon points="720,220 0,900 0,480" fill="#071427" fillOpacity="0.7" />
-        </svg>
+        {/* Delicate Blueprint Tech Grid */}
+        <div className={styles.meshGridOverlay} />
 
-        {/* Ambient Radial Spotlight */}
+        {/* Ambient Top Light Beam */}
         <div className={styles.radialSpotlight} />
       </div>
 
