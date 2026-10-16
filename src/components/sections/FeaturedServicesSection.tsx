@@ -20,7 +20,7 @@ export const FeaturedServicesSection: React.FC = () => {
             Highlighted Offerings
           </Badge>
           <h2 id="featured-services-heading" className={styles.title}>
-            Featured Services
+            Featured <span className="highlight-gold">Services</span>
           </h2>
           <p className={styles.subtitle}>
             Key capabilities prioritized by IZBA Marketing agency to deliver

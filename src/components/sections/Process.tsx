@@ -96,7 +96,7 @@ export const Process: React.FC = () => {
             Our Working Process
           </Badge>
           <h2 id="process-heading" className={styles.title}>
-            How We Work
+            How We <span className="highlight-gold">Work</span>
           </h2>
           <p className={styles.subtitle}>
             A straightforward 4-step approach ensuring clear communication,
@@ -113,18 +113,24 @@ export const Process: React.FC = () => {
           <div className={styles.timelineGrid}>
             {processSteps.map((step, index) => {
               const isLit = activeSteps.includes(index);
+              const formattedNumber = String(step.step).padStart(2, '0');
 
               return (
                 <div
                   key={step.step}
                   className={`${styles.stepCard} ${isLit ? styles.stepCardActive : ''}`}
                 >
-                  <div
-                    className={`${styles.stepNumberBadge} ${
-                      isLit ? styles.stepBadgeActive : ''
-                    }`}
-                  >
-                    {step.step}
+                  <div className={styles.cardTopRow}>
+                    <div
+                      className={`${styles.stepNumberBadge} ${
+                        isLit ? styles.stepBadgeActive : ''
+                      }`}
+                    >
+                      {step.step}
+                    </div>
+                    <span className={styles.outlinedStepNumber} aria-hidden="true">
+                      {formattedNumber}
+                    </span>
                   </div>
                   <h3 className={styles.stepTitle}>{step.title}</h3>
                   <p className={styles.stepDescription}>{step.description}</p>

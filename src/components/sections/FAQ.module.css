@@ -1,17 +1,38 @@
 .section {
-  padding-top: var(--section-spacing-md);
-  padding-bottom: var(--section-spacing-md);
+  padding-top: var(--section-spacing-lg);
+  padding-bottom: var(--section-spacing-lg);
   background: var(--color-white);
+  position: relative;
+}
+
+.faqLayout {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 2.5rem;
+  align-items: start;
+}
+
+@media (min-width: 1024px) {
+  .faqLayout {
+    grid-template-columns: 420px 1fr;
+    gap: 3.5rem;
+  }
+}
+
+.leftCol {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  position: sticky;
+  top: 100px;
 }
 
 .header {
   display: flex;
   flex-direction: column;
-  align-items: center;
-  text-align: center;
+  align-items: flex-start;
+  text-align: left;
   gap: var(--space-xs);
-  max-width: 720px;
-  margin: 0 auto 3.5rem auto;
 }
 
 .title {
@@ -30,18 +51,29 @@
   color: var(--color-muted);
 }
 
-.accordionGrid {
-  display: grid;
-  grid-template-columns: 1fr;
-  gap: 1.25rem;
-  align-items: start;
+.illustrationWrapper {
+  display: none;
 }
 
 @media (min-width: 1024px) {
-  .accordionGrid {
-    grid-template-columns: repeat(2, 1fr);
-    gap: 1.5rem;
+  .illustrationWrapper {
+    display: block;
+    width: 100%;
+    max-width: 360px;
+    margin: 0 auto;
+    filter: drop-shadow(0 12px 24px rgba(11, 31, 58, 0.08));
   }
+}
+
+.rightCol {
+  display: flex;
+  flex-direction: column;
+}
+
+.accordionList {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
 }
 
 .accordionItem {
@@ -66,7 +98,7 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 1.25rem 1.5rem;
+  padding: 1.35rem 1.65rem;
   text-align: left;
   background: transparent;
   color: var(--color-navy);
@@ -153,12 +185,12 @@
 }
 
 .answerBox {
-  padding: 0 1.5rem 1.5rem 1.5rem;
+  padding: 0 1.65rem 1.65rem 1.65rem;
   display: flex;
   flex-direction: column;
   gap: var(--space-sm);
   border-top: 1px solid rgba(16, 24, 40, 0.06);
-  padding-top: 1rem;
+  padding-top: 1.15rem;
 }
 
 .answerText {
@@ -175,7 +207,7 @@
   color: var(--color-navy);
   width: fit-content;
   background: var(--color-gold-tint);
-  border: 1px solid var(--color-border-soft);
+  border: 1px solid rgba(201, 162, 39, 0.3);
   padding: 0.2rem 0.6rem;
   border-radius: var(--radius-xs);
 }

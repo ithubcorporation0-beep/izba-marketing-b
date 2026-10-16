@@ -23,7 +23,7 @@ export const PortfolioPreview: React.FC = () => {
             Verified Work
           </Badge>
           <h2 id="portfolio-preview-heading" className={styles.title}>
-            Recent Projects & Case Studies
+            Recent <span className="highlight-gold">Projects</span> & Case Studies
           </h2>
           <p className={styles.subtitle}>
             A showcase of client deliverables, web development, and digital

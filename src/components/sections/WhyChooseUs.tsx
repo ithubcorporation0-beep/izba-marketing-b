@@ -22,7 +22,7 @@ export const WhyChooseUs: React.FC = () => {
             Operational Standards
           </Badge>
           <h2 id="why-choose-heading" className={styles.title}>
-            Why Choose IZBA
+            Why Choose <span className="highlight-gold">IZBA</span>
           </h2>
           <p className={styles.subtitle}>
             Verifiable operational commitments, cross-functional engineering and design capabilities,

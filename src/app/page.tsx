@@ -1,8 +1,10 @@
 import React from 'react';
 import type { Metadata } from 'next';
 import { Hero } from '@/components/sections/Hero';
+import { CapabilitiesStrip } from '@/components/sections/CapabilitiesStrip';
 import { StatsSection } from '@/components/sections/Stats';
 import { CategoriesSection } from '@/components/sections/CategoriesSection';
+import { WhatWeDoShowcase } from '@/components/sections/WhatWeDoShowcase';
 import { FeaturedServicesSection } from '@/components/sections/FeaturedServicesSection';
 import { Process } from '@/components/sections/Process';
 import { WhyChooseUs } from '@/components/sections/WhyChooseUs';
@@ -29,34 +31,40 @@ export default function HomePage() {
       {/* Structured Data: Organization */}
       <JsonLd data={organizationSchema} />
 
-      {/* 1. Hero with PRD 4.2 copy & 2. Verifiable trust points */}
+      {/* 1. Hero with preserved headline, copy, buttons, and showcase photo */}
       <Hero />
 
-      {/* 2. Verified Project Statistics Row (9 categories, 90 services) */}
+      {/* 2. Horizontal Capabilities Strip with core skills */}
+      <CapabilitiesStrip />
+
+      {/* 3. Verified Statistics Row (9 categories, 90 services) */}
       <StatsSection />
 
-      {/* 3. Service Category Bento Grid (all 9 categories) */}
+      {/* 4. Service Category Bento Grid (all 9 categories with mini illustrations) */}
       <CategoriesSection />
 
-      {/* 4. Featured Services Section */}
+      {/* 5. What We Do: Accessible Tabbed Showcase (Build, Market, Create, Automate) */}
+      <WhatWeDoShowcase />
+
+      {/* 6. Featured Services Section */}
       <FeaturedServicesSection />
 
-      {/* 5. How We Work Process (Connected 4-step timeline in navy) */}
+      {/* 7. How We Work Process (Connected 4-step timeline with large outlined step numbers) */}
       <Process />
 
-      {/* 6. Why Choose Us (4 verifiable operational tiles) */}
+      {/* 8. Why Choose Us (4 verifiable operational tiles) */}
       <WhyChooseUs />
 
-      {/* 7. Portfolio Preview (graceful 'coming soon' state when empty) */}
+      {/* 9. Portfolio Preview (graceful 'coming soon' state when empty) */}
       <PortfolioPreview />
 
-      {/* 8. Client Testimonials (automatically hidden when array is empty) */}
+      {/* 10. Client Testimonials (automatically hidden when array is empty) */}
       <TestimonialsSection />
 
-      {/* 9. FAQ Accordion (two columns with smooth accordion) */}
+      {/* 11. FAQ Accordion (with side illustration) */}
       <FAQSection />
 
-      {/* 10. Final CTA Banner (large navy panel with gold button) */}
+      {/* 12. Final Closing CTA Banner (with gradient, pattern, and floating shapes) */}
       <CTASection />
     </div>
   );

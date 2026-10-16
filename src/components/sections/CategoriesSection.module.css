@@ -1,7 +1,8 @@
 .section {
-  padding-top: var(--section-spacing-md);
-  padding-bottom: var(--section-spacing-md);
+  padding-top: var(--section-spacing-lg);
+  padding-bottom: var(--section-spacing-lg);
   background: var(--color-white);
+  position: relative;
 }
 
 .header {
@@ -30,30 +31,26 @@
   line-height: 1.6;
 }
 
-.grid {
+/* Bento Grid System */
+.bentoGrid {
   display: grid;
   grid-template-columns: 1fr;
   gap: 1.5rem;
 }
 
 @media (min-width: 640px) {
-  .grid {
+  .bentoGrid {
     grid-template-columns: repeat(2, 1fr);
-    gap: 1.5rem;
   }
 }
 
 @media (min-width: 1024px) {
-  .grid {
+  .bentoGrid {
     grid-template-columns: repeat(3, 1fr);
     gap: 1.75rem;
   }
 
-  /* Bento grid rhythm: 2+1, 1+1+1, 2+1 */
-  .grid > *:nth-child(1) {
-    grid-column: span 2;
-  }
-  .grid > *:nth-child(6) {
+  .bentoLarge {
     grid-column: span 2;
   }
 }
@@ -72,65 +69,85 @@
   outline-offset: 3px;
 }
 
-.card {
+.bentoCard {
   height: 100%;
+  position: relative;
   display: flex;
   flex-direction: column;
-  padding: 1.85rem;
+  padding: 2rem 1.85rem;
   border-radius: var(--radius-22);
   background: var(--color-card-bg);
   border: 1px solid var(--color-border);
   box-shadow: var(--shadow-sm);
+  overflow: hidden;
   transition:
     transform 0.25s cubic-bezier(0.16, 1, 0.3, 1),
     box-shadow 0.25s cubic-bezier(0.16, 1, 0.3, 1),
     border-color 0.2s ease;
 }
 
-.cardLink:hover .card {
+.bentoCardLarge {
+  background: linear-gradient(135deg, #FFFFFF 0%, #F8FAFC 100%);
+  border-color: rgba(201, 162, 39, 0.3);
+}
+
+.cardLink:hover .bentoCard {
   transform: translateY(-5px);
   box-shadow: var(--shadow-lg), 0 0 0 1px var(--color-gold);
   border-color: var(--color-gold);
 }
 
-/* Card icon badge: Navy square with GOLD icon */
-.iconWrapper {
-  width: 52px;
-  height: 52px;
-  border-radius: var(--radius-14);
-  background: var(--color-navy);
-  color: var(--color-gold);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  margin-bottom: 1.25rem;
-  border: 1px solid rgba(201, 162, 39, 0.35);
-  box-shadow: 0 4px 12px rgba(11, 31, 58, 0.12);
-  transition:
-    transform 0.25s cubic-bezier(0.16, 1, 0.3, 1),
-    box-shadow 0.2s ease,
-    border-color 0.2s ease;
+/* Mini Illustration for large bento cards */
+.miniIllustration {
+  position: absolute;
+  top: 1.5rem;
+  right: 1.5rem;
+  pointer-events: none;
+  opacity: 0.85;
+  transition: transform var(--transition-fast), opacity var(--transition-fast);
 }
 
-.cardLink:hover .iconWrapper {
-  border-color: var(--color-gold);
-  transform: scale(1.08);
-  box-shadow: 0 6px 18px rgba(201, 162, 39, 0.35);
+.cardLink:hover .miniIllustration {
+  transform: scale(1.05);
+  opacity: 1;
+}
+
+.topRow {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 1.25rem;
+}
+
+.countBadge {
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  padding: 0.25rem 0.65rem;
+  border-radius: var(--radius-pill);
+  background: var(--color-soft-bg);
+  border: 1px solid var(--color-border);
+  color: var(--color-muted);
 }
 
 .cardTitle {
-  font-size: 1.2rem;
-  font-weight: 700;
+  font-size: 1.25rem;
+  font-weight: 750;
   color: var(--color-navy);
   margin-bottom: var(--space-xs);
+  letter-spacing: -0.015em;
+  position: relative;
+  z-index: 1;
 }
 
 .cardDesc {
-  font-size: 0.92rem;
+  font-size: 0.9375rem;
   color: var(--color-text-main);
-  line-height: 1.55;
+  line-height: 1.6;
   flex-grow: 1;
   margin-bottom: var(--space-md);
+  position: relative;
+  z-index: 1;
 }
 
 .cardFooter {
@@ -139,9 +156,11 @@
   justify-content: space-between;
   padding-top: var(--space-sm);
   border-top: 1px solid var(--color-border);
-  font-size: 0.85rem;
+  font-size: 0.875rem;
   font-weight: 700;
   color: var(--color-navy);
+  position: relative;
+  z-index: 1;
 }
 
 .actionText {

@@ -7,6 +7,7 @@ import { siteConfig } from '@/config/site';
 import { Container } from '@/components/ui/Container';
 import { Button } from '@/components/ui/Button';
 import { Reveal } from '@/components/ui/motion';
+import { ClosingCtaIllustration } from '@/components/illustrations/ClosingCtaIllustration';
 import styles from './ClosingCta.module.css';
 
 interface ClosingCtaProps {
@@ -36,11 +37,14 @@ export const ClosingCta: React.FC<ClosingCtaProps> = ({
     <section className={styles.section} aria-labelledby="closing-cta-heading">
       <Container size="default">
         <div className={styles.panelCard}>
-          {/* Animated glowing orbs matching hero palette */}
+          {/* Animated glowing orbs matching hero palette + floating illustration */}
           <div className={styles.orbWrapper} aria-hidden="true">
             <div className={styles.orbBlue} />
             <div className={styles.orbViolet} />
             <div className={styles.gridPattern} />
+            <div className={styles.floatingIllustration}>
+              <ClosingCtaIllustration width={280} height={210} />
+            </div>
           </div>
 
           <Reveal className={styles.content}>
@@ -50,7 +54,7 @@ export const ClosingCta: React.FC<ClosingCtaProps> = ({
             </div>
 
             <h2 id="closing-cta-heading" className={styles.title}>
-              {displayHeadline}
+              Ready to <span className="highlight-gold">start</span> your project?
             </h2>
 
             <p className={styles.subtitle}>{displaySubheadline}</p>
