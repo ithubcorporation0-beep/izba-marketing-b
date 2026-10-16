@@ -21,6 +21,10 @@ const ScrollProgressBar = dynamic(
   () => import('@/components/ui/ScrollProgressBar').then((m) => m.ScrollProgressBar)
 );
 
+const FloatingWhatsApp = dynamic(
+  () => import('@/components/ui/FloatingWhatsApp').then((m) => m.FloatingWhatsApp)
+);
+
 const inter = Inter({
   subsets: ['latin'],
   display: 'swap',
@@ -116,6 +120,9 @@ export default function RootLayout({
 
           {/* Custom Trailing Ring Cursor for Desktop Fine Pointer */}
           <CustomCursor />
+
+          {/* Global Floating WhatsApp Direct Support Button */}
+          <FloatingWhatsApp />
         </MotionProvider>
       </body>
     </html>

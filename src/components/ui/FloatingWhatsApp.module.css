@@ -1,0 +1,187 @@
+.floatingContainer {
+  position: fixed;
+  bottom: 1.5rem;
+  right: 1.5rem;
+  z-index: 90;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 0.75rem;
+  pointer-events: none;
+}
+
+/* Offset on service detail pages so it does not overlap mobile bottom CTA bar */
+@media (max-width: 767px) {
+  .serviceDetailOffset {
+    bottom: 5.75rem;
+  }
+}
+
+/* Chat Tooltip Bubble */
+.chatBubble {
+  position: relative;
+  max-width: 260px;
+  background: rgba(11, 31, 58, 0.95);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  border: 1px solid rgba(230, 198, 92, 0.35);
+  border-radius: var(--radius-14);
+  padding: 0.85rem 1rem;
+  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.35), 0 0 16px rgba(201, 162, 39, 0.12);
+  color: #ffffff;
+  pointer-events: auto;
+  opacity: 0;
+  transform: translateY(10px) scale(0.95);
+  transition: opacity 0.3s cubic-bezier(0.16, 1, 0.3, 1),
+              transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  visibility: hidden;
+}
+
+.bubbleVisible {
+  opacity: 1;
+  transform: translateY(0) scale(1);
+  visibility: visible;
+}
+
+.closeBubbleBtn {
+  position: absolute;
+  top: 6px;
+  right: 8px;
+  background: none;
+  border: none;
+  color: #94a3b8;
+  font-size: 1.1rem;
+  line-height: 1;
+  cursor: pointer;
+  padding: 2px 4px;
+  border-radius: 4px;
+  transition: color 0.15s ease;
+}
+
+.closeBubbleBtn:hover {
+  color: #ffffff;
+}
+
+.bubbleHeader {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  margin-bottom: 0.35rem;
+}
+
+.onlinePing {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background-color: #25d366;
+  box-shadow: 0 0 8px #25d366;
+}
+
+.bubbleAuthor {
+  font-size: 0.75rem;
+  font-weight: 750;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--color-gold-light);
+}
+
+.bubbleText {
+  font-size: 0.82rem;
+  line-height: 1.4;
+  color: #e2e8f0;
+  margin: 0;
+}
+
+/* Main Floating WhatsApp Pill / Circle Button */
+.whatsappButton {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 58px;
+  height: 58px;
+  border-radius: 50%;
+  background: #25d366;
+  color: #ffffff;
+  box-shadow: 0 8px 24px rgba(37, 211, 102, 0.4),
+              0 4px 12px rgba(0, 0, 0, 0.25);
+  pointer-events: auto;
+  text-decoration: none;
+  transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1),
+              box-shadow 0.25s cubic-bezier(0.16, 1, 0.3, 1),
+              background-color 0.2s ease;
+}
+
+.whatsappButton:hover {
+  transform: scale(1.08) translateY(-2px);
+  box-shadow: 0 12px 32px rgba(37, 211, 102, 0.6),
+              0 6px 16px rgba(0, 0, 0, 0.3);
+  background: #22bf5b;
+}
+
+.whatsappButton:active {
+  transform: scale(0.96);
+}
+
+.whatsappButton:focus-visible {
+  outline: 3px solid var(--color-gold);
+  outline-offset: 3px;
+}
+
+.whatsappSvg {
+  filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.15));
+}
+
+/* Pulsing Outer Signal Ring */
+@keyframes pulseSignal {
+  0% {
+    transform: scale(0.95);
+    opacity: 0.75;
+  }
+  50% {
+    transform: scale(1.3);
+    opacity: 0;
+  }
+  100% {
+    transform: scale(0.95);
+    opacity: 0;
+  }
+}
+
+.pulseRing {
+  position: absolute;
+  inset: -4px;
+  border-radius: 50%;
+  border: 2px solid #25d366;
+  animation: pulseSignal 2.5s ease-out infinite;
+  pointer-events: none;
+}
+
+/* Status Green Dot */
+.statusDot {
+  position: absolute;
+  top: 3px;
+  right: 3px;
+  width: 13px;
+  height: 13px;
+  border-radius: 50%;
+  background-color: #10b981;
+  border: 2px solid #ffffff;
+  box-shadow: 0 0 6px rgba(16, 185, 129, 0.8);
+}
+
+/* Respect Reduced Motion */
+@media (prefers-reduced-motion: reduce) {
+  .pulseRing {
+    animation: none !important;
+    display: none;
+  }
+  .whatsappButton {
+    transition: none !important;
+    transform: none !important;
+  }
+  .chatBubble {
+    transition: none !important;
+    transform: none !important;
+  }
+}
