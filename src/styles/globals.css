@@ -40,6 +40,9 @@
   --radius-lg: var(--radius-lg);
   --radius-xl: var(--radius-xl);
   --radius-2xl: var(--radius-2xl);
+  --radius-14: var(--radius-14);
+  --radius-22: var(--radius-22);
+  --radius-32: var(--radius-32);
   --radius-full: var(--radius-full);
 
   --shadow-sm: var(--shadow-sm);

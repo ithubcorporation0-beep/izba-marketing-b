@@ -239,10 +239,10 @@ export const Hero: React.FC = () => {
         <div className={styles.showcaseFrame}>
           <Image
             src="/images/hero-studio-showcase.webp"
-            alt="IZBA Marketing agency creative studio and collaborative digital workspace"
+            alt="IZBA Marketing agency creative studio workspace and collaborative digital environment"
             width={1440}
             height={810}
-            priority
+            loading="lazy"
             sizes="(max-width: 768px) 100vw, 1200px"
             className={styles.showcaseImage}
           />

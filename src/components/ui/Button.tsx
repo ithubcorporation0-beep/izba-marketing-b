@@ -32,23 +32,23 @@ export const Button = React.forwardRef<
     ref
   ) => {
     const baseStyles =
-      'inline-flex items-center justify-center font-semibold rounded-md transition-all duration-150 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-[var(--color-gold)] disabled:opacity-50 disabled:pointer-events-none select-none';
+      'inline-flex items-center justify-center font-bold rounded-full transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-[var(--color-gold)] disabled:opacity-50 disabled:pointer-events-none select-none';
 
     const sizeStyles = {
-      sm: 'text-xs px-3 py-1.5 gap-1.5',
-      md: 'text-sm px-4 py-2.5 gap-2',
-      lg: 'text-base px-6 py-3 gap-2.5',
+      sm: 'text-xs px-3.5 py-1.5 gap-1.5',
+      md: 'text-sm px-5 py-2.5 gap-2',
+      lg: 'text-base px-6 py-3.5 gap-2.5',
     };
 
     const normalizedVariant = variant === 'outline' ? 'secondary' : variant;
 
     const variantStyles = {
       primary:
-        'bg-[var(--color-navy)] text-[var(--color-white)] hover:bg-[var(--color-navy-light)] border border-[var(--color-gold)] active:scale-[0.99] shadow-sm',
+        'bg-[var(--color-gold)] text-[var(--color-navy)] hover:bg-[var(--color-gold-light)] border border-transparent active:scale-[0.98] shadow-sm hover:shadow-[var(--shadow-glow-gold)]',
       secondary:
-        'bg-[var(--color-gold-tint)] text-[var(--color-navy)] border border-[var(--color-gold)] hover:bg-[var(--color-white)] hover:border-[var(--color-gold-light)] active:scale-[0.99] shadow-sm',
+        'bg-[var(--color-gold-tint)] text-[var(--color-navy)] border border-[var(--color-gold)] hover:bg-[var(--color-white)] hover:border-[var(--color-gold-light)] active:scale-[0.98] shadow-xs',
       ghost:
-        'bg-transparent text-[var(--color-text-main)] hover:text-[var(--color-navy)] hover:bg-[var(--color-gold-tint)]',
+        'bg-transparent text-[var(--color-navy)] hover:text-[var(--color-navy)] hover:bg-[var(--color-gold-tint)]',
     };
 
     const widthStyle = fullWidth ? 'w-full' : 'w-auto';

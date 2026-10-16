@@ -26,30 +26,31 @@
 
   /* Surface & Page Backgrounds */
   --color-white: #ffffff;
-  --color-page-bg: #F8F6F0; /* Warm off-white page background */
-  --color-soft-bg: #F8F6F0; /* Warm off-white */
+  --color-page-bg: #F7F8FC; /* Soft off-white page background */
+  --color-soft-bg: #F7F8FC; /* Soft off-white sections */
   --color-soft-gold: #FBF5E1; /* Soft gold tint for badges & tiles */
   --color-card-bg: #ffffff; /* Cards: white */
   --color-surface-card: #ffffff;
-  --color-surface-sunken: #F8F6F0;
+  --color-surface-sunken: #F7F8FC;
   --color-surface-elevated: #ffffff;
   --color-bg-surface: #ffffff;
 
   /* Text & Typography Colors */
-  --color-text-main: #475569; /* Slate #475569 body text */
+  --color-text-main: #0B1F3A; /* Navy main text */
+  --color-text-body: #1E293B; /* Slate body text */
   --color-text-heading: #0B1F3A; /* Headings: Navy #0B1F3A */
   --color-text-navy: #0B1F3A;
-  --color-muted: #475569;
+  --color-muted: #475569; /* WCAG AA 7:1 contrast on white */
   --color-text-muted: #475569;
   --color-text-subtle: #64748B;
   --color-text-inverse: #ffffff;
 
   /* Borders */
-  --color-border: #E9E2CC; /* Soft gold-gray */
-  --color-border-subtle: #E9E2CC;
-  --color-border-dark: #D4CBAD;
+  --color-border: #E2E8F0; /* Clean soft border */
+  --color-border-subtle: #EDF2F7;
+  --color-border-dark: #CBD5E1;
   --color-border-gold: #C9A227;
-  --color-border-strong: #C4BA99;
+  --color-border-strong: #94A3B8;
   --color-border-dark-mode: rgba(230, 198, 92, 0.18);
   --color-border-dark-glow: rgba(201, 162, 39, 0.32);
 
@@ -107,30 +108,34 @@
   --letter-spacing-heading: -0.03em;
   --letter-spacing-eyebrow: 0.12em;
 
-  /* Border Radius */
+  /* Border Radius (14 / 22 / 32 / full) */
   --radius-xs: 0.25rem;
-  --radius-sm: 0.375rem;
-  --radius-md: 0.5rem;
-  --radius-lg: 0.875rem;
-  --radius-xl: 1.25rem;
-  --radius-2xl: 1.75rem;
+  --radius-sm: 8px;
+  --radius-md: 14px;
+  --radius-lg: 22px;
+  --radius-xl: 32px;
+  --radius-2xl: 32px;
+  --radius-14: 14px;
+  --radius-22: 22px;
+  --radius-32: 32px;
   --radius-full: 9999px;
+  --radius-pill: 9999px;
 
   /* Elevation & Soft Layered Shadows */
   --shadow-sm: 0 1px 3px 0 rgba(11, 31, 58, 0.05), 0 1px 2px -1px rgba(11, 31, 58, 0.03);
   --shadow-md:
-    0 4px 12px -2px rgba(11, 31, 58, 0.08), 0 2px 6px -2px rgba(11, 31, 58, 0.04);
+    0 8px 24px -4px rgba(11, 31, 58, 0.07), 0 2px 6px -2px rgba(11, 31, 58, 0.04);
   --shadow-lg:
-    0 14px 28px -4px rgba(11, 31, 58, 0.09),
+    0 16px 36px -6px rgba(11, 31, 58, 0.09),
     0 6px 12px -2px rgba(11, 31, 58, 0.04);
   --shadow-xl:
-    0 24px 44px -8px rgba(11, 31, 58, 0.12),
+    0 24px 48px -8px rgba(11, 31, 58, 0.12),
     0 8px 18px -4px rgba(11, 31, 58, 0.05);
   --shadow-dark-card:
     0 16px 36px -6px rgba(0, 0, 0, 0.5),
     0 0 0 1px rgba(230, 198, 92, 0.12);
-  --shadow-glow-gold: 0 8px 28px -4px rgba(201, 162, 39, 0.32);
-  --shadow-glow-blue: 0 8px 28px -4px rgba(201, 162, 39, 0.32);
+  --shadow-glow-gold: 0 8px 28px -4px rgba(201, 162, 39, 0.35);
+  --shadow-glow-blue: 0 8px 28px -4px rgba(11, 31, 58, 0.35);
   --shadow-glow-violet: 0 8px 28px -4px rgba(230, 198, 92, 0.32);
   --shadow-focus: 0 0 0 3px rgba(201, 162, 39, 0.35);
   --shadow-focus-dark: 0 0 0 3px rgba(230, 198, 92, 0.45);

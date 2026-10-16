@@ -60,13 +60,12 @@ export const Header: React.FC = () => {
     { label: 'Contact', href: '/contact' },
   ];
 
-  const isDarkHero = pathname === '/' && !isScrolled;
+  // Dark header style applies at top of page across the site (over hero & navy banners)
+  const isDarkHeader = !isScrolled;
 
-  const headerStyleClass = isDarkHero
+  const headerStyleClass = isDarkHeader
     ? styles.headerDarkHero
-    : isScrolled
-      ? styles.headerGlassScrolled
-      : styles.headerLightTop;
+    : styles.headerGlassScrolled;
 
   const visibilityClass = isVisible ? styles.headerVisible : styles.headerHidden;
 
@@ -77,26 +76,26 @@ export const Header: React.FC = () => {
         role="banner"
       >
         <div className="max-w-[var(--container-max)] mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between">
-          {/* Brand Logo */}
+          {/* Brand Logo - slightly larger */}
           <Link
             href="/"
             className="flex items-center gap-3 group focus:outline-none focus-visible:ring-2 focus-visible:ring-[var(--color-gold)] rounded-[var(--radius-sm)]"
             aria-label="IZBA Marketing Agency logo"
           >
             <Image
-              src={isDarkHero ? '/logo-light.svg' : '/logo.svg'}
+              src={isDarkHeader ? '/logo-light.svg' : '/logo.svg'}
               alt="IZBA Marketing Agency logo"
-              width={160}
-              height={40}
+              width={180}
+              height={45}
               priority
-              className="h-9 md:h-10 w-auto object-contain transition-opacity duration-200"
+              className="h-10 md:h-11 w-auto object-contain transition-opacity duration-200"
             />
           </Link>
 
-          {/* Desktop Navigation with Animated Underlines */}
+          {/* Desktop Navigation with Animated Underlines & White Text */}
           <nav
-            className={`hidden md:flex items-center px-3 py-1.5 rounded-full border transition-colors ${
-              isDarkHero
+            className={`hidden md:flex items-center px-3.5 py-1.5 rounded-full border transition-colors ${
+              isDarkHeader
                 ? 'bg-white/10 border-white/15 backdrop-blur-md'
                 : 'bg-[var(--color-white)] border-[var(--color-border)] shadow-xs'
             }`}
@@ -117,10 +116,10 @@ export const Header: React.FC = () => {
                     className={`${styles.navLink} ${
                       isActive ? styles.navLinkActive : ''
                     } ${
-                      isDarkHero
+                      isDarkHeader
                         ? isActive
                           ? styles.navLinkActiveDark
-                          : 'text-slate-200 hover:text-white'
+                          : 'text-white/90 hover:text-white'
                         : isActive
                           ? styles.navLinkActiveLight
                           : 'text-[var(--color-text-main)] hover:text-[var(--color-navy)]'
@@ -137,15 +136,11 @@ export const Header: React.FC = () => {
 
           {/* Header Actions */}
           <div className="flex items-center gap-3">
-            {/* The "Get in Touch" button always stays visible whenever the header is shown */}
+            {/* The Gold "Get in Touch" button */}
             <div className="inline-flex">
               <Link
                 href="/contact"
-                className={`inline-flex items-center justify-center font-bold rounded-full transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--color-gold)] focus-visible:ring-offset-2 select-none text-xs md:text-sm px-4 md:px-5 py-2 md:py-2.5 gap-2 shadow-sm ${
-                  isDarkHero
-                    ? 'bg-[var(--color-gold)] text-[var(--color-navy)] hover:bg-[var(--color-gold-light)] shadow-md shadow-amber-500/15'
-                    : 'bg-[var(--color-navy)] text-white hover:bg-[var(--color-navy-light)] border border-[var(--color-gold)]/40 hover:border-[var(--color-gold)]'
-                }`}
+                className="inline-flex items-center justify-center font-bold rounded-full transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--color-gold)] focus-visible:ring-offset-2 select-none text-xs md:text-sm px-4 md:px-5 py-2 md:py-2.5 gap-2 shadow-sm bg-[var(--color-gold)] text-[var(--color-navy)] hover:bg-[var(--color-gold-light)] hover:shadow-[var(--shadow-glow-gold)] active:scale-[0.98]"
               >
                 <span>Get in Touch</span>
               </Link>
@@ -155,7 +150,7 @@ export const Header: React.FC = () => {
             <button
               type="button"
               className={`md:hidden p-2 rounded-[var(--radius-md)] border focus:outline-none focus-visible:ring-2 focus-visible:ring-[var(--color-gold)] transition-colors ${
-                isDarkHero
+                isDarkHeader
                   ? 'text-white border-white/20 hover:bg-white/10'
                   : 'text-[var(--color-navy)] hover:bg-[var(--color-white)] border-[var(--color-border)]'
               }`}
