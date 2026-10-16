@@ -10,11 +10,9 @@ export const siteConfig: SiteConfig = {
   description:
     'Full-service marketing agency providing digital marketing, SEO, AI automation, web development, graphic design, and content production.',
   contact: {
-    email: 'ibrookhnax@gmail.com',
-    // TODO: Replace with real company phone number (+[country code] [number])
-    phone: 'PLACEHOLDER_PHONE',
-    // TODO: Replace with real company WhatsApp number
-    whatsapp: 'PLACEHOLDER_WHATSAPP',
+    email: 'ibrookhanx007@gmail.com',
+    phone: '+92 317 9898769',
+    whatsapp: '+92 317 9898769',
     // TODO: Replace with real physical company address (optional)
     address: 'PLACEHOLDER_ADDRESS',
     workingHours: 'Available 24/7',
@@ -26,8 +24,7 @@ export const siteConfig: SiteConfig = {
     github: 'PLACEHOLDER_GITHUB_URL',
     // TODO: Replace with real Twitter / X URL
     twitter: 'PLACEHOLDER_TWITTER_URL',
-    // TODO: Replace with real WhatsApp chat link
-    whatsapp: 'PLACEHOLDER_WHATSAPP_URL',
+    whatsapp: 'https://wa.me/923179898769',
     // TODO: Replace with real Facebook page URL
     facebook: 'PLACEHOLDER_FACEBOOK_URL',
     // TODO: Replace with real YouTube channel URL

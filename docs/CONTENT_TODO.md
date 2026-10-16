@@ -110,9 +110,9 @@ The Proof section on category pages is designed to automatically hide when no ma
 ## 4. Global Contact Information in `src/config/site.ts`
 
 Status of contact information:
-- `contact.email`: Configured as `ibrookhnax@gmail.com`
-- `contact.phone`: Placeholder (`PLACEHOLDER_PHONE`) ready for official international phone format
-- `contact.whatsapp`: Placeholder (`PLACEHOLDER_WHATSAPP`) ready for official international WhatsApp format
+- `contact.email`: Configured as `ibrookhanx007@gmail.com`
+- `contact.phone`: Configured as `+92 317 9898769`
+- `contact.whatsapp`: Configured as `+92 317 9898769`
 - `contact.workingHours`: Configured as `Available 24/7`
 - `timezone`: Configured as `'UTC'` (`TIMEZONE`)
 - `contact.address`: `PLACEHOLDER_ADDRESS` (hidden unless client provides physical office address)
