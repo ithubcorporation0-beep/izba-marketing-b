@@ -228,8 +228,13 @@ export const Footer: React.FC = () => {
           </div>
         </div>
 
+        {/* Giant Low-Contrast "IZBA" Wordmark Across the Bottom */}
+        <div className={styles.giantWordmarkWrapper} data-visible="true" aria-hidden="true">
+          <span className={styles.giantWordmark}>IZBA</span>
+        </div>
+
         {/* Legal & Copyright Row */}
-        <div className="mt-12 pt-8 border-t border-[var(--color-white)]/10 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-[var(--color-text-muted-dark)]">
+        <div className="mt-8 pt-8 border-t border-[var(--color-white)]/10 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-[var(--color-text-muted-dark)]">
           <p>
             &copy; {currentYear} {siteConfig.name}. All rights reserved.
           </p>

@@ -34,57 +34,59 @@ export const ClosingCta: React.FC<ClosingCtaProps> = ({
 
   return (
     <section className={styles.section} aria-labelledby="closing-cta-heading">
-      {/* Animated glowing orbs matching hero palette */}
-      <div className={styles.orbWrapper} aria-hidden="true">
-        <div className={styles.orbBlue} />
-        <div className={styles.orbViolet} />
-        <div className={styles.gridPattern} />
-      </div>
-
       <Container size="default">
-        <Reveal className={styles.content}>
-          <div className={styles.badge}>
-            <Sparkles size={14} aria-hidden="true" />
-            <span>Start Building Today</span>
+        <div className={styles.panelCard}>
+          {/* Animated glowing orbs matching hero palette */}
+          <div className={styles.orbWrapper} aria-hidden="true">
+            <div className={styles.orbBlue} />
+            <div className={styles.orbViolet} />
+            <div className={styles.gridPattern} />
           </div>
 
-          <h2 id="closing-cta-heading" className={styles.title}>
-            {displayHeadline}
-          </h2>
+          <Reveal className={styles.content}>
+            <div className={styles.badge}>
+              <Sparkles size={14} aria-hidden="true" />
+              <span>Start Building Today</span>
+            </div>
 
-          <p className={styles.subtitle}>{displaySubheadline}</p>
+            <h2 id="closing-cta-heading" className={styles.title}>
+              {displayHeadline}
+            </h2>
 
-          <div className={styles.actions}>
-            <Button
-              href="/contact"
-              variant="primary"
-              size="lg"
-              icon={<ArrowRight size={18} />}
-            >
-              {displayBtnText}
-            </Button>
+            <p className={styles.subtitle}>{displaySubheadline}</p>
 
-            {isPlaceholderEmail ? (
-              <Button href="/contact" variant="secondary" size="lg">
-                <span>Contact Our Team</span>
-              </Button>
-            ) : (
-              <a
-                href={`mailto:${email}`}
-                className={styles.emailBtn}
-                aria-label={`Send an email to ${email}`}
+            <div className={styles.actions}>
+              <Button
+                href="/contact"
+                variant="primary"
+                size="lg"
+                icon={<ArrowRight size={18} />}
               >
-                <Mail size={16} aria-hidden="true" />
-                <span>{email}</span>
-              </a>
-            )}
-          </div>
+                {displayBtnText}
+              </Button>
 
-          <div className={styles.note}>
-            <ShieldCheck size={14} className="text-emerald-400" aria-hidden="true" />
-            <span>Strict confidentiality. Transparent scopes with no hidden commitments.</span>
-          </div>
-        </Reveal>
+              {isPlaceholderEmail ? (
+                <Button href="/contact" variant="secondary" size="lg">
+                  <span>Contact Our Team</span>
+                </Button>
+              ) : (
+                <a
+                  href={`mailto:${email}`}
+                  className={styles.emailBtn}
+                  aria-label={`Send an email to ${email}`}
+                >
+                  <Mail size={16} aria-hidden="true" />
+                  <span>{email}</span>
+                </a>
+              )}
+            </div>
+
+            <div className={styles.note}>
+              <ShieldCheck size={14} className="text-emerald-400" aria-hidden="true" />
+              <span>Strict confidentiality. Transparent scopes with no hidden commitments.</span>
+            </div>
+          </Reveal>
+        </div>
       </Container>
     </section>
   );

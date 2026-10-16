@@ -5,6 +5,7 @@ import { StatsSection } from '@/components/sections/Stats';
 import { CategoriesSection } from '@/components/sections/CategoriesSection';
 import { FeaturedServicesSection } from '@/components/sections/FeaturedServicesSection';
 import { Process } from '@/components/sections/Process';
+import { WhyChooseUs } from '@/components/sections/WhyChooseUs';
 import { PortfolioPreview } from '@/components/sections/PortfolioPreview';
 import { TestimonialsSection } from '@/components/sections/Testimonials';
 import { FAQSection } from '@/components/sections/FAQ';
@@ -31,17 +32,20 @@ export default function HomePage() {
       {/* 1. Hero with PRD 4.2 copy & 2. Verifiable trust points */}
       <Hero />
 
-      {/* 2. Verified Project Statistics Row */}
+      {/* 2. Verified Project Statistics Row (9 categories, 90 services) */}
       <StatsSection />
 
-      {/* 4. Service Category Cards (all 9 categories) */}
+      {/* 3. Service Category Bento Grid (all 9 categories) */}
       <CategoriesSection />
 
-      {/* 5. Featured Services Section (10 owner-featured offerings) */}
+      {/* 4. Featured Services Section */}
       <FeaturedServicesSection />
 
-      {/* 6. How We Work Process (Animated connected timeline) */}
+      {/* 5. How We Work Process (Connected 4-step timeline in navy) */}
       <Process />
+
+      {/* 6. Why Choose Us (4 verifiable operational tiles) */}
+      <WhyChooseUs />
 
       {/* 7. Portfolio Preview (graceful 'coming soon' state when empty) */}
       <PortfolioPreview />
@@ -49,10 +53,10 @@ export default function HomePage() {
       {/* 8. Client Testimonials (automatically hidden when array is empty) */}
       <TestimonialsSection />
 
-      {/* 9. FAQ Accordion from faqs.ts */}
+      {/* 9. FAQ Accordion (two columns with smooth accordion) */}
       <FAQSection />
 
-      {/* 10. Final CTA Banner */}
+      {/* 10. Final CTA Banner (large navy panel with gold button) */}
       <CTASection />
     </div>
   );

@@ -8,18 +8,19 @@ import { Reveal, RevealStagger } from '@/components/ui/motion';
 import styles from './FAQ.module.css';
 
 export const FAQSection: React.FC = () => {
-  // Only one FAQ open at a time (index or null)
-  const [openIndex, setOpenIndex] = useState<number | null>(0);
+  const [openIndices, setOpenIndices] = useState<number[]>([0]);
 
   const toggleFAQ = (index: number) => {
-    setOpenIndex(openIndex === index ? null : index);
+    setOpenIndices((prev) =>
+      prev.includes(index) ? prev.filter((i) => i !== index) : [...prev, index]
+    );
   };
 
   return (
     <section className={styles.section} aria-labelledby="faq-heading">
-      <Container size="narrow">
+      <Container size="default">
         <Reveal className={styles.header}>
-          <Badge variant="blue" size="md">
+          <Badge variant="gold" size="md">
             Common Inquiries
           </Badge>
           <h2 id="faq-heading" className={styles.title}>
@@ -33,11 +34,11 @@ export const FAQSection: React.FC = () => {
         </Reveal>
 
         <RevealStagger
-          className={styles.accordionList}
+          className={styles.accordionGrid}
           childSelector={`.${styles.accordionItem}`}
         >
           {faqs.map((faq, index) => {
-            const isOpen = openIndex === index;
+            const isOpen = openIndices.includes(index);
             const buttonId = `faq-btn-${index}`;
             const panelId = `faq-panel-${index}`;
 

@@ -92,7 +92,7 @@ export const Process: React.FC = () => {
     >
       <Container>
         <Reveal className={styles.sectionHeader}>
-          <Badge variant="blue" size="md">
+          <Badge variant="gold" size="md">
             Our Working Process
           </Badge>
           <h2 id="process-heading" className={styles.title}>

@@ -19,7 +19,7 @@ export const PortfolioPreview: React.FC = () => {
     >
       <Container>
         <Reveal className={styles.header}>
-          <Badge variant="blue" size="md">
+          <Badge variant="gold" size="md">
             Verified Work
           </Badge>
           <h2 id="portfolio-preview-heading" className={styles.title}>

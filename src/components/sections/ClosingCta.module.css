@@ -1,11 +1,19 @@
 .section {
+  padding-top: var(--section-spacing-md);
+  padding-bottom: var(--section-spacing-lg);
+  background: var(--color-soft-bg);
   position: relative;
-  background-color: var(--color-navy);
+}
+
+.panelCard {
+  position: relative;
+  background-color: #071427;
   color: #ffffff;
+  border-radius: var(--radius-32);
+  border: 1px solid rgba(230, 198, 92, 0.25);
+  box-shadow: 0 24px 60px -12px rgba(7, 20, 39, 0.4), 0 0 40px rgba(201, 162, 39, 0.08);
   overflow: hidden;
-  padding-top: clamp(4.5rem, 7vw, 6.5rem);
-  padding-bottom: clamp(4.5rem, 7vw, 6.5rem);
-  border-top: 1px solid rgba(255, 255, 255, 0.08);
+  padding: clamp(3.5rem, 6vw, 5.5rem) clamp(1.5rem, 4vw, 3.5rem);
 }
 
 /* Background floating orbs */
