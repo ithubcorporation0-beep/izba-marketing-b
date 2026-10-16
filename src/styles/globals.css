@@ -268,6 +268,101 @@ h4,
   color: var(--color-muted);
 }
 
+/* Background Depth, Section Textures & Glows */
+.bg-pattern-dots {
+  background-image: radial-gradient(rgba(11, 31, 58, 0.06) 1px, transparent 1px);
+  background-size: 24px 24px;
+}
+
+.bg-pattern-dots-dark {
+  background-image: radial-gradient(rgba(201, 162, 39, 0.12) 1px, transparent 1px);
+  background-size: 24px 24px;
+}
+
+.bg-pattern-grid {
+  background-image: 
+    linear-gradient(to right, rgba(11, 31, 58, 0.04) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(11, 31, 58, 0.04) 1px, transparent 1px);
+  background-size: 32px 32px;
+}
+
+.bg-pattern-grid-dark {
+  background-image: 
+    linear-gradient(to right, rgba(201, 162, 39, 0.06) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(201, 162, 39, 0.06) 1px, transparent 1px);
+  background-size: 32px 32px;
+}
+
+.bg-mesh-glow {
+  position: relative;
+  overflow: hidden;
+}
+
+.bg-mesh-glow::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 100%;
+  max-width: 1200px;
+  height: 400px;
+  background: radial-gradient(circle at 50% 0%, rgba(201, 162, 39, 0.12) 0%, transparent 70%);
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* 1px Gradient Border on Featured Cards */
+.card-gradient-border {
+  position: relative;
+  border: 1px solid transparent;
+  background: linear-gradient(var(--color-white), var(--color-white)) padding-box,
+              linear-gradient(135deg, rgba(201, 162, 39, 0.6) 0%, rgba(11, 31, 58, 0.2) 100%) border-box;
+}
+
+.card-gradient-border-dark {
+  position: relative;
+  border: 1px solid transparent;
+  background: linear-gradient(rgba(11, 31, 58, 0.95), rgba(7, 20, 39, 0.98)) padding-box,
+              linear-gradient(135deg, rgba(201, 162, 39, 0.6) 0%, rgba(230, 198, 92, 0.15) 100%) border-box;
+}
+
+/* Glass Cards on Navy Sections */
+.card-glass-navy {
+  background: rgba(11, 31, 58, 0.7);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(201, 162, 39, 0.22);
+  box-shadow: 0 16px 36px -6px rgba(0, 0, 0, 0.4), inset 0 1px 0 rgba(255, 255, 255, 0.1);
+  color: var(--color-white);
+}
+
+/* Gold Underline / Highlight on Key Words */
+.highlight-gold {
+  position: relative;
+  display: inline-block;
+  white-space: nowrap;
+}
+
+.highlight-gold::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: 0.12em;
+  width: 100%;
+  height: 0.32em;
+  background: linear-gradient(90deg, rgba(201, 162, 39, 0.38) 0%, rgba(230, 198, 92, 0.15) 100%);
+  border-radius: 3px;
+  z-index: -1;
+}
+
+.underline-gold {
+  text-decoration: underline;
+  text-decoration-color: var(--color-gold);
+  text-decoration-thickness: 3px;
+  text-underline-offset: 6px;
+}
+
 /* Reduced Motion Override for Accessibility */
 @media (prefers-reduced-motion: reduce) {
   *,

@@ -1,0 +1,11 @@
+export { CategoryIcon } from './CategoryIcon';
+export type { CategoryIconSlug } from './CategoryIcon';
+export { AboutIllustration } from './AboutIllustration';
+export { ServicesIllustration } from './ServicesIllustration';
+export { ContactIllustration } from './ContactIllustration';
+export { DigitalProductsIllustration } from './DigitalProductsIllustration';
+export { NotFoundIllustration } from './NotFoundIllustration';
+export { EmptyStateIllustration } from './EmptyStateIllustration';
+export { PortfolioIllustration } from './PortfolioIllustration';
+export { FAQIllustration } from './FAQIllustration';
+export { ClosingCtaIllustration } from './ClosingCtaIllustration';
