@@ -1,7 +1,8 @@
 import React from 'react';
 import type { Metadata } from 'next';
 import { Container } from '@/components/ui/Container';
-import { SectionHeading } from '@/components/ui/SectionHeading';
+import { Breadcrumb } from '@/components/ui/Breadcrumb';
+import { Badge } from '@/components/ui/Badge';
 import { Button } from '@/components/ui/Button';
 import { ProjectCard } from '@/components/portfolio/ProjectCard';
 import { RevealStagger } from '@/components/ui/motion/RevealStagger';
@@ -22,18 +23,33 @@ export default function PortfolioPage() {
 
   return (
     <div className={styles.pageWrapper}>
-      <Container size="default">
-        <SectionHeading
-          as="h1"
-          badge="Client Projects"
-          title="Portfolio & Case Studies"
-          subtitle="Real-world technology outcomes and implementations. We publish only verified work with explicit client permission."
-          align="center"
-        />
+      {/* Navy Page-Header Banner */}
+      <header className={styles.headerSection}>
+        <Container size="default">
+          <div className="mb-4">
+            <Breadcrumb items={[{ label: 'Portfolio' }]} variant="dark" />
+          </div>
+          <div className={styles.headerContainer}>
+            <Badge variant="gold" size="md">
+              Client Projects
+            </Badge>
+            <h1 className={styles.title}>
+              Portfolio &amp;{' '}
+              <span className={styles.gradientText}>Case Studies</span>
+            </h1>
+            <p className={styles.subtitle}>
+              Real-world technology outcomes and implementations. We publish only verified work with explicit client permission.
+            </p>
+          </div>
+        </Container>
+      </header>
 
-        {publishedProjects.length === 0 ? (
-          /* Honest Empty State when projects array is empty */
-          <div className={styles.emptyContainer}>
+      {/* Main Content Section */}
+      <section className={styles.contentSection}>
+        <Container size="default">
+          {publishedProjects.length === 0 ? (
+            /* Honest Empty State when projects array is empty */
+            <div className={styles.emptyContainer}>
             <div className={styles.emptyCard}>
               <div className={styles.iconCircle} aria-hidden="true">
                 <Briefcase size={36} />
@@ -79,7 +95,8 @@ export default function PortfolioPage() {
             </div>
           </RevealStagger>
         )}
-      </Container>
+        </Container>
+      </section>
     </div>
   );
 }

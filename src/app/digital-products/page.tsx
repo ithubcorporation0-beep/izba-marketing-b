@@ -2,6 +2,8 @@ import React from 'react';
 import type { Metadata } from 'next';
 import Link from 'next/link';
 import { Container } from '@/components/ui/Container';
+import { Breadcrumb } from '@/components/ui/Breadcrumb';
+import { Badge } from '@/components/ui/Badge';
 import { SectionHeading } from '@/components/ui/SectionHeading';
 import { Button } from '@/components/ui/Button';
 import { constructMetadata } from '@/lib/seo/metadata';
@@ -150,17 +152,32 @@ const offerings: ProductOffering[] = [
 export default function DigitalProductsPage() {
   return (
     <div className={styles.pageWrapper}>
-      <Container size="default">
-        <SectionHeading
-          as="h1"
-          badge="Digital Assets & Templates"
-          title="Digital Products & Reusable Templates"
-          subtitle="We craft tailored digital assets, downloadable workbooks, branded templates, and business kits built for your audience or commercial distribution."
-          align="center"
-        />
+      {/* Navy Page-Header Banner */}
+      <header className={styles.headerSection}>
+        <Container size="default">
+          <div className="mb-4">
+            <Breadcrumb items={[{ label: 'Digital Products' }]} variant="dark" />
+          </div>
+          <div className={styles.headerContainer}>
+            <Badge variant="gold" size="md">
+              Digital Assets &amp; Templates
+            </Badge>
+            <h1 className={styles.title}>
+              Digital Products &amp;{' '}
+              <span className={styles.gradientText}>Reusable Templates</span>
+            </h1>
+            <p className={styles.subtitle}>
+              We craft tailored digital assets, downloadable workbooks, branded templates, and business kits built for your audience or commercial distribution.
+            </p>
+          </div>
+        </Container>
+      </header>
 
-        {/* Clear Notice: No automated checkout or fake prices */}
-        <div className={styles.noticeBanner} role="note">
+      {/* Main Content Section */}
+      <section className={styles.contentSection}>
+        <Container size="default">
+          {/* Clear Notice: No automated checkout or fake prices */}
+          <div className={styles.noticeBanner} role="note">
           <Info size={20} className={styles.noticeIcon} aria-hidden="true" />
           <div>
             <strong>How Our Digital Products Work:</strong> We build digital
@@ -217,7 +234,7 @@ export default function DigitalProductsPage() {
         </div>
 
         {/* Bottom CTA Card */}
-        <section className={styles.bottomCtaCard}>
+        <div className={styles.bottomCtaCard}>
           <h2 className={styles.bottomCtaTitle}>
             Need a Custom Digital Asset or White-Label Pack?
           </h2>
@@ -243,8 +260,9 @@ export default function DigitalProductsPage() {
               Browse All Category Services
             </Button>
           </div>
-        </section>
+        </div>
       </Container>
-    </div>
-  );
+    </section>
+  </div>
+);
 }

@@ -10,14 +10,25 @@ export interface BreadcrumbItem {
 
 interface BreadcrumbProps {
   items: BreadcrumbItem[];
+  variant?: 'light' | 'dark';
   className?: string;
 }
 
-export const Breadcrumb: React.FC<BreadcrumbProps> = ({ items, className }) => {
+export const Breadcrumb: React.FC<BreadcrumbProps> = ({
+  items,
+  variant = 'dark',
+  className,
+}) => {
   return (
     <nav
       aria-label="Breadcrumb"
-      className={[styles.nav, className].filter(Boolean).join(' ')}
+      className={[
+        styles.nav,
+        variant === 'dark' ? styles.dark : '',
+        className,
+      ]
+        .filter(Boolean)
+        .join(' ')}
     >
       <ol className={styles.list}>
         <li className={styles.item}>

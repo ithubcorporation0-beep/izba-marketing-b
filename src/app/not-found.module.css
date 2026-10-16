@@ -1,9 +1,18 @@
 .wrapper {
-  padding: 4.5rem 1rem 6rem;
+  padding: clamp(6.5rem, 10vw, 8.5rem) 1rem 6rem;
+  background-color: #071427;
+  background-image: radial-gradient(
+    circle at 50% 30%,
+    rgba(201, 162, 39, 0.18) 0%,
+    rgba(11, 31, 58, 0.95) 50%,
+    #071427 100%
+  );
+  color: #ffffff;
   display: flex;
   align-items: center;
   justify-content: center;
   text-align: center;
+  min-height: 80vh;
 }
 
 .content {
@@ -29,7 +38,7 @@
   font-size: clamp(3.5rem, 8vw, 5.5rem);
   font-weight: 900;
   line-height: 1;
-  color: var(--color-navy);
+  color: #ffffff;
   letter-spacing: -0.04em;
   display: inline-block;
   will-change: transform;
@@ -48,12 +57,13 @@
   width: 68px;
   height: 68px;
   border-radius: 50%;
-  background: var(--color-gold-tint);
+  background: rgba(201, 162, 39, 0.15);
   border: 2px dashed var(--color-gold);
   display: flex;
   align-items: center;
   justify-content: center;
-  color: var(--color-gold);
+  color: var(--color-gold-light);
+  box-shadow: 0 0 20px rgba(201, 162, 39, 0.25);
   animation: portalSpin 12s linear infinite;
 }
 
@@ -131,9 +141,9 @@
   font-weight: 700;
   text-transform: uppercase;
   letter-spacing: 0.05em;
-  color: var(--color-navy);
-  background: var(--color-gold-tint);
-  border: 1px solid var(--color-border-soft);
+  color: var(--color-gold-light);
+  background: rgba(201, 162, 39, 0.15);
+  border: 1px solid rgba(201, 162, 39, 0.35);
   padding: 0.35rem 0.85rem;
   border-radius: 9999px;
   margin-bottom: 1.25rem;
@@ -141,8 +151,8 @@
 
 .title {
   font-size: clamp(2rem, 5vw, 3rem);
-  font-weight: 800;
-  color: var(--color-navy);
+  font-weight: 850;
+  color: #ffffff;
   letter-spacing: -0.02em;
   line-height: 1.2;
   margin-bottom: 0.75rem;
@@ -150,7 +160,7 @@
 
 .description {
   font-size: 1.0625rem;
-  color: var(--color-muted);
+  color: #94a3b8;
   line-height: 1.6;
   max-width: 520px;
   margin-bottom: 2rem;
@@ -167,11 +177,14 @@
 
 .suggestionsBox {
   width: 100%;
-  background: var(--color-soft-bg);
-  border: 1px solid var(--color-border);
-  border-radius: var(--radius-xl);
+  background: rgba(11, 31, 58, 0.65);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(230, 198, 92, 0.2);
+  border-radius: var(--radius-22);
   padding: 2rem 1.5rem;
   text-align: left;
+  box-shadow: var(--shadow-md);
 }
 
 .suggestionsTitle {
@@ -179,7 +192,7 @@
   font-weight: 700;
   text-transform: uppercase;
   letter-spacing: 0.05em;
-  color: var(--color-navy);
+  color: var(--color-gold-light);
   margin-bottom: 1rem;
   text-align: center;
 }
@@ -200,22 +213,23 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 0.75rem 1rem;
-  background: var(--color-white);
-  border: 1px solid var(--color-border);
-  border-radius: var(--radius-md);
+  padding: 0.85rem 1.15rem;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: var(--radius-14);
   font-size: 0.875rem;
   font-weight: 600;
-  color: var(--color-navy);
+  color: #ffffff;
   text-decoration: none;
-  transition: all 0.15s ease;
+  transition: all 0.2s ease;
 }
 
 .categoryLink:hover {
+  background: rgba(201, 162, 39, 0.15);
   border-color: var(--color-gold);
-  color: var(--color-gold);
-  transform: translateY(-1px);
-  box-shadow: var(--shadow-sm);
+  color: var(--color-gold-light);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 14px rgba(201, 162, 39, 0.25);
 }
 
 .arrowIcon {

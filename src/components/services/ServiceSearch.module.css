@@ -14,10 +14,10 @@
   display: flex;
   flex-direction: column;
   gap: var(--space-md);
-  padding: 1.5rem;
+  padding: 1.75rem;
   background: var(--color-white);
   border: 1px solid var(--color-border);
-  border-radius: var(--radius-xl);
+  border-radius: var(--radius-22);
   box-shadow: var(--shadow-sm);
 }
 
@@ -29,7 +29,7 @@
 
 .searchLabel {
   font-size: 0.88rem;
-  font-weight: 600;
+  font-weight: 700;
   color: var(--color-navy);
 }
 
@@ -50,7 +50,7 @@
 .searchInput {
   width: 100%;
   padding: 12px 40px 12px 42px;
-  border-radius: var(--radius-md);
+  border-radius: var(--radius-14);
   border: 1px solid var(--color-border);
   background: var(--color-soft-bg);
   color: var(--color-navy);
@@ -63,7 +63,7 @@
 .searchInput:focus {
   outline: none;
   border-color: var(--color-gold);
-  box-shadow: 0 0 0 3px var(--color-gold-glow);
+  box-shadow: 0 0 0 3px rgba(201, 162, 39, 0.35);
 }
 
 .clearBtn {
@@ -87,15 +87,15 @@
 /* Sticky Category Chip Bar with Scroll-Spy */
 .stickyChipBar {
   position: sticky;
-  top: 74px;
-  z-index: 20;
-  background: rgba(255, 255, 255, 0.88);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
-  padding: 0.75rem 1rem;
-  border-radius: var(--radius-xl);
+  top: 72px;
+  z-index: 25;
+  background: rgba(247, 248, 252, 0.94);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  padding: 0.85rem 1.25rem;
+  border-radius: var(--radius-22);
   border: 1px solid var(--color-border);
-  box-shadow: 0 4px 20px -2px rgba(16, 24, 40, 0.08);
+  box-shadow: var(--shadow-md);
 }
 
 .chipScrollContainer {
@@ -119,13 +119,13 @@
   display: inline-flex;
   align-items: center;
   white-space: nowrap;
-  padding: 6px 14px;
+  padding: 7px 16px;
   border-radius: var(--radius-full);
   border: 1px solid var(--color-border);
   background: var(--color-white);
   color: var(--color-muted);
-  font-size: 0.84rem;
-  font-weight: 500;
+  font-size: 0.85rem;
+  font-weight: 600;
   cursor: pointer;
   transition:
     background-color 0.2s ease,
@@ -146,15 +146,15 @@
   background: var(--color-navy) !important;
   border-color: var(--color-gold) !important;
   color: var(--color-gold-light) !important;
-  font-weight: 600;
-  box-shadow: 0 2px 8px var(--color-gold-glow);
+  font-weight: 700;
+  box-shadow: 0 4px 14px rgba(201, 162, 39, 0.35);
 }
 
 .scrollSpyPill {
   background: var(--color-navy) !important;
   border-color: var(--color-gold) !important;
   color: var(--color-gold-light) !important;
-  box-shadow: 0 2px 10px var(--color-gold-glow);
+  box-shadow: 0 4px 14px rgba(201, 162, 39, 0.35);
   transform: translateY(-1px);
 }
 

@@ -8,6 +8,7 @@ import {
   Headphones,
 } from 'lucide-react';
 import { Container } from '@/components/ui/Container';
+import { Breadcrumb } from '@/components/ui/Breadcrumb';
 import { Badge } from '@/components/ui/Badge';
 import { Card } from '@/components/ui/Card';
 import { CTASection } from '@/components/sections/CTA';
@@ -111,8 +112,11 @@ export default function AboutPage() {
       {/* 1. Hero Header */}
       <header className={styles.heroSection}>
         <Container size="default">
+          <div className="mb-4">
+            <Breadcrumb items={[{ label: 'About Us' }]} variant="dark" />
+          </div>
           <Reveal className={styles.heroContent}>
-            <Badge variant="blue" size="md">
+            <Badge variant="gold" size="md">
               About IZBA Marketing agency
             </Badge>
             <h1 className={styles.pageTitle}>

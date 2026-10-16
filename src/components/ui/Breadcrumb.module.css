@@ -54,3 +54,24 @@
   text-overflow: ellipsis;
   white-space: nowrap;
 }
+
+/* Dark Surface Variant for Navy Page Header Banners */
+.dark .homeLink,
+.dark .link,
+.dark .homeIcon {
+  color: #94A3B8;
+}
+
+.dark .homeLink:hover,
+.dark .link:hover {
+  color: var(--color-gold-light);
+}
+
+.dark .separator {
+  color: rgba(255, 255, 255, 0.25);
+}
+
+.dark .current {
+  color: var(--color-gold-light);
+  font-weight: 600;
+}

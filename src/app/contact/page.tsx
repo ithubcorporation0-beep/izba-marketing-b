@@ -1,6 +1,8 @@
 import React from 'react';
 import type { Metadata } from 'next';
 import { Container } from '@/components/ui/Container';
+import { Breadcrumb } from '@/components/ui/Breadcrumb';
+import { Badge } from '@/components/ui/Badge';
 import { SectionHeading } from '@/components/ui/SectionHeading';
 import { QuoteForm } from '@/components/forms/QuoteForm';
 import { siteConfig } from '@/config/site';
@@ -30,16 +32,31 @@ export default function ContactPage() {
 
   return (
     <div className={styles.pageWrapper}>
-      <Container size="default">
-        <SectionHeading
-          as="h1"
-          badge="Direct Enquiry"
-          title="Request a Quote & Start a Project"
-          subtitle="Tell us what you want to build or improve. We review every enquiry and reply with clear, business-friendly next steps."
-          align="center"
-        />
+      {/* Navy Page-Header Banner */}
+      <header className={styles.headerSection}>
+        <Container size="default">
+          <div className="mb-4">
+            <Breadcrumb items={[{ label: 'Contact Us' }]} variant="dark" />
+          </div>
+          <div className={styles.headerContainer}>
+            <Badge variant="gold" size="md">
+              Direct Enquiry
+            </Badge>
+            <h1 className={styles.title}>
+              Request a Quote &amp;{' '}
+              <span className={styles.gradientText}>Start a Project</span>
+            </h1>
+            <p className={styles.subtitle}>
+              Tell us what you want to build or improve. We review every enquiry and reply with clear, business-friendly next steps.
+            </p>
+          </div>
+        </Container>
+      </header>
 
-        <div className={styles.layoutGrid}>
+      {/* Main Form Section */}
+      <section className={styles.formSection}>
+        <Container size="default">
+          <div className={styles.layoutGrid}>
           {/* Main Form Column */}
           <div>
             <QuoteForm />
@@ -206,6 +223,7 @@ export default function ContactPage() {
           </aside>
         </div>
       </Container>
-    </div>
-  );
+    </section>
+  </div>
+);
 }

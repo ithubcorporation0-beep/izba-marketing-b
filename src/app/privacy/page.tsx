@@ -1,6 +1,8 @@
 import React from 'react';
 import type { Metadata } from 'next';
 import { Container } from '@/components/ui/Container';
+import { Breadcrumb } from '@/components/ui/Breadcrumb';
+import { Badge } from '@/components/ui/Badge';
 import { siteConfig } from '@/config/site';
 import { AlertTriangle, Mail } from 'lucide-react';
 import { constructMetadata } from '@/lib/seo/metadata';
@@ -16,24 +18,42 @@ export const metadata: Metadata = constructMetadata({
 export default function PrivacyPage() {
   return (
     <div className={styles.legalWrapper}>
-      <Container size="narrow">
-        {/* Mandatory Draft Banner */}
-        <div className={styles.draftBanner} role="alert">
-          <AlertTriangle size={22} className="shrink-0 mt-0.5" aria-hidden="true" />
-          <div>
-            <strong>Draft Notice:</strong> This document is a preliminary draft
-            reflecting the technical data flows of this website. It must be
-            reviewed and tailored by the business owner and legal advisor before
-            official launch.
+      {/* Navy Page-Header Banner */}
+      <header className={styles.headerSection}>
+        <Container size="default">
+          <div className="mb-4">
+            <Breadcrumb items={[{ label: 'Privacy Policy' }]} variant="dark" />
           </div>
-        </div>
+          <div className={styles.headerContainer}>
+            <Badge variant="gold" size="md">
+              Legal &amp; Compliance
+            </Badge>
+            <h1 className={styles.title}>
+              Privacy <span className={styles.gradientText}>Policy</span>
+            </h1>
+            <p className={styles.subtitle}>
+              Last updated: October 2026 • Data handling, enquiry processing, and security practices
+            </p>
+          </div>
+        </Container>
+      </header>
 
-        <header className={styles.header}>
-          <h1 className={styles.title}>Privacy Policy</h1>
-          <p className={styles.updated}>Last updated: October 2026</p>
-        </header>
+      {/* Main Content Section */}
+      <section className={styles.contentSection}>
+        <Container size="narrow">
+          <div className={styles.legalCard}>
+            {/* Mandatory Draft Banner */}
+            <div className={styles.draftBanner} role="alert">
+              <AlertTriangle size={22} className="shrink-0 mt-0.5" aria-hidden="true" />
+              <div>
+                <strong>Draft Notice:</strong> This document is a preliminary draft
+                reflecting the technical data flows of this website. It must be
+                reviewed and tailored by the business owner and legal advisor before
+                official launch.
+              </div>
+            </div>
 
-        <div className={styles.content}>
+            <div className={styles.content}>
           <section className={styles.section}>
             <h2>1. Overview & Data Controller</h2>
             <p>
@@ -168,8 +188,10 @@ export default function PrivacyPage() {
               )}
             </ul>
           </section>
-        </div>
-      </Container>
+            </div>
+          </div>
+        </Container>
+      </section>
     </div>
   );
 }

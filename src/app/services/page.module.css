@@ -3,15 +3,18 @@
   flex-direction: column;
 }
 
-/* Page Intro Header */
+/* Page Intro Header - Navy Page Banner */
 .headerSection {
-  padding: var(--space-4xl) 0 var(--space-3xl) 0;
-  background: radial-gradient(
+  padding: clamp(5.5rem, 8vw, 7.5rem) 0 clamp(3.5rem, 6vw, 5rem) 0;
+  background-color: #071427;
+  background-image: radial-gradient(
     circle at 50% 0%,
-    rgba(201, 162, 39, 0.12) 0%,
-    transparent 60%
+    rgba(201, 162, 39, 0.16) 0%,
+    rgba(11, 31, 58, 0.9) 45%,
+    #071427 100%
   );
-  border-bottom: 1px solid var(--color-border-subtle);
+  color: #ffffff;
+  border-bottom: 1px solid rgba(230, 198, 92, 0.15);
 }
 
 .headerContainer {
@@ -26,28 +29,29 @@
 
 .title {
   font-size: clamp(2.2rem, 4.5vw, 3.4rem);
-  font-weight: 800;
-  letter-spacing: -0.03em;
-  color: var(--color-text-main);
+  font-weight: 850;
+  letter-spacing: -0.035em;
+  color: #ffffff;
   line-height: 1.15;
 }
 
 .gradientText {
-  background: var(--gradient-text-accent);
+  background: var(--gradient-gold);
   -webkit-background-clip: text;
+  background-clip: text;
   -webkit-text-fill-color: transparent;
 }
 
 .subtitle {
   font-size: clamp(1.05rem, 1.8vw, 1.25rem);
   line-height: 1.6;
-  color: var(--color-text-muted);
+  color: #94a3b8;
 }
 
 /* Category Cards Overview */
 .categoriesSection {
   padding: var(--space-3xl) 0;
-  background: var(--color-surface-sunken);
+  background: var(--color-white);
 }
 
 .sectionHeader {
@@ -94,5 +98,5 @@
 /* Directory Section */
 .directorySection {
   padding: var(--space-4xl) 0;
-  background: var(--color-surface-card);
+  background: var(--color-soft-bg);
 }

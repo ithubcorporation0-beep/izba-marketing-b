@@ -213,16 +213,12 @@ export default async function CategoryDetailPage({ params }: CategoryPageProps) 
       <JsonLd data={serviceJsonLd} />
       <JsonLd data={faqJsonLd} />
 
-      {/* Top Breadcrumb Navigation */}
-      <div className={styles.topBar}>
-        <Container size="default">
-          <Breadcrumb items={breadcrumbItems} />
-        </Container>
-      </div>
-
       {/* 1. HERO: title, promise, ONE primary button */}
       <header className={styles.heroSection}>
         <Container size="default">
+          <div className="mb-4">
+            <Breadcrumb items={breadcrumbItems} variant="dark" />
+          </div>
           <Reveal className={styles.heroContent}>
             <div className={styles.heroBadge}>
               <Badge variant="gold" size="md">
@@ -307,49 +303,126 @@ export default async function CategoryDetailPage({ params }: CategoryPageProps) 
             </p>
           </Reveal>
 
-          {/* Quick Jump Table of Contents */}
-          <nav className={styles.tocBox} aria-label="Table of Contents for services in this category">
-            <div className={styles.tocHeader}>
-              <ListFilter size={18} className="text-[var(--color-gold)]" aria-hidden="true" />
-              <span className={styles.tocTitle}>Quick Jump Table of Contents</span>
-            </div>
-            <ul className={styles.tocList}>
-              {category.services.map((svc) => (
-                <li key={`toc-${svc.slug}`}>
-                  <a href={`#${svc.slug}`} className={styles.tocLink}>
-                    <span className={styles.tocDot} aria-hidden="true" />
-                    <span>{svc.name}</span>
-                  </a>
-                </li>
-              ))}
-            </ul>
-          </nav>
-
-          {/* 10 Anchored Service Blocks */}
-          <div className={styles.servicesGrid}>
-            {category.services.map((svc) => (
-              <article key={svc.id} id={svc.slug} className={styles.serviceBlock}>
-                <div className={styles.serviceTop}>
-                  <h3 className={styles.serviceBlockTitle}>{svc.name}</h3>
-                  <p className={styles.serviceOutcome}>{svc.outcomeDescription}</p>
+          <div className={styles.whatLayout}>
+            <div className={styles.servicesCol}>
+              {/* Quick Jump Table of Contents */}
+              <nav className={styles.tocBox} aria-label="Table of Contents for services in this category">
+                <div className={styles.tocHeader}>
+                  <ListFilter size={18} className="text-[var(--color-gold)]" aria-hidden="true" />
+                  <span className={styles.tocTitle}>Quick Jump Table of Contents</span>
                 </div>
+                <ul className={styles.tocList}>
+                  {category.services.map((svc) => (
+                    <li key={`toc-${svc.slug}`}>
+                      <a href={`#${svc.slug}`} className={styles.tocLink}>
+                        <span className={styles.tocDot} aria-hidden="true" />
+                        <span>{svc.name}</span>
+                      </a>
+                    </li>
+                  ))}
+                </ul>
+              </nav>
 
-                <div className={styles.serviceBestFor}>
-                  <span className={styles.bestForLabel}>Best for:</span>
-                  <span>{svc.bestFor}</span>
-                </div>
-
-                <div className={styles.serviceFooterLink}>
-                  <a
-                    href={`/contact?category=${category.slug}&service=${svc.slug}`}
-                    className={styles.requestLink}
+              {/* 10 Anchored Service Blocks */}
+              <div className={styles.servicesGrid}>
+                {category.services.map((svc) => (
+                  <article
+                    key={svc.id}
+                    id={svc.slug}
+                    className={[
+                      styles.serviceBlock,
+                      matchedService?.slug === svc.slug ? styles.serviceBlockActive : '',
+                    ]
+                      .filter(Boolean)
+                      .join(' ')}
                   >
-                    <span>Request quote for this service</span>
-                    <ArrowRight size={14} aria-hidden="true" />
+                    <div className={styles.serviceTop}>
+                      <h3 className={styles.serviceBlockTitle}>{svc.name}</h3>
+                      <p className={styles.serviceOutcome}>{svc.outcomeDescription}</p>
+                    </div>
+
+                    <div className={styles.serviceBestFor}>
+                      <span className={styles.bestForLabel}>Best for:</span>
+                      <span>{svc.bestFor}</span>
+                    </div>
+
+                    <div className={styles.serviceFooterLink}>
+                      <a
+                        href={`/contact?category=${category.slug}&service=${svc.slug}`}
+                        className={styles.requestLink}
+                      >
+                        <span>Request quote for this service</span>
+                        <ArrowRight size={14} aria-hidden="true" />
+                      </a>
+                    </div>
+                  </article>
+                ))}
+              </div>
+            </div>
+
+            {/* Sticky Quote Sidebar Card */}
+            <aside className={styles.sidebarCol} aria-label="Quick Quote Sidebar">
+              <div className={styles.stickyQuoteCard}>
+                <div className={styles.quoteCardBadgeWrapper}>
+                  <span className={styles.quoteCardBadge}>
+                    <ShieldCheck size={14} aria-hidden="true" />
+                    <span>Fixed-Scope Transparency</span>
+                  </span>
+                </div>
+
+                <h3 className={styles.quoteCardTitle}>Get an Itemized Quote</h3>
+                <p className={styles.quoteCardService}>{pageHeading}</p>
+
+                <div className={styles.quoteCardFeatures}>
+                  <div className={styles.quoteFeatureItem}>
+                    <CheckCircle2 size={16} className={styles.quoteCheckIcon} aria-hidden="true" />
+                    <span>Exact, transparent milestone pricing</span>
+                  </div>
+                  <div className={styles.quoteFeatureItem}>
+                    <CheckCircle2 size={16} className={styles.quoteCheckIcon} aria-hidden="true" />
+                    <span>Detailed scope document before kickoff</span>
+                  </div>
+                  <div className={styles.quoteFeatureItem}>
+                    <CheckCircle2 size={16} className={styles.quoteCheckIcon} aria-hidden="true" />
+                    <span>Direct founder and technical team access</span>
+                  </div>
+                </div>
+
+                <div className={styles.quoteCardTimeline}>
+                  <Clock size={16} className="text-[var(--color-gold)] flex-shrink-0" aria-hidden="true" />
+                  <span className={styles.timelineText}>
+                    {category.typicalTimeline ? `Timeline: ${category.typicalTimeline}` : 'Timeline: Tailored to your scope'}
+                  </span>
+                </div>
+
+                <div className={styles.quoteCardActions}>
+                  <Button
+                    href={primaryQuoteHref}
+                    variant="primary"
+                    size="md"
+                    fullWidth
+                    icon={<ArrowRight size={16} />}
+                  >
+                    Request Free Quote
+                  </Button>
+
+                  <a
+                    href={whatsappUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className={styles.whatsappCardLink}
+                    aria-label={`Chat on WhatsApp about ${pageHeading}`}
+                  >
+                    <MessageCircle size={16} aria-hidden="true" />
+                    <span>Direct WhatsApp Chat</span>
                   </a>
                 </div>
-              </article>
-            ))}
+
+                <p className={styles.quoteCardGuaranteed}>
+                  Zero obligations • 24hr response time
+                </p>
+              </div>
+            </aside>
           </div>
         </Container>
       </section>

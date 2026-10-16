@@ -3,6 +3,7 @@ import type { Metadata } from 'next';
 import { categories } from '@/content/categories';
 import { services } from '@/content/services';
 import { Container } from '@/components/ui/Container';
+import { Breadcrumb } from '@/components/ui/Breadcrumb';
 import { Badge } from '@/components/ui/Badge';
 import { CategoryCard } from '@/components/services/CategoryCard';
 import { ServiceSearch } from '@/components/services/ServiceSearch';
@@ -24,12 +25,15 @@ export default function ServicesPage() {
       {/* 1. Page Intro Header */}
       <header className={styles.headerSection}>
         <Container size="default">
+          <div className="mb-4">
+            <Breadcrumb items={[{ label: 'Services' }]} variant="dark" />
+          </div>
           <Reveal className={styles.headerContainer}>
-            <Badge variant="blue" size="md">
+            <Badge variant="gold" size="md">
               Full Service Catalog
             </Badge>
             <h1 className={styles.title}>
-              Services & Digital{' '}
+              Services &amp; Digital{' '}
               <span className={styles.gradientText}>Capabilities</span>
             </h1>
             <p className={styles.subtitle}>
